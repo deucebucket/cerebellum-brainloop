@@ -34,6 +34,21 @@ Verified recall of 2,002 Python symbols using zero-context vector injection at L
 
 ---
 
+## Dead-Block Compiled-Path Results (2026-06-11)
+
+First results measured entirely on stock llama.cpp (tag b9275, CUDA): a 38-block GGUF with two attention-dead, subspace-masked FFN refiner blocks (1 epoch, injection-free delta training, final delta cosine ~0.44).
+
+| Metric | Baseline (36L) | Dead-Block (38L) |
+|---|---|---|
+| HumanEval / HumanEval+ (164, greedy) | 62.8% / 57.3% | 62.8% / 56.7% |
+| PPL wikitext (c=2048) | 3.4342 ±0.038 | 3.4579 ±0.038 |
+| PPL python-stdlib 300KB | 7.1961 ±0.046 | 7.1973 ±0.046 |
+| Symbol recall n=200 / post-cutoff n=30 | 10.0% / 0% | 10.0% / 0% |
+
+Structural parity holds (161/164 HumanEval completions token-identical; no looping). Knowledge injection is not yet effective at this training level — the blocks are functionally inert. Failure audit found no extraction artifacts. PPL values here are not comparable to the legacy protocol above.
+
+---
+
 ## Technical Feasibility
 
 - **13k Scaling:** Mathematically verified that 66M parameters can map the 13,529 symbols in the standard library.

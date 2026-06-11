@@ -7,6 +7,7 @@ is EXACTLY representable as a standard Qwen2 decoder block.
 Usage:
     python train_dead_block.py --stage a    # parity check + stage A (first 2000 samples)
     python train_dead_block.py --stage b    # full 13k stage B (launched by stage A if gate passes)
+    python train_dead_block.py --stage b --epochs 3 --resume checkpoints-deadblock-13k/dead_blocks_epoch1.pt
 """
 
 import argparse
@@ -14,6 +15,7 @@ import os
 import sys
 import copy
 import datetime
+import time
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -137,6 +139,20 @@ def patch_model(model):
 
 
 # ---------------------------------------------------------------------------
+# Resume helper
+# ---------------------------------------------------------------------------
+def load_resume(path, wrapper17, wrapper30):
+    """Load {'l17','l30'} state dicts from a checkpoint and re-zero frozen rows."""
+    ckpt = torch.load(path, map_location=DEVICE, weights_only=False)
+    wrapper17.load_state_dict(ckpt["l17"])
+    wrapper30.load_state_dict(ckpt["l30"])
+    # Re-zero frozen rows immediately to guard against any dtype drift in the saved file
+    wrapper17.zero_frozen_rows()
+    wrapper30.zero_frozen_rows()
+    log_status(f"Resumed from {path}; frozen rows re-zeroed.")
+
+
+# ---------------------------------------------------------------------------
 # Dataset
 # ---------------------------------------------------------------------------
 class DeltaDataset(Dataset):
@@ -168,6 +184,72 @@ def collate_fn(batch):
         input_ids[i, :ln] = torch.tensor(x["input_ids"][:ln])
         target_mask[i, :ln] = torch.tensor(x["target_mask"][:ln])
     return input_ids, target_mask, target_deltas
+
+
+# ---------------------------------------------------------------------------
+# Validation
+# ---------------------------------------------------------------------------
+def run_validation(model, wrapper17, wrapper30, val_loader):
+    """Compute mean delta cosine similarity and mean delta MSE on held-out set."""
+    model.eval()
+    h_container = {}
+
+    def hook_fn(module, inp, output):
+        h_container["h"] = output[0] if isinstance(output, tuple) else output
+
+    hook_handle = model.model.layers[30].register_forward_hook(hook_fn)
+
+    total_cosine = 0.0
+    total_mse = 0.0
+    n_batches = 0
+
+    with torch.no_grad():
+        for input_ids, t_mask, target_deltas in val_loader:
+            input_ids = input_ids.to(DEVICE)
+            target_deltas = target_deltas.to(DEVICE, dtype=torch.bfloat16).squeeze(1)
+
+            wrapper17.bypass = False
+            wrapper30.bypass = False
+            _ = model(input_ids)
+            h_active = h_container["h"][:, -1, :].clone()
+
+            wrapper17.bypass = True
+            wrapper30.bypass = True
+            _ = model(input_ids)
+            h_bypass = h_container["h"][:, -1, :].clone()
+
+            wrapper17.bypass = False
+            wrapper30.bypass = False
+
+            predicted_delta = h_active - h_bypass
+            total_cosine += F.cosine_similarity(predicted_delta, target_deltas, dim=-1).mean().item()
+            total_mse += F.mse_loss(predicted_delta, target_deltas).item()
+            n_batches += 1
+
+    hook_handle.remove()
+    val_cosine = total_cosine / max(n_batches, 1)
+    val_mse = total_mse / max(n_batches, 1)
+    return val_cosine, val_mse
+
+
+# ---------------------------------------------------------------------------
+# Checkpoint save
+# ---------------------------------------------------------------------------
+def save_checkpoint(wrapper17, wrapper30, epoch, val_cosine, val_mse, path):
+    ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    torch.save(
+        {
+            "l17": wrapper17.state_dict(),
+            "l30": wrapper30.state_dict(),
+            "meta": {
+                "epoch": epoch,
+                "val_cosine": val_cosine,
+                "val_mse": val_mse,
+                "timestamp": ts,
+            },
+        },
+        path,
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -360,9 +442,15 @@ def train_loop(model, tokenizer, wrapper17, wrapper30, loader, optimizer, stage_
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--stage", choices=["a", "b"], default="a")
+    parser.add_argument("--epochs", type=int, default=1,
+                        help="Number of training epochs (stage B only; stage A is always 1)")
+    parser.add_argument("--resume", type=str, default=None,
+                        help="Path to checkpoint with {'l17','l30'} keys to resume from")
+    parser.add_argument("--val-size", type=int, default=200,
+                        help="Number of samples held out from the END of the dataset for validation")
     args = parser.parse_args()
 
-    log_status(f"=== train_dead_block.py started, stage={args.stage} ===")
+    log_status(f"=== train_dead_block.py started, stage={args.stage} epochs={args.epochs} ===")
 
     # Load data
     log_status("Loading data...")
@@ -377,6 +465,10 @@ def main():
     model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, torch_dtype=torch.bfloat16)
     model, wrapper17, wrapper30 = patch_model(model)
     model = model.to(DEVICE)
+
+    # Resume if requested (before any training, after patch so wrappers exist)
+    if args.resume is not None:
+        load_resume(args.resume, wrapper17, wrapper30)
 
     trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
     log_status(f"Trainable parameters: {trainable:,}")
@@ -451,26 +543,108 @@ def main():
     # Stage B
     # -----------------------------------------------------------------------
     elif args.stage == "b":
-        log_status("=== STAGE B: full 13k training, 1 epoch ===")
-        dataset_b = DeltaDataset(py_train_data, py_deltas)
+        n_total = len(py_train_data)
+        val_size = min(args.val_size, n_total - 1)
+        train_size = n_total - val_size
+
+        # Deterministic split: last val_size samples held out, no shuffle of the split
+        train_data = py_train_data[:train_size]
+        train_deltas = py_deltas[:train_size]
+        val_data = py_train_data[train_size:]
+        val_deltas = py_deltas[train_size:]
+
+        log_status(
+            f"=== STAGE B: {train_size} train / {val_size} val, "
+            f"{args.epochs} epoch(s) ===")
+
+        dataset_b = DeltaDataset(train_data, train_deltas)
+        val_dataset = DeltaDataset(val_data, val_deltas)
         loader_b = DataLoader(dataset_b, batch_size=1, shuffle=True, collate_fn=collate_fn)
+        val_loader = DataLoader(val_dataset, batch_size=1, shuffle=False, collate_fn=collate_fn)
+
         optimizer = AdamW(
             [p for p in model.parameters() if p.requires_grad],
             lr=1e-4, weight_decay=0.1,
         )
 
-        train_loop(
-            model, tokenizer, wrapper17, wrapper30,
-            loader_b, optimizer, "StageB", total_steps_hint=len(dataset_b),
-        )
-
         os.makedirs(CHECKPOINT_DIR, exist_ok=True)
-        save_path = os.path.join(CHECKPOINT_DIR, "dead_blocks.pt")
-        torch.save(
-            {"l17": wrapper17.state_dict(), "l30": wrapper30.state_dict()},
-            save_path,
+
+        best_val_cosine = -float("inf")
+
+        for epoch in range(1, args.epochs + 1):
+            stage_label = f"StageB-ep{epoch}"
+            log_status(f"=== Epoch {epoch}/{args.epochs} ===")
+
+            early_losses, late_losses = train_loop(
+                model, tokenizer, wrapper17, wrapper30,
+                loader_b, optimizer, stage_label, total_steps_hint=len(dataset_b),
+            )
+
+            # Safety invariant: verify frozen rows after each epoch
+            max_frozen_after = max(
+                wrapper17.down_proj.weight[:SUBSPACE_START, :].abs().max().item(),
+                wrapper30.down_proj.weight[:SUBSPACE_START, :].abs().max().item(),
+            )
+            log_status(
+                f"[Epoch {epoch}] Frozen rows max abs after training: "
+                f"{max_frozen_after} (must be 0.0)"
+            )
+            if max_frozen_after != 0.0:
+                log_status("WARNING: frozen rows non-zero after epoch — re-zeroing now.")
+                wrapper17.zero_frozen_rows()
+                wrapper30.zero_frozen_rows()
+
+            # Validation
+            val_cosine, val_mse = run_validation(model, wrapper17, wrapper30, val_loader)
+            log_status(
+                f"[Epoch {epoch}] Val cosine: {val_cosine:.6f} | Val MSE: {val_mse:.6f}"
+            )
+
+            # Per-epoch checkpoint
+            epoch_path = os.path.join(CHECKPOINT_DIR, f"dead_blocks_epoch{epoch}.pt")
+            save_checkpoint(wrapper17, wrapper30, epoch, val_cosine, val_mse, epoch_path)
+
+            # Best checkpoint
+            is_best = val_cosine > best_val_cosine
+            if is_best:
+                best_val_cosine = val_cosine
+                best_path = os.path.join(CHECKPOINT_DIR, "dead_blocks_best.pt")
+                save_checkpoint(wrapper17, wrapper30, epoch, val_cosine, val_mse, best_path)
+
+            # Always write last
+            last_path = os.path.join(CHECKPOINT_DIR, "dead_blocks_last.pt")
+            save_checkpoint(wrapper17, wrapper30, epoch, val_cosine, val_mse, last_path)
+
+            # Legacy name = best (keeps exporter default working)
+            legacy_path = os.path.join(CHECKPOINT_DIR, "dead_blocks.pt")
+            save_checkpoint(wrapper17, wrapper30, epoch, val_cosine, val_mse, legacy_path)
+
+            # Compute train loss summary for log
+            if early_losses:
+                avg_early = sum(early_losses) / len(early_losses)
+            else:
+                avg_early = float("nan")
+            if late_losses:
+                avg_late = sum(late_losses) / len(late_losses)
+            else:
+                avg_late = float("nan")
+
+            written = [epoch_path, last_path, legacy_path]
+            if is_best:
+                written.append(best_path)
+
+            log_status(
+                f"[Epoch {epoch} SUMMARY] "
+                f"train_delta_early={avg_early:.4f} train_delta_late={avg_late:.4f} | "
+                f"val_cosine={val_cosine:.6f} val_mse={val_mse:.6f} | "
+                f"best_improved={'YES' if is_best else 'NO'} | "
+                f"saved={[os.path.basename(p) for p in written]}"
+            )
+
+        log_status(
+            f"Stage B complete. Best val cosine: {best_val_cosine:.6f}. "
+            f"Checkpoints in {CHECKPOINT_DIR}/"
         )
-        log_status(f"Stage B complete. Checkpoint saved to {save_path}")
 
 
 if __name__ == "__main__":

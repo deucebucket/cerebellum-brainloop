@@ -19,6 +19,25 @@ Cerebellum-Brainloop implements a dual-stage hidden state interceptor for Qwen2.
 
 *Note: While the intercept mechanism prevents catastrophic token looping ("lobotomy"), a full 164-sample evaluation reveals a minor degradation (~5%) in native reasoning capabilities when the identity-prior refiners are active. These scores were measured through the PyTorch interception path; compiled-path (llama.cpp) benchmarks of the unrolled GGUF are pending the weight-baking work described in `EXPERIMENTAL_PATHS.md`.*
 
+### Compiled-Path Results — Dead-Block GGUF (2026-06-11)
+
+First benchmark set measured on stock llama.cpp (tag b9275, CUDA, RTX 3090) — no fork, no Python interception. Model: `cerebellum-deadblock-python.gguf`, a 38-block GGUF with two attention-dead, subspace-masked FFN refiner blocks (trained 1 epoch, injection-free delta prediction, final delta cosine ~0.44).
+
+| Metric | Baseline (36L) | Dead-Block (38L) |
+|---|---|---|
+| HumanEval pass@1 (164, greedy) | 62.8% | 62.8% |
+| HumanEval+ pass@1 | 57.3% | 56.7% |
+| PPL wikitext (c=2048) | 3.4342 ±0.038 | 3.4579 ±0.038 |
+| PPL python-stdlib 300KB | 7.1961 ±0.046 | 7.1973 ±0.046 |
+| Symbol recall (n=200, content overlap ≥0.5) | 10.0% | 10.0% |
+| Post-cutoff symbol recall (n=30) | 0% | 0% |
+
+What this shows, stated plainly:
+- **Structural parity holds on the compiled path.** Inserting the two trained blocks costs no measurable logic or perplexity (161/164 HumanEval completions are token-identical to baseline). The earlier unrolled builds' catastrophic looping does not occur.
+- **Knowledge injection is not yet effective.** At one epoch of injection-free training the blocks are functionally inert: no recall or PPL movement. Multi-epoch training with validation-based checkpoint selection is the next step; results will be posted either way.
+- Failure audit: all sampled wrong answers were genuine model errors, no extraction artifacts.
+- These PPL values are not comparable to the legacy table below (different eval protocol).
+
 ### Perplexity (WikiText-2)
 | Milestone | PPL | Improvement |
 |---|---|---|
