@@ -204,6 +204,16 @@ def patch_model(model, ffn_only: bool = False, mask_dims: int = 0):
         )
         param.requires_grad = in_wrapper_block
 
+    # The loop above clobbers the constructor's --ffn-only freeze (it set
+    # requires_grad=True on every block param) — re-apply it.
+    if ffn_only:
+        attn = wrapper.block.self_attn
+        for proj_name in ("q_proj", "k_proj", "v_proj", "o_proj"):
+            proj = getattr(attn, proj_name)
+            proj.weight.requires_grad = False
+            if proj.bias is not None:
+                proj.bias.requires_grad = False
+
     return model, wrapper
 
 
@@ -278,7 +288,10 @@ def run_validation(model, val_loader) -> float:
     with torch.no_grad():
         for input_ids in val_loader:
             input_ids = input_ids.to(DEVICE)
-            outputs = model(input_ids)
+            # use_cache=False: the inserted block deepcopies layer_idx=17 and
+            # would otherwise read the base layer's KV-cache slot — a phantom
+            # attention path that does not exist in the exported GGUF.
+            outputs = model(input_ids, use_cache=False)
             logits = outputs.logits
             shift_logits = logits[:, :-1, :].contiguous()
             shift_labels = input_ids[:, 1:].contiguous()
@@ -292,6 +305,68 @@ def run_validation(model, val_loader) -> float:
     mean_loss = total_loss / max(n_batches, 1)
     import math
     return math.exp(mean_loss)
+
+
+# ---------------------------------------------------------------------------
+# Behavior probe: greedy generations that PPL cannot police.
+# The HumanEval audits showed the dominant insertion-block pathology is
+# degenerate token looping (emoji storms, repeated pseudo-code) — invisible
+# to cross-entropy validation. Probe a fixed prompt set every epoch and gate
+# checkpoint eligibility on non-degenerate output.
+# ---------------------------------------------------------------------------
+PROBE_PROMPTS = [
+    'def add(a, b):\n    """Return the sum of a and b."""\n',
+    'def is_even(n):\n    """Return True if n is even."""\n',
+    'def reverse_string(s):\n    """Return s reversed."""\n',
+    'def factorial(n):\n    """Return n! for non-negative integer n."""\n',
+    'def max_of_list(lst):\n    """Return the largest element of lst."""\n',
+    "The capital of France is",
+]
+
+
+def _is_degenerate(ids) -> bool:
+    """Token-loop detector: low distinct-token ratio, or the generation tail
+    is one n-gram repeated back-to-back. Catches loop storms, not wrongness."""
+    ids = list(ids)
+    if len(ids) >= 16 and len(set(ids)) / len(ids) < 0.35:
+        return True
+    for n in range(1, 9):
+        repeats = 5 if n == 1 else 4   # 4 identical single tokens can be legit
+        if len(ids) >= repeats * n:
+            tail = ids[-repeats * n:]
+            gram = tail[:n]
+            if all(tail[i:i + n] == gram for i in range(0, repeats * n, n)):
+                return True
+    return False
+
+
+def run_behavior_probe(model, tokenizer):
+    """Greedy 64-token generation per probe prompt. Returns
+    (non_degenerate_count, [(prompt_head, degenerate, snippet), ...]).
+    use_cache=False: the wrapper only ever trains on full sequences, so force
+    full forwards rather than trusting its KV-cache path."""
+    model.eval()
+    results = []
+    passed = 0
+    for prompt in PROBE_PROMPTS:
+        inputs = tokenizer(prompt, return_tensors="pt").to(DEVICE)
+        with torch.no_grad():
+            out = model.generate(
+                **inputs,
+                max_new_tokens=64,
+                do_sample=False,
+                use_cache=False,
+                pad_token_id=tokenizer.eos_token_id,
+            )
+        gen_ids = out[0][inputs["input_ids"].shape[1]:].tolist()
+        degen = _is_degenerate(gen_ids)
+        snippet = tokenizer.decode(gen_ids, skip_special_tokens=True)[:60]
+        results.append((prompt.splitlines()[0][:40], degen,
+                        snippet.replace("\n", "\\n")))
+        if not degen:
+            passed += 1
+    model.train()
+    return passed, results
 
 
 # ---------------------------------------------------------------------------
@@ -336,7 +411,8 @@ def train_epoch(
 
         input_ids = input_ids.to(DEVICE)
 
-        outputs = model(input_ids)
+        # use_cache=False: train under deployed semantics — see run_validation.
+        outputs = model(input_ids, use_cache=False)
         logits = outputs.logits
 
         # Pure LM loss: standard causal shift, no masking
@@ -420,6 +496,21 @@ def main():
                              "val@2048 <= baseline * (1 + PCT/100). "
                              "Among eligible, best python val@512 wins. "
                              "Default: 2.0 (allow up to 2%% regression).")
+    parser.add_argument("--lr", type=float, default=1e-4,
+                        help="AdamW learning rate (default: 1e-4). The 2026-06-11 epoch "
+                             "sweep showed behavioral damage saturates within the first "
+                             "2500 steps at 1e-4 — intensity must be cut here, not via "
+                             "step count.")
+    parser.add_argument("--behavior-probe", action=argparse.BooleanOptionalAction,
+                        default=True,
+                        help="Greedy-generate from fixed code prompts at each epoch end "
+                             "and reject checkpoints whose outputs degenerate into token "
+                             "loops — the failure mode val PPL cannot see. Default: on.")
+    parser.add_argument("--probe-min-pass", type=int, default=6,
+                        help="Minimum non-degenerate probe completions (of 6) for "
+                             "checkpoint eligibility. Clamped to the identity-model "
+                             "baseline so the bar is never higher than the frozen model "
+                             "itself achieves. Default: 6.")
     args = parser.parse_args()
 
     # Resolve checkpoint dir
@@ -449,6 +540,7 @@ def main():
     log_status(
         f"=== train_live_block.py started | "
         f"epochs={args.epochs} max_steps={args.max_steps_per_epoch} "
+        f"lr={args.lr:g} behavior_probe={args.behavior_probe} "
         f"resume={args.resume} data={train_path} "
         f"python_val={python_val_path} wiki_val={wiki_val_path} "
         f"checkpoint_dir={ckpt_dir} ==="
@@ -546,12 +638,13 @@ def main():
     else:
         run_parity_check(model, tokenizer, wrapper)
 
-    # Optimizer: golden config -- lr=1e-4, wd=0.1
+    # Optimizer: wd=0.1 fixed; lr is the intensity knob (--lr)
     optimizer = AdamW(
         [p for p in model.parameters() if p.requires_grad],
-        lr=1e-4,
+        lr=args.lr,
         weight_decay=0.1,
     )
+    log_status(f"Optimizer: AdamW lr={args.lr:g} weight_decay=0.1")
 
     os.makedirs(ckpt_dir, exist_ok=True)
 
@@ -566,6 +659,22 @@ def main():
         f"[FFNCoder-prep] Context-guard baseline val@2048 = {baseline_val2048:.4f}. "
         f"Ceiling = {guard_ceiling:.4f} (baseline * (1 + {args.context_guard:.1f}%/100))."
     )
+
+    # --behavior-probe: baseline on the patched-but-still-identity model.
+    # Eligibility bar = min(--probe-min-pass, baseline) so we never demand
+    # better behavior than the frozen model itself shows.
+    probe_required = 0
+    if args.behavior_probe:
+        log_status("[FFNCoder-prep] Behavior probe baseline (identity model)...")
+        base_pass, base_results = run_behavior_probe(model, tokenizer)
+        probe_required = min(args.probe_min_pass, base_pass)
+        log_status(
+            f"[FFNCoder-prep] Baseline probe: {base_pass}/{len(PROBE_PROMPTS)} "
+            f"non-degenerate. Eligibility requires >= {probe_required}."
+        )
+        for name, degen, snippet in base_results:
+            if degen:
+                log_status(f"[FFNCoder-prep] baseline probe degenerate: {name!r} -> {snippet!r}")
 
     best_val_ppl = float("inf")      # geomean, for logging only
     best_constrained_ppl = float("inf")   # best eligible python val@512
@@ -601,8 +710,19 @@ def main():
         guard_ok = val_ppl_2048 <= guard_ceiling
         guard_tag = "ELIGIBLE" if guard_ok else f"INELIGIBLE(val@2048={val_ppl_2048:.4f} > ceiling={guard_ceiling:.4f})"
 
+        # Behavior-probe eligibility: generations must not degenerate
+        probe_ok = True
+        probe_tag = "OFF"
+        if args.behavior_probe:
+            probe_pass, probe_results = run_behavior_probe(model, tokenizer)
+            probe_ok = probe_pass >= probe_required
+            probe_tag = f"{probe_pass}/{len(PROBE_PROMPTS)} {'OK' if probe_ok else 'FAIL'}"
+            for name, degen, snippet in probe_results:
+                if degen:
+                    log_status(f"[Epoch {epoch}] PROBE DEGENERATE: {name!r} -> {snippet!r}")
+
         # Best constrained checkpoint: among eligible, pick best python val@512
-        is_constrained_best = guard_ok and val_ppl_512 < best_constrained_ppl
+        is_constrained_best = guard_ok and probe_ok and val_ppl_512 < best_constrained_ppl
         if is_constrained_best:
             best_constrained_ppl = val_ppl_512
             best_constrained_epoch = epoch
@@ -625,7 +745,7 @@ def main():
             f"[Epoch {epoch} SUMMARY] "
             f"train_ppl={train_ppl:.4f} val_ppl@512={val_ppl_512:.4f} "
             f"val_ppl@2048={val_ppl_2048:.4f} geomean={val_ppl:.4f} | "
-            f"context-guard={guard_tag} | "
+            f"context-guard={guard_tag} | behavior-probe={probe_tag} | "
             f"constrained_best={'YES' if is_constrained_best else 'NO'} | "
             f"saved={[os.path.basename(p) for p in written]}"
         )
