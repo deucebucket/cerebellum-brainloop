@@ -61,15 +61,20 @@ model = model.to(device)
 
 # Freeze base model (except our wrappers)
 for name, param in model.named_parameters():
-    if 'model.layers.18' in name or 'model.layers.31' in name:
-        param.requires_grad = True
+    # Only train the specific refiner weights and gate/proj inside the wrapper
+    if 'model.layers.17' in name or 'model.layers.30' in name:
+        if '.base_layer.' in name:
+            param.requires_grad = False
+        else:
+            param.requires_grad = True
     else:
         param.requires_grad = False
 
 dataset = FusionDataset(py_train_data, py_deltas)
 loader = DataLoader(dataset, batch_size=1, shuffle=True, collate_fn=fusion_collate)
 
-optimizer = AdamW(model.parameters(), lr=1e-4, weight_decay=0.01)
+# Golden Config: weight_decay=0.1 to prevent overfitting
+optimizer = AdamW(model.parameters(), lr=1e-4, weight_decay=0.1)
 
 print("\nStarting Knowledge Fusion Training (Patched Layers)...")
 
@@ -82,14 +87,15 @@ for epoch in range(1):
         target_deltas = target_deltas.to(device)
         
         # Set injections in wrappers
-        model.model.layers[18].active_injection = None # Reasoner doesn't get RAG yet
-        model.model.layers[31].active_injection = inj_vectors # Knowledge Gate gets RAG
+        model.refiner_17.active_injection = None # Reasoner doesn't get RAG yet
+        model.refiner_30.active_injection = inj_vectors # Knowledge Gate gets RAG
         
         # --- A. Hidden State Hook for Delta Loss ---
         h_container = {}
         def hook(module, input, output):
+            # Output of the wrapper is (h_hijacked, ...)
             h_container['h'] = output[0] if isinstance(output, tuple) else output
-        handle = model.model.norm.register_forward_hook(hook)
+        handle = model.model.layers[30].register_forward_hook(hook)
         
         # Forward
         outputs = model(input_ids)
@@ -98,7 +104,7 @@ for epoch in range(1):
         
         # --- B. Ignorant Pass ---
         with torch.no_grad():
-            model.model.layers[31].active_injection = None
+            model.refiner_30.active_injection = None
             _ = model(input_ids)
             h_ignorant = h_container['h'][:, -1, :].clone()
         handle.remove()
@@ -117,9 +123,6 @@ for epoch in range(1):
         loss_delta = F.mse_loss(predicted_delta, target_deltas) + (1 - F.cosine_similarity(predicted_delta, target_deltas).mean())
         
         # 3. Refusal Loss (Contrastive)
-        # We want the model to say "I don't know" if we zero out the injection?
-        # For now, just focus on LM + Delta
-        
         loss = loss_lm + 10.0 * loss_delta
         
         loss.backward()
@@ -132,8 +135,8 @@ for epoch in range(1):
 # Save only the refiner weights
 os.makedirs('checkpoints-fusion-13k', exist_ok=True)
 save_dict = {
-    'l18': model.model.layers[18].state_dict(),
-    'l31': model.model.layers[31].state_dict()
+    'l17': model.refiner_17.state_dict(),
+    'l30': model.refiner_30.state_dict()
 }
 torch.save(save_dict, 'checkpoints-fusion-13k/fused_refiners.pt')
 print("Done!")
