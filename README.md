@@ -27,8 +27,8 @@ First benchmark set measured on stock llama.cpp (tag b9275, CUDA, RTX 3090) — 
 |---|---|---|
 | HumanEval pass@1 (164, greedy) | 62.8% | 62.8% |
 | HumanEval+ pass@1 | 57.3% | 56.7% |
-| PPL wikitext (c=2048) | 3.4342 ±0.038 | 3.4579 ±0.038 |
-| PPL python-stdlib 300KB | 7.1961 ±0.046 | 7.1973 ±0.046 |
+| PPL wikitext (c=2048) | 7.1961 ±0.046 | 7.1973 ±0.046 |
+| PPL python-stdlib 300KB (c=2048) | 3.4342 ±0.038 | 3.4579 ±0.038 |
 | Symbol recall (n=200, content overlap ≥0.5) | 10.0% | 10.0% |
 | Post-cutoff symbol recall (n=30) | 0% | 0% |
 
@@ -44,7 +44,9 @@ Replacing delta-prediction with plain LM-loss training of the inserted block pro
 
 - Symbol recall 10.0% → up to 25.5% (n=200, wiring-verified A/B harness), including recall of **Python 3.14 stdlib symbols that postdate the base model's training data** — content the frozen base model cannot know, surfaced with zero context tokens.
 - A wikitext-trained variant of the same block improves wikitext PPL **8.54 → 7.68 (-10.0%)** at its training context on stock llama.cpp.
-- Current cost, not yet controlled: corpus-trained variants regress HumanEval and long-context PPL; a 25%-subspace write mask measurably bounds the behavioral damage. Retaining recall while holding both at baseline is the open problem and active work.
+- Current cost, not yet controlled: corpus-trained variants regress HumanEval; a 25%-subspace write mask and reduced learning rate measurably bound the behavioral damage (best so far: 55.5% vs 62.8% baseline at lr 2e-5). Long-context PPL holds at baseline across all variants. Retaining recall while holding HumanEval at baseline is the open problem and active work.
+
+Correction (2026-06-11): the dead-block table's wikitext and python PPL values were originally published swapped — the measurement session ran its four perplexity jobs in parallel and crossed the corpus labels. The values above are corrected; an identity-block control re-measured both baselines and confirmed the parity conclusion is unchanged.
 
 ### Perplexity (WikiText-2)
 | Milestone | PPL | Improvement |

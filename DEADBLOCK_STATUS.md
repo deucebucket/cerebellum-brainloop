@@ -1925,3 +1925,503 @@ context-guard (val@2048) does not predict llama-perplexity long-context behavior
 guards must be measured on the compiled path (export + llama-perplexity) before a
 checkpoint is accepted. The guard's @512 predictions DID transfer (in-protocol
 improvements matched compiled c=512 improvements: 8.54 -> 7.76/7.79).
+
+---
+
+[2026-06-11 10:48:00] [EpochSweep] === RUN START: training-intensity sweep over existing FFN-masked checkpoints (compiled path) ===
+[2026-06-11 10:48:00] [EpochSweep] Rationale: prior FFNBench benched only epoch-3 (max intensity). "Lower training intensity" is next lever (RESEARCH_LOG session close). Epoch-1/2 checkpoints already on disk in checkpoints-ffncoder-masked/ — testable with zero new training. PyTorch val cannot answer this (guard @2048 proven non-predictive); export + compiled bench required.
+[2026-06-11 10:48:00] [EpochSweep] Variant: FFN-only + 25% mask (mask-dims 1536), corpus coder_corpus_v2.txt, lr 1e-4 wd 0.1, 2500 steps/epoch, mixed-context. Checkpoints: live_block_epoch1.pt (2500 steps), live_block_epoch2.pt (5000 steps). Epoch-3 (7500 steps) already benched as cerebellum-brainloop-coder-ffn-masked.gguf: recall 16.5%, post-cutoff 5/30, HumanEval 32.9/30.5, wiki 7.79@512 / 7.07@2048.
+[2026-06-11 10:48:00] [EpochSweep] CONSTRAINT: disk at 100% (9.2GB free), each export 6.3GB — sequential export -> bench -> delete -> next. Nothing pre-existing deleted.
+[2026-06-11 10:48:00] [EpochSweep] ENV NOTE: distrobox enter from this session hit crun cgroup.procs EPERM (session-1.scope vs user@1000.service delegation). Fix: wrap all distrobox-invoking commands in `systemd-run --user --scope`. Verified working (llama-perplexity --version OK).
+[2026-06-11 10:48:00] [EpochSweep] STEP 1: export epoch-1
+[2026-06-11 10:48:00] [EpochSweep]   cmd: python export_live_block_gguf.py --input qwen2.5-3b-brainloop.gguf --ckpt checkpoints-ffncoder-masked/live_block_epoch1.pt --output cerebellum-brainloop-coder-ffn-masked-e1.gguf
+[2026-06-11 10:52:00] [EpochSweep] STEP 1 RESULT: export OK — 446 tensors, block_count 37, all checks PASSED. cerebellum-brainloop-coder-ffn-masked-e1.gguf (6.3GB). Disk after export: ~2.9GB free.
+[2026-06-11 10:52:00] [EpochSweep] STEP 2: PPL wiki@512, epoch-1
+[2026-06-11 10:52:00] [EpochSweep]   cmd: systemd-run --user --scope -- distrobox enter ai -- llama-perplexity -m cerebellum-brainloop-coder-ffn-masked-e1.gguf -f /var/home/deucebucket/games/osmosis-quants/wiki.test.raw -c 512 -ngl 99
+[2026-06-11 10:56:00] [EpochSweep] STEP 2 RESULT: epoch-1 wiki@512 PPL = 7.7752 +/- 0.04961 (583 chunks). vs baseline 8.5381, epoch-3 masked 7.7882. Short-context gain fully present at epoch 1.
+[2026-06-11 10:56:00] [EpochSweep] STEP 3: PPL wiki@2048, epoch-1
+[2026-06-11 10:56:00] [EpochSweep]   cmd: systemd-run --user --scope -- distrobox enter ai -- llama-perplexity -m cerebellum-brainloop-coder-ffn-masked-e1.gguf -f wiki.test.raw -c 2048 -ngl 99
+[2026-06-11 11:05:00] [EpochSweep] STEP 3 RESULT: epoch-1 wiki@2048 PPL = 7.0667 +/- 0.04411. vs baseline 3.4342, epoch-3 masked 7.0697. FINDING: long-context regression is FULLY FORMED at epoch 1 (2500 steps) — identical to epoch 3. Not an overtraining artifact; structural to the FFN write at lr 1e-4. Lower epoch count cannot fix @2048.
+[2026-06-11 11:05:00] [EpochSweep] STEP 4: recall bench, epoch-1 vs baseline
+[2026-06-11 11:05:00] [EpochSweep]   cmd: python recall_bench_server.py --model-a qwen2.5-3b-brainloop.gguf --model-b cerebellum-brainloop-coder-ffn-masked-e1.gguf --n 200 --seed 42 --out recall_results_e1_ffn_masked.json
+[2026-06-11 11:12:00] [Housekeeping] Deleted 5 benched cerebellum GGUF exports + 4 zero-byte test stubs (user directive: don't accumulate exports). All deleted GGUFs reproducible in ~4 min from checkpoints (all checkpoint dirs retained) via export_live_block_gguf.py / surgery.py; all benchmark numbers logged above. Deleted: cerebellum-brainloop-coder-ffn.gguf, cerebellum-brainloop-coder-ffn-masked.gguf, cerebellum-brainloop-coder-python.gguf, cerebellum-deadblock-python.gguf, cerebellum-liveblock.gguf, test_{del,full,full2,kv}.gguf. Kept: qwen2.5-3b-brainloop.gguf (base), qwen2.5-7b-brainloop.gguf (base), cerebellum-brainloop-coder-ffn-masked-e1.gguf (mid-bench). Disk: 9.2GB -> 29GB free.
+[2026-06-11 11:12:00] [Housekeeping] POLICY going forward: exports are disposable bench artifacts — export, bench, log, delete. Checkpoints + logged results are the record.
+
+---
+
+## Recall Bench Results [2026-06-11 10:55:53]
+
+**model-A**: `qwen2.5-3b-brainloop.gguf`  
+**model-B**: `cerebellum-brainloop-coder-ffn-masked-e1.gguf`  
+**n**: 200, **seed**: 42
+
+| Metric | qwen2.5-3b-brainloop.gguf (A) | cerebellum-brainloop-coder-ffn-masked-e1.gguf (B) | Delta B-A |
+|--------|------------|------------|-----------|
+| Overall recall | 20/200 (10.0%) | 36/200 (18.0%) | +8.0pp |
+| Post-cutoff (module list) | 0/1 (0.0%) | 0/1 (0.0%) | +0.0pp |
+| Baseline-0 slice | 0/29 (0.0%) | 3/29 (10.3%) | +10.3pp |
+| Combined post-cutoff (primary) * | 0/30 (0.0%) | 3/30 (10.0%) | +10.0pp |
+
+\* Combined post-cutoff = module-list slice UNION baseline-0 slice.
+[2026-06-11 11:15:00] [EpochSweep] STEP 4 RESULT: epoch-1 recall 36/200=18.0% overall (+8.0pp), post-cutoff 3/30=10.0%. vs epoch-3 masked: 16.5% overall, 5/30=16.7% post-cutoff. Recall uptake substantially complete after 1 epoch; epochs 2-3 add post-cutoff depth (3/30 -> 5/30) but not overall breadth.
+[2026-06-11 11:15:00] [EpochSweep] WIRING CHECK: identical-completion fraction A vs B = 2/200 = 1.0% — models distinct, harness wired correctly.
+[2026-06-11 11:15:00] [EpochSweep] STEP 5: HumanEval full 164, epoch-1
+[2026-06-11 11:15:00] [EpochSweep]   cmd: python bench_humaneval_server.py --model cerebellum-brainloop-coder-ffn-masked-e1.gguf --out humaneval_samples_gguf_ffnm_e1.jsonl
+[2026-06-11 11:20:00] [EpochSweep] STEP 5 generation done: 164/164 samples -> humaneval_samples_gguf_ffnm_e1.jsonl. Leaked llama-server (pid 1144495, port 8089) killed; port verified free.
+[2026-06-11 11:20:00] [EpochSweep] HANDOFF: remaining pipeline (evalplus e1, audits, e2 export+bench+audit, final table) delegated to subagent. Agent instructed to log every step here live.
+
+---
+[EpochSweep] === RUN START 2026-06-11T11:09 CDT ===
+[EpochSweep] STEP 1 START: Score epoch-1 HumanEval
+[EpochSweep]   command: python -m evalplus.evaluate --dataset humaneval --samples humaneval_samples_gguf_ffnm_e1.jsonl 2>&1 | tee eval_ffnm_e1.log
+[EpochSweep]   samples file: humaneval_samples_gguf_ffnm_e1.jsonl (289076 bytes)
+[EpochSweep]   model: cerebellum-brainloop-coder-ffn-masked-e1.gguf (via GGUF bench, already complete)
+[EpochSweep] STEP 1 RESULT: epoch-1 HumanEval scored
+[EpochSweep]   humaneval base pass@1:  0.244 (24.4%)
+[EpochSweep]   humaneval+ pass@1:      0.220 (22.0%)
+[EpochSweep]   eval log: eval_ffnm_e1.log
+[EpochSweep] STEP 1 END: 2026-06-11T11:11 CDT
+[EpochSweep] STEP 2 START: Audit epoch-1 failures
+[EpochSweep]   eval results JSON: humaneval_samples_gguf_ffnm_e1_eval_results.json
+[EpochSweep]   total failed tasks: 124 of 164
+[EpochSweep]   FAILURE CLASSIFICATION:
+[EpochSweep]     degenerate-loop (token storm / emoji / pseudocode repetition): 56
+[EpochSweep]     genuine logic error (code present but wrong result):           66
+[EpochSweep]     clipping artifact (truncated mid-token):                        2
+[EpochSweep]     empty completion:                                                0
+[EpochSweep]   NOTE: ~45% of failures are degenerate loops (model instability/hallucination storms),
+[EpochSweep]         ~53% are genuine logic errors, ~2% clipping.
+[EpochSweep]         Score of 24.4%/22.0% reflects real model output quality; no inflation from parser bugs.
+[EpochSweep]   Specific samples audited:
+[EpochSweep]     HumanEval/2:  degenerate-loop (" assistant\n" repeated ~40x)
+[EpochSweep]     HumanEval/1:  degenerate-loop (emoji storm "\n 🎉" repeated ~100x)
+[EpochSweep]     HumanEval/10: degenerate-loop (" assistant\n" repeated)
+[EpochSweep]     HumanEval/14: logic error (code looks complete — all_prefixes includes empty string, off-by-one)
+[EpochSweep]     HumanEval/9:  logic error (code looks complete — returns correct structure)
+[EpochSweep]     HumanEval/19: logic error (wrong sort key: int(x[0]) instead of word-to-int mapping)
+[EpochSweep]     HumanEval/53: degenerate-loop (model refuses then hallucinates)
+[EpochSweep] STEP 2 END: 2026-06-11T11:14 CDT
+[EpochSweep] STEP 3 START: Delete epoch-1 GGUF (housekeeping policy)
+[EpochSweep]   target: cerebellum-brainloop-coder-ffn-masked-e1.gguf
+[EpochSweep]   reproducible from: checkpoints-ffncoder-masked/live_block_epoch1.pt (~4 min)
+[EpochSweep] STEP 3 END: cerebellum-brainloop-coder-ffn-masked-e1.gguf deleted (5.9G freed)
+[EpochSweep] STEP 4 START: Export epoch-2 GGUF
+[EpochSweep]   command: python export_live_block_gguf.py --input qwen2.5-3b-brainloop.gguf --ckpt checkpoints-ffncoder-masked/live_block_epoch2.pt --output cerebellum-brainloop-coder-ffn-masked-e2.gguf
+[EpochSweep]   checkpoint: checkpoints-ffncoder-masked/live_block_epoch2.pt
+[EpochSweep]   base GGUF: qwen2.5-3b-brainloop.gguf
+[EpochSweep] STEP 4 RESULT: epoch-2 GGUF exported successfully
+[EpochSweep]   output: cerebellum-brainloop-coder-ffn-masked-e2.gguf
+[EpochSweep]   checkpoint meta: epoch=2, val_ppl=6.1359
+[EpochSweep]   all post-write checks: PASS (block_count=37, tensor_count=446, spot_check_remap OK, spot_check_ckpt_tensors OK)
+[EpochSweep] STEP 4 END: 2026-06-11T11:16 CDT
+[EpochSweep] STEP 5 START: PPL epoch-2, c=512
+[EpochSweep]   command: systemd-run --user --scope -q -- distrobox enter ai -- /var/home/deucebucket/ai-drive/llama.cpp-stock/build/bin/llama-perplexity -m cerebellum-brainloop-coder-ffn-masked-e2.gguf -f /var/home/deucebucket/games/osmosis-quants/wiki.test.raw -c 512 -ngl 99
+[EpochSweep] STEP 5a RESULT: epoch-2 wiki PPL @ c=512: 7.7727 +/- 0.04967
+[EpochSweep] STEP 5b START: PPL epoch-2, c=2048
+[EpochSweep]   command: systemd-run --user --scope -q -- distrobox enter ai -- /var/home/deucebucket/ai-drive/llama.cpp-stock/build/bin/llama-perplexity -m cerebellum-brainloop-coder-ffn-masked-e2.gguf -f /var/home/deucebucket/games/osmosis-quants/wiki.test.raw -c 2048 -ngl 99
+[EpochSweep] STEP 5b RESULT: epoch-2 wiki PPL @ c=2048: 7.0622 +/- 0.04412
+[EpochSweep] STEP 5 END: 2026-06-11T11:34 CDT
+[EpochSweep] STEP 6 START: Recall bench epoch-2
+[EpochSweep]   command: systemd-run --user --scope -q -- python recall_bench_server.py --model-a qwen2.5-3b-brainloop.gguf --model-b cerebellum-brainloop-coder-ffn-masked-e2.gguf --n 200 --seed 42 --out recall_results_e2_ffn_masked.json
+
+---
+
+## Recall Bench Results [2026-06-11 11:18:57]
+
+**model-A**: `/var/home/deucebucket/ai-drive/cerebellum/cerebellum-dev/conch-poc/qwen2.5-3b-brainloop.gguf`  
+**model-B**: `/var/home/deucebucket/ai-drive/cerebellum/cerebellum-dev/conch-poc/cerebellum-brainloop-coder-ffn-masked-e2.gguf`  
+**n**: 200, **seed**: 42
+
+| Metric | qwen2.5-3b-brainloop.gguf (A) | cerebellum-brainloop-coder-ffn-masked-e2.gguf (B) | Delta B-A |
+|--------|------------|------------|-----------|
+| Overall recall | 20/200 (10.0%) | 26/200 (13.0%) | +3.0pp |
+| Post-cutoff (module list) | 0/1 (0.0%) | 0/1 (0.0%) | +0.0pp |
+| Baseline-0 slice | 0/29 (0.0%) | 2/29 (6.9%) | +6.9pp |
+| Combined post-cutoff (primary) * | 0/30 (0.0%) | 2/30 (6.7%) | +6.7pp |
+
+\* Combined post-cutoff = module-list slice UNION baseline-0 slice.
+[EpochSweep] STEP 6 RESULT: epoch-2 recall bench complete
+[EpochSweep]   identical-completion fraction A vs B: 0/200 (0.0%) — harness NOT miswired
+[EpochSweep]   overall recall: baseline 10.0% -> e2 13.0% (+3.0pp)
+[EpochSweep]   post-cutoff combined: baseline 0/30 (0.0%) -> e2 2/30 (6.7%) (+6.7pp)
+[EpochSweep]   port 8089: free (no leaked server)
+[EpochSweep] STEP 6 END: 2026-06-11T11:38 CDT
+[EpochSweep] STEP 7 START: HumanEval epoch-2
+[EpochSweep]   command: systemd-run --user --scope -q -- python bench_humaneval_server.py --model cerebellum-brainloop-coder-ffn-masked-e2.gguf --out humaneval_samples_gguf_ffnm_e2.jsonl
+[EpochSweep] STEP 7a: HumanEval epoch-2 sample generation complete (164 samples)
+[EpochSweep]   output: humaneval_samples_gguf_ffnm_e2.jsonl
+[EpochSweep]   server leak on port 8089: YES — killed PID 1282380 — port now free
+[EpochSweep] STEP 7b START: evalplus scoring epoch-2
+[EpochSweep]   command: python -m evalplus.evaluate --dataset humaneval --samples humaneval_samples_gguf_ffnm_e2.jsonl 2>&1 | tee eval_ffnm_e2.log
+[EpochSweep] STEP 7b RESULT: epoch-2 HumanEval scored
+[EpochSweep]   humaneval base pass@1:  0.323 (32.3%)
+[EpochSweep]   humaneval+ pass@1:      0.274 (27.4%)
+[EpochSweep]   eval log: eval_ffnm_e2.log
+[EpochSweep] STEP 7c: Audit epoch-2 failures
+[EpochSweep]   total failed tasks: 111 of 164
+[EpochSweep]   FAILURE CLASSIFICATION:
+[EpochSweep]     degenerate-loop (token storm/emoji/pseudocode): 57
+[EpochSweep]     genuine logic error (code complete but wrong):  16
+[EpochSweep]     clipping artifact (truncated mid-token):        38
+[EpochSweep]     empty completion:                                0
+[EpochSweep]   Specific samples audited:
+[EpochSweep]     HumanEval/2:  degenerate-loop (" assistant\n" repeated)
+[EpochSweep]     HumanEval/10: degenerate-loop (" assistant\n" repeated)
+[EpochSweep]     HumanEval/9:  logic error (rolling_max code looks correct but may include index 0 twice)
+[EpochSweep]     HumanEval/16: degenerate hybrid (has correct code then emoji+reprompt)
+[EpochSweep]     HumanEval/6:  logic error (wrong paren depth recursion)
+[EpochSweep]   NOTE: 38 clipping artifacts (vs 2 in e1) — suggests e2 often starts valid code but stops early
+[EpochSweep] STEP 7 END: 2026-06-11T11:54 CDT
+[EpochSweep] STEP 8 START: Delete epoch-2 GGUF
+[EpochSweep]   target: cerebellum-brainloop-coder-ffn-masked-e2.gguf
+[EpochSweep] STEP 8 END: cerebellum-brainloop-coder-ffn-masked-e2.gguf deleted (5.9G freed)
+[EpochSweep] STEP 9: Final sweep table and run completion
+
+[EpochSweep] === EPOCH SWEEP TABLE (FFN-only + 25% mask, checkpoints-ffncoder-masked/) ===
+[EpochSweep] Variant: FFN-only + 25% mask insertion block, coder_corpus_v2.txt, lr=1e-4, 2500 steps/epoch
+
+| Metric                    | Baseline        | Epoch-1         | Epoch-2         | Epoch-3         |
+|---------------------------|-----------------|-----------------|-----------------|-----------------|
+| wiki PPL @ c=512          | 8.5381          | 7.7752          | 7.7727          | 7.7882          |
+| wiki PPL @ c=2048         | 3.4342          | 7.0667          | 7.0622          | 7.0697          |
+| Recall overall            | 10.0% (20/200)  | 18.0% (36/200)  | 13.0% (26/200)  | 16.5% (33/200)  |
+| Recall post-cutoff        | 0/30 (0.0%)     | 3/30 (10.0%)    | 2/30 (6.7%)     | 5/30 (16.7%)    |
+| HumanEval base pass@1     | 62.8%           | 24.4%           | 32.3%           | 32.9%           |
+| HumanEval+ pass@1         | 57.3%           | 22.0%           | 27.4%           | 30.5%           |
+| Identical-completion frac | N/A             | ~1% (not logged)| 0/200 (0.0%)    | (not measured)  |
+
+[EpochSweep] AUDIT VERDICTS:
+[EpochSweep]   Epoch-1 (24.4%/22.0%): 124/164 failed
+[EpochSweep]     degenerate-loop: 56, logic error: 66, clipping: 2 — score is real model output, no inflation
+[EpochSweep]   Epoch-2 (32.3%/27.4%): 111/164 failed
+[EpochSweep]     degenerate-loop: 57, logic error: 16, clipping: 38 — score is real; e2 starts valid code more often but terminates early
+[EpochSweep]   NOTE: all three trained epochs regress HumanEval -30-38pp vs baseline; post-cutoff recall peaks at epoch-3 (5/30)
+[EpochSweep]   NOTE: wiki PPL @ c=512 improves (8.54 -> 7.77) but c=2048 degresses badly (3.43 -> 7.07) — context-length specialization symptom
+[EpochSweep]   NOTE: epoch-2 HumanEval is best of trained epochs (32.3%) vs epoch-1 (24.4%) and epoch-3 (32.9%) — epoch-3 marginally best
+
+[EpochSweep] PORT 8089: free (verified)
+[EpochSweep] === RUN COMPLETE 2026-06-11T11:56 CDT ===
+
+---
+
+[2026-06-11 11:42:00] [GentleLR] === RUN START: gentle-lr FFN-masked coder block (lr 2e-5, 5x below 1e-4) ===
+[2026-06-11 11:42:00] [GentleLR] Rationale: epoch sweep proved damage saturates within 2500 steps at lr 1e-4 — step count is a dead lever; cutting write magnitude via lr is the live one. Trainer upgraded: --lr flag (AdamW lr now configurable), --behavior-probe (6 greedy code-prompt generations per epoch, token-loop detector gates checkpoint eligibility alongside context-guard — looping pathology is invisible to val PPL).
+[2026-06-11 11:42:00] [GentleLR]   cmd: python train_live_block.py --epochs 3 --max-steps-per-epoch 2500 --data coder_corpus_v2.txt --val-data python:coder_corpus_v2.txt,wiki:/var/home/deucebucket/games/osmosis-quants/wiki.test.raw --checkpoint-dir checkpoints-ffncoder-gentle --ffn-only --mask-dims 1536 --mixed-context --context-guard 2.0 --lr 2e-5
+
+[2026-06-11 11:39:22] [LiveBlock] === train_live_block.py started | epochs=3 max_steps=2500 lr=2e-05 behavior_probe=True resume=None data=coder_corpus_v2.txt python_val=coder_corpus_v2.txt wiki_val=/var/home/deucebucket/games/osmosis-quants/wiki.test.raw checkpoint_dir=checkpoints-ffncoder-gentle ===
+
+[2026-06-11 11:39:22] [LiveBlock] Loading tokenizer for Qwen/Qwen2.5-3B...
+
+[2026-06-11 11:39:32] [LiveBlock]   Auto-holdout: training on first 6534 @512 chunks; last 100 held out for python val.
+
+[2026-06-11 11:39:32] [LiveBlock] Building dataset from coder_corpus_v2.txt (sizes=[512, 1024, 2048, 768, 1536, 512])...
+
+[2026-06-11 11:39:39] [LiveBlock]   Train chunks: 3184
+
+[2026-06-11 11:39:39] [LiveBlock] Building python val@512 from tail of coder_corpus_v2.txt (100 chunks)...
+
+[2026-06-11 11:39:47] [LiveBlock]   Python val chunks @512: 100
+
+[2026-06-11 11:39:47] [LiveBlock] Building wiki val@2048 from /var/home/deucebucket/games/osmosis-quants/wiki.test.raw (40 chunks)...
+
+[2026-06-11 11:39:48] [LiveBlock]   Val chunks: 100 @512, 40 @2048
+
+[2026-06-11 11:39:48] [LiveBlock] Loading Qwen/Qwen2.5-3B...
+
+[2026-06-11 11:39:56] [LiveBlock] Trainable parameters: 77,076,992
+
+[2026-06-11 11:39:56] [LiveBlock] [FFNCoder-prep] --ffn-only active: self_attn {q,k,v,o}_proj zeroed and frozen. Block is FFN-only.
+
+[2026-06-11 11:39:56] [LiveBlock] [FFNCoder-prep] --mask-dims 1536: down_proj rows 0..1535 zeroed at init; will re-zero after each step.
+
+[2026-06-11 11:39:56] [LiveBlock] [FFNCoder-prep] --context-guard 2.0%: baseline val@2048 will be measured before epoch 1.
+
+[2026-06-11 11:39:56] [LiveBlock] === PARITY CHECK: verifying zero-init identity (o_proj=0, down_proj=0) ===
+
+[2026-06-11 11:39:56] [LiveBlock]   Prompt 'What is the capital of France?' max_abs_diff = 0.000000e+00
+
+[2026-06-11 11:39:56] [LiveBlock]   Prompt 'def fibonacci(n):' max_abs_diff = 0.000000e+00
+
+[2026-06-11 11:39:56] [LiveBlock]   Prompt 'import os
+print(os.getcwd())' max_abs_diff = 0.000000e+00
+
+[2026-06-11 11:39:56] [LiveBlock] PARITY CHECK PASSED: max_abs_diff = 0.000000e+00 (<= 0.001). Identity confirmed.
+
+[2026-06-11 11:39:56] [LiveBlock] Optimizer: AdamW lr=2e-05 weight_decay=0.1
+
+[2026-06-11 11:39:56] [LiveBlock] [FFNCoder-prep] Measuring context-guard baseline val@2048 (identity model)...
+
+[2026-06-11 11:40:08] [LiveBlock] [FFNCoder-prep] Context-guard baseline val@2048 = 7.5216. Ceiling = 7.6720 (baseline * (1 + 2.0%/100)).
+
+[2026-06-11 11:40:08] [LiveBlock] [FFNCoder-prep] Behavior probe baseline (identity model)...
+
+[2026-06-11 11:40:15] [LiveBlock] [FFNCoder-prep] Baseline probe: 6/6 non-degenerate. Eligibility requires >= 6.
+
+[2026-06-11 11:40:15] [LiveBlock] === Epoch 1/3 ===
+
+[2026-06-11 11:40:44] [LiveBlock] [Epoch 1] Step 100/2500 | Loss: 1.4479 | PPL: 4.25
+
+[2026-06-11 11:41:11] [LiveBlock] [Epoch 1] Step 200/2500 | Loss: 1.2801 | PPL: 3.60
+
+[2026-06-11 11:41:38] [LiveBlock] [Epoch 1] Step 300/2500 | Loss: 1.3715 | PPL: 3.94
+
+[2026-06-11 11:42:08] [LiveBlock] [Epoch 1] Step 400/2500 | Loss: 1.2783 | PPL: 3.59
+
+[2026-06-11 11:42:32] [LiveBlock] [Epoch 1] Step 500/2500 | Loss: 1.3818 | PPL: 3.98
+
+[2026-06-11 11:42:57] [LiveBlock] [Epoch 1] Step 600/2500 | Loss: 1.2377 | PPL: 3.45
+
+[2026-06-11 11:43:23] [LiveBlock] [Epoch 1] Step 700/2500 | Loss: 1.1881 | PPL: 3.28
+
+[2026-06-11 11:43:52] [LiveBlock] [Epoch 1] Step 800/2500 | Loss: 1.2944 | PPL: 3.65
+
+[2026-06-11 11:44:19] [LiveBlock] [Epoch 1] Step 900/2500 | Loss: 1.2228 | PPL: 3.40
+
+[2026-06-11 11:44:47] [LiveBlock] [Epoch 1] Step 1000/2500 | Loss: 1.2524 | PPL: 3.50
+
+[2026-06-11 11:45:15] [LiveBlock] [Epoch 1] Step 1100/2500 | Loss: 1.2526 | PPL: 3.50
+
+[2026-06-11 11:45:41] [LiveBlock] [Epoch 1] Step 1200/2500 | Loss: 1.1679 | PPL: 3.22
+
+[2026-06-11 11:46:09] [LiveBlock] [Epoch 1] Step 1300/2500 | Loss: 1.1999 | PPL: 3.32
+
+[2026-06-11 11:46:36] [LiveBlock] [Epoch 1] Step 1400/2500 | Loss: 1.1328 | PPL: 3.10
+
+[2026-06-11 11:47:03] [LiveBlock] [Epoch 1] Step 1500/2500 | Loss: 1.2305 | PPL: 3.42
+
+[2026-06-11 11:47:28] [LiveBlock] [Epoch 1] Step 1600/2500 | Loss: 1.2930 | PPL: 3.64
+
+[2026-06-11 11:47:55] [LiveBlock] [Epoch 1] Step 1700/2500 | Loss: 1.2228 | PPL: 3.40
+
+[2026-06-11 11:48:24] [LiveBlock] [Epoch 1] Step 1800/2500 | Loss: 1.2393 | PPL: 3.45
+
+[2026-06-11 11:48:52] [LiveBlock] [Epoch 1] Step 1900/2500 | Loss: 1.1009 | PPL: 3.01
+
+[2026-06-11 11:49:18] [LiveBlock] [Epoch 1] Step 2000/2500 | Loss: 1.1726 | PPL: 3.23
+
+[2026-06-11 11:49:44] [LiveBlock] [Epoch 1] Step 2100/2500 | Loss: 1.0937 | PPL: 2.99
+
+[2026-06-11 11:50:12] [LiveBlock] [Epoch 1] Step 2200/2500 | Loss: 1.0842 | PPL: 2.96
+
+[2026-06-11 11:50:38] [LiveBlock] [Epoch 1] Step 2300/2500 | Loss: 1.2779 | PPL: 3.59
+
+[2026-06-11 11:51:03] [LiveBlock] [Epoch 1] Step 2400/2500 | Loss: 1.1611 | PPL: 3.19
+
+[2026-06-11 11:51:30] [LiveBlock] [Epoch 1] Step 2500/2500 | Loss: 1.0686 | PPL: 2.91
+
+[2026-06-11 11:51:30] [LiveBlock] [Epoch 1] Train mean loss: 1.2261 | Train PPL: 3.41
+
+[2026-06-11 11:51:49] [LiveBlock] [Epoch 1] Val PPL @512: 6.1348 | @2048: 7.2362 | combined (geomean): 6.6628
+
+[2026-06-11 11:51:58] [LiveBlock] [Epoch 1 SUMMARY] train_ppl=3.4080 val_ppl@512=6.1348 val_ppl@2048=7.2362 geomean=6.6628 | context-guard=ELIGIBLE | behavior-probe=6/6 OK | constrained_best=YES | saved=['live_block_epoch1.pt', 'live_block_last.pt', 'live_block_best.pt']
+
+[2026-06-11 11:51:58] [LiveBlock] === Epoch 2/3 ===
+
+[2026-06-11 11:52:26] [LiveBlock] [Epoch 2] Step 100/2500 | Loss: 1.1072 | PPL: 3.03
+
+[2026-06-11 11:52:53] [LiveBlock] [Epoch 2] Step 200/2500 | Loss: 1.2226 | PPL: 3.40
+
+[2026-06-11 11:53:22] [LiveBlock] [Epoch 2] Step 300/2500 | Loss: 1.1665 | PPL: 3.21
+
+[2026-06-11 11:53:48] [LiveBlock] [Epoch 2] Step 400/2500 | Loss: 1.0920 | PPL: 2.98
+
+[2026-06-11 11:54:14] [LiveBlock] [Epoch 2] Step 500/2500 | Loss: 1.1390 | PPL: 3.12
+
+[2026-06-11 11:54:40] [LiveBlock] [Epoch 2] Step 600/2500 | Loss: 1.0908 | PPL: 2.98
+
+[2026-06-11 11:55:05] [LiveBlock] [Epoch 2] Step 700/2500 | Loss: 1.0386 | PPL: 2.83
+
+[2026-06-11 11:55:33] [LiveBlock] [Epoch 2] Step 800/2500 | Loss: 1.2622 | PPL: 3.53
+
+[2026-06-11 11:55:59] [LiveBlock] [Epoch 2] Step 900/2500 | Loss: 1.2471 | PPL: 3.48
+
+[2026-06-11 11:56:26] [LiveBlock] [Epoch 2] Step 1000/2500 | Loss: 1.0583 | PPL: 2.88
+
+[2026-06-11 11:56:55] [LiveBlock] [Epoch 2] Step 1100/2500 | Loss: 1.0740 | PPL: 2.93
+
+[2026-06-11 11:57:23] [LiveBlock] [Epoch 2] Step 1200/2500 | Loss: 1.1352 | PPL: 3.11
+
+[2026-06-11 11:57:54] [LiveBlock] [Epoch 2] Step 1300/2500 | Loss: 1.1416 | PPL: 3.13
+
+[2026-06-11 11:58:22] [LiveBlock] [Epoch 2] Step 1400/2500 | Loss: 1.1775 | PPL: 3.25
+
+[2026-06-11 11:58:50] [LiveBlock] [Epoch 2] Step 1500/2500 | Loss: 1.2377 | PPL: 3.45
+
+[2026-06-11 11:59:16] [LiveBlock] [Epoch 2] Step 1600/2500 | Loss: 1.1061 | PPL: 3.02
+
+[2026-06-11 11:59:44] [LiveBlock] [Epoch 2] Step 1700/2500 | Loss: 1.1298 | PPL: 3.10
+
+[2026-06-11 12:00:13] [LiveBlock] [Epoch 2] Step 1800/2500 | Loss: 1.0967 | PPL: 2.99
+
+[2026-06-11 12:00:37] [LiveBlock] [Epoch 2] Step 1900/2500 | Loss: 1.0165 | PPL: 2.76
+
+[2026-06-11 12:01:05] [LiveBlock] [Epoch 2] Step 2000/2500 | Loss: 1.1756 | PPL: 3.24
+
+[2026-06-11 12:01:32] [LiveBlock] [Epoch 2] Step 2100/2500 | Loss: 1.1839 | PPL: 3.27
+
+[2026-06-11 12:01:59] [LiveBlock] [Epoch 2] Step 2200/2500 | Loss: 1.3772 | PPL: 3.96
+
+[2026-06-11 12:02:25] [LiveBlock] [Epoch 2] Step 2300/2500 | Loss: 1.0871 | PPL: 2.97
+
+[2026-06-11 12:02:53] [LiveBlock] [Epoch 2] Step 2400/2500 | Loss: 1.0969 | PPL: 2.99
+
+[2026-06-11 12:03:21] [LiveBlock] [Epoch 2] Step 2500/2500 | Loss: 0.9843 | PPL: 2.68
+
+[2026-06-11 12:03:21] [LiveBlock] [Epoch 2] Train mean loss: 1.1378 | Train PPL: 3.12
+
+[2026-06-11 12:03:40] [LiveBlock] [Epoch 2] Val PPL @512: 6.0421 | @2048: 7.1982 | combined (geomean): 6.5949
+
+[2026-06-11 12:03:49] [LiveBlock] [Epoch 2 SUMMARY] train_ppl=3.1198 val_ppl@512=6.0421 val_ppl@2048=7.1982 geomean=6.5949 | context-guard=ELIGIBLE | behavior-probe=6/6 OK | constrained_best=YES | saved=['live_block_epoch2.pt', 'live_block_last.pt', 'live_block_best.pt']
+
+[2026-06-11 12:03:49] [LiveBlock] === Epoch 3/3 ===
+
+[2026-06-11 12:04:15] [LiveBlock] [Epoch 3] Step 100/2500 | Loss: 1.1401 | PPL: 3.13
+
+[2026-06-11 12:04:42] [LiveBlock] [Epoch 3] Step 200/2500 | Loss: 1.1956 | PPL: 3.31
+
+[2026-06-11 12:05:06] [LiveBlock] [Epoch 3] Step 300/2500 | Loss: 1.2025 | PPL: 3.33
+
+[2026-06-11 12:05:35] [LiveBlock] [Epoch 3] Step 400/2500 | Loss: 1.0125 | PPL: 2.75
+
+[2026-06-11 12:06:01] [LiveBlock] [Epoch 3] Step 500/2500 | Loss: 1.1861 | PPL: 3.27
+
+[2026-06-11 12:06:25] [LiveBlock] [Epoch 3] Step 600/2500 | Loss: 1.1230 | PPL: 3.07
+
+[2026-06-11 12:06:51] [LiveBlock] [Epoch 3] Step 700/2500 | Loss: 1.0956 | PPL: 2.99
+
+[2026-06-11 12:07:19] [LiveBlock] [Epoch 3] Step 800/2500 | Loss: 1.0910 | PPL: 2.98
+
+[2026-06-11 12:07:48] [LiveBlock] [Epoch 3] Step 900/2500 | Loss: 1.0392 | PPL: 2.83
+
+[2026-06-11 12:08:17] [LiveBlock] [Epoch 3] Step 1000/2500 | Loss: 1.0931 | PPL: 2.98
+
+[2026-06-11 12:08:44] [LiveBlock] [Epoch 3] Step 1100/2500 | Loss: 1.1510 | PPL: 3.16
+
+[2026-06-11 12:09:11] [LiveBlock] [Epoch 3] Step 1200/2500 | Loss: 1.0444 | PPL: 2.84
+
+[2026-06-11 12:09:39] [LiveBlock] [Epoch 3] Step 1300/2500 | Loss: 1.1472 | PPL: 3.15
+
+[2026-06-11 12:10:06] [LiveBlock] [Epoch 3] Step 1400/2500 | Loss: 1.0522 | PPL: 2.86
+
+[2026-06-11 12:10:30] [LiveBlock] [Epoch 3] Step 1500/2500 | Loss: 1.1384 | PPL: 3.12
+
+[2026-06-11 12:10:56] [LiveBlock] [Epoch 3] Step 1600/2500 | Loss: 1.1819 | PPL: 3.26
+
+[2026-06-11 12:11:23] [LiveBlock] [Epoch 3] Step 1700/2500 | Loss: 1.1690 | PPL: 3.22
+
+[2026-06-11 12:11:51] [LiveBlock] [Epoch 3] Step 1800/2500 | Loss: 1.0723 | PPL: 2.92
+
+[2026-06-11 12:12:18] [LiveBlock] [Epoch 3] Step 1900/2500 | Loss: 1.2431 | PPL: 3.47
+
+[2026-06-11 12:12:46] [LiveBlock] [Epoch 3] Step 2000/2500 | Loss: 1.1015 | PPL: 3.01
+
+[2026-06-11 12:13:14] [LiveBlock] [Epoch 3] Step 2100/2500 | Loss: 1.1153 | PPL: 3.05
+
+[2026-06-11 12:13:39] [LiveBlock] [Epoch 3] Step 2200/2500 | Loss: 1.1035 | PPL: 3.01
+
+[2026-06-11 12:14:05] [LiveBlock] [Epoch 3] Step 2300/2500 | Loss: 1.1343 | PPL: 3.11
+
+[2026-06-11 12:14:32] [LiveBlock] [Epoch 3] Step 2400/2500 | Loss: 1.1891 | PPL: 3.28
+
+[2026-06-11 12:14:58] [LiveBlock] [Epoch 3] Step 2500/2500 | Loss: 1.1335 | PPL: 3.11
+
+[2026-06-11 12:14:58] [LiveBlock] [Epoch 3] Train mean loss: 1.1262 | Train PPL: 3.08
+
+[2026-06-11 12:15:18] [LiveBlock] [Epoch 3] Val PPL @512: 5.9988 | @2048: 7.1912 | combined (geomean): 6.5680
+
+[2026-06-11 12:15:26] [LiveBlock] [Epoch 3 SUMMARY] train_ppl=3.0840 val_ppl@512=5.9988 val_ppl@2048=7.1912 geomean=6.5680 | context-guard=ELIGIBLE | behavior-probe=6/6 OK | constrained_best=YES | saved=['live_block_epoch3.pt', 'live_block_last.pt', 'live_block_best.pt']
+
+[2026-06-11 12:15:26] [LiveBlock] [FFNCoder-prep] Best constrained checkpoint: epoch 3, val@512=5.9988 (saved as live_block_best.pt).
+
+[2026-06-11 12:15:26] [LiveBlock] Training complete. Best geomean val PPL: 6.5680. Checkpoints in checkpoints-ffncoder-gentle/
+[2026-06-11 12:16:00] [GentleLR] TRAINING COMPLETE: all 3 epochs context-guard ELIGIBLE + behavior-probe 6/6 OK. Best constrained: epoch 3, val@512=5.9988 (vs 5.1491 at lr 1e-4 — shallower fit as expected). Checkpoints in checkpoints-ffncoder-gentle/.
+[2026-06-11 12:16:00] [GentleLR] HANDOFF: export + compiled-path bench gauntlet delegated to subagent (same protocol as EpochSweep: export, PPL@512/@2048, recall n=200 seed 42 + wiring check, HumanEval 164 + evalplus + audit, delete GGUF, table).
+[GentleLR] === PIPELINE START === 2026-06-11 12:16:30
+[GentleLR] Step 1: Export — python export_live_block_gguf.py --input qwen2.5-3b-brainloop.gguf --ckpt checkpoints-ffncoder-gentle/live_block_best.pt --output cerebellum-brainloop-coder-ffn-gentle.gguf
+[GentleLR] Step 1 COMPLETE: export PASSED all checks — block_count=37, tensor_count=446, spot_check_remap OK, ckpt tensors shape OK. Output: cerebellum-brainloop-coder-ffn-gentle.gguf. Checkpoint meta: epoch=3, val_ppl=6.568.
+[GentleLR] Step 2 START: PPL@512 — systemd-run --user --scope -q -- distrobox enter ai -- llama-perplexity -m cerebellum-brainloop-coder-ffn-gentle.gguf -f wiki.test.raw -c 512 -ngl 99
+[GentleLR] Step 2a COMPLETE: PPL@512 = 8.0647 +/- 0.05282 (baseline 8.5381, lr1e-4-e3 7.7882)
+[GentleLR] Step 2b START: PPL@2048 — systemd-run --user --scope -q -- distrobox enter ai -- llama-perplexity -m cerebellum-brainloop-coder-ffn-gentle.gguf -f wiki.test.raw -c 2048 -ngl 99
+[GentleLR] Step 2b COMPLETE: PPL@2048 = 7.1245 +/- 0.04480 (baseline 3.4342, lr1e-4-e3 7.0697)
+[GentleLR] NOTE: PPL@2048 for gentle-lr is 7.1245 vs baseline 3.4342 — significant PPL regression at long context (worse than lr1e-4 which was 7.0697). PPL@512 improved vs baseline (8.0647 vs 8.5381) but worse than lr1e-4 (7.7882).
+[GentleLR] Step 3 START: Recall bench — systemd-run --user --scope -q -- python recall_bench_server.py --model-a qwen2.5-3b-brainloop.gguf --model-b cerebellum-brainloop-coder-ffn-gentle.gguf --n 200 --seed 42 --out recall_results_gentle.json
+
+---
+
+## Recall Bench Results [2026-06-11 12:22:49]
+
+**model-A**: `/var/home/deucebucket/ai-drive/cerebellum/cerebellum-dev/conch-poc/qwen2.5-3b-brainloop.gguf`  
+**model-B**: `/var/home/deucebucket/ai-drive/cerebellum/cerebellum-dev/conch-poc/cerebellum-brainloop-coder-ffn-gentle.gguf`  
+**n**: 200, **seed**: 42
+
+| Metric | qwen2.5-3b-brainloop.gguf (A) | cerebellum-brainloop-coder-ffn-gentle.gguf (B) | Delta B-A |
+|--------|------------|------------|-----------|
+| Overall recall | 20/200 (10.0%) | 26/200 (13.0%) | +3.0pp |
+| Post-cutoff (module list) | 0/1 (0.0%) | 0/1 (0.0%) | +0.0pp |
+| Baseline-0 slice | 0/29 (0.0%) | 1/29 (3.4%) | +3.4pp |
+| Combined post-cutoff (primary) * | 0/30 (0.0%) | 1/30 (3.3%) | +3.3pp |
+
+\* Combined post-cutoff = module-list slice UNION baseline-0 slice.
+[GentleLR] Step 3 COMPLETE: Recall — overall 13.0% (26/200) vs baseline 10.0%, delta +3.0pp. Post-cutoff 1/30 (3.3%) vs baseline 0/30. Identical-completion fraction A vs B: 46/200 (23%) — NOT miswired; block is writing with moderate differentiation. Genuine weak-write finding as expected at gentle lr.
+[GentleLR] Step 4 START: HumanEval — systemd-run --user --scope -q -- python bench_humaneval_server.py --model cerebellum-brainloop-coder-ffn-gentle.gguf --out humaneval_samples_gguf_gentle.jsonl
+[GentleLR] Step 4a COMPLETE: HumanEval generation done (164 samples). Server leaked on port 8089, killed PID 1753903, port now free.
+[GentleLR] Step 4b COMPLETE: evalplus scoring — base 55.5% (0.555), base+ 52.4% (0.524). (baseline 62.8/57.3, lr1e-4-e3 32.9/30.5)
+[GentleLR] Step 4c START: Audit >=5 failed samples from eval results JSON.
+[GentleLR] Step 4c COMPLETE: Audit of 73 failed samples (base tests, 164 total = 55.5% pass@1):
+  logic_error: 54 — genuine wrong implementations (e.g. sort_numbers sorts lexicographically, find_closest_elements returns first two after sort, all_prefixes includes empty string)
+  clipping: 16 — solutions end with 'pseudo-code', 'assistant', meta-text; generation hit context limit mid-solution
+  degenerate_loop: 1 — HumanEval/1 produced repeated emoji tokens (stuck generation artifact)
+  duplicate_def: 2 — 4+ def lines, repeated whole function body
+  empty: 0
+  Verdict: majority (54/73=74%) are genuine model logic errors. 16/73 (22%) are clipping artifacts — not model capability failures but generation cutoff issues. 3/73 (4%) degenerate/format artifacts.
+[GentleLR] Port 8089: leaked after bench, killed PID 1753903, verified free.
+[GentleLR] Step 5 START: Delete cerebellum-brainloop-coder-ffn-gentle.gguf
+[GentleLR] Step 5 COMPLETE: cerebellum-brainloop-coder-ffn-gentle.gguf deleted. Only qwen2.5-3b-brainloop.gguf and qwen2.5-7b-brainloop.gguf remain.
+
+[GentleLR] === FINAL RESULTS TABLE ===
+
+| Metric              | Baseline      | lr1e-4-e3     | gentle-lr2e-5-e3 | Delta gentle vs baseline |
+|---------------------|---------------|---------------|------------------|--------------------------|
+| wiki PPL @512       | 8.5381        | 7.7882        | 8.0647           | -0.4734 (improvement)    |
+| wiki PPL @2048      | 3.4342        | 7.0697        | 7.1245           | +3.6903 (regression)     |
+| recall overall      | 10.0% (20/200)| 16.5% (33/200)| 13.0% (26/200)   | +3.0pp                   |
+| recall post-cutoff  | 0/30 (0.0%)   | 5/30 (16.7%)  | 1/30 (3.3%)      | +3.3pp                   |
+| HumanEval base      | 62.8%         | 32.9%         | 55.5%            | -7.3pp                   |
+| HumanEval+          | 57.3%         | 30.5%         | 52.4%            | -4.9pp                   |
+
+Notes:
+- wiki@2048 baseline of 3.4342 is anomalously low (long-context information advantage vs 512 striding); all insertion variants show PPL regression at 2048 — this appears to be a structural effect of adding a block, not training-specific.
+- Identical-completion fraction A vs B: 46/200 (23%) — block is writing, not miswired; weak-write finding consistent with gentle lr.
+- HumanEval logic tax reduced: gentle-lr2e-5-e3 at 55.5%/52.4% vs lr1e-4-e3 at 32.9%/30.5% — 5x gentler lr recovered ~22pp of HumanEval from the aggressive run's lobotomy. Still -7.3pp vs baseline.
+- Recall gain is modest (+3.0pp overall, +3.3pp post-cutoff). Post-cutoff is 1/30 vs 0/30 baseline.
+
+[GentleLR] Port 8089 free: verified (no process listening).
+[GentleLR] === RUN COMPLETE === 2026-06-11 12:35:00
+
+---
+
+[2026-06-11 12:40:00] [IdentityControl] === RUN START: identity-block control for the @2048 regression ===
+[2026-06-11 12:40:00] [IdentityControl] HYPOTHESIS: the wiki@2048 regression may be caused by the export_live_block_gguf.py path, not training. Evidence: five trained blocks (wikitext + coder corpora, lr 1e-4 and 2e-5, including a near-inert write with 23% identical completions) all land @2048 in [7.03, 7.12] — invariant to write magnitude. Dead-block export via surgery.py (38 blocks) scored 3.4579 — insertion per se is free. Binary, magnitude-invariant regression fingerprints a mechanical cause.
+[2026-06-11 12:40:00] [IdentityControl] CONTROL: zero down_proj (+verify o_proj/q/k/v zero) in checkpoints-ffncoder-gentle/live_block_best.pt -> exact-identity block -> export via export_live_block_gguf.py -> llama-perplexity @512 and @2048. Identity model MUST reproduce baseline (8.5381 / 3.4342) if the export path is clean.
+[2026-06-11 12:42:00] [IdentityControl] === ROOT CAUSE FOUND: KV-cache slot collision in LiveBlockWrapper ===
+[2026-06-11 12:42:00] [IdentityControl] wrapper.block = deepcopy(base_layer) keeps layer_idx=17 — SAME cache slot as the base layer it follows. With use_cache=True (transformers default, active in ALL training + validation forwards to date), the block's attention reads/extends the base layer's cached K/V: probe shows o_proj input max_abs=4.06 with q/k/v ALL ZERO; use_cache=False gives exactly 0.0.
+[2026-06-11 12:42:00] [IdentityControl] CONSEQUENCES: (1) "FFN-only" blocks trained with a live phantom attention path (explains q_proj/o_proj nonzero in all ffn-only checkpoints — patch_model's blanket requires_grad loop also clobbers the constructor freeze, train_live_block.py:200-205); (2) the FFN co-adapted to an attention signal that does NOT exist in the exported GGUF (block gets its own empty cache slot in llama.cpp) — train/deploy semantic mismatch, prime suspect for the magnitude-invariant @2048 regression; (3) explains why PyTorch context-guard val@2048 never predicted compiled @2048 — the guard measured the corrupted-semantics model.
+[2026-06-11 12:42:00] [IdentityControl] FIX: model(input_ids, use_cache=False) in train_epoch + run_validation (behavior probe already used use_cache=False); patch_model re-applies the ffn-only freeze after its blanket loop. Then re-train gentle-lr under deployed semantics and re-bench.
+[2026-06-11 12:47:00] [IdentityControl] Trainer fixed (use_cache=False in train_epoch + run_validation; freeze re-applied post-clobber). Verified: requires_grad all False on attn projs, o_proj grad None, dead attention under use_cache=False.
+[2026-06-11 12:47:00] [IdentityControl] STEP: identity-control GGUF PPL, both contexts
+[2026-06-11 12:47:00] [IdentityControl]   cmd: llama-perplexity -m cerebellum-identity-control.gguf -f wiki.test.raw -c 512 / -c 2048 -ngl 99
+[2026-06-11 13:05:00] [IdentityControl] STEP RESULT: identity-control GGUF wiki PPL = 7.1961@512, 8.5381@2048. ANOMALY: @2048 > @512 (physically abnormal — PPL must drop with more context). Both values 4-decimal-collide with differently-labeled morning baseline numbers (morning "python@2048 baseline"=7.1961, morning "wiki@512 baseline"=8.5381). Morning baseline row was flagged anomalous at measurement time. At least one baseline in the record is mislabeled — re-measuring qwen2.5-3b-brainloop.gguf (36-block base) MYSELF, same binary/protocol, before interpreting anything.
+[2026-06-11 13:05:00] [IdentityControl] STEP: ground-truth baseline PPL, qwen2.5-3b-brainloop.gguf, c=512 and c=2048
+[2026-06-11 13:20:00] [IdentityControl] === MAJOR CORRECTION: the @2048 "regression" never existed — baseline label swap ===
+[2026-06-11 13:20:00] [IdentityControl] Ground truth (my hands, per-file verified n_ctx + mtimes):
+[2026-06-11 13:20:00] [IdentityControl]   qwen2.5-3b-brainloop.gguf (36L base): wiki@512 = 8.5381 +/- 0.058, wiki@2048 = 7.1961 +/- 0.046
+[2026-06-11 13:20:00] [IdentityControl]   cerebellum-identity-control.gguf (37L, exact-zero block): wiki@512 = 8.5381, wiki@2048 = 7.1961 — IDENTICAL to base, both contexts. export_live_block_gguf.py path is CLEAN; insertion is free.
+[2026-06-11 13:20:00] [IdentityControl] ROOT CAUSE of the false regression: the 03:51 dead-block session ran 4 PPL jobs IN PARALLEL and crossed corpus labels. Its "wiki@2048 baseline = 3.4342" was actually PYTHON@2048; its "python baseline = 7.1961" was actually WIKI@2048. Every later bench inherited the crossed row as fixed constants (flagged anomalous twice, never re-measured).
+[2026-06-11 13:20:00] [IdentityControl] RETRACTIONS/CORRECTIONS:
+[2026-06-11 13:20:00] [IdentityControl]   (1) NO trained variant regresses @2048: e1 7.0667, e2 7.0622, e3 7.0697, gentle 7.1245, wikitext-block 7.0265 — all AT OR BELOW true baseline 7.1961. All "(iii) FAIL" acceptance verdicts flip to PASS.
+[2026-06-11 13:20:00] [IdentityControl]   (2) RESEARCH_LOG / commit bbc71f5 claim "context-specialized (regresses at c=2048)" is RETRACTED — live block @2048 = 7.0265 vs true 7.1961 (-2.4%, slight improvement).
+[2026-06-11 13:20:00] [IdentityControl]   (3) "PyTorch chunked-CE @2048 guard does not predict llama-perplexity @2048" is RETRACTED — PyTorch val@2048 (~7.1-7.2) matched compiled reality; mismatch was vs the phantom 3.43.
+[2026-06-11 13:20:00] [IdentityControl]   (4) True python@2048 baseline = 3.4342 (not 7.1961): variant python PPL gains were overstated (true: 3.43 -> 1.54, not 7.20 -> 1.54).
+[2026-06-11 13:20:00] [IdentityControl]   (5) My 13:05 entry's "@2048 > @512 abnormality" was MY OWN cross-read of two concatenated grep outputs — same error class. Per-file header+mtime inspection is now the protocol.
+[2026-06-11 13:20:00] [IdentityControl] STANDING REAL FINDINGS: KV-cache slot collision (probe-proven, trainer fixed) — its damage scope is now behavioral only (HumanEval), not long-context. @512 improvements verified against my own baseline. The open problem reduces to: HumanEval damage vs recall strength tradeoff.
+[2026-06-11 13:20:00] [IdentityControl] PROTOCOL RULE (new): never run PPL jobs in parallel; one job at a time, output file named per run, verify n_ctx + corpus from INSIDE the log before recording. Baselines are re-measured per session, never inherited.
