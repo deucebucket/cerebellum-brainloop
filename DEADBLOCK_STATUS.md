@@ -687,3 +687,157 @@ Reference (PyTorch path, earlier runs):
 
 **(c) Prior HumanEval scores (llama-prismml fork, bench_humaneval_gguf.py):** A=62.8%/57.3%, B=61.0%/54.9% — those numbers used a different binary (llama-prismml) with c=4096. This stock run with c=24576 produces A=62.8%/57.3% (unchanged) and B=62.8%/56.7% (improved from 61.0%/54.9%). The improvement in B's stock score is consistent with context window: c=4096 was too tight for some of B's longer generations (38-layer model with slightly different KV geometry).
 
+
+[2026-06-11 04:03:42] [LiveBlock] === train_live_block.py started | epochs=2 max_steps=2000 resume=None ===
+
+[2026-06-11 04:03:42] [LiveBlock] Loading tokenizer for Qwen/Qwen2.5-3B...
+
+[2026-06-11 04:03:44] [LiveBlock] Building WikiDataset from /var/home/deucebucket/games/osmosis-quants/wiki.train.raw...
+
+[2026-06-11 04:03:50] [LiveBlock]   Train chunks: 4916
+
+[2026-06-11 04:03:50] [LiveBlock] Building validation set from /var/home/deucebucket/games/osmosis-quants/wiki.test.raw (first 100 chunks)...
+
+[2026-06-11 04:03:51] [LiveBlock]   Val chunks: 100
+
+[2026-06-11 04:03:51] [LiveBlock] Loading Qwen/Qwen2.5-3B...
+
+[2026-06-11 04:03:53] [LiveBlock] Trainable parameters: 77,076,992
+
+[2026-06-11 04:03:53] [LiveBlock] === PARITY CHECK: verifying zero-init identity (o_proj=0, down_proj=0) ===
+
+[2026-06-11 04:03:54] [LiveBlock]   Prompt 'What is the capital of France?' max_abs_diff = 0.000000e+00
+
+[2026-06-11 04:03:54] [LiveBlock]   Prompt 'def fibonacci(n):' max_abs_diff = 0.000000e+00
+
+[2026-06-11 04:03:54] [LiveBlock]   Prompt 'import os
+print(os.getcwd())' max_abs_diff = 0.000000e+00
+
+[2026-06-11 04:03:54] [LiveBlock] PARITY CHECK PASSED: max_abs_diff = 0.000000e+00 (<= 0.001). Identity confirmed.
+
+[2026-06-11 04:03:54] [LiveBlock] === Epoch 1/2 ===
+
+[2026-06-11 04:04:48] [LiveBlock] === train_live_block.py started | epochs=2 max_steps=2000 resume=None ===
+
+[2026-06-11 04:04:48] [LiveBlock] Loading tokenizer for Qwen/Qwen2.5-3B...
+
+[2026-06-11 04:04:49] [LiveBlock] Building WikiDataset from /var/home/deucebucket/games/osmosis-quants/wiki.train.raw...
+
+[2026-06-11 04:04:56] [LiveBlock]   Train chunks: 4916
+
+[2026-06-11 04:04:56] [LiveBlock] Building validation set from /var/home/deucebucket/games/osmosis-quants/wiki.test.raw (first 100 chunks)...
+
+[2026-06-11 04:04:56] [LiveBlock]   Val chunks: 100
+
+[2026-06-11 04:04:56] [LiveBlock] Loading Qwen/Qwen2.5-3B...
+
+[2026-06-11 04:04:59] [LiveBlock] Trainable parameters: 77,076,992
+
+[2026-06-11 04:04:59] [LiveBlock] === PARITY CHECK: verifying zero-init identity (o_proj=0, down_proj=0) ===
+
+[2026-06-11 04:04:59] [LiveBlock]   Prompt 'What is the capital of France?' max_abs_diff = 0.000000e+00
+
+[2026-06-11 04:04:59] [LiveBlock]   Prompt 'def fibonacci(n):' max_abs_diff = 0.000000e+00
+
+[2026-06-11 04:04:59] [LiveBlock]   Prompt 'import os
+print(os.getcwd())' max_abs_diff = 0.000000e+00
+
+[2026-06-11 04:04:59] [LiveBlock] PARITY CHECK PASSED: max_abs_diff = 0.000000e+00 (<= 0.001). Identity confirmed.
+
+[2026-06-11 04:04:59] [LiveBlock] === Epoch 1/2 ===
+
+[2026-06-11 04:05:21] [LiveBlock] [Epoch 1] Step 100/2000 | Loss: 2.2763 | PPL: 9.74
+
+[2026-06-11 04:05:44] [LiveBlock] [Epoch 1] Step 200/2000 | Loss: 2.1675 | PPL: 8.74
+
+[2026-06-11 04:06:06] [LiveBlock] [Epoch 1] Step 300/2000 | Loss: 2.1809 | PPL: 8.85
+
+[2026-06-11 04:06:30] [LiveBlock] [Epoch 1] Step 400/2000 | Loss: 2.1976 | PPL: 9.00
+
+[2026-06-11 04:06:53] [LiveBlock] [Epoch 1] Step 500/2000 | Loss: 2.1749 | PPL: 8.80
+
+[2026-06-11 04:07:17] [LiveBlock] [Epoch 1] Step 600/2000 | Loss: 2.2048 | PPL: 9.07
+
+[2026-06-11 04:07:41] [LiveBlock] [Epoch 1] Step 700/2000 | Loss: 2.1860 | PPL: 8.90
+
+[2026-06-11 04:08:06] [LiveBlock] [Epoch 1] Step 800/2000 | Loss: 2.1481 | PPL: 8.57
+
+[2026-06-11 04:08:30] [LiveBlock] [Epoch 1] Step 900/2000 | Loss: 2.1612 | PPL: 8.68
+
+[2026-06-11 04:08:55] [LiveBlock] [Epoch 1] Step 1000/2000 | Loss: 2.1980 | PPL: 9.01
+
+[2026-06-11 04:09:20] [LiveBlock] [Epoch 1] Step 1100/2000 | Loss: 2.1854 | PPL: 8.89
+
+[2026-06-11 04:09:44] [LiveBlock] [Epoch 1] Step 1200/2000 | Loss: 2.1520 | PPL: 8.60
+
+[2026-06-11 04:10:09] [LiveBlock] [Epoch 1] Step 1300/2000 | Loss: 2.1873 | PPL: 8.91
+
+[2026-06-11 04:10:33] [LiveBlock] [Epoch 1] Step 1400/2000 | Loss: 2.2043 | PPL: 9.06
+
+[2026-06-11 04:10:58] [LiveBlock] [Epoch 1] Step 1500/2000 | Loss: 2.2020 | PPL: 9.04
+
+[2026-06-11 04:11:22] [LiveBlock] [Epoch 1] Step 1600/2000 | Loss: 2.1688 | PPL: 8.75
+
+[2026-06-11 04:11:47] [LiveBlock] [Epoch 1] Step 1700/2000 | Loss: 2.1857 | PPL: 8.90
+
+[2026-06-11 04:12:11] [LiveBlock] [Epoch 1] Step 1800/2000 | Loss: 2.2152 | PPL: 9.16
+
+[2026-06-11 04:12:36] [LiveBlock] [Epoch 1] Step 1900/2000 | Loss: 2.1824 | PPL: 8.87
+
+[2026-06-11 04:13:01] [LiveBlock] [Epoch 1] Step 2000/2000 | Loss: 2.1512 | PPL: 8.59
+
+[2026-06-11 04:13:01] [LiveBlock] [Epoch 1] Train mean loss: 2.1865 | Train PPL: 8.90
+
+[2026-06-11 04:13:08] [LiveBlock] [Epoch 1] Val PPL: 8.7610
+
+[2026-06-11 04:13:09] [LiveBlock] [Epoch 1 SUMMARY] train_ppl=8.9039 val_ppl=8.7610 | best_improved=YES best_val_ppl=8.7610 | saved=['live_block_epoch1.pt', 'live_block_last.pt', 'live_block_best.pt']
+
+[2026-06-11 04:13:09] [LiveBlock] === Epoch 2/2 ===
+
+[2026-06-11 04:13:34] [LiveBlock] [Epoch 2] Step 100/2000 | Loss: 2.0630 | PPL: 7.87
+
+[2026-06-11 04:13:58] [LiveBlock] [Epoch 2] Step 200/2000 | Loss: 2.0727 | PPL: 7.95
+
+[2026-06-11 04:14:23] [LiveBlock] [Epoch 2] Step 300/2000 | Loss: 2.0454 | PPL: 7.73
+
+[2026-06-11 04:14:47] [LiveBlock] [Epoch 2] Step 400/2000 | Loss: 2.0549 | PPL: 7.81
+
+[2026-06-11 04:15:12] [LiveBlock] [Epoch 2] Step 500/2000 | Loss: 2.0806 | PPL: 8.01
+
+[2026-06-11 04:15:37] [LiveBlock] [Epoch 2] Step 600/2000 | Loss: 2.0134 | PPL: 7.49
+
+[2026-06-11 04:16:01] [LiveBlock] [Epoch 2] Step 700/2000 | Loss: 2.0337 | PPL: 7.64
+
+[2026-06-11 04:16:26] [LiveBlock] [Epoch 2] Step 800/2000 | Loss: 2.0691 | PPL: 7.92
+
+[2026-06-11 04:16:51] [LiveBlock] [Epoch 2] Step 900/2000 | Loss: 2.0885 | PPL: 8.07
+
+[2026-06-11 04:17:15] [LiveBlock] [Epoch 2] Step 1000/2000 | Loss: 2.0588 | PPL: 7.84
+
+[2026-06-11 04:17:40] [LiveBlock] [Epoch 2] Step 1100/2000 | Loss: 2.0211 | PPL: 7.55
+
+[2026-06-11 04:18:04] [LiveBlock] [Epoch 2] Step 1200/2000 | Loss: 2.0776 | PPL: 7.99
+
+[2026-06-11 04:18:29] [LiveBlock] [Epoch 2] Step 1300/2000 | Loss: 2.0288 | PPL: 7.60
+
+[2026-06-11 04:18:54] [LiveBlock] [Epoch 2] Step 1400/2000 | Loss: 2.0770 | PPL: 7.98
+
+[2026-06-11 04:19:18] [LiveBlock] [Epoch 2] Step 1500/2000 | Loss: 2.0380 | PPL: 7.68
+
+[2026-06-11 04:19:43] [LiveBlock] [Epoch 2] Step 1600/2000 | Loss: 2.0980 | PPL: 8.15
+
+[2026-06-11 04:20:07] [LiveBlock] [Epoch 2] Step 1700/2000 | Loss: 2.0585 | PPL: 7.83
+
+[2026-06-11 04:20:32] [LiveBlock] [Epoch 2] Step 1800/2000 | Loss: 2.1032 | PPL: 8.19
+
+[2026-06-11 04:20:57] [LiveBlock] [Epoch 2] Step 1900/2000 | Loss: 2.0633 | PPL: 7.87
+
+[2026-06-11 04:21:21] [LiveBlock] [Epoch 2] Step 2000/2000 | Loss: 2.0877 | PPL: 8.07
+
+[2026-06-11 04:21:21] [LiveBlock] [Epoch 2] Train mean loss: 2.0617 | Train PPL: 7.86
+
+[2026-06-11 04:21:28] [LiveBlock] [Epoch 2] Val PPL: 8.9129
+
+[2026-06-11 04:21:29] [LiveBlock] [Epoch 2 SUMMARY] train_ppl=7.8590 val_ppl=8.9129 | best_improved=NO best_val_ppl=8.7610 | saved=['live_block_epoch2.pt', 'live_block_last.pt']
+
+[2026-06-11 04:21:29] [LiveBlock] Training complete. Best val PPL: 8.7610. Checkpoints in checkpoints-liveblock/
