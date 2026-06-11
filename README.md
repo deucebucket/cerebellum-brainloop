@@ -17,7 +17,7 @@ Cerebellum-Brainloop implements a dual-stage hidden state interceptor for Qwen2.
 | Qwen2.5-3B Baseline | 62.2% | 56.1% | Pass |
 | **Brainloop (Refiners Active)** | **56.7% (-5.5%)** | **51.2% (-4.9%)** | **Pass** |
 
-*Note: While the intercept mechanism prevents catastrophic token looping ("lobotomy"), a full 164-sample evaluation reveals a minor degradation (~5%) in native reasoning capabilities when the identity-prior refiners are active. These scores were measured through the PyTorch interception path; compiled-path (llama.cpp) benchmarks of the unrolled GGUF are pending the weight-baking work described in `EXPERIMENTAL_PATHS.md`.*
+*Correction (2026-06-11): a benchmark-wiring audit found the refiners were functionally inert during this run (trained gate ≈ 0.5% contribution; injection projection untrained). The 5.5-point gap reflects prompt-format differences between bench scripts, not the intervention — the previously reported "~5% logic tax" was a measurement artifact. Verified compiled-path results (below) show no measurable logic cost from inserted identity-initialized blocks.*
 
 ### Compiled-Path Results — Dead-Block GGUF (2026-06-11)
 

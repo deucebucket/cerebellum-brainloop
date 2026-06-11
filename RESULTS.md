@@ -19,7 +19,7 @@ By utilizing identity-initialized layer wrappers and subspace hijacking, we achi
 | Qwen2.5-3B Baseline | Pass | 62.2% | 56.1% |
 | **Brainloop (Refiners Active)** | **Pass** | **56.7% (-5.5%)** | **51.2% (-4.9%)** |
 
-*Note: While the intercept mechanism prevents the catastrophic looping ("lobotomy") seen in earlier unrolled builds, a full 164-sample evaluation reveals a minor degradation (~5%) in native reasoning capabilities when the identity-prior refiners are active. Measured through the PyTorch interception path; compiled-path (llama.cpp) benchmarks of the unrolled GGUF are pending weight-baking (see `EXPERIMENTAL_PATHS.md`).*
+*Correction (2026-06-11): a forensic audit of the benchmark wiring found the refiners were functionally inert during this measurement — the trained gate values were tanh(gate) ≈ -0.005 (0.5% contribution) and the L17 injection projection had received no gradient updates. The 5.5-point drop is attributable to prompt-format differences between the two bench scripts, not the intervention. The "~5% logic tax" previously reported here was a measurement artifact. Compiled-path benchmarks with verified wiring (see Dead-Block results below) show no measurable logic cost from inserted identity-initialized blocks.*
 
 ### Knowledge Recall
 
