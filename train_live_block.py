@@ -43,6 +43,9 @@ WIKI_TEST  = "/var/home/deucebucket/games/osmosis-quants/wiki.test.raw"
 BLOCK_SIZE  = 512
 BATCH_SIZE  = 2
 
+# Sentinel: used as default for --data / --val-data to mean "use the classic wiki paths"
+_UNSET = object()
+
 
 # ---------------------------------------------------------------------------
 # Status logging (shared file with dead-block; tagged [LiveBlock])
@@ -59,15 +62,21 @@ def log_status(msg: str):
 # Dataset (WikiDataset pattern from train_python_dual.py)
 # ---------------------------------------------------------------------------
 class WikiDataset(Dataset):
-    def __init__(self, tokenizer, file_path: str, block_size: int = BLOCK_SIZE,
+    def __init__(self, tokenizer, file_path: str, block_size=BLOCK_SIZE,
                  max_chunks=None):
         with open(file_path, "r", encoding="utf-8") as f:
             text = f.read()
         tokens = tokenizer.encode(text)
-        self.examples = [
-            torch.tensor(tokens[i : i + block_size], dtype=torch.long)
-            for i in range(0, len(tokens) - block_size, block_size)
-        ]
+        # block_size: int for fixed-length chunks, or list of ints for a
+        # deterministic mixed-length cycle (context generalization training)
+        sizes = block_size if isinstance(block_size, (list, tuple)) else [block_size]
+        self.examples = []
+        i, s = 0, 0
+        while i + sizes[s % len(sizes)] <= len(tokens):
+            n = sizes[s % len(sizes)]
+            self.examples.append(torch.tensor(tokens[i : i + n], dtype=torch.long))
+            i += n
+            s += 1
         if max_chunks is not None:
             self.examples = self.examples[:max_chunks]
 
@@ -110,9 +119,11 @@ class LiveBlockWrapper(nn.Module):
     No gate. No subspace mask. No bypass flag.
     """
 
-    def __init__(self, base_layer):
+    def __init__(self, base_layer, ffn_only: bool = False, mask_dims: int = 0):
         super().__init__()
         self.base_layer = base_layer
+        self.ffn_only = ffn_only
+        self.mask_dims = mask_dims
 
         # Freeze base layer entirely
         for p in self.base_layer.parameters():
@@ -128,9 +139,40 @@ class LiveBlockWrapper(nn.Module):
         nn.init.zeros_(self.block.self_attn.o_proj.weight)
         nn.init.zeros_(self.block.mlp.down_proj.weight)
 
-        # All block params are trainable
+        # All block params are trainable by default
         for p in self.block.parameters():
             p.requires_grad = True
+
+        # --ffn-only: zero AND freeze all attention projection weights+biases.
+        # o_proj was already zeroed above; q/k/v are zeroed here too so that
+        # attention queries/keys/values produce zeros -> o_proj(0) = 0 regardless.
+        # The block then reduces to: h + FFN(norm(h)), which is context-length-safe.
+        if self.ffn_only:
+            attn = self.block.self_attn
+            for proj_name in ("q_proj", "k_proj", "v_proj", "o_proj"):
+                proj = getattr(attn, proj_name)
+                nn.init.zeros_(proj.weight)
+                if proj.bias is not None:
+                    nn.init.zeros_(proj.bias)
+                proj.weight.requires_grad = False
+                if proj.bias is not None:
+                    proj.bias.requires_grad = False
+
+        # --mask-dims N: zero AND freeze down_proj rows 0..N-1 at init.
+        # Re-zeroing after each optimizer step is handled by zero_masked_rows().
+        if self.mask_dims > 0:
+            with torch.no_grad():
+                self.block.mlp.down_proj.weight[:self.mask_dims, :].zero_()
+            # freeze those rows by marking them requires_grad=False is not
+            # granular in PyTorch (grad is per-tensor); we use zero_masked_rows()
+            # post-step instead (same pattern as train_dead_block.py).
+
+    def zero_masked_rows(self):
+        """Re-zero down_proj rows 0..mask_dims-1 after each optimizer step.
+        No-op when mask_dims == 0. Mirrors dead-block's zero_frozen_rows()."""
+        if self.mask_dims > 0:
+            with torch.no_grad():
+                self.block.mlp.down_proj.weight[:self.mask_dims, :].zero_()
 
     def forward(self, hidden_states, *args, **kwargs):
         base_out = self.base_layer(hidden_states, *args, **kwargs)
@@ -148,9 +190,11 @@ class LiveBlockWrapper(nn.Module):
 # ---------------------------------------------------------------------------
 # Model patching
 # ---------------------------------------------------------------------------
-def patch_model(model):
+def patch_model(model, ffn_only: bool = False, mask_dims: int = 0):
     """Replace layers[17] with LiveBlockWrapper; freeze everything else."""
-    wrapper = LiveBlockWrapper(model.model.layers[17]).to(DEVICE, dtype=torch.bfloat16)
+    wrapper = LiveBlockWrapper(
+        model.model.layers[17], ffn_only=ffn_only, mask_dims=mask_dims
+    ).to(DEVICE, dtype=torch.bfloat16)
     model.model.layers[17] = wrapper
 
     # Freeze all parameters outside the wrapper's trainable block
@@ -273,7 +317,7 @@ def save_checkpoint(wrapper: LiveBlockWrapper, epoch: int, val_ppl: float, path:
 # ---------------------------------------------------------------------------
 def train_epoch(
     model,
-    wrapper: LiveBlockWrapper,
+    wrapper: "LiveBlockWrapper",
     loader,
     optimizer,
     epoch: int,
@@ -305,6 +349,7 @@ def train_epoch(
 
         loss.backward()
         optimizer.step()
+        wrapper.zero_masked_rows()   # no-op when mask_dims == 0
         optimizer.zero_grad()
 
         running_loss += loss.item()
@@ -338,14 +383,75 @@ def main():
                         help="Number of training epochs (default: 2)")
     parser.add_argument("--max-steps-per-epoch", type=int, default=2000,
                         help="Max optimizer steps per epoch (default: 2000)")
+    parser.add_argument("--mixed-context", action="store_true",
+                        help="train on a deterministic mixed-length cycle "
+                             "(512..2048) for context generalization")
     parser.add_argument("--resume", type=str, default=None,
                         help="Path to checkpoint {'l17_block', 'meta'} to resume from")
+    parser.add_argument("--data", type=str, default=None,
+                        help="Path to training corpus text file "
+                             "(default: WIKI_TRAIN constant)")
+    parser.add_argument("--val-data", type=str, default=None,
+                        help="Validation source(s). "
+                             "Single path → used for both val@512 and val@2048 (classic mode). "
+                             "Comma-separated pair 'python:<path>,wiki:<path>' → val@512 from "
+                             "python corpus tail (last 100 chunks held out from training), "
+                             "val@2048 from wiki path as regression guard.")
+    parser.add_argument("--checkpoint-dir", type=str, default=None,
+                        help="Directory for checkpoints (default: checkpoints-liveblock)")
+    parser.add_argument("--holdout-bytes", type=int, default=0,
+                        help="Bytes to exclude from the end of --data when building the "
+                             "training set (reserve as python val tail). "
+                             "Ignored when --val-data uses the 'python:,wiki:' syntax "
+                             "because that syntax computes the holdout automatically.")
+    parser.add_argument("--ffn-only", action="store_true",
+                        help="Zero AND freeze all self_attn {q,k,v,o}_proj weights+biases. "
+                             "Reduces the block to a pointwise FFN — context-length-safe "
+                             "by construction (no attention path to disrupt KV cache).")
+    parser.add_argument("--mask-dims", type=int, default=0,
+                        help="Zero AND freeze down_proj.weight rows 0..N-1 (output dims) "
+                             "at init and re-zero after each optimizer step. "
+                             "N=1536 reproduces the 25%% knowledge-lane from dead-block. "
+                             "0 = no mask (default).")
+    parser.add_argument("--context-guard", type=float, default=2.0,
+                        help="Max allowed val@2048 regression vs baseline as a percentage. "
+                             "Baseline is measured on the freshly-patched (still-identity) model "
+                             "before epoch 1. A checkpoint is eligible only if "
+                             "val@2048 <= baseline * (1 + PCT/100). "
+                             "Among eligible, best python val@512 wins. "
+                             "Default: 2.0 (allow up to 2%% regression).")
     args = parser.parse_args()
+
+    # Resolve checkpoint dir
+    ckpt_dir = args.checkpoint_dir if args.checkpoint_dir else CHECKPOINT_DIR
+
+    # Resolve train data path
+    train_path = args.data if args.data else WIKI_TRAIN
+
+    # Resolve val sources.
+    # Supported formats for --val-data:
+    #   (a) not set        → wiki@512 + wiki@2048 (classic)
+    #   (b) single path    → that file for both val@512 and val@2048
+    #   (c) "python:<p1>,wiki:<p2>"  → python corpus tail @512 + wiki @2048
+    python_val_path = None
+    wiki_val_path   = None
+    if args.val_data is None:
+        wiki_val_path = WIKI_TEST
+    elif args.val_data.startswith("python:") and ",wiki:" in args.val_data:
+        # Parse "python:<p1>,wiki:<p2>"
+        py_part, wiki_part = args.val_data.split(",wiki:", 1)
+        python_val_path = py_part[len("python:"):]
+        wiki_val_path   = wiki_part
+    else:
+        # Single path: use for both contexts
+        wiki_val_path = args.val_data
 
     log_status(
         f"=== train_live_block.py started | "
         f"epochs={args.epochs} max_steps={args.max_steps_per_epoch} "
-        f"resume={args.resume} ==="
+        f"resume={args.resume} data={train_path} "
+        f"python_val={python_val_path} wiki_val={wiki_val_path} "
+        f"checkpoint_dir={ckpt_dir} ==="
     )
 
     # Load tokenizer
@@ -353,29 +459,84 @@ def main():
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 
     # Build datasets before model load to fail fast on missing files
-    log_status(f"Building WikiDataset from {WIKI_TRAIN}...")
-    train_dataset = WikiDataset(tokenizer, WIKI_TRAIN, block_size=BLOCK_SIZE)
+    # Mixed-length cycle for context generalization; batch 1 so short chunks
+    # aren't padded up to the longest in a batch
+    train_sizes = [512, 1024, 2048, 768, 1536, 512] if args.mixed_context else BLOCK_SIZE
+    train_batch = 1 if args.mixed_context else BATCH_SIZE
+
+    # Holdout: when using python:,wiki: split val, hold out the last 100 @512
+    # chunks of the training file so they can serve as the python val set.
+    # We implement this by capping training to max_chunks = (total - 100).
+    # The same 100 chunks are then loaded as the python val dataset.
+    train_max_chunks = None
+    if python_val_path is not None and python_val_path == train_path:
+        # Auto-holdout: count chunks at @512 and subtract 100
+        _probe = WikiDataset(tokenizer, train_path, block_size=BLOCK_SIZE)
+        train_max_chunks = max(len(_probe) - 100, 1)
+        del _probe
+        log_status(
+            f"  Auto-holdout: training on first {train_max_chunks} @512 chunks; "
+            f"last 100 held out for python val."
+        )
+    elif args.holdout_bytes > 0:
+        # Manual holdout: user passed --holdout-bytes; handled via max_chunks
+        # approximation (1 chunk ~ BLOCK_SIZE tokens ~ 2-3 bytes/token)
+        log_status(
+            f"  Note: --holdout-bytes={args.holdout_bytes} is approximate; "
+            f"use 'python:<p>,wiki:<p>' syntax for exact chunk-level holdout."
+        )
+
+    log_status(f"Building dataset from {train_path} (sizes={train_sizes})...")
+    train_dataset = WikiDataset(
+        tokenizer, train_path,
+        block_size=train_sizes,
+        max_chunks=train_max_chunks,
+    )
     log_status(f"  Train chunks: {len(train_dataset)}")
 
-    log_status(f"Building validation set from {WIKI_TEST} (first 100 chunks)...")
-    val_dataset = WikiDataset(tokenizer, WIKI_TEST, block_size=BLOCK_SIZE, max_chunks=100)
-    log_status(f"  Val chunks: {len(val_dataset)}")
+    # Val @512: python tail OR wiki
+    if python_val_path is not None:
+        log_status(f"Building python val@512 from tail of {python_val_path} (100 chunks)...")
+        # Load ALL @512 chunks from the python corpus, then take the last 100
+        _all_py = WikiDataset(tokenizer, python_val_path, block_size=BLOCK_SIZE)
+        tail_start = max(len(_all_py) - 100, 0)
+        val_dataset_py = copy.copy(_all_py)
+        val_dataset_py.examples = _all_py.examples[tail_start:]
+        del _all_py
+        log_status(f"  Python val chunks @512: {len(val_dataset_py)}")
+        val_dataset = val_dataset_py
+    else:
+        log_status(f"Building wiki val@512 from {wiki_val_path} (100 chunks)...")
+        val_dataset = WikiDataset(tokenizer, wiki_val_path, block_size=BLOCK_SIZE, max_chunks=100)
+
+    # Val @2048: always wiki (regression guard)
+    log_status(f"Building wiki val@2048 from {wiki_val_path} (40 chunks)...")
+    val_dataset_long = WikiDataset(tokenizer, wiki_val_path, block_size=2048, max_chunks=40)
+    log_status(f"  Val chunks: {len(val_dataset)} @512, {len(val_dataset_long)} @2048")
 
     train_loader = DataLoader(
-        train_dataset, batch_size=BATCH_SIZE, shuffle=True, collate_fn=wiki_collate
+        train_dataset, batch_size=train_batch, shuffle=True, collate_fn=wiki_collate
     )
     val_loader = DataLoader(
         val_dataset, batch_size=BATCH_SIZE, shuffle=False, collate_fn=wiki_collate
+    )
+    val_loader_long = DataLoader(
+        val_dataset_long, batch_size=1, shuffle=False, collate_fn=wiki_collate
     )
 
     # Load model and patch
     log_status(f"Loading {MODEL_NAME}...")
     model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, torch_dtype=torch.bfloat16)
-    model, wrapper = patch_model(model)
+    model, wrapper = patch_model(model, ffn_only=args.ffn_only, mask_dims=args.mask_dims)
     model = model.to(DEVICE)
 
     trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
     log_status(f"Trainable parameters: {trainable:,}")
+    if args.ffn_only:
+        log_status("[FFNCoder-prep] --ffn-only active: self_attn {q,k,v,o}_proj zeroed and frozen. Block is FFN-only.")
+    if args.mask_dims > 0:
+        log_status(f"[FFNCoder-prep] --mask-dims {args.mask_dims}: down_proj rows 0..{args.mask_dims-1} zeroed at init; will re-zero after each step.")
+    log_status(f"[FFNCoder-prep] --context-guard {args.context_guard:.1f}%: baseline val@2048 will be measured before epoch 1.")
 
     # Resume before parity check (resumed weights may not be identity, that's fine --
     # parity is only meaningful at init; skip if resuming)
@@ -392,10 +553,23 @@ def main():
         weight_decay=0.1,
     )
 
-    os.makedirs(CHECKPOINT_DIR, exist_ok=True)
+    os.makedirs(ckpt_dir, exist_ok=True)
 
-    best_val_ppl = float("inf")
     import math
+
+    # --context-guard: measure val@2048 on the patched-but-still-identity model
+    # as the in-protocol baseline. Every checkpoint must stay within this + PCT%.
+    log_status("[FFNCoder-prep] Measuring context-guard baseline val@2048 (identity model)...")
+    baseline_val2048 = run_validation(model, val_loader_long)
+    guard_ceiling = baseline_val2048 * (1.0 + args.context_guard / 100.0)
+    log_status(
+        f"[FFNCoder-prep] Context-guard baseline val@2048 = {baseline_val2048:.4f}. "
+        f"Ceiling = {guard_ceiling:.4f} (baseline * (1 + {args.context_guard:.1f}%/100))."
+    )
+
+    best_val_ppl = float("inf")      # geomean, for logging only
+    best_constrained_ppl = float("inf")   # best eligible python val@512
+    best_constrained_epoch = None
 
     for epoch in range(1, args.epochs + 1):
         log_status(f"=== Epoch {epoch}/{args.epochs} ===")
@@ -409,39 +583,67 @@ def main():
             f"Train PPL: {train_ppl:.2f}"
         )
 
-        val_ppl = run_validation(model, val_loader)
-        log_status(f"[Epoch {epoch}] Val PPL: {val_ppl:.4f}")
+        val_ppl_512 = run_validation(model, val_loader)
+        val_ppl_2048 = run_validation(model, val_loader_long)
+        # Selection metric: geometric mean of both contexts — a checkpoint must
+        # hold the short-context gain without regressing long-context
+        val_ppl = math.sqrt(val_ppl_512 * val_ppl_2048)
+        log_status(
+            f"[Epoch {epoch}] Val PPL @512: {val_ppl_512:.4f} | "
+            f"@2048: {val_ppl_2048:.4f} | combined (geomean): {val_ppl:.4f}"
+        )
 
         # Per-epoch checkpoint
-        epoch_path = os.path.join(CHECKPOINT_DIR, f"live_block_epoch{epoch}.pt")
+        epoch_path = os.path.join(ckpt_dir, f"live_block_epoch{epoch}.pt")
         save_checkpoint(wrapper, epoch, val_ppl, epoch_path)
 
-        # Best checkpoint (lowest val PPL)
-        is_best = val_ppl < best_val_ppl
-        if is_best:
-            best_val_ppl = val_ppl
-            best_path = os.path.join(CHECKPOINT_DIR, "live_block_best.pt")
+        # Context-guard eligibility: val@2048 must not exceed ceiling
+        guard_ok = val_ppl_2048 <= guard_ceiling
+        guard_tag = "ELIGIBLE" if guard_ok else f"INELIGIBLE(val@2048={val_ppl_2048:.4f} > ceiling={guard_ceiling:.4f})"
+
+        # Best constrained checkpoint: among eligible, pick best python val@512
+        is_constrained_best = guard_ok and val_ppl_512 < best_constrained_ppl
+        if is_constrained_best:
+            best_constrained_ppl = val_ppl_512
+            best_constrained_epoch = epoch
+            best_path = os.path.join(ckpt_dir, "live_block_best.pt")
             save_checkpoint(wrapper, epoch, val_ppl, best_path)
 
+        # Geomean tracking (info only, not used for selection)
+        if val_ppl < best_val_ppl:
+            best_val_ppl = val_ppl
+
         # Always write last
-        last_path = os.path.join(CHECKPOINT_DIR, "live_block_last.pt")
+        last_path = os.path.join(ckpt_dir, "live_block_last.pt")
         save_checkpoint(wrapper, epoch, val_ppl, last_path)
 
         written = [epoch_path, last_path]
-        if is_best:
+        if is_constrained_best:
             written.append(best_path)
 
         log_status(
             f"[Epoch {epoch} SUMMARY] "
-            f"train_ppl={train_ppl:.4f} val_ppl={val_ppl:.4f} | "
-            f"best_improved={'YES' if is_best else 'NO'} "
-            f"best_val_ppl={best_val_ppl:.4f} | "
+            f"train_ppl={train_ppl:.4f} val_ppl@512={val_ppl_512:.4f} "
+            f"val_ppl@2048={val_ppl_2048:.4f} geomean={val_ppl:.4f} | "
+            f"context-guard={guard_tag} | "
+            f"constrained_best={'YES' if is_constrained_best else 'NO'} | "
             f"saved={[os.path.basename(p) for p in written]}"
         )
 
+    if best_constrained_epoch is None:
+        log_status(
+            f"[FFNCoder-prep] WARNING: NO EPOCH PASSED CONTEXT GUARD "
+            f"(ceiling={guard_ceiling:.4f}, guard={args.context_guard:.1f}%). "
+            f"live_block_best.pt NOT WRITTEN. All epochs regressed long-context beyond threshold."
+        )
+    else:
+        log_status(
+            f"[FFNCoder-prep] Best constrained checkpoint: epoch {best_constrained_epoch}, "
+            f"val@512={best_constrained_ppl:.4f} (saved as live_block_best.pt)."
+        )
     log_status(
-        f"Training complete. Best val PPL: {best_val_ppl:.4f}. "
-        f"Checkpoints in {CHECKPOINT_DIR}/"
+        f"Training complete. Best geomean val PPL: {best_val_ppl:.4f}. "
+        f"Checkpoints in {ckpt_dir}/"
     )
 
 

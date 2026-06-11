@@ -64,7 +64,8 @@ def wait_for_server(timeout: int = 120) -> bool:
 
 
 def wait_for_port_release(timeout: int = 30) -> None:
-    """Block until port 8089 is no longer in use."""
+    """Block until port 8089 is no longer in use. HARD ERROR if it stays occupied —
+    a stale server here means the next model's bench silently hits the wrong brain."""
     deadline = time.time() + timeout
     while time.time() < deadline:
         try:
@@ -73,7 +74,36 @@ def wait_for_port_release(timeout: int = 30) -> None:
             time.sleep(1)
         except (ConnectionRefusedError, OSError):
             return
-    print(f"[!] Warning: port {SERVER_PORT} still occupied after {timeout}s")
+    raise RuntimeError(
+        f"port {SERVER_PORT} still occupied after {timeout}s — stale llama-server "
+        f"alive (distrobox wrapper kill does not reach it). Refusing to continue."
+    )
+
+
+def assert_loaded_model(expected_model_path: str) -> None:
+    """Ask the running server which model it actually loaded; hard-fail on mismatch.
+    This is the wiring assertion: no prompts are sent to an unverified server."""
+    import os
+    expected = os.path.basename(expected_model_path)
+    found = None
+    try:
+        with urllib.request.urlopen(f"{SERVER_URL}/props", timeout=5) as r:
+            props = json.loads(r.read())
+        found = props.get("model_path") or props.get("default_generation_settings", {}).get("model")
+    except Exception:
+        pass
+    if not found:
+        try:
+            with urllib.request.urlopen(f"{SERVER_URL}/v1/models", timeout=5) as r:
+                found = json.loads(r.read())["data"][0]["id"]
+        except Exception as e:
+            raise RuntimeError(f"cannot verify loaded model identity: {e}")
+    if expected not in str(found):
+        raise RuntimeError(
+            f"WIRING ERROR: server reports model '{found}', expected '{expected}'. "
+            f"A stale server from the previous model is still answering."
+        )
+    print(f"[+] Wiring verified: server is running {expected}")
 
 
 def start_server(model_path: str) -> subprocess.Popen:
@@ -94,6 +124,8 @@ def start_server(model_path: str) -> subprocess.Popen:
 
 
 def stop_server(proc: subprocess.Popen) -> None:
+    # Terminating the distrobox wrapper does NOT kill llama-server inside the
+    # container — kill the actual server by pattern, then verify the port died.
     if proc.poll() is None:
         proc.terminate()
         try:
@@ -101,6 +133,11 @@ def stop_server(proc: subprocess.Popen) -> None:
         except subprocess.TimeoutExpired:
             proc.kill()
             proc.wait()
+    subprocess.run(["pkill", "-f", f"llama-server.*--port {SERVER_PORT}"],
+                   capture_output=True)
+    time.sleep(2)
+    subprocess.run(["pkill", "-9", "-f", f"llama-server.*--port {SERVER_PORT}"],
+                   capture_output=True)
     wait_for_port_release()
 
 
@@ -189,6 +226,7 @@ def main():
             print("[!] Server A failed to start. Aborting.")
             stop_server(proc_a)
             sys.exit(1)
+        assert_loaded_model(args.model_a)
         print("[*] Server A ready. Running bench...")
         results_a = run_model_http(docs, indices, args.max_tokens,
                                    args.overlap_threshold, label="A")
@@ -204,12 +242,23 @@ def main():
             print("[!] Server B failed to start. Aborting.")
             stop_server(proc_b)
             sys.exit(1)
+        assert_loaded_model(args.model_b)
         print("[*] Server B ready. Running bench...")
         results_b = run_model_http(docs, indices, args.max_tokens,
                                    args.overlap_threshold, label="B")
     finally:
         print("[*] Stopping server B...")
         stop_server(proc_b)
+
+    # ---- Wiring self-check: identical A/B under greedy decoding = miswired ----
+    n_same = sum(1 for a, b in zip(results_a, results_b)
+                 if a["completion"] == b["completion"])
+    print(f"[*] Identical-completion fraction A vs B: {n_same}/{len(results_a)}")
+    if results_a and n_same == len(results_a) and args.model_a != args.model_b:
+        raise RuntimeError(
+            "WIRING ERROR: 100% identical completions between supposedly different "
+            "models — both passes hit the same server. Results discarded."
+        )
 
     # ---- Stats ----
     stats_a = compute_stats(results_a, baseline_results=results_a)

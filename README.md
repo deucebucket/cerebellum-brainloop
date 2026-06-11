@@ -34,9 +34,17 @@ First benchmark set measured on stock llama.cpp (tag b9275, CUDA, RTX 3090) — 
 
 What this shows, stated plainly:
 - **Structural parity holds on the compiled path.** Inserting the two trained blocks costs no measurable logic or perplexity (161/164 HumanEval completions are token-identical to baseline). The earlier unrolled builds' catastrophic looping does not occur.
-- **Knowledge injection is not yet effective.** At one epoch of injection-free training the blocks are functionally inert: no recall or PPL movement. Multi-epoch training with validation-based checkpoint selection is the next step; results will be posted either way.
+- **Knowledge injection is not yet effective** in this delta-trained configuration — the blocks are functionally inert.
 - Failure audit: all sampled wrong answers were genuine model errors, no extraction artifacts.
 - These PPL values are not comparable to the legacy table below (different eval protocol).
+
+### LM-Trained Insertion Blocks — Verified Recall Through a Vanilla GGUF (2026-06-11)
+
+Replacing delta-prediction with plain LM-loss training of the inserted block produced the first verified knowledge-recall gains on the compiled path (full tables and methodology notes in `RESULTS.md`):
+
+- Symbol recall 10.0% → up to 25.5% (n=200, wiring-verified A/B harness), including recall of **Python 3.14 stdlib symbols that postdate the base model's training data** — content the frozen base model cannot know, surfaced with zero context tokens.
+- A wikitext-trained variant of the same block improves wikitext PPL **8.54 → 7.68 (-10.0%)** at its training context on stock llama.cpp.
+- Current cost, not yet controlled: corpus-trained variants regress HumanEval and long-context PPL; a 25%-subspace write mask measurably bounds the behavioral damage. Retaining recall while holding both at baseline is the open problem and active work.
 
 ### Perplexity (WikiText-2)
 | Milestone | PPL | Improvement |

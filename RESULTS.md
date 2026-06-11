@@ -49,6 +49,28 @@ Structural parity holds (161/164 HumanEval completions token-identical; no loopi
 
 ---
 
+## LM-Trained Insertion Blocks (2026-06-11, all stock llama.cpp)
+
+A single full decoder block (zero-initialized to exact identity, bit-exact parity verified at init) inserted after layer 17 and trained with plain LM loss, then exported to a standard 37-block GGUF. Several training configurations measured; benchmark wiring verified per run (model-identity assertion + identical-completion checks; an earlier recall-harness fault that compared a model against itself was found and fixed — pre-fix recall numbers are void).
+
+| Metric | Baseline | Wikitext block | Corpus block (full) | Corpus FFN-only | Corpus FFN-masked (25% lane) |
+|---|---|---|---|---|---|
+| wiki PPL c=512 | 8.5381 | **7.6845 (-10.0%)** | 8.10 | 7.7575 | 7.7882 |
+| wiki PPL c=2048 | 3.4342 | 7.03 | 7.27 | 7.08 | 7.07 |
+| Symbol recall (n=200, verified) | 10.0% | — | 25.5% | 19.5% | 16.5% |
+| Post-cutoff recall (n=30) | 0% | — | 1 hit | 3 hits | **5 hits** |
+| HumanEval / HumanEval+ | 62.8 / 57.3 | — | 0.6 / 0.6 | 8.5 / 7.3 | 32.9 / 30.5 |
+
+Findings, stated plainly:
+- **Knowledge instillation through a vanilla GGUF works.** Trained blocks recall corpus content at 1.7–2.6× baseline, including symbols from Python 3.14 modules that postdate the base model's training data (`annotationlib.ForwardRef` and others) — content the base model cannot know, surfaced with zero context tokens. Spot-audits confirm paraphrase-level recall of genuine doc content, not parroting.
+- **The cost is not yet controlled.** All corpus-trained configurations regress HumanEval (format/behavior interference; failure audits show degenerate loops, not chat-format takeover after corpus rebalancing) and roughly double wiki PPL at c=2048. The 25%-subspace mask measurably bounds behavioral damage (32.9% vs 8.5% HumanEval) at some recall cost.
+- Short-context general text *improves* under all variants (wiki c=512: 8.54 → 7.7–7.8).
+- Methodology note: an in-training PyTorch chunked-CE guard at 2048 did not predict compiled-path long-context behavior; its 512-context predictions did transfer. Acceptance measurements must run on the compiled artifact.
+
+Open problem: retain the verified recall gain while holding HumanEval and long-context PPL at baseline. Levers under investigation: lower training intensity, behavior probes in checkpoint selection, long-context training data, and compiled-path guards.
+
+---
+
 ## Technical Feasibility
 
 - **13k Scaling:** Mathematically verified that 66M parameters can map the 13,529 symbols in the standard library.

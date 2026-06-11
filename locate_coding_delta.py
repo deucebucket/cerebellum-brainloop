@@ -27,6 +27,10 @@ MODEL_NAME = "Qwen/Qwen2.5-3B"
 EVAL_RESULTS = "humaneval_samples_baseline_eval_results.json"
 NUM_HIDDEN = 37  # 36 layers + embedding = indices 0..36
 
+CONTROL_NONE = "none"
+CONTROL_RANDOM = "random"
+CONTROL_SHUFFLED = "shuffled"
+
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -217,11 +221,44 @@ def run_scan(args, model, tokenizer, device, dataset, failed_ids, passed_ids):
 # Mode 2: patch
 # ---------------------------------------------------------------------------
 
+def _apply_control(deltas_list, layer_id, problem_idx, control, rng):
+    """Return a (possibly modified) delta vector [H] on CPU, fp32.
+
+    deltas_list : list of [37, H] tensors, one per selected problem (CPU, fp32)
+    problem_idx : index of the current problem within that list
+    layer_id    : which layer index to pull from
+    control     : CONTROL_NONE | CONTROL_RANDOM | CONTROL_SHUFFLED
+    rng         : torch.Generator (CPU) for reproducible random draws
+    """
+    real_delta = deltas_list[problem_idx][layer_id]  # [H], CPU fp32
+
+    if control == CONTROL_NONE:
+        return real_delta
+
+    real_norm = real_delta.norm()
+
+    if control == CONTROL_RANDOM:
+        rand_vec = torch.randn(real_delta.shape, generator=rng)
+        rand_norm = rand_vec.norm()
+        if rand_norm > 1e-9:
+            rand_vec = rand_vec * (real_norm / rand_norm)
+        return rand_vec
+
+    if control == CONTROL_SHUFFLED:
+        # Rotate by one position: problem i uses delta from problem (i+1) % k
+        src_idx = (problem_idx + 1) % len(deltas_list)
+        src_delta = deltas_list[src_idx][layer_id]
+        return src_delta
+
+    raise ValueError(f"Unknown control: {control!r}")
+
+
 def run_patch(args, model, tokenizer, device, dataset, failed_ids):
     k = min(args.k, len(failed_ids))
     selected = failed_ids[:k]
     layer_ids = [int(x) for x in args.layers.split(",")]
     scale = args.scale
+    control = args.control
 
     instruct_tmpl = (
         "<|im_start|>user\nSolve this Python coding problem:\n{prompt}<|im_end|>\n"
@@ -230,28 +267,42 @@ def run_patch(args, model, tokenizer, device, dataset, failed_ids):
 
     results = {}  # task_id -> {layer_id -> entry}
 
+    # Determine output filename suffix
+    ctrl_tag = f"_{control}" if control != CONTROL_NONE else ""
+
     # Open per-layer jsonl writers
     jsonl_handles = {
-        li: open(f"humaneval_samples_patched_L{li}.jsonl", "w")
+        li: open(f"humaneval_samples_patched_L{li}{ctrl_tag}.jsonl", "w")
         for li in layer_ids
     }
 
+    # Pre-compute all deltas so shuffled control can rotate across problems
+    print("Pre-computing deltas for all selected problems ...", flush=True)
+    all_deltas = []  # list of [37, H] CPU fp32 tensors
     for task_id in selected:
         problem = dataset[task_id]
-        prompt = problem["prompt"]
-        canonical = problem["canonical_solution"]
-        results[task_id] = {}
-
-        print(f"\n[patch] {task_id}", flush=True)
-
-        # Compute deltas at every layer once
-        knowing_text, ignorant_text = build_texts(prompt, canonical, tokenizer)
+        knowing_text, ignorant_text = build_texts(
+            problem["prompt"], problem["canonical_solution"], tokenizer
+        )
         h_know = get_all_hidden_states(knowing_text, model, tokenizer, device)
         h_ignor = get_all_hidden_states(ignorant_text, model, tokenizer, device)
-        deltas = h_know - h_ignor  # [37, H]
+        all_deltas.append((h_know - h_ignor).float())  # keep fp32 on CPU
+
+    # One Generator per run; seeded once so per-problem/per-layer draws are
+    # deterministic regardless of iteration order.
+    rng = torch.Generator()
+    rng.manual_seed(args.seed)
+
+    for prob_idx, task_id in enumerate(selected):
+        problem = dataset[task_id]
+        prompt = problem["prompt"]
+        results[task_id] = {}
+
+        print(f"\n[patch/{control}] {task_id}", flush=True)
 
         for layer_id in layer_ids:
-            delta_vec = deltas[layer_id].to(device, dtype=torch.bfloat16)  # [H]
+            controlled = _apply_control(all_deltas, layer_id, prob_idx, control, rng)
+            delta_vec = controlled.to(device, dtype=torch.bfloat16)  # [H]
 
             # Build instruct prompt
             gen_text = instruct_tmpl.format(prompt=prompt)
@@ -306,6 +357,7 @@ def run_patch(args, model, tokenizer, device, dataset, failed_ids):
                 "completion": code,
                 "patched_layer": layer_id,
                 "scale": scale,
+                "control": control,
                 "passed_local": passed_local,
             }
             results[task_id][layer_id] = result_entry
@@ -331,11 +383,13 @@ def run_patch(args, model, tokenizer, device, dataset, failed_ids):
         tid: {str(li): v for li, v in layers.items()}
         for tid, layers in results.items()
     }
-    out_path = "locate_results_patch.json"
+    out_path = f"locate_results_patch{ctrl_tag}.json"
     with open(out_path, "w") as f:
         json.dump(serialisable, f, indent=2)
     print(f"\nSaved {out_path}")
-    jsonl_names = ", ".join(f"humaneval_samples_patched_L{li}.jsonl" for li in layer_ids)
+    jsonl_names = ", ".join(
+        f"humaneval_samples_patched_L{li}{ctrl_tag}.jsonl" for li in layer_ids
+    )
     print(f"Per-layer completion jsonls: {jsonl_names}")
 
 
@@ -366,6 +420,20 @@ def main():
     parser.add_argument(
         "--scale", type=float, default=1.0,
         help="(patch) delta injection scale factor"
+    )
+    parser.add_argument(
+        "--control", choices=[CONTROL_NONE, CONTROL_RANDOM, CONTROL_SHUFFLED],
+        default=CONTROL_NONE,
+        help=(
+            "(patch) control condition: "
+            "'none' = real delta (default); "
+            "'random' = Gaussian noise rescaled to real delta L2 norm per problem/layer; "
+            "'shuffled' = real delta from the next problem in the list (rotated by 1)"
+        ),
+    )
+    parser.add_argument(
+        "--seed", type=int, default=42,
+        help="(patch/random) RNG seed for reproducible random control vectors"
     )
     parser.add_argument(
         "--eval-results", type=str, default=EVAL_RESULTS,
