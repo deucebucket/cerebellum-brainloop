@@ -3116,3 +3116,37 @@ Held out per type: a distinct phrasing + an unseen field for presence + the 18
 control symbols. Config r32 a32 lr2e-4 e3 layers24-35 qa. Eval via GPU
 llama-server (GPU now cleared of stale reasoning-v5/v6 servers per user).
 Adapter: adapters/bonsai-bake-e1048-battery-r32-a32-lr2e4-e3
+
+## [Bonsai1Bit] E1048 RESULT — USE-BATTERY: count now works, presence yes-biased — 2026-06-19 ~13:00 CDT
+
+Trained enum+code+count+balanced-presence (1136 rows, 53 train/18 control),
+r32a32 lr2e-4 e3 (loss 0.366). Merged->Q8 via run_bake_export.sh. Eval 355
+held-out probes (GPU server 8091).
+
+Hit-rate by pool x kind:
+  control   enum_heldout=3/18  count=6/18  presence_yes=16/18  presence_no=0/18
+  trained   enum_heldout=37/53 count=46/53 presence_yes=52/53  presence_no=2/53
+  REASONING(count+presence): trained 100/159  control 22/54
+
+Findings (audited):
+- WIN: COUNT now generalizes. trained count 46/53 (87%) vs control 6/18, on a
+  held-out phrasing ("field count of ast.X?") -> "5" etc. E1047 was 0/53.
+  Training the use-behavior taught the model to actually count baked fields.
+- enum recall holds (37/53 vs 3/18).
+- FAIL: presence_no 2/53 = extreme YES-BIAS. Held-out negatives use field names
+  that are REAL fields of OTHER ast nodes (body/iter/args), so the model answers
+  Yes from global field-familiarity, not per-symbol membership. presence_yes
+  98% is mostly that same bias (control 16/18).
+Diagnosis: positives (enum/code/count/presence_yes ~18 signals/symbol) swamp the
+4 negative rows; model learns "is F a plausible AST field" not "is F a field of
+THIS node". Next E1049: many hard negatives + enumerate-then-decide answer
+format to ground membership in the recalled field list.
+Artifact: merged_models/e1048_battery_merged-q8_0.gguf.
+
+## [Bonsai1Bit] E1049 START — fix presence yes-bias — 2026-06-19 ~13:05 CDT
+
+E1048 nailed enum+count but presence_no collapsed (yes-bias). Fix: grounded
+verdict-first presence ("No. ast.X has: a, b, c.") + 6 hard negatives/symbol
+(real fields of OTHER nodes), tilted 12-no vs 6-yes to kill the bias.
+Data bake_splits/e1049_ast_battery_v2 (1602 train, 355 eval). Config r32 a32
+lr2e-4 e3 (~4800 steps). Adapter: adapters/bonsai-bake-e1049-battery-v2-r32-a32-lr2e4-e3
