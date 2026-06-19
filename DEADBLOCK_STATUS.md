@@ -3150,3 +3150,26 @@ verdict-first presence ("No. ast.X has: a, b, c.") + 6 hard negatives/symbol
 (real fields of OTHER nodes), tilted 12-no vs 6-yes to kill the bias.
 Data bake_splits/e1049_ast_battery_v2 (1602 train, 355 eval). Config r32 a32
 lr2e-4 e3 (~4800 steps). Adapter: adapters/bonsai-bake-e1049-battery-v2-r32-a32-lr2e4-e3
+
+## [Bonsai1Bit] E1049 RESULT — presence bias FLIPPED (ratio-driven, not membership) — 2026-06-19 ~13:25 CDT
+
+Grounded verdict-first presence + 12-no/6-yes tilt. Eval (GPU server 8092):
+  control   enum=4/18  count=7/18  presence_yes=0/18  presence_no=17/18
+  trained   enum=48/53 count=51/53 presence_yes=6/53  presence_no=53/53
+- enum 91% / count 96% (trained) -- recall+count generalize strongly, even
+  better than E1048. These are solid usable-memory wins on held-out phrasings.
+- presence_no fixed (53/53) BUT presence_yes crashed to 6/53: the bias flipped
+  yes->no. Membership is driven by the training yes/no RATIO, not real per-symbol
+  checking. E1048 (yes-heavy) -> yes-bias; E1049 (no-heavy) -> no-bias.
+Conclusion: enum+count are real usable memory; presence needs EXACT 1:1 balance
+so the model must use field identity, not a prior. Next E1050: balanced presence.
+Artifact: merged_models/e1049_battery_v2_merged-q8_0.gguf.
+
+## [Bonsai1Bit] E1050 START — EXACT 1:1 balanced presence — 2026-06-19 ~13:30 CDT
+
+E1048/E1049 showed presence is ratio-driven. Now presence is EXACTLY 1:1 (168
+yes / 168 no), yes trained on all-but-last field, eval on the HELD-OUT last
+field -> true membership-generalization test. Data bake_splits/e1050_ast_battery_v3
+(1078 train, 355 eval). Config r32 a32 lr2e-4 e3. If both presence_yes and
+presence_no clear ~chance on held-out fields, membership works via enumerated
+knowledge. Adapter: adapters/bonsai-bake-e1050-battery-v3-r32-a32-lr2e4-e3
