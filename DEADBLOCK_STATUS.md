@@ -3228,3 +3228,13 @@ WORKING RECIPE (reproducible):
 Config: r32 a32 lr2e-4 e3, layers 24-35, qa format, assistant-only loss.
 Artifact: merged_models/e1051_battery_v4_merged-q8_0.gguf.
 Next: apply recipe to a NON-AST fact set (stdlib symbol->doc) + benchmark vs base.
+
+## [Bonsai1Bit] E1052 START — FICTIONAL facts (airtight generality) — 2026-06-19 ~13:55 CDT
+
+AST fields could leak via pretraining. E1052 bakes 80 fully-INVENTED entities
+with invented properties (seed 1337) using the E1051 recipe (use-battery +
+list-first, balanced). Base provably cannot know these. 60 train / 20 control
+(control entities never trained -> floor near zero). Data bake_splits/e1052_fiction
+(1416 train, 320 eval). Config r32 a32 lr2e-4 e3. If trained entities recall/
+count/check-membership on held-out probes while control ~0, arbitrary-knowledge
+weight-baking is proven. Adapter: adapters/bonsai-bake-e1052-fiction-r32-a32-lr2e4-e3
