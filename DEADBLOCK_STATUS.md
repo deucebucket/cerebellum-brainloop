@@ -3257,3 +3257,33 @@ It does NOT yet show: (a) improvement on a STANDARD benchmark vs base,
 every time -- the redundancy the product must avoid), (c) storing >> model
 capacity. Those are the real Brainloop deltas and remain open.
 Artifact: merged_models/e1052_fiction_merged-q8_0.gguf.
+
+## [Bonsai1Bit] E1053 START — ADDITIVE PACKS (no retrain over union) — 2026-06-19 ~14:15 CDT
+
+Directly attacks the "no redundant retraining" requirement. Combine two
+INDEPENDENTLY-trained adapters by summing weight-deltas (task arithmetic,
+combination_type=linear): A = e1051 (ast battery), B = e1052 (fiction). No
+training over A+B. Export one Q8 GGUF, then run BOTH the e1051 ast eval and the
+e1052 fiction eval on the combined model. Question: do both knowledge sets
+survive, or do same-layer packs interfere?
+Output: merged_models/e1053_ast_plus_fiction
+
+## [Bonsai1Bit] E1053 RESULT — *** ADDITIVE PACKS COMPOSE (no retrain) *** — 2026-06-19 ~14:25 CDT
+
+Combined adapter A (e1051 ast) + adapter B (e1052 fiction) by summing deltas
+(task arithmetic, combination_type=linear). NO training over the union -- packs
+were baked independently from the frozen base. One Q8 GGUF, both evals:
+
+AST eval on combined:     enum 36/53 count 53/53 pres_y 45/53 pres_n 53/53  reasoning 151/159
+  (standalone E1051 was:  enum 42/53 count 53/53 pres_y 50/53 pres_n 53/53  reasoning 156/159)
+FICTION eval on combined: enum 30/60 count 60/60 pres_y 55/60 pres_n 58/60  reasoning 173/180
+  (standalone E1052 was:  enum 36/60 count 60/60 pres_y 58/60 pres_n 59/60  reasoning 177/180)
+
+=> BOTH knowledge sets survive in one model with only minor degradation
+(count stays 100% both; reasoning retains ~95-97% of standalone). Independently
+baked packs COMPOSE by weight-delta addition. This is the "add knowledge without
+retraining over everything" property: to add a pack you train only the new pack
+from base, then add its delta -- seconds of CPU arithmetic, no GPU retrain of old
+packs. Open: interference curve at 3/5/10+ packs; still per-pack LoRA training
+(not training-free inject); still no STANDARD benchmark score.
+Artifact: merged_models/e1053_ast_plus_fiction-q8_0.gguf
