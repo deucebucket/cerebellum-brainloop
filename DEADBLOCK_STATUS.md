@@ -3199,3 +3199,32 @@ decouples the Yes/No from its own list. Fix: list-FIRST grounded answer
 recited fields. Same balanced 1:1 data, eval on held-out last field. Scorer now
 reads the FINAL yes/no token. Data bake_splits/e1051_ast_battery_v4 (1078 train).
 Config r32a32 lr2e-4 e3. Adapter: adapters/bonsai-bake-e1051-battery-v4-r32-a32-lr2e4-e3
+
+## [Bonsai1Bit] E1051 RESULT — *** USABLE BAKED MEMORY WORKS *** — 2026-06-19 ~13:50 CDT
+
+List-FIRST grounded presence. Eval (GPU 8094), held-out phrasings + held-out fields:
+  control   enum=5/18  count=7/18  presence_yes=12/18 presence_no=16/18
+  trained   enum=42/53 count=53/53 presence_yes=50/53 presence_no=53/53
+  REASONING (count+presence): trained 156/159 (98%)  control 35/54 (65%)
+
+THE FIX WORKED. Audited: model recites the correct field list THEN gives a
+verdict that matches it. "Is there a msg field on ast.Assert?" -> "ast.Assert
+has: test, msg. So the answer is Yes." (correct); "lineno field?" -> "...test,
+msg. So the answer is No." (correct). On HELD-OUT fields never drilled for
+presence -> genuine membership reasoning grounded in baked knowledge.
+
+The baked Q8 GGUF (stock llama.cpp) now USES baked facts for recall (enum),
+counting (53/53), AND membership (yes 50/53, no 53/53) -- all generalizing
+across held-out phrasings/fields, far above base/control. The 6d "use beyond
+recitation" gate is PASSED on this testbed.
+
+WORKING RECIPE (reproducible):
+1. merge LoRA into base -> convert to GGUF (NOT runtime --lora; runtime drops memory).
+2. scale facts + diverse phrasings (forces skill, not Q/A memorization).
+3. use-shaped battery: enum + count + presence (+code), not signature-recall only.
+4. EXACT 1:1 balanced presence (no ratio bias).
+5. LIST-FIRST grounded answers for derived reasoning ("X has: a,b,c. So ... Yes/No")
+   -> verdict conditions on the recited facts (verdict-first decouples it).
+Config: r32 a32 lr2e-4 e3, layers 24-35, qa format, assistant-only loss.
+Artifact: merged_models/e1051_battery_v4_merged-q8_0.gguf.
+Next: apply recipe to a NON-AST fact set (stdlib symbol->doc) + benchmark vs base.
