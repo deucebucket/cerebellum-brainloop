@@ -3312,3 +3312,25 @@ the same rank-32/same-layers adapters. Fix paths (no retrain): TIES/DARE merge
 (load relevant pack, don't sum all -- the memory-controller design). Testing
 TIES next (E1055).
 Artifact: merged_models/e1054_abc-q8_0.gguf
+
+## [Bonsai1Bit] E1055 START — TIES merge (fix 3-pack interference, no retrain) — 2026-06-19 ~14:48 CDT
+
+Re-merge the SAME 3 adapters (e1051 ast, e1052 fic1, e1054 fic2) with TIES
+(combination_type=ties, density 0.5) instead of linear sum. TIES trims small
+deltas and resolves sign conflicts between packs -> should reduce interference
+with zero retraining. Eval all three vs the E1054 naive-sum baseline.
+
+## [Bonsai1Bit] E1055 RESULT — TIES does NOT rescue 3-pack — 2026-06-19 ~14:55 CDT
+
+TIES (density 0.5) vs linear sum (E1054), reasoning per pack:
+  AST  103/159 (TIES) vs 124/159 (linear)  -> WORSE
+  FIC1 117/180 vs 112/180  -> ~same
+  FIC2 121/180 vs 114/180  -> ~same
+enum still collapsed (AST 21, fic 2-4). Net: TIES trims 50% of deltas, hurting
+the recall-heavy AST pack; no rescue. CONCLUSION: 3-pack interference is intrinsic
+to weight-space superposition at rank-32/same-layers, not a merge-math artifact.
+Density ceiling for naive merged storage ~= 2 packs. To "store way more" the path
+is ROUTING/loadable packs (keep packs separate, select relevant one at inference
+-- the memory-controller design), or much larger per-pack budget (rank/disjoint
+layers). Blind merge does not scale.
+Artifact: merged_models/e1055_ties-q8_0.gguf
