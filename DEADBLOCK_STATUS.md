@@ -3287,3 +3287,28 @@ from base, then add its delta -- seconds of CPU arithmetic, no GPU retrain of ol
 packs. Open: interference curve at 3/5/10+ packs; still per-pack LoRA training
 (not training-free inject); still no STANDARD benchmark score.
 Artifact: merged_models/e1053_ast_plus_fiction-q8_0.gguf
+
+## [Bonsai1Bit] E1054 START — 3-PACK additivity / density — 2026-06-19 ~14:30 CDT
+
+Test whether additivity scales past 2 packs (the "store way more" question).
+Pack C = e1054 fiction set 2 (seed 2024, 80 disjoint entities, 0 name overlap
+with set 1). Train C independently from base, then 3-way sum A(e1051 ast) +
+B(e1052 fiction1) + C(e1054 fiction2), eval all three. Graceful degradation =
+density scales; collapse = interference limit found.
+Adapter C: adapters/bonsai-bake-e1054-fiction2-r32-a32-lr2e4-e3
+
+## [Bonsai1Bit] E1054 RESULT — 3-pack interference limit (naive sum) — 2026-06-19 ~14:45 CDT
+
+3-way linear sum A(ast)+B(fic1)+C(fic2), eval all three on the combined Q8:
+  AST:  enum 22/53 count 44/53 pres_y 32/53 pres_n 48/53  reasoning 124/159
+  FIC1: enum  4/60 count 45/60 pres_y 12/60 pres_n 55/60  reasoning 112/180
+  FIC2: enum  7/60 count 47/60 pres_y 20/60 pres_n 47/60  reasoning 114/180
+vs 2-pack (E1053): AST reasoning 151/159, FIC1 173/180; vs standalone ~156/~177.
+=> Naive task-arithmetic composes at 2 packs (~95% retained) but INTERFERES at 3:
+exact recall (enum) collapses first (fic 4-7/60), count most robust (75-83%),
+reasoning ~62-68% of standalone. The density ceiling of blind delta-summing on
+the same rank-32/same-layers adapters. Fix paths (no retrain): TIES/DARE merge
+(sign-conflict resolution), per-pack distinct layers, higher rank, or routing
+(load relevant pack, don't sum all -- the memory-controller design). Testing
+TIES next (E1055).
+Artifact: merged_models/e1054_abc-q8_0.gguf
