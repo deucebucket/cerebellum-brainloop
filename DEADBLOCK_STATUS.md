@@ -3376,3 +3376,22 @@ weight-interference (hard cap ~2 packs) to ROUTER accuracy (94% at 4 packs,
 independently improvable). This is the empirical case for the memory-controller
 / loadable-packs design: to store way more than the model, ROUTE, don't merge.
 Artifact: brainloop_runs/e1057_router/summary.json
+
+## [Bonsai1Bit] E1058 RESULT — *** END-TO-END ROUTED SYSTEM (the product) *** — 2026-06-19 ~15:55 CDT
+
+Single system answers a MIXED 180-query stream (60 ast + 60 fiction1 + 60 stdlib)
+by routing each query to the right baked pack's GGUF, then answering from it.
+Three packs baked INDEPENDENTLY (no redundant retraining); router = tfidf+logreg;
+serving one model at a time on GPU.
+  BASE   (plain model answers all): 42/180 (23.3%)
+  ROUTED (router -> pack model)   : 138/180 (76.7%)   = 3.3x base
+  per true-pack (routed): ast 57/60, fiction1 54/60, stdlib 27/60
+  (stdlib subset = first 60 symbols incl. long argparse class signatures = harder
+   than the full 300-symbol bench which scored 61%.)
+This is the working product: bake packs independently -> route -> answer. It
+SCALES (add a pack = train only it + extend router; no weight interference,
+unlike merge which collapsed at 3 packs). Open: fold the route+serve loop into
+one persistent endpoint with cold-tier pack loading (memory-controller design);
+currently serves one pack at a time.
+Tooling: brainloop_router.py, brainloop_routed_system.py {plan,answer,report}.
+Artifact: brainloop_runs/e1058_routed_system/{plan,results,report}.json
