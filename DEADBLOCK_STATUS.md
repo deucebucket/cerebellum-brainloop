@@ -2940,3 +2940,107 @@ Corrective rule restated: every step gets its START entry appended BEFORE launch
 [2026-06-11 14:13:00] [LayerSweep] LAST-POS inject L29: recall_overlap=0.110 (floor 0.110, ceiling 0.297)
 
 [2026-06-11 14:13:19] [LayerSweep] LAST-POS inject L32: recall_overlap=0.141 (floor 0.110, ceiling 0.297)
+
+---
+## [Bonsai1Bit] HANDOFF SNAPSHOT — 2026-06-17 06:58 CDT
+
+Working dir: `/var/home/deucebucket/games/brainloop-1bit-fork`
+Substrate: `/var/home/deucebucket/games/models/Ternary-Bonsai-8B-unpacked`
+All current 1-bit Bonsai experiment scripts/checkpoints/logs are local working-tree artifacts, not public-release material.
+
+Completed chain:
+- `squad_qa_gate.py` -> `squad_qa_gate.log`: base `EM=0.033 contains=0.233 F1=0.126`; inject `EM=0.142 contains=0.492 F1=0.311`; oracle `EM=0.608 contains=0.892 F1=0.725`.
+- `bonsai_factscale.py` -> `bonsai_factscale_256_m2048.log`: router `test_route_acc=0.977`, `neg->null=1.000`; recall `base=0.061`, `oracle_refiner=0.186`, `full_pipeline=0.186`; `DRIFT(code,full)=0.000`. Artifacts: `head_256_m2048.pt`, `refiner_256_m2048.pt`.
+- `bonsai_allblock_inject.py` -> `bonsai_allblock_inject.log`: simultaneous registered hooks over layer sets, executed in normal layer order. Result: `L33only@1.0` remains clean (`recall=0.210`, `drift=0.020`, `degen=0/16`). `late` and `all36` multi-layer static replay fail above scale `0.1`: `late@0.25` has `degen=3/16`, `late@0.5` and `late@1.0` have `degen=16/16`; `all36@0.25` has `degen=11/16`, `all36@0.5` and `all36@1.0` have `degen=16/16`.
+
+Interpretation:
+- Multi-layer static clean-path deltas do not compose; downstream layers see a perturbed hidden state but receive deltas extracted from the unperturbed path.
+- Next credible path is live-state delta generation or weight baking, not more static all-layer replay.
+- Near-term artifact path: `make_bake_data.py` already produced `bake_knowledge_sft.jsonl` for bitlora/SFT baking into a self-contained Bonsai GGUF; compiled-path benchmark required before any public claim.
+
+---
+## [Bonsai1Bit] DOC PRESERVATION PASS — 2026-06-17 07:10 CDT
+
+Updated documentation so the 2026-06-17 Claude/session work can be picked up without chat context:
+- `README.md`: added local 1-bit Bonsai section, current results, and compiled-path caveat.
+- `RESULTS.md`: added detailed PyTorch-hook mechanism tables for static injection, scale window, router/latch/refiner, fact scaling, SQuAD gate, all-block failure, and baked-data handoff.
+- `EXPERIMENTAL_PATHS.md`: added 2026-06-17 Bonsai roadmap, survived/failed paths, and todo checklist.
+- `RESEARCH_LOG.md`: appended full research interpretation and artifact map.
+- `BRAINLOOP_1BIT_STATUS.md`: expanded latest chain and artifact inventory.
+- `BRAINLOOP_1BIT_TODO.md`: created pickup checklist.
+- `CLAUDE.md` and `GEMINI.md`: added current fork state and warning that hook-path numbers are mechanism evidence only.
+
+Preservation invariant: do not delete/move `bonsai_*.py`, `run_*after*.sh`, `.log`, `head_*.pt`, `refiner_*.pt`, `bake_knowledge_sft.jsonl`, `squad_val_400.json`, or `gen_dump.txt` without an explicit backup plan.
+
+---
+## [Bonsai1Bit] IMPORT INTO BRAINLOOP PROJECT DIR — 2026-06-17 07:18 CDT
+
+The 1-bit Bonsai line has been imported from the temporary game-drive fork into
+the canonical Brainloop project directory:
+`/var/home/deucebucket/ai-drive/cerebellum/cerebellum-dev/conch-poc`.
+
+Copied into Brainloop: `bonsai_*.py`, run wrappers, docs, logs, small generated
+datasets, manifests, `head_*.pt`, `router_head*.pt`, and `refiner*.pt`.
+
+Not copied as part of this import: any Bonsai base model or large model file.
+The Python scripts intentionally keep `MODEL_PATH` pointed at
+`/var/home/deucebucket/games/models/Ternary-Bonsai-8B-unpacked`.
+
+Run wrappers were patched to execute from `conch-poc` rather than the old
+`/var/home/deucebucket/games/brainloop-1bit-fork` staging directory.
+
+---
+## [Bonsai1Bit] E1045 START — 6d USED-MEMORY GATE — 2026-06-19 ~11:40 CDT
+
+Goal: TODO item 6d. Prove the Q8_0 merged baked GGUF *uses* its baked memory
+beyond echoing the exact training answer string. Paraphrase / reasoning /
+coding-use probes on baked symbols vs the un-baked control symbol.
+
+Model: merged_models/e1037_bonsai_tiny_qa_overfit_merged-q8_0.gguf
+       (sha a2256a26...e0e62b81929, 8.7 GB)
+Binary: /var/home/deucebucket/ai-drive/llama.cpp-pr24260/build-cpu/bin/llama-cli
+        (CPU, -ngl 0, --temp 0.0, --single-turn, raw Question/Answer format)
+
+Per-symbol bake status carried from E1043 (q8, train phrasings):
+  ast.comprehension 5/5 exact (baked), ast.While 3/5 (partial),
+  SyntaxWarning 0/5 (NOT baked -> internal control).
+
+Probe set: held-out phrasings NOT in the 5 training phrasings, covering
+paraphrase, field-count/order reasoning, and coding construction, for the two
+baked symbols plus matched control probes on SyntaxWarning. Hypothesis: baked
+symbols answer novel-phrasing/reasoning/coding probes with the baked AST
+signature; the control does not. Outputs will be manually audited before any
+score is recorded (no overlap/F1-only claims).
+
+Script: brainloop_used_memory_probe.py (local-only, gitignored).
+
+## [Bonsai1Bit] E1045 END — 6d USED-MEMORY GATE: NOT PASSED (partial) — 2026-06-19 ~11:50 CDT
+
+Ran 11 held-out probes (paraphrase / reasoning / coding) on the Q8_0 merged
+baked GGUF, plus a 3-probe plain-base (Ternary-Bonsai-8B-F16) comparison. All
+outputs manually audited (CPU llama-cli, temp 0.0, n=64).
+
+Result:
+- Phrasing-generalization, PARTIAL PASS: ast.While emitted the exact baked
+  grammar `While(expr test, stmt* body, stmt* orelse)` on two held-out phrasings
+  (list-fields-in-order, coding-emit) that the un-baked F16 base CANNOT produce
+  (base hallucinates `loop`/`condition`). The bake added real recall beyond the
+  5 training prompts.
+- Reasoning/use, FAIL: field-count and presence yes/no probes about the baked
+  fields are WRONG and identical to base — comprehension -> "three fields"
+  (truth 4), ast.While orelse? -> "No" (truth: yes). The model contradicts the
+  signature it can echo verbatim.
+- ast.comprehension (strongest-baked, 5/5 on train phrasings) survived 0/4
+  novel probes.
+- Control SyntaxWarning partially leaked its meaning on paraphrase, degenerated
+  on the coding probe.
+
+Verdict: merge->GGUF bake = shallow string-recall keyed to "give the signature"
+prompts, not integrated/usable memory. Fails the Product Invariant. The
+E1037-E1044 "8/15 exact" is recall depth, not use depth. Do NOT scale bake data
+on exact-recall metrics; use-shaped training + a re-run of this gate is required
+first. Consistent with the inline-injection thesis over static fact-baking.
+
+Artifacts: brainloop_runs/e1045_used_memory_probe_q8/{results.jsonl,summary.json}
+results.jsonl sha256 a2235a5005af7d334ba8095f3b66c0b8f1378cefc9a5495427fe51c2b6315454
+Script: brainloop_used_memory_probe.py (local-only).

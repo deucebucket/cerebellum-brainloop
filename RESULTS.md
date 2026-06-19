@@ -78,3 +78,90 @@ Open problem: retain the verified recall gain while holding HumanEval at baselin
 
 - **13k Scaling:** Mathematically verified that 66M parameters can map the 13,529 symbols in the standard library.
 - **Vanilla Compatibility:** GGUF surgery script produces a standard GGUF that runs on stock llama.cpp releases. The exported refiners execute as plain residual blocks — the tanh gate, subspace mask, and RAG injection currently exist only in the PyTorch path (open problem, see `EXPERIMENTAL_PATHS.md`).
+
+---
+
+## Local 1-bit Bonsai Mechanism Results (2026-06-17, PyTorch hook path)
+
+Substrate: `/var/home/deucebucket/games/models/Ternary-Bonsai-8B-unpacked`, 36 layers, hidden size 4096. These numbers are **not compiled-path results** and are not public-claim grade. They are local mechanism evidence for whether Brainloop-style writes are easier on the 1-bit Bonsai residual stream.
+
+### Static Single-Layer Injection
+
+`bonsai_inject_sweep.log`, scale `1.0`, 16 Python stdlib symbols, 48 generated tokens:
+
+| Layer | Recall Overlap | Code Drift | Degenerate |
+|---|---:|---:|---:|
+| L31 | 0.167 | 0.039 | 0/16 |
+| L32 | 0.180 | 0.000 | 0/16 |
+| **L33** | **0.210** | **0.020** | **0/16** |
+| L34 | 0.145 | 0.121 | 0/16 |
+| L35 | 0.145 | 0.000 | 0/16 |
+
+The run records `fp16-Qwen reference max overlap=0.149`, so the Bonsai stream did show a cleaner static write window than the earlier Qwen fp16 experiments.
+
+### Scale Window
+
+`bonsai_knee_test.log`:
+
+| Setting | Recall | Drift | Degenerate |
+|---|---:|---:|---:|
+| L33 scale 1.0 | 0.210 | 0.020 | 0/16 |
+| **L33 scale 1.1** | **0.212** | **0.021** | **0/16** |
+| L33 scale 1.5 | 0.184 | 0.125 | 1/16 |
+| L33 scale 1.75 | 0.111 | 0.291 | 1/16 |
+
+`bonsai_scale_test.log` shows the hard failure at higher scales: `L33 scale=8.0` gives `recall=0.041`, `drift=0.971`, `degen=16/16`.
+
+### Router, Latch, Refiner
+
+| Step | Source | Result |
+|---|---|---|
+| Router training | `bonsai_train_router.log` | `test_route_acc=0.953`, `neg->null=1.000`; untrained baseline was `2/8=0.25`. |
+| Naive router eval | `bonsai_router_eval.log` | `route_ok=2/24`; base `0.061` -> injected `0.055`. |
+| Latch eval | `bonsai_router_eval_latch.log` | `route_ok=24/24`; base `0.061` -> injected `0.076`. |
+| Matched phrasing eval | `bonsai_router_eval_match.log` | `route_ok=24/24`; base `0.101` -> injected `0.171`. |
+| Refiner v1 | `bonsai_train_refiner.log` | held-out base `0.061` -> refiner `0.100`; static held-out `0.076`. |
+| Refiner v2 | `bonsai_train_refiner_v2.log` | held-out base `0.061` -> refiner `0.222`; static held-out `0.076`, matched static `0.171`. |
+
+Interpretation: routing is mostly solved for a small bank; answer-time latch is mandatory; a learned delta generator is the first hook-path method that beats static held-out delta injection.
+
+### Fact Scaling
+
+| Run | Router Acc | Neg -> Null | Base | Oracle Refiner | Full Pipeline | Code Drift |
+|---|---:|---:|---:|---:|---:|---:|
+| `bonsai_factscale_128.log` | 1.000 | 1.000 | 0.061 | 0.242 | 0.242 | 0.000 |
+| `bonsai_factscale_256.log` | 0.980 | 1.000 | 0.061 | 0.105 | 0.105 | 0.000 |
+| `bonsai_factscale_256_m2048.log` | 0.977 | 1.000 | 0.061 | 0.186 | 0.186 | 0.000 |
+
+The 256-fact m2048 run is the current best large-bank checkpoint: `head_256_m2048.pt` and `refiner_256_m2048.pt`.
+
+### Real QA Gate
+
+`squad_qa_gate.log`, N=120, scale=1.1:
+
+| Mode | EM | Contains | F1 |
+|---|---:|---:|---:|
+| Base | 0.033 | 0.233 | 0.126 |
+| Inject | 0.142 | 0.492 | 0.311 |
+| Oracle | 0.608 | 0.892 | 0.725 |
+
+This is a real task movement, but it is not enough for shipping and still uses PyTorch hooks.
+
+### Failure: Multi-Layer Static Replay
+
+`bonsai_allblock_inject.py` registered hooks for all selected layers simultaneously and let them fire in normal transformer order. Deltas were pre-extracted from the clean un-injected path, so downstream hooks used stale deltas after earlier hooks had already perturbed the stream.
+
+| Layer Set | Scale | Recall | Drift | Degenerate |
+|---|---:|---:|---:|---:|
+| L33only | 1.0 | 0.210 | 0.020 | 0/16 |
+| late L18-L35 | 0.25 | 0.066 | 0.713 | 3/16 |
+| late L18-L35 | 0.5 | 0.004 | 0.998 | 16/16 |
+| all36 | 0.1 | 0.165 | 0.182 | 0/16 |
+| all36 | 0.25 | 0.047 | 0.975 | 11/16 |
+| all36 | 0.5 | 0.002 | 1.000 | 16/16 |
+
+Conclusion: static clean-path per-layer deltas do not compose. Multi-site writes need live-state feedback or weight-baked mechanisms; wider open-loop replay is a dead path.
+
+### Baked Data Ready
+
+`make_bake_data.py` produced `bake_knowledge_sft.jsonl` with 1,280 ChatML rows: 256 facts x 5 phrasings. This is the handoff point for the near-term baked-GGUF path.

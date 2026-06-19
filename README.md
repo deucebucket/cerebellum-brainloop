@@ -9,6 +9,40 @@ Cerebellum-Brainloop implements a dual-stage hidden state interceptor for Qwen2.
 - **Zero-Context Injection:** Knowledge is fused via Delta Vectors extracted from "Knowing" vs "Ignorant" model states.
 - **Vanilla Compatibility:** GGUF surgery script (`unroll_vanilla_gguf.py`) produces a standard GGUF that runs on stock `llama.cpp` releases without custom C++ forks. Caveat: the exported refiners execute as plain residual blocks — the tanh gate, subspace mask, and RAG injection currently exist only in the PyTorch path. Closing that gap is an open problem (see `EXPERIMENTAL_PATHS.md`).
 
+## Current Local Fork: Brainloop on 1-bit Bonsai (2026-06-17)
+
+This Brainloop project now contains the local research line for **Ternary-Bonsai-8B** directly in this directory:
+
+`/var/home/deucebucket/ai-drive/cerebellum/cerebellum-dev/conch-poc`
+
+The Bonsai base model remains on the game drive at `/var/home/deucebucket/games/models/Ternary-Bonsai-8B-unpacked`; do not copy large model files into the project. The 1-bit Brainloop work is **mechanism evidence only** until it is baked into a GGUF and benchmarked on the compiled path. The active files are local working-tree artifacts: `bonsai_*.py`, `run_*after*.sh`, `bake_knowledge_sft.jsonl`, `head_*.pt`, `refiner_*.pt`, and matching logs.
+
+Latest local findings:
+
+- Static L33 residual injection on Bonsai is cleaner than the earlier fp16 Qwen line. `bonsai_inject_sweep.log` found best single-layer overlap at `L33`: `recall_overlap=0.210`, `code_drift=0.020`, `degen=0/16`; the fp16-Qwen reference max was `0.149`.
+- Scale tuning shows a narrow window. `bonsai_knee_test.log`: `L33 scale=1.1` reached `recall=0.212`, `drift=0.021`, `degen=0/16`; higher scales start drifting and degenerating.
+- A trained router works as a selector. `bonsai_train_router.log`: held-out `test_route_acc=0.953`, `neg->null=1.000`. The latch variant is required for generation; per-token gating dropped mid-answer.
+- A generated refiner beats static held-out deltas. `bonsai_train_refiner_v2.log`: held-out base `0.061` -> refiner `0.222`; static held-out was `0.076`, matched static was `0.171`.
+- Scaling to 256 facts is mixed. `bonsai_factscale_256_m2048.log`: router `0.977`, `neg->null=1.000`; recall `base=0.061`, `oracle_refiner=0.186`, `full_pipeline=0.186`; code drift `0.000`.
+- Real QA moved but is not ship-grade. `squad_qa_gate.log`: base `EM=0.033`, `contains=0.233`, `F1=0.126`; injected `EM=0.142`, `contains=0.492`, `F1=0.311`; oracle `F1=0.725`.
+- Multi-layer static replay failed. `bonsai_allblock_inject.log`: `late@0.25` already had `degen=3/16`, and `late@0.5`, `late@1.0`, `all36@0.5`, `all36@1.0` all had `degen=16/16`. Clean-path per-layer deltas do not compose once earlier hooks perturb the stream.
+
+Baked-path progress (2026-06-19): the compiled-recall problem narrowed to a
+single mechanism finding. A runtime `--lora` adapter does **not** preserve
+learned answers through stock llama.cpp — `0/15` exact on a small held-out QA
+overfit diagnostic — but **merging** the adapter into the base weights and
+converting the merged model to GGUF does: the merged BF16 GGUF recalls `7/15`
+and a Q8_0 quant `8/15`, both with no degeneration, versus the unmerged
+adapter's `0/15`. The HF checkpoint the GGUF is converted from recalls `15/15`,
+so the residual gap is conversion/quantization fidelity, not training.
+
+This is still a small overfit diagnostic, not a product. The next gate is to
+show the baked Q8_0 GGUF *uses* the memory beyond echoing the exact target
+string — paraphrase, reasoning, and coding-use probes, with controls for
+symbols that failed to bake — measured on the compiled path against the plain
+base, before any wider bake training. Detailed run logs stay local under the
+project's research notes.
+
 ## Verified Benchmarks (Qwen2.5-3B)
 
 ### Logic & Coherence
@@ -68,6 +102,7 @@ Correction (2026-06-11): the dead-block table's wikitext and python PPL values w
 - [x] **13k Mapping:** Extraction pipeline completed; 2k symbol proof-of-concept verified.
 - [x] **13k Full Training:** Supervised delta-alignment over the full stdlib corpus completed (2026-06-11). Checkpoint (`fused_refiners.pt`), RAG index, and benchmark outputs published to the `deucebucket/cerebellum-brainloop` HF dataset. HumanEval+ with 13k RAG active: 51.2% — identical to the no-RAG hooked score, i.e. live retrieval adds no further logic degradation.
 - [ ] **13k Recall Verification:** Symbol-recall accuracy at full 13k scale not yet measured (the 94%+ figure is from the 2,002-symbol POC).
+- [ ] **Bonsai baked artifact:** 1-bit Bonsai hook-path results are documented locally, but no claim is publishable until the knowledge is baked into weights and measured through stock llama.cpp.
 
 ## Usage
 

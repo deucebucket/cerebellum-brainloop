@@ -29,3 +29,36 @@ Sequencing for the injection work, in order of dependency:
 1. **Now — vanilla dead blocks.** Attention-dead, subspace-masked FFN refiner blocks that are mathematically exact under standard `h = h + layer(h)` execution. No gate approximation, no custom C++. Every published artifact must load and run on stock llama.cpp, and every published number must be measured there (PyTorch-path numbers are iteration-only and labeled as such).
 2. **Next — a measured llama.cpp fork for live inline data.** Runtime retrieval injection and per-layer bias wires need engine support. Verified 2026-06-11: vanilla qwen2 in llama.cpp neither loads nor applies optional FFN/attention bias tensors, so there is no code-change-free path today. A fork is the experiment bed, not the product.
 3. **Later — upstream.** The qwen2 graph builder already consults `attn_output.bias` if present; only the loader line is missing, and the llama/Granite arch already treats these biases as optional. If the dead-block models prove the use case, a small parity PR to llama.cpp would make bias wires vanilla-legal in future releases. Adoption first, then the ask.
+
+## 2026-06-17 Update: 1-bit Bonsai Fork Path
+
+The local 1-bit Bonsai line now lives directly in the Brainloop project directory (`/var/home/deucebucket/ai-drive/cerebellum/cerebellum-dev/conch-poc`) and tests the same hidden-state write ideas on `Ternary-Bonsai-8B-unpacked`. The Bonsai base model stays on the game drive at `/var/home/deucebucket/games/models/Ternary-Bonsai-8B-unpacked`; only research code, docs, logs, small datasets, and checkpoints belong here. This is a separate mechanism line from the Qwen2.5-3B compiled GGUF work above.
+
+### What Survived
+
+1. **Single-site L33 writes on 1-bit Bonsai.** Static knowing-delta injection at L33 has a clean window: `scale=1.0` gives `recall=0.210`, `drift=0.020`, `degen=0/16`; `scale=1.1` gives `recall=0.212`, `drift=0.021`, `degen=0/16`.
+2. **Router/latch.** The trained router head reaches `test_route_acc=0.953` with `neg->null=1.000`, but answer generation needs a latch. Without latch, route_ok was `2/24`; with latch, `24/24`.
+3. **Live delta generation.** Refiner v2 moved held-out recall from base `0.061` to `0.222`, beating static held-out delta injection (`0.076`) and matched static injection (`0.171`).
+4. **Fact-bank scale evidence.** The best 256-fact run (`bonsai_factscale_256_m2048.log`) reached router `0.977`, full-pipeline recall `0.186`, and code drift `0.000`.
+5. **Real QA movement.** The SQuAD gate improved from base `F1=0.126` to injected `F1=0.311`; oracle context is `F1=0.725`, so there is substantial remaining headroom.
+
+### What Failed
+
+1. **Multi-layer static replay.** Simultaneously registering hooks on `late=L18..L35` or `all36=L0..L35` and injecting pre-extracted clean-path deltas is unstable. `late@0.5` and `all36@0.5` both degenerated `16/16`; `all36@0.25` already had `drift=0.975`, `degen=11/16`.
+2. **Robust-value router variant.** `bonsai_router_eval_robust.log` kept `route_ok=24/24` but produced no lift (`0.061 -> 0.062`).
+3. **Naive generation quality.** `gen_dump_run.log` shows several injected outputs that drift into error text or repetition (`FileNotFoundError`, `XXX to be filled`, traceback-like strings). Numeric overlap improvements are not enough; generation audits remain mandatory.
+
+### Updated Roadmap
+
+1. **Immediate: baked Bonsai GGUF.** Use `bake_knowledge_sft.jsonl` (1,280 rows, 256 facts x 5 phrasings) for BitLoRA/SFT baking. The goal is one self-contained standard GGUF that can be served by stock llama.cpp.
+2. **Gate the baked artifact.** Compare baked Bonsai vs plain Bonsai on SQuAD, stdlib symbol recall, code prompts, degeneration checks, and a small coding benchmark. No PyTorch-hook number is publishable by itself.
+3. **Then: dynamic matrix lane.** Keep `mtp_hijack_patch.cpp` / runtime matrix writes as a fork-stage experiment. It should read everywhere and write sparingly, using live hidden state, not clean-path static replay.
+4. **Do not spend more time on open-loop all-layer delta addition.** The failure is now reproduced in both the old Qwen layer sweep and the Bonsai all-block run.
+
+### Todo Checklist
+
+- [ ] Preserve all `bonsai_*.py`, `run_*after*.sh`, `*.log`, `head_*.pt`, `refiner_*.pt`, and `bake_knowledge_sft.jsonl` before cleanup.
+- [ ] Build the baked Bonsai adapter/model from `bake_knowledge_sft.jsonl`.
+- [ ] Run compiled-path QA and code gates against the base model.
+- [ ] Audit generated answers, not just overlap/F1.
+- [ ] Only after a baked win: design the live matrix writer / third-lane runtime path.
