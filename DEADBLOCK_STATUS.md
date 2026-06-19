@@ -3044,3 +3044,75 @@ first. Consistent with the inline-injection thesis over static fact-baking.
 Artifacts: brainloop_runs/e1045_used_memory_probe_q8/{results.jsonl,summary.json}
 results.jsonl sha256 a2235a5005af7d334ba8095f3b66c0b8f1378cefc9a5495427fe51c2b6315454
 Script: brainloop_used_memory_probe.py (local-only).
+
+## [Bonsai1Bit] E1046 START — USE-SHAPED BAKE (fix the E1045 string-recall failure) — 2026-06-19 ~12:05 CDT
+
+Hypothesis: E1045's bake failed (reasoning regressed to base) because training
+data was signature-recall only. Fix = USE-shaped SFT: field enumeration, count,
+presence yes/no, per-field type, coding construction.
+
+Data: bake_splits/e1046_usable_ast/{train.jsonl(33 rows, 3 AST symbols),
+      eval.jsonl(28 held-out-phrasing probes; 3 trained + ast.If untrained control)}
+Train symbols: ast.comprehension, ast.While, ast.For. Control: ast.If (no train rows).
+Config (E1031-proven): r32 a32 lr5e-4 layers24-35 qa assistant-only, max_steps 400.
+Adapter out: adapters/bonsai-bake-e1046-usable-r32-a32-lr5e4-s400
+Then: merge->GGUF->Q8, run 6d used-memory gate on held-out eval vs plain base.
+
+## [Bonsai1Bit] E1046 RESULT + E1047 START — 2026-06-19 ~12:15 CDT
+
+E1046 (use-shaped, 3 symbols, 33 rows, r32a32 lr5e-4 s400): baked Q8 beat the
+untrained ast.If control (TRAINED content-hit 5/21 vs CONTROL 0/7) but is still
+phrasing-brittle and reasoning-broken — presence yes/no answered WRONG on
+held-out phrasings (is_async?->No, orelse?->No, both real fields), field types
+wrong (is_async->bool). Hard overfit (loss->3e-4) = memorized exact Q/A, no
+transfer. Artifacts: merged_models/e1046_usable_ast_merged-q8_0.gguf,
+brainloop_runs/e1046_usable_ast_eval/.
+
+E1047 fix: scale + question-TYPE holdout. 71 ast node types (introspected
+ground truth), 53 train / 18 control. Train ONLY enum+code (530 rows, 6+4
+phrasings). Eval count + presence yes/no (NEVER trained as types) + held-out
+enum phrasing (284 probes). If baked answers count/presence for trained symbols
+(control + base cannot), the baked fields are usable, not memorized.
+Config: r32 a32 lr2e-4 layers24-35 qa, epochs 3 (~1590 steps).
+Adapter: adapters/bonsai-bake-e1047-ast-usable-r32-a32-lr2e4-e3
+
+## [Bonsai1Bit] E1047 RESULT — SCALE+DIVERSITY: field recall now generalizes — 2026-06-19 ~12:35 CDT
+
+71 ast node types, 53 train / 18 control. Trained ONLY enum+code (530 rows,
+diverse phrasings), r32a32 lr2e-4 e3 (train_loss 0.37, not over-fit to 0).
+Merged -> Q8 GGUF. Eval 284 held-out probes via GPU llama-server (mainline
+build, distrobox, port 8090).
+
+Hit-rate by pool x kind:
+  control   enum_heldout=2/18  count=0/18  presence_yes=11/18  presence_no=2/18
+  trained   enum_heldout=36/53 count=0/53  presence_yes=30/53  presence_no=15/53
+
+Findings (audited):
+- WIN: field enumeration baked and GENERALIZES across phrasing — trained 36/53
+  (68%) vs control 2/18 (11%) on a held-out enum phrasing. e.g. ast.AsyncFor ->
+  "target, iter, body, orelse, type_comment" exactly. Big improvement over the
+  brittle E1046; scale + phrasing diversity is the lever for recall.
+- GAP: derived ops did not emerge. count=0 everywhere because the model RECITES
+  the field list instead of emitting a number (it has the fields, can't count
+  them). presence noisy with a yes-bias (control presence_yes 11/18 is just the
+  bias). So baked facts are recallable, not computed-over.
+- Mechanism confirmed: merge->GGUF installs phrasing-general factual recall in a
+  portable stock-llama.cpp model, beating base ~6x on enumeration.
+
+Next E1048: train the full use-battery (enum + count + balanced presence + type
++ code) with diversity across many symbols; hold out phrasings + control
+symbols. Test whether training the USE behaviors makes count/presence
+generalize across phrasing -> a model that uses baked facts, not just recites.
+Artifacts: merged_models/e1047_ast_usable_merged-q8_0.gguf,
+brainloop_runs/e1047_ast_usable_eval/baked_q8.jsonl.
+
+## [Bonsai1Bit] E1048 START — FULL USE-BATTERY bake — 2026-06-19 ~12:48 CDT
+
+Builds on E1047 (field recall generalized, but count/presence did not). Now train
+the full use-battery so the model learns to USE facts, not just recite:
+enum + code + count + balanced presence (yes/no), diverse phrasings, 53 train /
+18 control symbols. Data: bake_splits/e1048_ast_battery (1136 train, 355 eval).
+Held out per type: a distinct phrasing + an unseen field for presence + the 18
+control symbols. Config r32 a32 lr2e-4 e3 layers24-35 qa. Eval via GPU
+llama-server (GPU now cleared of stale reasoning-v5/v6 servers per user).
+Adapter: adapters/bonsai-bake-e1048-battery-r32-a32-lr2e4-e3
