@@ -3238,3 +3238,22 @@ list-first, balanced). Base provably cannot know these. 60 train / 20 control
 (1416 train, 320 eval). Config r32 a32 lr2e-4 e3. If trained entities recall/
 count/check-membership on held-out probes while control ~0, arbitrary-knowledge
 weight-baking is proven. Adapter: adapters/bonsai-bake-e1052-fiction-r32-a32-lr2e4-e3
+
+## [Bonsai1Bit] E1052 RESULT — FICTIONAL facts bake (airtight) — 2026-06-19 ~14:10 CDT
+
+80 invented entities/properties (base CANNOT know them). Eval (GPU 8095):
+  control   enum=0/20  count=6/20  presence_yes=6/20  presence_no=18/20
+  trained   enum=36/60 count=60/60 presence_yes=58/60 presence_no=59/60
+  REASONING(count+presence): trained 177/180 (98%) vs control 30/60 (50% chance)
+Control enum 0/20 = exact floor: the base has zero ability to produce invented
+facts. Baked model recalls 60%, counts 100%, checks membership 97-98% on
+held-out probes. => arbitrary-knowledge weight-baking proven (not pretraining
+leakage). enum 60% < count/presence because exact fiction recall has no semantic
+anchors; the per-entity info is clearly present (count/membership near-perfect).
+
+HONEST SCOPE NOTE: this proves SFT-bakes-usable-facts-into-a-mergeable-GGUF.
+It does NOT yet show: (a) improvement on a STANDARD benchmark vs base,
+(b) ADDITIVE knowledge without full retrain (current method retrains all facts
+every time -- the redundancy the product must avoid), (c) storing >> model
+capacity. Those are the real Brainloop deltas and remain open.
+Artifact: merged_models/e1052_fiction_merged-q8_0.gguf.
