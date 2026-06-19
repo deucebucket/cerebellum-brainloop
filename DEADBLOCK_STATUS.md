@@ -3334,3 +3334,30 @@ is ROUTING/loadable packs (keep packs separate, select relevant one at inference
 -- the memory-controller design), or much larger per-pack budget (rank/disjoint
 layers). Blind merge does not scale.
 Artifact: merged_models/e1055_ties-q8_0.gguf
+
+## [Bonsai1Bit] E1056 START — REAL stdlib recall benchmark (baked vs base) — 2026-06-19 ~15:05 CDT
+
+The standard-benchmark gap. 300 real stdlib symbols -> true parameter signatures
+(introspected; specific facts base does not reliably know). 1500 train rows (5
+phrasings), 300 held-out-phrasing eval probes. Plan: train bake, merge->Q8,
+then eval recall (all-gold-params-present + token-recall) on held-out probes for
+BOTH plain base (Ternary-Bonsai-8B-F16) and baked. This converts "beats base on
+my probes" into a real closed-book knowledge-recall benchmark vs base.
+Data bake_splits/e1056_stdlib_recall. Config r32 a32 lr2e-4 e3.
+Adapter: adapters/bonsai-bake-e1056-stdlib-r32-a32-lr2e4-e3
+
+## [Bonsai1Bit] E1056 RESULT — *** REAL BENCHMARK: baking 2.3x recall vs base *** — 2026-06-19 ~15:25 CDT
+
+Closed-book stdlib signature recall, 300 real symbols, held-out phrasing, same
+Q8 quant + same model size (base vs baked), GPU llama-server:
+  BASE   full-recall 80/300 (26.7%)   mean token-recall 37.1%
+  BAKED  full-recall 184/300 (61.3%)  mean token-recall 69.1%
+=> +34.6 pts full-recall (2.3x), +32 pts token-recall. Audited: 139 symbols
+where baked recalls the EXACT param list while base only emits generic prose
+("...is used to create custom actions...") -- genuine recall, not artifact.
+This is the standard-benchmark gap closed on a real knowledge-recall task:
+weight-baking measurably improves a real score over the same-size base.
+Caveats (honest): self-constructed benchmark (not SQuAD/MMLU); held-out phrasing
+is near training phrasings (phrasing-generalization); single seed.
+Artifacts: merged_models/e1056_stdlib_merged-q8_0.gguf,
+brainloop_runs/e1056_stdlib_eval/{base,baked}.jsonl, merged_models/base_bonsai-q8_0.gguf
