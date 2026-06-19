@@ -3395,3 +3395,20 @@ one persistent endpoint with cold-tier pack loading (memory-controller design);
 currently serves one pack at a time.
 Tooling: brainloop_router.py, brainloop_routed_system.py {plan,answer,report}.
 Artifact: brainloop_runs/e1058_routed_system/{plan,results,report}.json
+
+## [Bonsai1Bit] E1059 RESULT — *** PAGED MEMORY CONTROLLER (store > VRAM) *** — 2026-06-19 ~16:15 CDT
+
+Single VRAM slot serving a multi-pack cold tier from disk. Worst-case interleaved
+(round-robin) mixed stream forces a page-in nearly every query. For each query:
+route -> page-in pack if not hot (evict + load GGUF) -> answer.
+  accuracy        : 29/30 (96.7%)
+  router accuracy : 100% (3 distinct-domain packs)
+  page-ins        : 30, avg load 4.0s (worst case = swap every query)
+  VRAM hot slot   : ~8.7 GB (one pack)   cold tier: 3 packs ~26 GB on disk
+  => a ~9 GB hot slot answered across a ~26 GB knowledge base.
+This is the literal "store way more than the model holds [in VRAM]" proof and the
+memory-controller design, demonstrated not just spec'd. Cold tier is arbitrarily
+large (add packs to disk + extend router; hot slot unchanged). 4s page-in is
+worst-case; locality + a 2-pack hot cache amortizes it. The bake->route->page
+product is complete end to end.
+Tooling: brainloop_paged_endpoint.py. Artifact: brainloop_runs/e1059_paged_endpoint/results.json
