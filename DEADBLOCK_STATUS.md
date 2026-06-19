@@ -3361,3 +3361,18 @@ Caveats (honest): self-constructed benchmark (not SQuAD/MMLU); held-out phrasing
 is near training phrasings (phrasing-generalization); single seed.
 Artifacts: merged_models/e1056_stdlib_merged-q8_0.gguf,
 brainloop_runs/e1056_stdlib_eval/{base,baked}.jsonl, merged_models/base_bonsai-q8_0.gguf
+
+## [Bonsai1Bit] E1057 RESULT — ROUTER works (store-more via selection, not merge) — 2026-06-19 ~15:35 CDT
+
+TF-IDF+logreg router over 4 packs' training queries, tested on 1295 held-out-
+phrasing eval queries: OVERALL 93.7% (1213/1295). ast 100%, stdlib 100%,
+fiction2 95%, fiction1 79% (only confusion is fic1<->fic2, deliberately identical
+invented-name structure). Routed-system accuracy ~= router_acc x standalone_acc:
+  3-pack MERGE (E1054):  ast 78%  fic1 62%  fic2 63%   (weight interference)
+  3-pack ROUTE (E1057):  ast ~98% fic1 ~78% fic2 ~93%  (router x standalone)
+=> Routing BEATS merging for every pack and scales to N packs (each query hits
+one clean model -> no weight superposition). The storage bottleneck shifts from
+weight-interference (hard cap ~2 packs) to ROUTER accuracy (94% at 4 packs,
+independently improvable). This is the empirical case for the memory-controller
+/ loadable-packs design: to store way more than the model, ROUTE, don't merge.
+Artifact: brainloop_runs/e1057_router/summary.json
