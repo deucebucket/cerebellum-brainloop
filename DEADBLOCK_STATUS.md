@@ -3173,3 +3173,29 @@ field -> true membership-generalization test. Data bake_splits/e1050_ast_battery
 (1078 train, 355 eval). Config r32 a32 lr2e-4 e3. If both presence_yes and
 presence_no clear ~chance on held-out fields, membership works via enumerated
 knowledge. Adapter: adapters/bonsai-bake-e1050-battery-v3-r32-a32-lr2e4-e3
+
+## [Bonsai1Bit] E1050 RESULT + KEY INSIGHT — verdict decoupled from recall — 2026-06-19 ~13:40 CDT
+
+Exact 1:1 balanced presence. Eval (GPU 8093):
+  control   enum=4/18  count=6/18  presence_yes=7/18  presence_no=8/18
+  trained   enum=48/53 count=47/53 presence_yes=31/53 presence_no=27/53
+- Bias gone (58%/51%) but presence near chance on held-out fields.
+- AUDIT REVEALS THE CAUSE: the model recites the CORRECT field list but the
+  Yes/No verdict contradicts its own list. e.g. "Is there a msg field on
+  ast.Assert?" -> "No. ast.Assert has: test, msg." (msg IS present!). And
+  "lineno field?" -> "Yes. ast.Assert has: test, msg." (lineno absent!).
+  The model HAS the knowledge; the verdict-FIRST format makes it commit before
+  reciting, so the answer can't condition on the enumeration.
+FIX (E1051): list-FIRST grounded format -- recite fields, THEN verdict
+("ast.X has: a,b,c. So the answer is Yes/No"). Autoregressive attention lets the
+verdict read the just-emitted correct list. enum 91% / count 89% unchanged.
+Artifact: merged_models/e1050_battery_v3_merged-q8_0.gguf.
+
+## [Bonsai1Bit] E1051 START — list-FIRST presence (fix decoupled verdict) — 2026-06-19 ~13:43 CDT
+
+E1050 showed the model recites correct fields but the verdict-first format
+decouples the Yes/No from its own list. Fix: list-FIRST grounded answer
+"ast.X has: a, b, c. So the answer is Yes/No." -> verdict can attend to the
+recited fields. Same balanced 1:1 data, eval on held-out last field. Scorer now
+reads the FINAL yes/no token. Data bake_splits/e1051_ast_battery_v4 (1078 train).
+Config r32a32 lr2e-4 e3. Adapter: adapters/bonsai-bake-e1051-battery-v4-r32-a32-lr2e4-e3
