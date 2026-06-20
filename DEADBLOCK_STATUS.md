@@ -3454,3 +3454,34 @@ Char n-grams capture invented-name morphology: fic3/fic4 (distinct vocab) ->
 'a') by construction -> a test artifact; topic-distinct packs route cleanly.
 Router lever validated: char n-grams +4.4pts overall, worst-pack 79->88%.
 Tooling: brainloop_router_v2.py. Artifact: brainloop_runs/e1064_router_hardened/
+
+## [Bonsai1Bit] E1065 START — PUBLIC DATASET benchmark (PopQA injection) — 2026-06-19 ~19:35 CDT
+
+Public closed-book knowledge-injection benchmark on akariasai/PopQA. Took the
+1000 most-obscure long-tail facts (s_pop<=80; entities the small base will not
+know). Bake declarative + alt phrasings ("The country of X is Romania."); EVAL on
+the exact natural PopQA question ("In what country is X?"), scored PopQA-style
+(output contains any gold alias). Measures base vs baked closed-book recall on a
+recognized public dataset. Data bake_splits/e1065_popqa (4000 train, 1000 eval).
+Config r32 a32 lr2e-4 e3. Adapter: adapters/bonsai-bake-e1065-popqa-r32-a32-lr2e4-e3
+
+## [Bonsai1Bit] E1065 RESULT — *** PUBLIC BENCHMARK: PopQA baked ~2x base *** — 2026-06-19 ~21:10 CDT
+
+akariasai/PopQA, 1000 most-obscure long-tail facts, closed-book, eval on the
+exact natural PopQA question (bake used declarative+alt phrasings -> held-out form):
+  BASE  312/1000 (31.2%)
+  BAKED 580/1000 (58.0%)   = +26.8 pts (+86% relative)
+Audited 299 baked-wins-base-fails: baked recalls the exact obscure fact while
+base hallucinates plausible-wrong (e.g. "genre of Gone?" baked "gothic metal" vs
+base "mystery thriller"; "screenwriter for Prototype?" baked "Gary David
+Goldberg" vs base wrong). Genuine knowledge injection on a recognized PUBLIC
+dataset -> external-credibility gap closed. (Base 31% is lenient alias-contains
+scoring on short guessable answers; the lift is the signal.)
+Tooling: make_popqa_bake.py, brainloop_eval_popqa.py.
+Artifacts: merged_models/e1065_popqa_merged-q8_0.gguf, brainloop_runs/e1065_popqa_eval/
+
+## [Bonsai1Bit] E1066 START — PACK IT IN: full 14,267 PopQA facts, one ~116MB pack — 2026-06-19 ~21:12 CDT
+
+Density push (user: "press in, pack it in"). Bake ALL 14,267 PopQA facts (2 lean
+phrasings = 28,534 rows) into ONE rank-32 adapter (~116MB), 2 epochs. Then eval
+recall on a held-out sample to chart facts-per-pack density vs the 1k point.
