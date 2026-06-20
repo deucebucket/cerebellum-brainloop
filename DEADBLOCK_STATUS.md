@@ -3485,3 +3485,15 @@ Artifacts: merged_models/e1065_popqa_merged-q8_0.gguf, brainloop_runs/e1065_popq
 Density push (user: "press in, pack it in"). Bake ALL 14,267 PopQA facts (2 lean
 phrasings = 28,534 rows) into ONE rank-32 adapter (~116MB), 2 epochs. Then eval
 recall on a held-out sample to chart facts-per-pack density vs the 1k point.
+
+## [Bonsai1Bit] E1068 START — MAX OUTPUT @ ~3.3GB: full 14k PopQA, rank 128 — 2026-06-19 ~22:30 CDT
+
+User priority: don't chase 1.16GB; ~3.3GB (Q2) is fine, MAXIMIZE recall at that
+size. Key lever: LoRA rank does NOT change final GGUF size (merged then Q2), so
+crank capacity. Relaunch full 14,267-fact PopQA bake at RANK 128 (4x prior),
+layers 24-35, 2 phrasings (28,534 rows), 2 epochs. Export Q2 (~3.3GB), eval
+recall on the 14k held-out natural questions vs base. Q2 quality confirmed: 1k
+pack at 3.3GB recalls obscure facts exactly (Stan Lathan, Poland, gothic metal)
+where base hallucinates. Inject-at-1bit path retired (static control-vector
+injection gave no recall lift; E1067).
+Adapter: adapters/bonsai-bake-e1068-popqa-full-r128
