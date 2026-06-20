@@ -3412,3 +3412,31 @@ large (add packs to disk + extend router; hot slot unchanged). 4s page-in is
 worst-case; locality + a 2-pack hot cache amortizes it. The bake->route->page
 product is complete end to end.
 Tooling: brainloop_paged_endpoint.py. Artifact: brainloop_runs/e1059_paged_endpoint/results.json
+
+## [Bonsai1Bit] E1060+ START — SCALE the cold tier + build LRU daemon (go hard) — 2026-06-19 ~16:25 CDT
+
+Scaling packs to stress the routed/paged memory-controller. New packs:
+- E1060 stdlib2: 300 disjoint stdlib symbols (set-B modules), 0 overlap w/ stdlib1.
+- (queued) fic3/fic4 with distinct morpheme vocab (routable vs fic1/fic2).
+Plus a persistent 2-slot LRU hot-cache daemon (brainloop_memctl.py) to amortize
+the 4s page-in. Goal: 6-8 pack cold tier (~55-72GB) served by a fixed ~9-18GB
+hot cache; report accuracy + router + page-in rate vs #packs.
+
+## [Bonsai1Bit] E1060-E1063 RESULT — *** SCALED MEMORY CONTROLLER (go hard) *** — 2026-06-19 ~19:05 CDT
+
+Scaled the cold tier to 5 baked packs (ast, fiction1, fiction2, stdlib, stdlib2;
+stdlib2 = 300 disjoint stdlib symbols, E1060) and built a K-slot LRU hot-cache
+controller (brainloop_memctl.py): one llama-server per slot, evict-LRU + page-in
+on a cache miss; tfidf+logreg router.
+
+5-pack cold tier = 43.5 GB on disk. Results (40-query streams, router 100%):
+  blocks pattern: K=1 and K=2 both acc 0.875, 10 page-ins (working set > cache).
+  SKEW pattern (2 hot packs, realistic locality):
+    K=1 (8.7 GB hot):  acc 0.875  page-ins 13/40  cache-hit 0.68  79.9s
+    K=2 (17.4 GB hot): acc 0.875  page-ins  7/40  cache-hit 0.82  47.7s
+=> A fixed ~9 GB hot slot serves a 43.5 GB (5-pack) knowledge base; a 2-slot LRU
+cache halves page-ins and cuts wall-time 40% under skewed access. Cold tier grows
+unbounded with disk; hot footprint stays fixed. The cerebellum memory-controller
+(VRAM hot / disk cold, LRU paging, learned router) is now running code with the
+VRAM-vs-paging tradeoff curve measured. Accuracy is router-bound, not cache-bound.
+Tooling: brainloop_memctl.py. Artifacts: brainloop_runs/e1063_memctl_k{1,2}_{blocks,skew}/
