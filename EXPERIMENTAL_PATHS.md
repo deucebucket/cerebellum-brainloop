@@ -1,64 +1,221 @@
-# RESEARCH PROMPT: Brainloop Speed Bumps & Experimental Paths
+# Brainloop — Open Problems & Roadmap
 
-**Directive:** Treat all current architectural "blockers" purely as speed bumps. We are looking for unconventional, mathematically sound workarounds to achieve our dual goals: 1) Zero degradation to base reasoning, and 2) 100% Vanilla `llama.cpp` compatibility (no custom C++ required).
+Brainloop is a research effort to give small, heavily-quantized language models
+durable factual memory: knowledge they can recall, count over, and reason about,
+not just retrieve from a prompt. The base model stays frozen and ternary (1-bit);
+the knowledge is added separately.
 
-## Speed Bump 1: The Vanilla Compatibility Paradox
-**Context:** We want to bake our 38-layer unrolled model into a standard GGUF. However, vanilla `llama.cpp` executes standard residual additions (`h = h + layer(h)`). It does not natively support our `tanh` gate or our "Subspace Hijacking" (which restricts modifications to only the last 25% of the hidden dimensions).
-**The Question:** How can we mathematically trick a standard transformer architecture into performing Subspace Hijacking and gated identity-priors without altering the C++ inference code?
+This document is the project's map: what is **proven** on the compiled path,
+where the **central tension** sits, and the **roadmap** out of it. It is rewritten
+to reflect current state, not appended to. The append-only operational record
+lives in `DEADBLOCK_STATUS.md`.
 
-**Experimental Paths to Explore:**
-1. **Weight-Level Subspace Masking:** Instead of using Python/C++ logic to isolate the Knowledge Lane (Dims 1536-2048), can we surgically zero out the top 75% of the rows/columns in the Refiner's `o_proj` (output projection) and `down_proj` matrices? If the weights for the reasoning lanes are literally `0.0`, the standard `h = h + layer(h)` operation will mathematically leave the reasoning lane untouched.
-2. **Implicit Gating via Pre-Scaling:** Vanilla `llama.cpp` doesn't have a dynamic gate parameter. Can we emulate a `gate = 0.01` identity prior by statically scaling down the baked weights of the refiner's `o_proj` by `0.01` before GGUF export? Will this allow the network to train with a high learning rate but execute silently in production until triggered?
-3. **Norm Shifting:** Does inserting a cloned layer alter the running RMSNorm statistics of the residual stream? Do we need to bake a compensating inverse-norm into the base model's Layer 18 to account for the Refiner's presence?
+A standing rule applies to everything here: **a result counts only if it was
+measured on a GGUF running under stock `llama.cpp`.** PyTorch eager-mode numbers
+are for iteration and are labeled as such; they are never published as model
+results.
 
-## Speed Bump 2: The 5% Logic Degradation
-**Context:** We fixed the Causal Masking bug by using a perfect `deepcopy` of the `Qwen2DecoderLayer`, but any modification to the residual stream still risks a slight "logic tax" (~5% drop on HumanEval+).
-**The Question:** If the architecture is identical, why does an identity-prior clone still degrade logic, and how do we achieve absolute 100% parity before knowledge injection?
+---
 
-**Experimental Paths to Explore:**
-1. **True Zero-Init (The Dead Block):** Instead of cloning Layer 17 (Identity Prior), what if we insert a "Dead Block" where `o_proj` and `down_proj` are initialized to absolute zero? A zero-block guarantees 100% logic parity on day one. Can we successfully train a Dead Block to predict Delta Vectors, effectively waking it up only for knowledge retrieval?
-2. **Attention Deactivation:** Does the refiner even need Self-Attention? Factual recall has been shown to be predominantly an FFN (Feed-Forward Network) mechanism. What happens if we zero out the `q_proj`, `k_proj`, and `v_proj` in the Refiner, leaving only the SwiGLU FFN to act as a pure associative memory lookup for our Delta Vectors?
-3. **Prompt-Conditional Routing:** Can we train the refiner's internal attention heads to act as a router, attending *only* to the specific RAG-injected tokens and ignoring the native context window entirely?
+## What Is Proven
 
-**Execution Mandate:** Do not accept "impossible" as an answer. Design PyTorch scripts to empirically test Weight-Level Subspace Masking and True Zero-Init immediately.
+All results in this section were measured on a merged GGUF served by stock
+`llama.cpp` (no fork, no custom C++), against a same-size base.
 
-## Roadmap: Vanilla First, Fork Later, Upstream Last
+### Baked knowledge packs work, and beat the base 2–3x
 
-Sequencing for the injection work, in order of dependency:
+A pack is built by fine-tuning a LoRA on a fact set, merging it into the frozen
+base, and exporting one self-contained GGUF. The recipe that holds up: scale the
+facts, train on diverse phrasings (forces a skill, not Q/A memorization), and use
+a "use-shaped" battery — recall **plus** count **plus** membership, not signature
+recall alone.
 
-1. **Now — vanilla dead blocks.** Attention-dead, subspace-masked FFN refiner blocks that are mathematically exact under standard `h = h + layer(h)` execution. No gate approximation, no custom C++. Every published artifact must load and run on stock llama.cpp, and every published number must be measured there (PyTorch-path numbers are iteration-only and labeled as such).
-2. **Next — a measured llama.cpp fork for live inline data.** Runtime retrieval injection and per-layer bias wires need engine support. Verified 2026-06-11: vanilla qwen2 in llama.cpp neither loads nor applies optional FFN/attention bias tensors, so there is no code-change-free path today. A fork is the experiment bed, not the product.
-3. **Later — upstream.** The qwen2 graph builder already consults `attn_output.bias` if present; only the loader line is missing, and the llama/Granite arch already treats these biases as optional. If the dead-block models prove the use case, a small parity PR to llama.cpp would make bias wires vanilla-legal in future releases. Adoption first, then the ask.
+Measured, compiled-path, vs the same-size base:
 
-## 2026-06-17 Update: 1-bit Bonsai Fork Path
+| Benchmark | Base | Baked pack |
+|-----------|------|------------|
+| Python stdlib symbol recall (300 facts) | 26.7% | **61.3%** |
+| PopQA, 1000 most-obscure long-tail facts (public dataset, closed-book) | 31.2% | **58.0%** |
 
-The local 1-bit Bonsai line now lives directly in the Brainloop project directory (`/var/home/deucebucket/ai-drive/cerebellum/cerebellum-dev/conch-poc`) and tests the same hidden-state write ideas on `Ternary-Bonsai-8B-unpacked`. The Bonsai base model stays on the game drive at `/var/home/deucebucket/games/models/Ternary-Bonsai-8B-unpacked`; only research code, docs, logs, small datasets, and checkpoints belong here. This is a separate mechanism line from the Qwen2.5-3B compiled GGUF work above.
+The PopQA run is a recognized public benchmark, eval'd on the natural question
+form (the bake used declarative + alternate phrasings, so the eval form is
+held-out). The lift is genuine recall of the exact obscure fact where the base
+hallucinates a plausible-wrong answer — audited, not a scoring artifact.
 
-### What Survived
+The memory generalizes past recitation: on held-out fields and phrasings the
+baked model **counts** (e.g. "how many fields does X have?") and **checks
+membership** ("is there a `msg` field on `ast.Assert`?") correctly, grounding the
+verdict on the recited facts. This was demonstrated on both real (AST) and fully
+**invented** fact sets — the invented set proves the knowledge is baked, not
+leaked from pretraining (base recall on invented facts is at the floor).
 
-1. **Single-site L33 writes on 1-bit Bonsai.** Static knowing-delta injection at L33 has a clean window: `scale=1.0` gives `recall=0.210`, `drift=0.020`, `degen=0/16`; `scale=1.1` gives `recall=0.212`, `drift=0.021`, `degen=0/16`.
-2. **Router/latch.** The trained router head reaches `test_route_acc=0.953` with `neg->null=1.000`, but answer generation needs a latch. Without latch, route_ok was `2/24`; with latch, `24/24`.
-3. **Live delta generation.** Refiner v2 moved held-out recall from base `0.061` to `0.222`, beating static held-out delta injection (`0.076`) and matched static injection (`0.171`).
-4. **Fact-bank scale evidence.** The best 256-fact run (`bonsai_factscale_256_m2048.log`) reached router `0.977`, full-pipeline recall `0.186`, and code drift `0.000`.
-5. **Real QA movement.** The SQuAD gate improved from base `F1=0.126` to injected `F1=0.311`; oracle context is `F1=0.725`, so there is substantial remaining headroom.
+### Independently-baked packs compose without retraining (up to ~2)
 
-### What Failed
+Two packs trained separately from the base combine by **summing their weight
+deltas** — seconds of CPU arithmetic, no GPU retrain over the union. Both
+knowledge sets survive in one GGUF with only minor degradation (count stays 100%,
+reasoning retains ~95–97% of standalone).
 
-1. **Multi-layer static replay.** Simultaneously registering hooks on `late=L18..L35` or `all36=L0..L35` and injecting pre-extracted clean-path deltas is unstable. `late@0.5` and `all36@0.5` both degenerated `16/16`; `all36@0.25` already had `drift=0.975`, `degen=11/16`.
-2. **Robust-value router variant.** `bonsai_router_eval_robust.log` kept `route_ok=24/24` but produced no lift (`0.061 -> 0.062`).
-3. **Naive generation quality.** `gen_dump_run.log` shows several injected outputs that drift into error text or repetition (`FileNotFoundError`, `XXX to be filled`, traceback-like strings). Numeric overlap improvements are not enough; generation audits remain mandatory.
+This is the "add a pack without retraining everything" property. Its current
+limit: naive delta-summing **interferes at 3 packs** — exact recall collapses
+first, count is most robust. So additive composition is proven at 2 and is a
+density-ceiling problem past that (fixes under Roadmap).
 
-### Updated Roadmap
+### A learned router + paged cold tier scale knowledge past one model's VRAM
 
-1. **Immediate: baked Bonsai GGUF.** Use `bake_knowledge_sft.jsonl` (1,280 rows, 256 facts x 5 phrasings) for BitLoRA/SFT baking. The goal is one self-contained standard GGUF that can be served by stock llama.cpp.
-2. **Gate the baked artifact.** Compare baked Bonsai vs plain Bonsai on SQuAD, stdlib symbol recall, code prompts, degeneration checks, and a small coding benchmark. No PyTorch-hook number is publishable by itself.
-3. **Then: dynamic matrix lane.** Keep `mtp_hijack_patch.cpp` / runtime matrix writes as a fork-stage experiment. It should read everywhere and write sparingly, using live hidden state, not clean-path static replay.
-4. **Do not spend more time on open-loop all-layer delta addition.** The failure is now reproduced in both the old Qwen layer sweep and the Bonsai all-block run.
+Instead of summing every pack into one model, a learned router picks the relevant
+pack per query and a memory controller pages it in. Measured:
 
-### Todo Checklist
+- **Router accuracy 0.977**, and 100% on the routed/paged streams.
+- A **paged memory controller** serves a knowledge base far larger than VRAM: a
+  fixed **~9 GB hot slot answered across a 43.5 GB (5-pack) disk cold tier**.
+  A 2-slot LRU hot-cache halves page-ins and cuts wall-time ~40% under skewed
+  access. The cold tier grows unbounded with disk; the hot footprint stays fixed.
 
-- [ ] Preserve all `bonsai_*.py`, `run_*after*.sh`, `*.log`, `head_*.pt`, `refiner_*.pt`, and `bake_knowledge_sft.jsonl` before cleanup.
-- [ ] Build the baked Bonsai adapter/model from `bake_knowledge_sft.jsonl`.
-- [ ] Run compiled-path QA and code gates against the base model.
-- [ ] Audit generated answers, not just overlap/F1.
-- [ ] Only after a baked win: design the live matrix writer / third-lane runtime path.
+This is the Cerebellum memory-controller design (VRAM hot / disk cold, LRU
+paging, learned router) running as code, not just spec.
+
+---
+
+## The Central Tension
+
+There are two things the project wants at once, and today's stock `llama.cpp`
+lets us have only one:
+
+1. **Keep the 1-bit footprint.** The Ternary-Bonsai base is ~1.16 GB.
+2. **Get high recall by adding knowledge.**
+
+The problem is *how* knowledge gets added:
+
+- **Merging a LoRA un-ternarizes the base.** Folding adapter deltas into a 1-bit
+  base produces full-precision weights that must be re-quantized; the smallest
+  honest re-quant is Q2, so a baked pack lands at **~3.3 GB**, not 1.16 GB. The
+  recall is real, but the 1-bit footprint is gone. (We accept this for the baked
+  product — rank does not change final size, so we maximize capacity at ~3.3 GB.)
+
+- **The footprint-preserving alternative is runtime injection** — feed a retrieved
+  fact into a mid-model block at inference and never touch the base weights. But
+  stock `llama.cpp`'s only injection primitive is the **static control vector**,
+  and tested (E1067), it gave **no recall lift**. A single fixed vector is too
+  blunt to write a specific fact into the residual stream.
+
+The deeper reason: **vanilla `llama.cpp` is a closed token→logit pipe.** There is
+no port to hand a retrieved fact to a mid-model block at inference. The qwen2
+graph builder will consult optional bias tensors if present, but the loader does
+not wire them, so there is no code-change-free path to runtime injection today
+(verified). A static control vector is the only lever, and it does not carry
+enough information.
+
+So: merge gives recall but inflates to Q2; runtime injection preserves 1-bit but,
+with the only available primitive, recalls nothing. Closing that gap is the
+research frontier.
+
+---
+
+## Roadmap
+
+The strategy is **two products**, sequenced so the first funds adoption for the
+second.
+
+### Product 1 — Baked GGUF packs (ships on stock `llama.cpp` today)
+
+The on-ramp. Small, self-contained packs that run on unmodified `llama.cpp`,
+plus the router and paged memory controller that let a fixed hot slot serve a
+large cold tier. This is proven (above) and needs hardening, not invention.
+
+Near-term experiments, all on the compiled path:
+
+- **Push merged-pack recall with higher LoRA rank.** Rank does not change the
+  final GGUF size (merge → Q2), so capacity is free up to the ~3.3 GB budget.
+  Maximize recall at that size.
+- **Use-shaped training so baked facts are *used*, not just recited.** Keep the
+  enum + count + membership battery and list-first grounded answers; verify
+  generalization on held-out fields and phrasings.
+- **Better packing past 2 packs.** Naive delta-sum interferes at 3. Test
+  sign-conflict-aware merges (TIES/DARE), per-pack distinct layers, and routing
+  (load the relevant pack instead of summing all).
+- **Embedding router for near-duplicate packs.** The current router is strong
+  (0.977); harden it where packs are semantically close.
+- **Persistent memory-controller daemon.** A 2-slot LRU hot-cache with cold-tier
+  paging, kept warm as one endpoint, to amortize page-in cost under real traffic.
+
+### Product 2 — A `llama.cpp` fork with inline RAG (not yet built)
+
+The footprint-preserving endgame, and explicitly **not built**. A trained
+**refiner** block that, at inference, queries an index from the current hidden
+state and **injects the retrieved fact into the residual stream** — real-time
+data plus runtime memorization while the 1-bit base stays untouched.
+
+The fork's missing piece is twofold:
+
+1. **A runtime injection op** in the engine — the port that vanilla `llama.cpp`
+   lacks (the closed-pipe problem above). The qwen2 loader would need to wire the
+   optional bias/injection tensors the graph builder already tolerates.
+2. **A trained injector.** A static control vector is too blunt (E1067: no lift).
+   The project's earlier refiner generated better, fact-conditioned deltas — but
+   that refiner does **not** reduce to a vanilla `llama.cpp` op, which is exactly
+   why a fork is required.
+
+**Gate before building the fork:** prove in PyTorch that a *trained* injector
+(not a static vector) lifts recall on held-out facts. Only then is the engine
+work justified. The fork is the experiment bed; if the baked packs (Product 1)
+prove the use case and the injector clears the gate, a small parity PR to upstream
+`llama.cpp` — wiring the already-tolerated optional biases — would make injection
+vanilla-legal in future releases. Adoption first, then the upstream ask.
+
+---
+
+## Speed Bumps (closed-pipe consequences)
+
+These are recurring engineering walls, all downstream of the same closed-pipe
+constraint. They bound what a vanilla-compatible artifact can express.
+
+### Speed Bump 1 — GGUF export drops the PyTorch-only mechanics
+
+The PyTorch refiner path uses a `tanh` gate, "subspace hijacking" (modifying only
+the last 25% of hidden dims), an identity-initialized injection projection, and a
+sigmoid scale. **Vanilla `llama.cpp` executes a plain residual add — `h = h +
+layer(h)`** — and represents none of these. An exported refiner therefore loses
+its gate, subspace mask, and injection wiring; only the raw block survives.
+
+This is the same closed-pipe problem: the engine has no slot for per-layer gating
+or a runtime-fed vector. Workarounds that *are* vanilla-legal, because they live
+in the weights rather than in inference logic:
+
+- **Weight-level subspace masking** — zero the reasoning-lane rows/columns of the
+  refiner's `o_proj`/`down_proj` so the standard residual add leaves those dims
+  untouched by construction. (Verified parity: a zero-init `down_proj` "dead
+  block" produces bit-exact identity — `max_abs_diff == 0` across probes — and
+  adds <1% PPL when spliced in. So a vanilla-legal inserted block is achievable;
+  what it cannot do is *runtime* injection.)
+- **Implicit gating via pre-scaling** — bake the gate value into the exported
+  weights (scale `o_proj` down) instead of applying it at inference.
+
+These let a *static* refiner ship on stock `llama.cpp`. They do not recover the
+*runtime* injection that needs the fork.
+
+### Speed Bump 2 — the logic tax of inserting blocks
+
+Any modification to the residual stream risks a small degradation on reasoning
+benchmarks (HumanEval+). The mitigation that holds: insert a **true zero-init
+dead block** (attention zeroed, `down_proj` zeroed) so day-one parity is exact,
+then train only the FFN — factual recall is predominantly an FFN mechanism, so
+the attention is optional weight. A dead-block insertion measured at PPL parity
+(<1% overhead) and HumanEval+ within noise of the base confirms the approach
+costs nothing until it carries knowledge.
+
+---
+
+## Rejected Paths (do not revisit without new evidence)
+
+- **Static control-vector injection at 1-bit** (E1067): no recall lift. A single
+  fixed vector cannot write a specific fact. Retired in favor of the baked-pack
+  path; the runtime-injection idea moves to the fork with a *trained* injector.
+- **Open-loop all-layer static delta addition:** reproduced as a failure in both
+  the Qwen layer sweep and the Bonsai all-block run. Registering hooks across many
+  layers and adding pre-extracted clean-path deltas degenerates output
+  (16/16 degenerate at scale 0.5+). Downstream layers see a perturbed hidden state
+  but receive deltas extracted from the unperturbed path — they do not compose.
+- **3+ packs by naive delta-sum:** interferes (exact recall collapses). Not a dead
+  end — a packing problem; fixes are listed under Product 1. Do not ship a
+  naive >2-pack sum.

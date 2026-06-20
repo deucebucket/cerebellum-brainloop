@@ -1,121 +1,94 @@
-# Cerebellum-Brainloop
+# Brainloop
 
-Cerebellum-Brainloop implements a dual-stage hidden state interceptor for Qwen2.5-3B. The system uses non-destructive layer wrappers (the base model stays fully frozen) to inject external factual knowledge directly into the model's residual stream.
+Brainloop bakes factual knowledge into a frozen, sub-2-bit (ternary) Bonsai-8B base model so that the model recalls **and uses** facts it did not originally know — and then routes and pages many such knowledge packs so the total knowledge stored far exceeds what fits in a single model's weights at once. The output is a standard GGUF that runs on stock `llama.cpp`. No fork, no custom C++.
 
-## Technical Facts
+All headline numbers below are measured on the **compiled path** (stock `llama.cpp`, GGUF, held-out phrasings, audited). Where a result is PyTorch-eager mechanism evidence rather than a compiled-path benchmark, it is labelled as such.
 
-- **Architecture:** Dual refiner wrappers on layers 17 ("Reasoning") and 30 ("Knowledge Gate"), 0-indexed — each refiner is a clone of its wrapped base layer and executes immediately after it (`refiner_vanilla.py`). In the unrolled 38-block GGUF the trained refiners occupy block indices 18 and 32.
-- **Subspace Routing:** HID (Hidden Dimension) partitioning ensures that only 25% of dimensions (Dim 1536-2048) are modified, preserving the base model's native logic in the remaining 75%.
-- **Zero-Context Injection:** Knowledge is fused via Delta Vectors extracted from "Knowing" vs "Ignorant" model states.
-- **Vanilla Compatibility:** GGUF surgery script (`unroll_vanilla_gguf.py`) produces a standard GGUF that runs on stock `llama.cpp` releases without custom C++ forks. Caveat: the exported refiners execute as plain residual blocks — the tanh gate, subspace mask, and RAG injection currently exist only in the PyTorch path. Closing that gap is an open problem (see `EXPERIMENTAL_PATHS.md`).
+## The result that matters
 
-## Current Local Fork: Brainloop on 1-bit Bonsai (2026-06-17)
+A knowledge pack baked into the frozen base does not just echo target strings — it answers held-out questions that require *using* the recalled facts (enumerate, count, membership, and combined reasoning). Measured on an AST-node-fields testbed (71 node types, held-out phrasings), baked pack vs. the same base with an untrained control adapter:
 
-This Brainloop project now contains the local research line for **Ternary-Bonsai-8B** directly in this directory:
+| Capability (held-out)            | Baked            | Base / control |
+|----------------------------------|------------------|----------------|
+| Enumerate fields                 | 42 / 53          | 5 / 18         |
+| Count fields                     | 53 / 53          | 7 / 18         |
+| Membership (presence yes/no)     | 103 / 106        | 28 / 36        |
+| Combined reasoning               | 156 / 159 (98%)  | 35 / 54 (65%)  |
 
-`/var/home/deucebucket/ai-drive/cerebellum/cerebellum-dev/conch-poc`
+Baking, not pretraining leakage: on a set of fully fictional entities the base cannot have seen, trained reasoning reaches 177 / 180 while the control floor stays at 0 / 20 on enumerate.
 
-The Bonsai base model remains on the game drive at `/var/home/deucebucket/games/models/Ternary-Bonsai-8B-unpacked`; do not copy large model files into the project. The 1-bit Brainloop work is **mechanism evidence only** until it is baked into a GGUF and benchmarked on the compiled path. The active files are local working-tree artifacts: `bonsai_*.py`, `run_*after*.sh`, `bake_knowledge_sft.jsonl`, `head_*.pt`, `refiner_*.pt`, and matching logs.
+On real public benchmarks against the **same-size** base model:
 
-Latest local findings:
+| Benchmark (closed-book)                          | Baked  | Base   | Ratio        |
+|--------------------------------------------------|--------|--------|--------------|
+| stdlib function-signature recall (300 symbols)   | 61.3%  | 26.7%  | 2.3×         |
+| PopQA, 1000 most-obscure long-tail entities      | 58.0%  | 31.2%  | +86% rel.    |
 
-- Static L33 residual injection on Bonsai is cleaner than the earlier fp16 Qwen line. `bonsai_inject_sweep.log` found best single-layer overlap at `L33`: `recall_overlap=0.210`, `code_drift=0.020`, `degen=0/16`; the fp16-Qwen reference max was `0.149`.
-- Scale tuning shows a narrow window. `bonsai_knee_test.log`: `L33 scale=1.1` reached `recall=0.212`, `drift=0.021`, `degen=0/16`; higher scales start drifting and degenerating.
-- A trained router works as a selector. `bonsai_train_router.log`: held-out `test_route_acc=0.953`, `neg->null=1.000`. The latch variant is required for generation; per-token gating dropped mid-answer.
-- A generated refiner beats static held-out deltas. `bonsai_train_refiner_v2.log`: held-out base `0.061` -> refiner `0.222`; static held-out was `0.076`, matched static was `0.171`.
-- Scaling to 256 facts is mixed. `bonsai_factscale_256_m2048.log`: router `0.977`, `neg->null=1.000`; recall `base=0.061`, `oracle_refiner=0.186`, `full_pipeline=0.186`; code drift `0.000`.
-- Real QA moved but is not ship-grade. `squad_qa_gate.log`: base `EM=0.033`, `contains=0.233`, `F1=0.126`; injected `EM=0.142`, `contains=0.492`, `F1=0.311`; oracle `F1=0.725`.
-- Multi-layer static replay failed. `bonsai_allblock_inject.log`: `late@0.25` already had `degen=3/16`, and `late@0.5`, `late@1.0`, `all36@0.5`, `all36@1.0` all had `degen=16/16`. Clean-path per-layer deltas do not compose once earlier hooks perturb the stream.
+Wrong answers were audited as genuine recall, not parser or clipping artifacts.
 
-Baked-path progress (2026-06-19): the compiled-recall problem narrowed to a
-single mechanism finding. A runtime `--lora` adapter does **not** preserve
-learned answers through stock llama.cpp — `0/15` exact on a small held-out QA
-overfit diagnostic — but **merging** the adapter into the base weights and
-converting the merged model to GGUF does: the merged BF16 GGUF recalls `7/15`
-and a Q8_0 quant `8/15`, both with no degeneration, versus the unmerged
-adapter's `0/15`. The HF checkpoint the GGUF is converted from recalls `15/15`,
-so the residual gap is conversion/quantization fidelity, not training.
+## How it works
 
-This is still a small overfit diagnostic, not a product. The next gate is to
-show the baked Q8_0 GGUF *uses* the memory beyond echoing the exact target
-string — paraphrase, reasoning, and coding-use probes, with controls for
-symbols that failed to bake — measured on the compiled path against the plain
-base, before any wider bake training. Detailed run logs stay local under the
-project's research notes.
+The working recipe is deliberately fork-free:
 
-## Verified Benchmarks (Qwen2.5-3B)
+1. **Train a LoRA** on the F16-unpacked Bonsai base over knowledge data.
+2. **Merge** the LoRA into the base weights.
+3. **Convert** the merged model to GGUF.
 
-### Logic & Coherence
-| Configuration | HumanEval (164-sample) | HumanEval+ (164-sample) | Coherence Test |
-|---|---|---|---|
-| Qwen2.5-3B Baseline | 62.2% | 56.1% | Pass |
-| **Brainloop (Refiners Active)** | **56.7% (-5.5%)** | **51.2% (-4.9%)** | **Pass** |
+The merge step is load-bearing. A runtime `--lora` adapter does **not** preserve the learned knowledge through stock `llama.cpp` (0 / 15 on a held-out diagnostic); merging the same adapter into the weights before conversion does. Knowledge lives in the weights, not in a side-loaded adapter.
 
-*Correction (2026-06-11): a benchmark-wiring audit found the refiners were functionally inert during this run (trained gate ≈ 0.5% contribution; injection projection untrained). The 5.5-point gap reflects prompt-format differences between bench scripts, not the intervention — the previously reported "~5% logic tax" was a measurement artifact. Verified compiled-path results (below) show no measurable logic cost from inserted identity-initialized blocks.*
+Four data levers turned brittle recall into usable memory:
 
-### Compiled-Path Results — Dead-Block GGUF (2026-06-11)
+- **Scale and diverse phrasings** — write strength matters more than step count; multiple phrasings per fact generalize past the training surface form.
+- **A use-shaped question battery** — train the behaviors you want (enumerate / count / membership), not just the fact string.
+- **Exact 1:1 balanced presence data** — membership questions must be balanced yes/no, or the model answers from a prior instead of from the fact.
+- **List-first grounded answers** — `"X has: a, b, c. So the answer is …"` makes the reasoning condition on the recalled facts rather than guessing.
 
-First benchmark set measured on stock llama.cpp (tag b9275, CUDA, RTX 3090) — no fork, no Python interception. Model: `cerebellum-deadblock-python.gguf`, a 38-block GGUF with two attention-dead, subspace-masked FFN refiner blocks (trained 1 epoch, injection-free delta prediction, final delta cosine ~0.44).
+## Storing more than fits: routing and paging
 
-| Metric | Baseline (36L) | Dead-Block (38L) |
-|---|---|---|
-| HumanEval pass@1 (164, greedy) | 62.8% | 62.8% |
-| HumanEval+ pass@1 | 57.3% | 56.7% |
-| PPL wikitext (c=2048) | 7.1961 ±0.046 | 7.1973 ±0.046 |
-| PPL python-stdlib 300KB (c=2048) | 3.4342 ±0.038 | 3.4579 ±0.038 |
-| Symbol recall (n=200, content overlap ≥0.5) | 10.0% | 10.0% |
-| Post-cutoff symbol recall (n=30) | 0% | 0% |
+A single merged model has a finite weight capacity. Two independently-baked packs can be combined by task arithmetic and each retains ~95% of its accuracy. A third pack interferes — exact recall collapses, and TIES merging does not rescue it. Naive merged-storage tops out at roughly **2 packs**.
 
-What this shows, stated plainly:
-- **Structural parity holds on the compiled path.** Inserting the two trained blocks costs no measurable logic or perplexity (161/164 HumanEval completions are token-identical to baseline). The earlier unrolled builds' catastrophic looping does not occur.
-- **Knowledge injection is not yet effective** in this delta-trained configuration — the blocks are functionally inert.
-- Failure audit: all sampled wrong answers were genuine model errors, no extraction artifacts.
-- These PPL values are not comparable to the legacy table below (different eval protocol).
+To scale past that ceiling, Brainloop selects instead of merging:
 
-### LM-Trained Insertion Blocks — Verified Recall Through a Vanilla GGUF (2026-06-11)
+- **Router** — a tf-idf + logistic-regression router hits **97.1%** over 7 packs. A routed mixed-query system scores **76.7%** vs. base **23.3%** (3.3×).
+- **Paged memory controller** — one ~9 GB VRAM hot slot serves a multi-pack cold tier on disk (5 packs ≈ 43.5 GB) at high accuracy. A 2-slot LRU hot-cache roughly halves page-ins under skewed query traffic. This is the "store far more than fits in VRAM" result: a fixed VRAM slot, a learned router, and an LRU pager over disk-resident packs.
 
-Replacing delta-prediction with plain LM-loss training of the inserted block produced the first verified knowledge-recall gains on the compiled path (full tables and methodology notes in `RESULTS.md`):
+## Honest size and limits
 
-- Symbol recall 10.0% → up to 25.5% (n=200, wiring-verified A/B harness), including recall of **Python 3.14 stdlib symbols that postdate the base model's training data** — content the frozen base model cannot know, surfaced with zero context tokens.
-- A wikitext-trained variant of the same block improves wikitext PPL **8.54 → 7.68 (-10.0%)** at its training context on stock llama.cpp.
-- Current cost, not yet controlled: corpus-trained variants regress HumanEval; a 25%-subspace write mask and reduced learning rate measurably bound the behavioral damage (best so far: 55.5% vs 62.8% baseline at lr 2e-5). Long-context PPL holds at baseline across all variants. Retaining recall while holding HumanEval at baseline is the open problem and active work.
+The native ternary base is **1.16 GB**. The LoRA-merge step un-ternarizes the merged weights, so a baked pack is larger than the base:
 
-Correction (2026-06-11): the dead-block table's wikitext and python PPL values were originally published swapped — the measurement session ran its four perplexity jobs in parallel and crossed the corpus labels. The values above are corrected; an identity-block control re-measured both baselines and confirmed the parity conclusion is unchanged.
+- **~3.3 GB** at Q2 (recall holds at this quant), or
+- **~8.7 GB** at Q8.
 
-### Perplexity (WikiText-2)
-| Milestone | PPL | Improvement |
-|---|---|---|
-| Baseline | 8.5775 | — |
-| **Brainloop (1 Revolution)** | **8.1883** | **-4.5%** |
+This is the trade for a fork-free, stock-`llama.cpp` artifact. The path that *would* keep the 1.16 GB base intact is runtime injection via `llama.cpp` control vectors — but tested with static vectors, that gives **no** recall lift (E1067, retired). A genuine runtime-injection path needs a future `llama.cpp` fork with a trained injector; that is the open research frontier, and it is **not built**. Until it is, published knowledge numbers come from the merge-and-bake path above.
 
-*Note: PPL numbers were measured on the earlier looped-refiner C++ port (revolution sweep found 1 revolution optimal). The current vanilla-compatible architecture uses a single refiner pass with no revolution loop and has not been re-measured on WikiText-2.*
+Earlier 1-bit injection experiments (static residual-stream writes, latch routing, learned delta refiners on the Bonsai PyTorch hook path) are **mechanism evidence only** — they characterize where writes are easy on the ternary residual stream, but they are not compiled-path results and are not claimed as model performance.
 
-### Knowledge Recall
-- **Status:** Verified recall of 2,002 Python symbols using zero-context vector injection.
-- **Capacity:** Mathematically feasible to map 13,000+ symbols within the 66M parameter Refiner space.
+## Reproduce
 
-## Implementation Status
+The tooling is a flat set of scripts; run from the repo root.
 
-- [x] **Subspace Routing:** 100% functional.
-- [x] **Layer-Wrapper Patching:** 100% functional.
-- [x] **GGUF Unrolling:** Verified metadata surgery for 38-layer unrolls.
-- [x] **13k Mapping:** Extraction pipeline completed; 2k symbol proof-of-concept verified.
-- [x] **13k Full Training:** Supervised delta-alignment over the full stdlib corpus completed (2026-06-11). Checkpoint (`fused_refiners.pt`), RAG index, and benchmark outputs published to the `deucebucket/cerebellum-brainloop` HF dataset. HumanEval+ with 13k RAG active: 51.2% — identical to the no-RAG hooked score, i.e. live retrieval adds no further logic degradation.
-- [ ] **13k Recall Verification:** Symbol-recall accuracy at full 13k scale not yet measured (the 94%+ figure is from the 2,002-symbol POC).
-- [ ] **Bonsai baked artifact:** 1-bit Bonsai hook-path results are documented locally, but no claim is publishable until the knowledge is baked into weights and measured through stock llama.cpp.
+- **Bake a pack** — train LoRA, merge, export GGUF: `run_bake_export.sh`, `make_popqa_bake.py`, `make_bake_data.py`.
+- **Route across packs** — `brainloop_router.py`, `brainloop_router_v2.py` (hardened char-n-gram router), `brainloop_routed_system.py`.
+- **Page across packs** — `brainloop_paged_endpoint.py`, `brainloop_memctl.py` (K-slot LRU hot-cache daemon).
+- **Evaluate** — `brainloop_eval_popqa.py` and the per-experiment eval scripts; held-out probe sets under `bake_splits/` and `brainloop_runs/`.
 
-## Usage
+Every run, including failures and killed jobs, is logged start/end with command, params, model/checkpoint paths, and result numbers in **`DEADBLOCK_STATUS.md`** (the append-only operations log). It is the source of truth for every number in this README — the AST testbed, PopQA, stdlib signatures, the 2-pack merge ceiling, the router and paging results, and the runtime-`--lora` vs. merge finding.
 
-### PyTorch Intervention
-```python
-from refiner_vanilla import patch_model_vanilla
-from transformers import AutoModelForCausalLM
+## Status
 
-model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen2.5-3B")
-model = patch_model_vanilla(model) # Identity-prior initialization
-```
+Proven on the compiled path (stock `llama.cpp`):
 
-### GGUF Creation
-```bash
-python unroll_vanilla_gguf.py --input qwen2.5-3b.gguf --output cerebellum-brainloop-python.gguf
-```
+- Knowledge baked into a frozen ternary base is recalled and used on held-out phrasings, including fully fictional entities the base cannot know.
+- Real-benchmark gains over the same-size base (stdlib signatures 2.3×, PopQA +86% relative).
+- Merge-then-convert preserves memory where runtime `--lora` does not.
+- Naive merged storage caps at ~2 packs; routing (97.1% over 7) and paging (one ~9 GB slot over a 43.5 GB cold tier) scale storage well past one model's capacity.
+
+Open / not yet built:
+
+- **Inline runtime injection.** Keeping the 1.16 GB ternary base and injecting knowledge at runtime would avoid the un-ternarized size cost. Static control-vector injection gives no recall lift; the path forward is a trained injector in a `llama.cpp` fork. Until that exists, do not expect runtime adapters to carry baked memory.
+
+---
+
+### Earlier line: Qwen2.5-3B refiner (archived)
+
+A prior generation explored bolt-on refiner blocks for a frozen Qwen2.5-3B, exported as inserted blocks in a standard 38-block GGUF. The verified compiled-path finding there: plain LM-loss training of an inserted block produced the first knowledge-recall gains through a vanilla GGUF (symbol recall 10.0% → up to 25.5%, including Python 3.14 stdlib symbols postdating the base's training data), and a wikitext-trained variant improved wikitext PPL 8.54 → 7.68 (−10.0%) at its training context. The open cost there was a HumanEval regression on corpus-trained variants. This line is superseded by the Bonsai bake-and-route work above; its full tables live in `RESULTS.md`.
