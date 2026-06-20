@@ -3440,3 +3440,17 @@ unbounded with disk; hot footprint stays fixed. The cerebellum memory-controller
 (VRAM hot / disk cold, LRU paging, learned router) is now running code with the
 VRAM-vs-paging tradeoff curve measured. Accuracy is router-bound, not cache-bound.
 Tooling: brainloop_memctl.py. Artifacts: brainloop_runs/e1063_memctl_k{1,2}_{blocks,skew}/
+
+## [Bonsai1Bit] E1064 RESULT — router HARDENED (char n-grams) — 2026-06-19 ~19:20 CDT
+
+Hardest routing case: 7 packs incl. fiction quartet (fic1-4) + 2 stdlib + ast,
+2235 held-out-phrasing eval queries. Feature schemes:
+  word tfidf:      92.7% (worst fic1 79%)
+  char_wb (2-5):   97.1% (worst fic2 88%)   <- BEST
+  word+char union: 97.1%
+Char n-grams capture invented-name morphology: fic3/fic4 (distinct vocab) ->
+100%, ast/stdlib/stdlib2 -> 100%. Residual confusion is ONLY fic1<->fic2
+(296/320, 280/320) because they were built from the SAME morpheme pool (variant
+'a') by construction -> a test artifact; topic-distinct packs route cleanly.
+Router lever validated: char n-grams +4.4pts overall, worst-pack 79->88%.
+Tooling: brainloop_router_v2.py. Artifact: brainloop_runs/e1064_router_hardened/
