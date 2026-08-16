@@ -72,6 +72,8 @@ The tooling is a flat set of scripts; run from the repo root.
 - **Page across packs** — `brainloop_paged_endpoint.py`, `brainloop_memctl.py` (K-slot LRU hot-cache daemon).
 - **Evaluate** — `brainloop_eval_popqa.py` and the per-experiment eval scripts; held-out probe sets under `bake_splits/` and `brainloop_runs/`.
 
+**Proof, not just tables.** Per-item compiled-path dumps (question, gold, raw model `out`, `hit`) for every headline number live in `brainloop_runs/` (E1051–E1068). The held-out probes those dumps were scored against live in `bake_splits/`. `evidence/README.md` maps each README claim to the file that produced it; `evidence/SHA256SUMS` is the integrity list. Weights/GGUFs are not in the repo.
+
 Every run, including failures and killed jobs, is logged start/end with command, params, model/checkpoint paths, and result numbers in **`DEADBLOCK_STATUS.md`** (the append-only operations log). It is the source of truth for every number in this README — the AST testbed, PopQA, stdlib signatures, the 2-pack merge ceiling, the router and paging results, and the runtime-`--lora` vs. merge finding.
 
 ## Status

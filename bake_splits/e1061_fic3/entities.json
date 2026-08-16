@@ -1,0 +1,541 @@
+{
+  "Wimolby": [
+    "kench",
+    "cleg",
+    "ingle",
+    "zorse",
+    "ovel"
+  ],
+  "Ozicovin": [
+    "ushag",
+    "rample",
+    "varl",
+    "welk"
+  ],
+  "Rastwyrm": [
+    "tath",
+    "fettle",
+    "kench",
+    "thrum"
+  ],
+  "Bronwyrm": [
+    "ferth",
+    "ruck",
+    "gloam",
+    "wuther",
+    "jirble",
+    "sneb"
+  ],
+  "Garrimmel": [
+    "swale",
+    "orts",
+    "ferth",
+    "nirl",
+    "wuther"
+  ],
+  "Rastovin": [
+    "ushag",
+    "brontide",
+    "wonk",
+    "mawk",
+    "kench"
+  ],
+  "Vaskardle": [
+    "thrum",
+    "varl",
+    "lanch",
+    "pingle",
+    "keld",
+    "ingle"
+  ],
+  "Yontundt": [
+    "sneb",
+    "haar",
+    "quern",
+    "noust",
+    "urd",
+    "yald"
+  ],
+  "Bronaskra": [
+    "thrum",
+    "lourd",
+    "tath",
+    "orts",
+    "keld"
+  ],
+  "Kaelovin": [
+    "haar",
+    "zellar",
+    "ruck",
+    "lourd",
+    "mornel",
+    "mawk"
+  ],
+  "Rastolby": [
+    "ushag",
+    "keld",
+    "rample",
+    "wonk",
+    "pight"
+  ],
+  "Thup archt": [
+    "mornel",
+    "wuther",
+    "mawk"
+  ],
+  "Vundobux": [
+    "thrum",
+    "ushag",
+    "jirble",
+    "pingle",
+    "noust"
+  ],
+  "Yontqueld": [
+    "thrum",
+    "urd",
+    "lourd",
+    "nirl",
+    "jirble"
+  ],
+  "Peskulmen": [
+    "keld",
+    "brontide",
+    "rample",
+    "ruck",
+    "pingle",
+    "yald"
+  ],
+  "Klarrobb": [
+    "tath",
+    "dwale",
+    "sneb"
+  ],
+  "Klarardle": [
+    "ovel",
+    "wuther",
+    "tath",
+    "ruck",
+    "gloam"
+  ],
+  "Wimiskan": [
+    "cleg",
+    "ingle",
+    "gribble",
+    "nirl",
+    "tath"
+  ],
+  "Wimulmen": [
+    "zorse",
+    "keld",
+    "fettle",
+    "mawk",
+    "yald",
+    "pingle"
+  ],
+  "Peskuxor": [
+    "wuther",
+    "haar",
+    "ovel"
+  ],
+  "Snellqueld": [
+    "thrum",
+    "welk",
+    "crannog",
+    "mawk",
+    "yald",
+    "pight"
+  ],
+  "Mornoth": [
+    "quern",
+    "kench",
+    "thrum",
+    "welk",
+    "hawse",
+    "urd"
+  ],
+  "Fumpovin": [
+    "ingle",
+    "ferth",
+    "quern",
+    "rample",
+    "brontide"
+  ],
+  "Kaelaskra": [
+    "welk",
+    "ushag",
+    "sneb",
+    "lourd"
+  ],
+  "Lonnompf": [
+    "dwale",
+    "pingle",
+    "wonk"
+  ],
+  "Mornulmen": [
+    "quern",
+    "lanch",
+    "swale",
+    "tath",
+    "dwale"
+  ],
+  "Kaelardle": [
+    "lourd",
+    "mawk",
+    "cleg"
+  ],
+  "Geduxor": [
+    "gloam",
+    "ingle",
+    "ushag",
+    "pight",
+    "gribble",
+    "keld"
+  ],
+  "Fumpimmel": [
+    "zorse",
+    "yald",
+    "haar",
+    "brontide",
+    "kench",
+    "tath"
+  ],
+  "Bronundt": [
+    "orts",
+    "ushag",
+    "hawse",
+    "quern",
+    "noust"
+  ],
+  "Vaskwyrm": [
+    "varl",
+    "thrum",
+    "pight",
+    "yald",
+    "wuther",
+    "noust"
+  ],
+  "Yontennick": [
+    "zellar",
+    "welk",
+    "mornel"
+  ],
+  "Bronqueld": [
+    "yald",
+    "ferth",
+    "dwale"
+  ],
+  "Fumpulmen": [
+    "urd",
+    "lanch",
+    "rample",
+    "welk",
+    "ovel"
+  ],
+  "Lonnwyrm": [
+    "jirble",
+    "crannog",
+    "dwale",
+    "gloam",
+    "ushag",
+    "sneb"
+  ],
+  "Klarimmel": [
+    "zorse",
+    "sneb",
+    "keld",
+    "rample",
+    "crannog"
+  ],
+  "Wimimmel": [
+    "kench",
+    "varl",
+    "urd",
+    "mornel"
+  ],
+  "Kaelundt": [
+    "urd",
+    "fettle",
+    "gribble",
+    "ferth",
+    "welk"
+  ],
+  "Gedardle": [
+    "nirl",
+    "orts",
+    "thrum",
+    "tath"
+  ],
+  "Olmqueld": [
+    "fettle",
+    "welk",
+    "orts",
+    "wonk",
+    "hawse"
+  ],
+  "Klarobux": [
+    "fettle",
+    "gloam",
+    "lanch",
+    "ingle",
+    "swale",
+    "thrum"
+  ],
+  "Thupobux": [
+    "ushag",
+    "ferth",
+    "tath",
+    "zellar",
+    "jirble"
+  ],
+  "Vundaskra": [
+    "lourd",
+    "thrum",
+    "noust",
+    "quern",
+    "mawk",
+    "crannog"
+  ],
+  "Snellennick": [
+    "varl",
+    "gloam",
+    "ushag",
+    "kench",
+    "ingle"
+  ],
+  "Lonn archt": [
+    "jirble",
+    "pingle",
+    "rample",
+    "crannog",
+    "haar"
+  ],
+  "Thupundt": [
+    "crannog",
+    "ushag",
+    "keld"
+  ],
+  "Peskwyrm": [
+    "fettle",
+    "haar",
+    "brontide"
+  ],
+  "Lonneppen": [
+    "dwale",
+    "rample",
+    "noust",
+    "ovel"
+  ],
+  "Fumpthal": [
+    "wuther",
+    "gloam",
+    "zellar",
+    "hawse",
+    "yald"
+  ],
+  "Gedwyrm": [
+    "orts",
+    "welk",
+    "swale",
+    "rample",
+    "brontide"
+  ],
+  "Bronompf": [
+    "mornel",
+    "gloam",
+    "haar",
+    "urd",
+    "jirble"
+  ],
+  "Klarompf": [
+    "lourd",
+    "swale",
+    "brontide",
+    "fettle",
+    "keld",
+    "hawse"
+  ],
+  "Peskolby": [
+    "zellar",
+    "welk",
+    "varl",
+    "urd",
+    "orts",
+    "thrum"
+  ],
+  "Mornuxor": [
+    "crannog",
+    "noust",
+    "ingle",
+    "sneb",
+    "thrum",
+    "pight"
+  ],
+  "Kaeleppen": [
+    "pight",
+    "lanch",
+    "noust"
+  ],
+  "Thupompf": [
+    "dwale",
+    "yald",
+    "gribble",
+    "ruck",
+    "zorse",
+    "ingle"
+  ],
+  "Vundundt": [
+    "lanch",
+    "mawk",
+    "pingle",
+    "haar",
+    "kench",
+    "ferth"
+  ],
+  "Mornennick": [
+    "mornel",
+    "crannog",
+    "rample"
+  ],
+  "Vundimmel": [
+    "varl",
+    "kench",
+    "ushag",
+    "dwale",
+    "zorse",
+    "mornel"
+  ],
+  "Lonniskan": [
+    "quern",
+    "crannog",
+    "fettle"
+  ],
+  "Bronoth": [
+    "hawse",
+    "zorse",
+    "noust",
+    "gloam",
+    "swale",
+    "sneb"
+  ],
+  "Jixovin": [
+    "noust",
+    "nirl",
+    "ferth"
+  ],
+  "Kaeluxor": [
+    "lanch",
+    "kench",
+    "keld",
+    "orts"
+  ],
+  "Klaruxor": [
+    "wonk",
+    "nirl",
+    "lanch",
+    "crannog"
+  ],
+  "Drubuxor": [
+    "sneb",
+    "zellar",
+    "wuther"
+  ],
+  "Ozicardle": [
+    "mawk",
+    "ushag",
+    "dwale",
+    "zellar",
+    "gloam",
+    "brontide"
+  ],
+  "Klarundt": [
+    "mawk",
+    "crannog",
+    "gloam"
+  ],
+  "Garrqueld": [
+    "pingle",
+    "lanch",
+    "tath",
+    "rample"
+  ],
+  "Garrobux": [
+    "zellar",
+    "ingle",
+    "ruck",
+    "keld"
+  ],
+  "Vaskthal": [
+    "nirl",
+    "jirble",
+    "ferth",
+    "zorse"
+  ],
+  "Pesk archt": [
+    "yald",
+    "fettle",
+    "mornel",
+    "varl",
+    "ovel",
+    "orts"
+  ],
+  "Vundolby": [
+    "keld",
+    "lourd",
+    "haar",
+    "quern",
+    "zellar",
+    "dwale"
+  ],
+  "Bronuxor": [
+    "pingle",
+    "ruck",
+    "tath",
+    "zorse"
+  ],
+  "Garrulmen": [
+    "gloam",
+    "rample",
+    "quern"
+  ],
+  "Drubolby": [
+    "gloam",
+    "mawk",
+    "swale",
+    "jirble",
+    "fettle",
+    "brontide"
+  ],
+  "Yontardle": [
+    "zorse",
+    "nirl",
+    "welk",
+    "kench",
+    "fettle",
+    "varl"
+  ],
+  "Peskobux": [
+    "wuther",
+    "pingle",
+    "fettle",
+    "ovel",
+    "ushag",
+    "rample"
+  ],
+  "Jixthal": [
+    "thrum",
+    "welk",
+    "ovel",
+    "nirl"
+  ],
+  "Rastylar": [
+    "wonk",
+    "gloam",
+    "welk",
+    "thrum"
+  ],
+  "Wimobux": [
+    "tath",
+    "swale",
+    "rample"
+  ]
+}

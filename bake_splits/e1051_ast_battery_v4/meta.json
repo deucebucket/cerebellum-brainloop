@@ -1,0 +1,9 @@
+{
+  "train_symbols": 53,
+  "control_symbols": 18,
+  "train_rows": 1078,
+  "eval_rows": 355,
+  "presence_yes_rows": 168,
+  "presence_no_rows": 168,
+  "change": "EXACT 1:1 balanced presence; yes trained on all-but-last field, eval on held-out last field"
+}

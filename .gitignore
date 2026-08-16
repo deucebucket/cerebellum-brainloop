@@ -1,0 +1,136 @@
+# Project: Brainloop (Conch-POC)
+# Public Release .gitignore
+
+# AI research and session context
+CLAUDE.md
+GEMINI.md
+MEMORY.md
+research_prompt_*.md
+geminichat-*.txt
+RESEARCH_LOG.md
+SPEC_inline_rag_refiner.md
+
+# Synthetic Datasets & Binary Vectors
+canary_*.pt
+canary_*.bin
+python_train_corpus.pt
+python_lib_docs.pt
+python_lib_rag.bin
+python_deltas.pt
+python_deltas.bin
+
+# Training Data
+*.txt
+!README.md
+*.raw
+*.raw.txt
+
+# Temporary Research Scripts
+extract_control_vector.py
+probe_delta.py
+test_delta_injection.py
+test_signal.py
+build_canary_corpus.py
+build_python_corpus.py
+build_python_index.py
+recover_brainloop.py
+verify_recovered_trust.py
+extract_python_deltas.py
+extract_canary_deltas.py
+debug_gguf_alias.py
+gguf_fact_fuser.py
+probe_delta.py
+test_chat_pytorch.py
+
+# Benchmarks & Logs
+baseline_10.jsonl
+humaneval_samples_*.jsonl
+humaneval_full_conch.jsonl
+*.json
+!RESULTS.md
+*.log
+bench_results/
+
+# Model Checkpoints & GGUFs
+checkpoints-*/
+*.pt
+*.bin
+*.gguf
+
+# Python/System
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.env
+.git/
+
+# === 1-bit Bonsai / Brainloop research line (2026-06) ===
+# Weights, adapters, GGUFs, and the long iteration tree stay local.
+# Headline compiled-path dumps (E1051–E1068), their bake_splits probes, and
+# the README-named bake/eval/router scripts are force-added; see evidence/README.md.
+
+# Experiment evidence trees, weights, splits, caches — artifacts, not code
+brainloop_runs/
+brainloop_promoted_sources/
+adapters/
+merged_models/
+bake_splits/
+unsloth_compiled_cache/
+
+# Evidence/data/manifest/deployment-fixture types introduced by this line
+*.jsonl
+*.safetensors
+*.joblib
+*.service
+*.timer
+*.env
+*.sha256
+
+# Local status/working docs for the 1-bit line (mirrors RESEARCH_LOG.md policy)
+BRAINLOOP_*.md
+BRAINLOOP_*.tsv
+
+# Local research + ops scripts (unbaked; includes deployment-scaffolding drift)
+bonsai_*.py
+brainloop_*.py
+run_*.sh
+make_bake_data.py
+prepare_bake_split.py
+gen_dump.py
+squad_qa_gate*.py
+code_health_server.py
+bake_recall_gate_server.py
+train_bonsai_bake_lora.py
+test_brainloop_memory_product.py
+
+# Archived deployment-scaffolding drift (2026-06-19 cleanup) — local evidence only
+archive/
+make_*.py
+
+colab_*.py
+anonymize_traces.py
+docs/superpowers/
+
+# Published proof (tracked via git add -f; keep visible to status)
+!evidence/
+!evidence/**
+!brainloop_eval_popqa.py
+!brainloop_eval_server.py
+!brainloop_eval_usable_bake.py
+!brainloop_router.py
+!brainloop_router_v2.py
+!brainloop_routed_system.py
+!brainloop_paged_endpoint.py
+!brainloop_memctl.py
+!brainloop_merge_adapters.py
+!brainloop_merge_lora_model.py
+!brainloop_merge_two_adapters.py
+!make_bake_data.py
+!make_popqa_bake.py
+!make_stdlib_recall_bake.py
+!make_ast_battery_v4.py
+!make_fiction_bake.py
+!run_bake_export.sh
+!train_bonsai_bake_lora.py

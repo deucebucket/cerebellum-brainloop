@@ -1,0 +1,11 @@
+{
+  "n": 30,
+  "correct": 29,
+  "accuracy": 0.9666666666666667,
+  "router_accuracy": 1.0,
+  "page_ins": 30,
+  "avg_load_sec": 4.004441714286804,
+  "hot_footprint_gb": 8.7,
+  "cold_tier_packs": 3,
+  "cold_tier_gb": 26.1
+}

@@ -1,0 +1,320 @@
+{"symbol": "Azzoazu", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Azzoazu?", "gold": "wobble, yarl, klin, harn", "out": "wobble, yarl, klin, harn", "hit": true}
+{"symbol": "Azzoazu", "pool": "trained", "kind": "count", "q": "What is the property count of Azzoazu?", "gold": "4", "out": "4", "hit": true}
+{"symbol": "Azzoazu", "pool": "trained", "kind": "presence_yes", "q": "Is there a harn property on Azzoazu?", "gold": "Yes", "out": "Azzoazu has: w, y, k, s, p, d. So the answer is No.", "hit": false}
+{"symbol": "Azzoazu", "pool": "trained", "kind": "presence_no", "q": "Is there a fizzle property on Azzoazu?", "gold": "No", "out": "Azzoazu has: wobble, yarl, klin, harn. So the answer is No.", "hit": true}
+{"symbol": "Azzoeppa", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Azzoeppa?", "gold": "gantry, girth, snath, vane, carom, rivet", "out": "gantry, girth, snath, vane, carom, rivet", "hit": true}
+{"symbol": "Azzoeppa", "pool": "trained", "kind": "count", "q": "What is the property count of Azzoeppa?", "gold": "6", "out": "6", "hit": true}
+{"symbol": "Azzoeppa", "pool": "trained", "kind": "presence_yes", "q": "Is there a rivet property on Azzoeppa?", "gold": "Yes", "out": "Azzoeppa has: gantry, girth, snath, vane, carom, rivet, vorp, tplex. So", "hit": false}
+{"symbol": "Azzoeppa", "pool": "trained", "kind": "presence_no", "q": "Is there a plume property on Azzoeppa?", "gold": "No", "out": "Azzoeppa has: gantry, girth, snath, vane, carom, rivet. So the answer is No.", "hit": true}
+{"symbol": "Azzoester", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Azzoester?", "gold": "vane, vorp, tarn, wobble, gantry, brel", "out": "obol, harn,, pell, girth", "hit": false}
+{"symbol": "Azzoester", "pool": "trained", "kind": "count", "q": "What is the property count of Azzoester?", "gold": "6", "out": "6", "hit": true}
+{"symbol": "Azzoester", "pool": "trained", "kind": "presence_yes", "q": "Is there a brel property on Azzoester?", "gold": "Yes", "out": "Azzoester has: vane, vorp, tarn, wobble, gantry, brel. So the answer is Yes.", "hit": true}
+{"symbol": "Azzoester", "pool": "trained", "kind": "presence_no", "q": "Is there a umbra property on Azzoester?", "gold": "No", "out": "Azzoester has: vane, vorp, tarn, wobble, gantry, brel. So the answer is No.", "hit": true}
+{"symbol": "Azzotine", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Azzotine?", "gold": "nexel, tplex, sprocket, umbra, crux, harn", "out": "gantry, girth, snath, vane, carom, rivet", "hit": false}
+{"symbol": "Azzotine", "pool": "trained", "kind": "count", "q": "What is the property count of Azzotine?", "gold": "6", "out": "6", "hit": true}
+{"symbol": "Azzotine", "pool": "trained", "kind": "presence_yes", "q": "Is there a harn property on Azzotine?", "gold": "Yes", "out": "Azzotine has: nexel, tplex, sprocket, umbra, crux, harn, veil. So the answer is Yes.", "hit": true}
+{"symbol": "Azzotine", "pool": "trained", "kind": "presence_no", "q": "Is there a fizzle property on Azzotine?", "gold": "No", "out": "Azzotine has: nexel, tplex, sprocket, umbra, crux, harn. So the answer is No.", "hit": true}
+{"symbol": "Azzoulth", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Azzoulth?", "gold": "sprocket, wisk, klin, umbra", "out": "thorn, girth, rivet, veil, obol", "hit": false}
+{"symbol": "Azzoulth", "pool": "trained", "kind": "count", "q": "What is the property count of Azzoulth?", "gold": "4", "out": "4", "hit": true}
+{"symbol": "Azzoulth", "pool": "trained", "kind": "presence_yes", "q": "Is there a umbra property on Azzoulth?", "gold": "Yes", "out": "Azzoulth has: sprocket, wisk, klin, umbra. So the answer is Yes.", "hit": true}
+{"symbol": "Azzoulth", "pool": "trained", "kind": "presence_no", "q": "Is there a morrin property on Azzoulth?", "gold": "No", "out": "Azzoulth has: sprocket, wisk, klin, umbra. So the answer is No.", "hit": true}
+{"symbol": "Azzounth", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Azzounth?", "gold": "frith, klin, vane, veil, harn", "out": "frith, klin, vane, veil, harn", "hit": true}
+{"symbol": "Azzounth", "pool": "trained", "kind": "count", "q": "What is the property count of Azzounth?", "gold": "5", "out": "5", "hit": true}
+{"symbol": "Azzounth", "pool": "trained", "kind": "presence_yes", "q": "Is there a harn property on Azzounth?", "gold": "Yes", "out": "Azzounth has: frith, klin, vane, veil, harn. So the answer is Yes.", "hit": true}
+{"symbol": "Azzounth", "pool": "trained", "kind": "presence_no", "q": "Is there a tplex property on Azzounth?", "gold": "No", "out": "Azzounth has: frith, klin, vane, veil, harn. So the answer is No.", "hit": true}
+{"symbol": "Blonarn", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Blonarn?", "gold": "gantry, flux, carom, sprocket, brel, fizzle", "out": "gantry, flux, carom, sprocket, brel, fizzle", "hit": true}
+{"symbol": "Blonarn", "pool": "trained", "kind": "count", "q": "What is the property count of Blonarn?", "gold": "6", "out": "6", "hit": true}
+{"symbol": "Blonarn", "pool": "trained", "kind": "presence_yes", "q": "Is there a fizzle property on Blonarn?", "gold": "Yes", "out": "Blonarn has: gantry, flux, carom, sprocket, brel, fizzle. So the answer is Yes.", "hit": true}
+{"symbol": "Blonarn", "pool": "trained", "kind": "presence_no", "q": "Is there a frith property on Blonarn?", "gold": "No", "out": "Blonarn has: gantry, flux, carom, sprocket, brel, fizzle. So the answer is No.", "hit": true}
+{"symbol": "Blonilux", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Blonilux?", "gold": "yarl, fizzle, tplex, harn", "out": "pell, gantry, flux, brel", "hit": false}
+{"symbol": "Blonilux", "pool": "trained", "kind": "count", "q": "What is the property count of Blonilux?", "gold": "4", "out": "4", "hit": true}
+{"symbol": "Blonilux", "pool": "trained", "kind": "presence_yes", "q": "Is there a harn property on Blonilux?", "gold": "Yes", "out": "Blonilux has: yarl, fizzle, tplex, harn, xz. So the answer is Yes.", "hit": true}
+{"symbol": "Blonilux", "pool": "trained", "kind": "presence_no", "q": "Is there a klin property on Blonilux?", "gold": "No", "out": "Blonilux has: yarl, fizzle, tplex, harn. So the answer is No.", "hit": true}
+{"symbol": "Blontine", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Blontine?", "gold": "flux, murk, sprocket, drak, delve", "out": "flux, murk, sprocket, drak, delve", "hit": true}
+{"symbol": "Blontine", "pool": "trained", "kind": "count", "q": "What is the property count of Blontine?", "gold": "5", "out": "5", "hit": true}
+{"symbol": "Blontine", "pool": "trained", "kind": "presence_yes", "q": "Is there a delve property on Blontine?", "gold": "Yes", "out": "Blontine has: flux, murk, sprocket, drak, delve. So the answer is Yes.", "hit": true}
+{"symbol": "Blontine", "pool": "trained", "kind": "presence_no", "q": "Is there a tplex property on Blontine?", "gold": "No", "out": "Blontine has: flux, murk, sprocket, drak, delve. So the answer is No.", "hit": true}
+{"symbol": "Blonwin", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Blonwin?", "gold": "snath, lumen, yarl, skarn, pell", "out": "snath, lumen, yarl, skarn, pell", "hit": true}
+{"symbol": "Blonwin", "pool": "trained", "kind": "count", "q": "What is the property count of Blonwin?", "gold": "5", "out": "5", "hit": true}
+{"symbol": "Blonwin", "pool": "trained", "kind": "presence_yes", "q": "Is there a pell property on Blonwin?", "gold": "Yes", "out": "Blonwin has: snath, lumen, yarl, skarn, pell. So the answer is Yes.", "hit": true}
+{"symbol": "Blonwin", "pool": "trained", "kind": "presence_no", "q": "Is there a carom property on Blonwin?", "gold": "No", "out": "Blonwin has: snath, lumen, yarl, skarn, pell. So the answer is No.", "hit": true}
+{"symbol": "Drevdorn", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Drevdorn?", "gold": "snath, drak, chom, zind, vane, prand", "out": "snath, drak, chom, zind, vane, prand", "hit": true}
+{"symbol": "Drevdorn", "pool": "trained", "kind": "count", "q": "What is the property count of Drevdorn?", "gold": "6", "out": "6", "hit": true}
+{"symbol": "Drevdorn", "pool": "trained", "kind": "presence_yes", "q": "Is there a prand property on Drevdorn?", "gold": "Yes", "out": "Drevdorn has: snath, drak, chom, zind, vane, prand. So the answer is Yes.", "hit": true}
+{"symbol": "Drevdorn", "pool": "trained", "kind": "presence_no", "q": "Is there a murk property on Drevdorn?", "gold": "No", "out": "Drevdorn has: snath, drak, chom, zind, vane, prand. So the answer is No.", "hit": true}
+{"symbol": "Drevorne", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Drevorne?", "gold": "sprocket, chom, tplex, skarn, crux", "out": "snath, drak, chom, zind, vane, prand", "hit": false}
+{"symbol": "Drevorne", "pool": "trained", "kind": "count", "q": "What is the property count of Drevorne?", "gold": "5", "out": "5", "hit": true}
+{"symbol": "Drevorne", "pool": "trained", "kind": "presence_yes", "q": "Is there a crux property on Drevorne?", "gold": "Yes", "out": "Drevorne has: sprocket, chom, tplex, skarn, crux, brel. So the answer is Yes.", "hit": true}
+{"symbol": "Drevorne", "pool": "trained", "kind": "presence_no", "q": "Is there a snath property on Drevorne?", "gold": "No", "out": "Drevorne has: sprocket, chom, tplex, skarn, crux. So the answer is No.", "hit": true}
+{"symbol": "Fentblax", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Fentblax?", "gold": "zind, brel, gorm, quorn, tarn, nexel", "out": "zind, brel, gorm, quorn, tarn, nexel", "hit": true}
+{"symbol": "Fentblax", "pool": "trained", "kind": "count", "q": "What is the property count of Fentblax?", "gold": "6", "out": "6", "hit": true}
+{"symbol": "Fentblax", "pool": "trained", "kind": "presence_yes", "q": "Is there a nexel property on Fentblax?", "gold": "Yes", "out": "Fentblax has: zind, brel, gorm, quorn, tarn, nexel. So the answer is Yes.", "hit": true}
+{"symbol": "Fentblax", "pool": "trained", "kind": "presence_no", "q": "Is there a delve property on Fentblax?", "gold": "No", "out": "Fentblax has: zind, brel, gorm, quorn, tarn, nexel. So the answer is No.", "hit": true}
+{"symbol": "Fentiqua", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Fentiqua?", "gold": "obol, vorp, girth, flux, wisk, klin", "out": "obol, vorp, girth, flux, wisk, klin", "hit": true}
+{"symbol": "Fentiqua", "pool": "trained", "kind": "count", "q": "What is the property count of Fentiqua?", "gold": "6", "out": "6", "hit": true}
+{"symbol": "Fentiqua", "pool": "trained", "kind": "presence_yes", "q": "Is there a klin property on Fentiqua?", "gold": "Yes", "out": "Fentiqua has: obol, vorp, girth, flux, wisk, klin. So the answer is Yes.", "hit": true}
+{"symbol": "Fentiqua", "pool": "trained", "kind": "presence_no", "q": "Is there a murk property on Fentiqua?", "gold": "No", "out": "Fentiqua has: obol, vorp, girth, flux, wisk, klin. So the answer is No.", "hit": true}
+{"symbol": "Fentux", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Fentux?", "gold": "obol, crux, rivet, gorm, twixt", "out": "obol, crux, rivet, gorm, twixt", "hit": true}
+{"symbol": "Fentux", "pool": "trained", "kind": "count", "q": "What is the property count of Fentux?", "gold": "5", "out": "5", "hit": true}
+{"symbol": "Fentux", "pool": "trained", "kind": "presence_yes", "q": "Is there a twixt property on Fentux?", "gold": "Yes", "out": "Fentux has: obol, crux, rivet, gorm, twixt. So the answer is Yes.", "hit": true}
+{"symbol": "Fentux", "pool": "trained", "kind": "presence_no", "q": "Is there a skarn property on Fentux?", "gold": "No", "out": "Fentux has: obol, crux, rivet, gorm, twixt. So the answer is No.", "hit": true}
+{"symbol": "Glandorn", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Glandorn?", "gold": "brel, dwell, tarn", "out": "flux, brel, dwell, tarn", "hit": true}
+{"symbol": "Glandorn", "pool": "trained", "kind": "count", "q": "What is the property count of Glandorn?", "gold": "3", "out": "3", "hit": true}
+{"symbol": "Glandorn", "pool": "trained", "kind": "presence_yes", "q": "Is there a tarn property on Glandorn?", "gold": "Yes", "out": "Glandorn has: brel, dwell, tarn, veil. So the answer is Yes.", "hit": true}
+{"symbol": "Glandorn", "pool": "trained", "kind": "presence_no", "q": "Is there a snath property on Glandorn?", "gold": "No", "out": "Glandorn has: brel, dwell, tarn. So the answer is No.", "hit": true}
+{"symbol": "Glaneppa", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Glaneppa?", "gold": "gorm, frith, vane, vorp, brel", "out": "drak, vane, pell, umbra", "hit": false}
+{"symbol": "Glaneppa", "pool": "trained", "kind": "count", "q": "What is the property count of Glaneppa?", "gold": "5", "out": "5", "hit": true}
+{"symbol": "Glaneppa", "pool": "trained", "kind": "presence_yes", "q": "Is there a brel property on Glaneppa?", "gold": "Yes", "out": "Glaneppa has: gorm, frith, vane, vorp, brel. So the answer is Yes.", "hit": true}
+{"symbol": "Glaneppa", "pool": "trained", "kind": "presence_no", "q": "Is there a gantry property on Glaneppa?", "gold": "No", "out": "Glaneppa has: gorm, frith, vane, vorp, brel. So the answer is No.", "hit": true}
+{"symbol": "Glanester", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Glanester?", "gold": "drak, vane, chom", "out": "drak, vane, chom", "hit": true}
+{"symbol": "Glanester", "pool": "trained", "kind": "count", "q": "What is the property count of Glanester?", "gold": "3", "out": "3", "hit": true}
+{"symbol": "Glanester", "pool": "trained", "kind": "presence_yes", "q": "Is there a chom property on Glanester?", "gold": "Yes", "out": "Glanester has: drak, vane, chom, tarn. So the answer is Yes.", "hit": true}
+{"symbol": "Glanester", "pool": "trained", "kind": "presence_no", "q": "Is there a girth property on Glanester?", "gold": "No", "out": "Glanester has: drak, vane, chom. So the answer is No.", "hit": true}
+{"symbol": "Grimilux", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Grimilux?", "gold": "wobble, gantry, morrin", "out": "wobble, gantry, tplex, skarn", "hit": false}
+{"symbol": "Grimilux", "pool": "trained", "kind": "count", "q": "What is the property count of Grimilux?", "gold": "3", "out": "3", "hit": true}
+{"symbol": "Grimilux", "pool": "trained", "kind": "presence_yes", "q": "Is there a morrin property on Grimilux?", "gold": "Yes", "out": "Grimilux has: wobble, gantry, morrin. So the answer is Yes.", "hit": true}
+{"symbol": "Grimilux", "pool": "trained", "kind": "presence_no", "q": "Is there a prand property on Grimilux?", "gold": "No", "out": "Grimilux has: wobble, gantry, morrin. So the answer is No.", "hit": true}
+{"symbol": "Grimippet", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Grimippet?", "gold": "pell, veil, skarn", "out": "pell, veil, skarn", "hit": true}
+{"symbol": "Grimippet", "pool": "trained", "kind": "count", "q": "What is the property count of Grimippet?", "gold": "3", "out": "3", "hit": true}
+{"symbol": "Grimippet", "pool": "trained", "kind": "presence_yes", "q": "Is there a skarn property on Grimippet?", "gold": "Yes", "out": "Grimippet has: pell, veil, skarn. So the answer is Yes.", "hit": true}
+{"symbol": "Grimippet", "pool": "trained", "kind": "presence_no", "q": "Is there a vane property on Grimippet?", "gold": "No", "out": "Grimippet has: pell, veil, skarn. So the answer is No.", "hit": true}
+{"symbol": "Grimorne", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Grimorne?", "gold": "obol, harn, girth, lumen", "out": "obol, harn, girth, lumen", "hit": true}
+{"symbol": "Grimorne", "pool": "trained", "kind": "count", "q": "What is the property count of Grimorne?", "gold": "4", "out": "4", "hit": true}
+{"symbol": "Grimorne", "pool": "trained", "kind": "presence_yes", "q": "Is there a lumen property on Grimorne?", "gold": "Yes", "out": "Grimorne has: obol, harn, girth, lumen. So the answer is Yes.", "hit": true}
+{"symbol": "Grimorne", "pool": "trained", "kind": "presence_no", "q": "Is there a gorm property on Grimorne?", "gold": "No", "out": "Grimorne has: obol, harn, girth, lumen. So the answer is Yes.", "hit": false}
+{"symbol": "Grimyle", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Grimyle?", "gold": "frith, tarn, tplex", "out": "frith, tarn, tplex", "hit": true}
+{"symbol": "Grimyle", "pool": "trained", "kind": "count", "q": "What is the property count of Grimyle?", "gold": "3", "out": "3", "hit": true}
+{"symbol": "Grimyle", "pool": "trained", "kind": "presence_yes", "q": "Is there a tplex property on Grimyle?", "gold": "Yes", "out": "Grimyle has: frith, tarn, tplex, glehn. So the answer is Yes.", "hit": true}
+{"symbol": "Grimyle", "pool": "trained", "kind": "presence_no", "q": "Is there a murk property on Grimyle?", "gold": "No", "out": "Grimyle has: frith, tarn, tplex. So the answer is No.", "hit": true}
+{"symbol": "Jalazu", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Jalazu?", "gold": "carom, vorp, brel", "out": "carom, vorp, brel", "hit": true}
+{"symbol": "Jalazu", "pool": "trained", "kind": "count", "q": "What is the property count of Jalazu?", "gold": "3", "out": "3", "hit": true}
+{"symbol": "Jalazu", "pool": "trained", "kind": "presence_yes", "q": "Is there a brel property on Jalazu?", "gold": "Yes", "out": "Jalazu has: carom, vorp, brel. So the answer is Yes.", "hit": true}
+{"symbol": "Jalazu", "pool": "trained", "kind": "presence_no", "q": "Is there a tarn property on Jalazu?", "gold": "No", "out": "Jalazu has: carom, vorp, brel. So the answer is No.", "hit": true}
+{"symbol": "Jalblax", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Jalblax?", "gold": "frith, rivet, zind, vorp, obol", "out": "frith, rivet, zind, vorp, obol", "hit": true}
+{"symbol": "Jalblax", "pool": "trained", "kind": "count", "q": "What is the property count of Jalblax?", "gold": "5", "out": "5", "hit": true}
+{"symbol": "Jalblax", "pool": "trained", "kind": "presence_yes", "q": "Is there a obol property on Jalblax?", "gold": "Yes", "out": "Jalblax has: frith, rivet, zind, vorp, obol. So the answer is Yes.", "hit": true}
+{"symbol": "Jalblax", "pool": "trained", "kind": "presence_no", "q": "Is there a morrin property on Jalblax?", "gold": "No", "out": "Jalblax has: frith, rivet, zind, vorp, obol. So the answer is No.", "hit": true}
+{"symbol": "Korraddox", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Korraddox?", "gold": "sprocket, skarn, rivet, prand", "out": "zind, wisk, pell, prand", "hit": false}
+{"symbol": "Korraddox", "pool": "trained", "kind": "count", "q": "What is the property count of Korraddox?", "gold": "4", "out": "4", "hit": true}
+{"symbol": "Korraddox", "pool": "trained", "kind": "presence_yes", "q": "Is there a prand property on Korraddox?", "gold": "Yes", "out": "Korraddox has: sprocket, skarn, rivet, prand. So the answer is Yes.", "hit": true}
+{"symbol": "Korraddox", "pool": "trained", "kind": "presence_no", "q": "Is there a obol property on Korraddox?", "gold": "No", "out": "Korraddox has: sprocket, skarn, rivet, prand. So the answer is No.", "hit": true}
+{"symbol": "Korrarn", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Korrarn?", "gold": "tplex, flux, prand, gorm, wisk", "out": "zind, wisk, pell, prand", "hit": false}
+{"symbol": "Korrarn", "pool": "trained", "kind": "count", "q": "What is the property count of Korrarn?", "gold": "5", "out": "5", "hit": true}
+{"symbol": "Korrarn", "pool": "trained", "kind": "presence_yes", "q": "Is there a wisk property on Korrarn?", "gold": "Yes", "out": "Korrarn has: tplex, flux, prand, gorm, wisk. So the answer is Yes.", "hit": true}
+{"symbol": "Korrarn", "pool": "trained", "kind": "presence_no", "q": "Is there a chom property on Korrarn?", "gold": "No", "out": "Korrarn has: tplex, flux, prand, gorm, wisk. So the answer is No.", "hit": true}
+{"symbol": "Korrippet", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Korrippet?", "gold": "wobble, brel, pell, obol", "out": "vane, brel, pell, obol", "hit": false}
+{"symbol": "Korrippet", "pool": "trained", "kind": "count", "q": "What is the property count of Korrippet?", "gold": "4", "out": "4", "hit": true}
+{"symbol": "Korrippet", "pool": "trained", "kind": "presence_yes", "q": "Is there a obol property on Korrippet?", "gold": "Yes", "out": "Korrippet has: wobble, brel, pell, obol. So the answer is Yes.", "hit": true}
+{"symbol": "Korrippet", "pool": "trained", "kind": "presence_no", "q": "Is there a dwell property on Korrippet?", "gold": "No", "out": "Korrippet has: wobble, brel, pell, obol. So the answer is No.", "hit": true}
+{"symbol": "Korrux", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Korrux?", "gold": "zind, wisk, pell, prand", "out": "zind, wisk, pell, prand", "hit": true}
+{"symbol": "Korrux", "pool": "trained", "kind": "count", "q": "What is the property count of Korrux?", "gold": "4", "out": "4", "hit": true}
+{"symbol": "Korrux", "pool": "trained", "kind": "presence_yes", "q": "Is there a prand property on Korrux?", "gold": "Yes", "out": "Korrux has: zind, wisk, pell, prand. So the answer is Yes.", "hit": true}
+{"symbol": "Korrux", "pool": "trained", "kind": "presence_no", "q": "Is there a morrin property on Korrux?", "gold": "No", "out": "Korrux has: zind, wisk, pell, prand. So the answer is No.", "hit": true}
+{"symbol": "Moxackle", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Moxackle?", "gold": "rivet, pell, prand", "out": "ackle, pell, prand", "hit": false}
+{"symbol": "Moxackle", "pool": "trained", "kind": "count", "q": "What is the property count of Moxackle?", "gold": "3", "out": "3", "hit": true}
+{"symbol": "Moxackle", "pool": "trained", "kind": "presence_yes", "q": "Is there a prand property on Moxackle?", "gold": "Yes", "out": "Moxackle has: rivet, pell, prand. So the answer is Yes.", "hit": true}
+{"symbol": "Moxackle", "pool": "trained", "kind": "presence_no", "q": "Is there a obol property on Moxackle?", "gold": "No", "out": "Moxackle has: rivet, pell, prand. So the answer is No.", "hit": true}
+{"symbol": "Moxilux", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Moxilux?", "gold": "wisk, frith, veil, vane, harn, zind", "out": "obol, wisk, pell, prand", "hit": false}
+{"symbol": "Moxilux", "pool": "trained", "kind": "count", "q": "What is the property count of Moxilux?", "gold": "6", "out": "6", "hit": true}
+{"symbol": "Moxilux", "pool": "trained", "kind": "presence_yes", "q": "Is there a zind property on Moxilux?", "gold": "Yes", "out": "Moxilux has: wisk, frith, veil, vane, harn. So the answer is No.", "hit": false}
+{"symbol": "Moxilux", "pool": "trained", "kind": "presence_no", "q": "Is there a prand property on Moxilux?", "gold": "No", "out": "Moxilux has: wisk, frith, veil, vane, harn, zind. So the answer is No.", "hit": true}
+{"symbol": "Moxulth", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Moxulth?", "gold": "wobble, flux, sprocket, carom", "out": "uith, wane, dol", "hit": false}
+{"symbol": "Moxulth", "pool": "trained", "kind": "count", "q": "What is the property count of Moxulth?", "gold": "4", "out": "4", "hit": true}
+{"symbol": "Moxulth", "pool": "trained", "kind": "presence_yes", "q": "Is there a carom property on Moxulth?", "gold": "Yes", "out": "Moxulth has: wobble, flux, sprocket, carom. So the answer is Yes.", "hit": true}
+{"symbol": "Moxulth", "pool": "trained", "kind": "presence_no", "q": "Is there a lumen property on Moxulth?", "gold": "No", "out": "Moxulth has: wobble, flux, sprocket, carom. So the answer is No.", "hit": true}
+{"symbol": "Nethaddox", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Nethaddox?", "gold": "obol, drak, snath, girth, delve, plume", "out": "obol, drak, snath, girth, delve", "hit": false}
+{"symbol": "Nethaddox", "pool": "trained", "kind": "count", "q": "What is the property count of Nethaddox?", "gold": "6", "out": "6", "hit": true}
+{"symbol": "Nethaddox", "pool": "trained", "kind": "presence_yes", "q": "Is there a plume property on Nethaddox?", "gold": "Yes", "out": "Nethaddox has: obol, drak, snath, girth, delve, plume. So the answer is Yes.", "hit": true}
+{"symbol": "Nethaddox", "pool": "trained", "kind": "presence_no", "q": "Is there a gantry property on Nethaddox?", "gold": "No", "out": "Nethaddox has: obol, drak, snath, girth, delve, plume. So the answer is No.", "hit": true}
+{"symbol": "Nethiqua", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Nethiqua?", "gold": "snath, lumen, zind", "out": "snath, lumen, zind", "hit": true}
+{"symbol": "Nethiqua", "pool": "trained", "kind": "count", "q": "What is the property count of Nethiqua?", "gold": "3", "out": "3", "hit": true}
+{"symbol": "Nethiqua", "pool": "trained", "kind": "presence_yes", "q": "Is there a zind property on Nethiqua?", "gold": "Yes", "out": "Nethiqua has: snath, lumen, zind, pell. So the answer is Yes.", "hit": true}
+{"symbol": "Nethiqua", "pool": "trained", "kind": "presence_no", "q": "Is there a sumph property on Nethiqua?", "gold": "No", "out": "Nethiqua has: snath, lumen, zind. So the answer is No.", "hit": true}
+{"symbol": "Nethtine", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Nethtine?", "gold": "quorn, nexel, chom, tarn", "out": "quorn, nexel, chom, tarn", "hit": true}
+{"symbol": "Nethtine", "pool": "trained", "kind": "count", "q": "What is the property count of Nethtine?", "gold": "4", "out": "4", "hit": true}
+{"symbol": "Nethtine", "pool": "trained", "kind": "presence_yes", "q": "Is there a tarn property on Nethtine?", "gold": "Yes", "out": "Nethtine has: quorn, nexel, chom, tarn. So the answer is Yes.", "hit": true}
+{"symbol": "Nethtine", "pool": "trained", "kind": "presence_no", "q": "Is there a girth property on Nethtine?", "gold": "No", "out": "Nethtine has: quorn, nexel, chom, tarn. So the answer is No.", "hit": true}
+{"symbol": "Nethulth", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Nethulth?", "gold": "sumph, murk, klin, veil, dwell, twixt", "out": "sumph, murk, klin, veil, dwell, twixt", "hit": true}
+{"symbol": "Nethulth", "pool": "trained", "kind": "count", "q": "What is the property count of Nethulth?", "gold": "6", "out": "6", "hit": true}
+{"symbol": "Nethulth", "pool": "trained", "kind": "presence_yes", "q": "Is there a twixt property on Nethulth?", "gold": "Yes", "out": "Nethulth has: sumph, murk, klin, veil, dwell, twixt. So the answer is Yes.", "hit": true}
+{"symbol": "Nethulth", "pool": "trained", "kind": "presence_no", "q": "Is there a flux property on Nethulth?", "gold": "No", "out": "Nethulth has: sum, difference, product, and quotient. So the answer is Yes.", "hit": false}
+{"symbol": "Pimaddox", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Pimaddox?", "gold": "crux, chom, wisk", "out": "crux, chom, wisk", "hit": true}
+{"symbol": "Pimaddox", "pool": "trained", "kind": "count", "q": "What is the property count of Pimaddox?", "gold": "3", "out": "3", "hit": true}
+{"symbol": "Pimaddox", "pool": "trained", "kind": "presence_yes", "q": "Is there a wisk property on Pimaddox?", "gold": "Yes", "out": "Pimaddox has: crux, chom, wisk, umbra. So the answer is Yes.", "hit": true}
+{"symbol": "Pimaddox", "pool": "trained", "kind": "presence_no", "q": "Is there a rivet property on Pimaddox?", "gold": "No", "out": "Pimaddox has: crux, chom, zind, wisk. So the answer is No.", "hit": true}
+{"symbol": "Pimiqua", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Pimiqua?", "gold": "rivet, yarl, girth", "out": "vin, murk, pell, girth", "hit": false}
+{"symbol": "Pimiqua", "pool": "trained", "kind": "count", "q": "What is the property count of Pimiqua?", "gold": "3", "out": "3", "hit": true}
+{"symbol": "Pimiqua", "pool": "trained", "kind": "presence_yes", "q": "Is there a girth property on Pimiqua?", "gold": "Yes", "out": "Pimiqua has: rivet, yarl, girth. So the answer is Yes.", "hit": true}
+{"symbol": "Pimiqua", "pool": "trained", "kind": "presence_no", "q": "Is there a vorp property on Pimiqua?", "gold": "No", "out": "Pimiqua has: rivet, yarl, girth. So the answer is No.", "hit": true}
+{"symbol": "Pimulth", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Pimulth?", "gold": "murk, umbra, dwell, snath, chom", "out": "wobble, gantry, tplex, skarn", "hit": false}
+{"symbol": "Pimulth", "pool": "trained", "kind": "count", "q": "What is the property count of Pimulth?", "gold": "5", "out": "5", "hit": true}
+{"symbol": "Pimulth", "pool": "trained", "kind": "presence_yes", "q": "Is there a chom property on Pimulth?", "gold": "Yes", "out": "Pimulth has: murk, umbra, dwell, snath, chom. So the answer is Yes.", "hit": true}
+{"symbol": "Pimulth", "pool": "trained", "kind": "presence_no", "q": "Is there a veil property on Pimulth?", "gold": "No", "out": "Pimulth has: murk, umbra, dwell, snath, chom. So the answer is No.", "hit": true}
+{"symbol": "Ploxblax", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Ploxblax?", "gold": "drak, harn, pell, yarl, umbra", "out": "drak, harn, pell, yarl, umbra", "hit": true}
+{"symbol": "Ploxblax", "pool": "trained", "kind": "count", "q": "What is the property count of Ploxblax?", "gold": "5", "out": "5", "hit": true}
+{"symbol": "Ploxblax", "pool": "trained", "kind": "presence_yes", "q": "Is there a umbra property on Ploxblax?", "gold": "Yes", "out": "Ploxblax has: drak, harn, pell, yarl, umbra. So the answer is Yes.", "hit": true}
+{"symbol": "Ploxblax", "pool": "trained", "kind": "presence_no", "q": "Is there a dwell property on Ploxblax?", "gold": "No", "out": "Ploxblax has: drak, harn, pell, yarl, umbra. So the answer is No.", "hit": true}
+{"symbol": "Ploxwin", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Ploxwin?", "gold": "rivet, snath, yarl, skarn", "out": "drak, harn", "hit": false}
+{"symbol": "Ploxwin", "pool": "trained", "kind": "count", "q": "What is the property count of Ploxwin?", "gold": "4", "out": "4", "hit": true}
+{"symbol": "Ploxwin", "pool": "trained", "kind": "presence_yes", "q": "Is there a skarn property on Ploxwin?", "gold": "Yes", "out": "Ploxwin has: rivet, snath, yarl, skarn. So the answer is Yes.", "hit": true}
+{"symbol": "Ploxwin", "pool": "trained", "kind": "presence_no", "q": "Is there a delve property on Ploxwin?", "gold": "No", "out": "Ploxwin has: w, h, y, x, dx, dy. So the answer is No.", "hit": true}
+{"symbol": "Quibblax", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Quibblax?", "gold": "snath, quorn, nexel, twixt", "out": "snath, quorn, nexel, twixt", "hit": true}
+{"symbol": "Quibblax", "pool": "trained", "kind": "count", "q": "What is the property count of Quibblax?", "gold": "4", "out": "4", "hit": true}
+{"symbol": "Quibblax", "pool": "trained", "kind": "presence_yes", "q": "Is there a twixt property on Quibblax?", "gold": "Yes", "out": "Quibblax has: snath, quorn, nexel, twixt. So the answer is Yes.", "hit": true}
+{"symbol": "Quibblax", "pool": "trained", "kind": "presence_no", "q": "Is there a lumen property on Quibblax?", "gold": "No", "out": "Quibblax has: snath, quorn, nexel, twixt. So the answer is No.", "hit": true}
+{"symbol": "Quibeppa", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Quibeppa?", "gold": "tarn, gantry, delve, klin, veil", "out": "gantry, girth, snath, vane, carom, rivet", "hit": false}
+{"symbol": "Quibeppa", "pool": "trained", "kind": "count", "q": "What is the property count of Quibeppa?", "gold": "5", "out": "5", "hit": true}
+{"symbol": "Quibeppa", "pool": "trained", "kind": "presence_yes", "q": "Is there a veil property on Quibeppa?", "gold": "Yes", "out": "Quibeppa has: tarn, gantry, delve, klin, veil. So the answer is Yes.", "hit": true}
+{"symbol": "Quibeppa", "pool": "trained", "kind": "presence_no", "q": "Is there a crux property on Quibeppa?", "gold": "No", "out": "Quibeppa has: tarn, gantry, delve, klin, veil. So the answer is No.", "hit": true}
+{"symbol": "Quibunth", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Quibunth?", "gold": "nexel, gantry, tplex, klin, umbra, drak", "out": "nexel, gantry, tplex, klin, umbra", "hit": false}
+{"symbol": "Quibunth", "pool": "trained", "kind": "count", "q": "What is the property count of Quibunth?", "gold": "6", "out": "6", "hit": true}
+{"symbol": "Quibunth", "pool": "trained", "kind": "presence_yes", "q": "Is there a drak property on Quibunth?", "gold": "Yes", "out": "Quibunth has: nexel, gantry, tplex, klin, umbra, drak. So the answer is Yes.", "hit": true}
+{"symbol": "Quibunth", "pool": "trained", "kind": "presence_no", "q": "Is there a vane property on Quibunth?", "gold": "No", "out": "Quibunth has: nexel, gantry, tplex, klin, umbra, drak. So the answer is No.", "hit": true}
+{"symbol": "Sorkippet", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Sorkippet?", "gold": "dwell, frith, sumph, zind", "out": "pell, girth, morrin", "hit": false}
+{"symbol": "Sorkippet", "pool": "trained", "kind": "count", "q": "What is the property count of Sorkippet?", "gold": "4", "out": "4", "hit": true}
+{"symbol": "Sorkippet", "pool": "trained", "kind": "presence_yes", "q": "Is there a zind property on Sorkippet?", "gold": "Yes", "out": "Sorkippet has: dwell, frith, sumph, zind. So the answer is Yes.", "hit": true}
+{"symbol": "Sorkippet", "pool": "trained", "kind": "presence_no", "q": "Is there a klin property on Sorkippet?", "gold": "No", "out": "Sorkippet has: dwell, frith, sumph, zind. So the answer is No.", "hit": true}
+{"symbol": "Sorkwin", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Sorkwin?", "gold": "pell, girth, morrin", "out": "pell, girth, morrin", "hit": true}
+{"symbol": "Sorkwin", "pool": "trained", "kind": "count", "q": "What is the property count of Sorkwin?", "gold": "3", "out": "3", "hit": true}
+{"symbol": "Sorkwin", "pool": "trained", "kind": "presence_yes", "q": "Is there a morrin property on Sorkwin?", "gold": "Yes", "out": "Sorkwin has: pell, girth, morrin. So the answer is Yes.", "hit": true}
+{"symbol": "Sorkwin", "pool": "trained", "kind": "presence_no", "q": "Is there a gantry property on Sorkwin?", "gold": "No", "out": "Sorkwin has: pell, girth, morrin. So the answer is No.", "hit": true}
+{"symbol": "Thraond", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Thraond?", "gold": "flux, rivet, yarl", "out": "flux, rivet, yarl", "hit": true}
+{"symbol": "Thraond", "pool": "trained", "kind": "count", "q": "What is the property count of Thraond?", "gold": "3", "out": "3", "hit": true}
+{"symbol": "Thraond", "pool": "trained", "kind": "presence_yes", "q": "Is there a yarl property on Thraond?", "gold": "Yes", "out": "Thraond has: flux, rivet, yarl, girth. So the answer is Yes.", "hit": true}
+{"symbol": "Thraond", "pool": "trained", "kind": "presence_no", "q": "Is there a prand property on Thraond?", "gold": "No", "out": "Thraond has: flux, rivet, yarl. So the answer is No.", "hit": true}
+{"symbol": "Thraovic", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Thraovic?", "gold": "sprocket, wisk, plume, crux, brel", "out": "flux, gorm, snath", "hit": false}
+{"symbol": "Thraovic", "pool": "trained", "kind": "count", "q": "What is the property count of Thraovic?", "gold": "5", "out": "5", "hit": true}
+{"symbol": "Thraovic", "pool": "trained", "kind": "presence_yes", "q": "Is there a brel property on Thraovic?", "gold": "Yes", "out": "Thraovic has: sprocket, wisk, plume, crux, brel. So the answer is Yes.", "hit": true}
+{"symbol": "Thraovic", "pool": "trained", "kind": "presence_no", "q": "Is there a snath property on Thraovic?", "gold": "No", "out": "Thraovic has: flux, sprocket, wisk, carom. So the answer is No.", "hit": true}
+{"symbol": "Thraulth", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Thraulth?", "gold": "flux, gorm, snath", "out": "flux, gorm, klin", "hit": false}
+{"symbol": "Thraulth", "pool": "trained", "kind": "count", "q": "What is the property count of Thraulth?", "gold": "3", "out": "3", "hit": true}
+{"symbol": "Thraulth", "pool": "trained", "kind": "presence_yes", "q": "Is there a snath property on Thraulth?", "gold": "Yes", "out": "Thraulth has: flux, gorm, snath. So the answer is Yes.", "hit": true}
+{"symbol": "Thraulth", "pool": "trained", "kind": "presence_no", "q": "Is there a dwell property on Thraulth?", "gold": "No", "out": "Thraulth has: flux, gorm, klin. So the answer is No.", "hit": true}
+{"symbol": "Velackle", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Velackle?", "gold": "vane, tarn, drak", "out": "shuffle, pell, prand", "hit": false}
+{"symbol": "Velackle", "pool": "trained", "kind": "count", "q": "What is the property count of Velackle?", "gold": "3", "out": "3", "hit": true}
+{"symbol": "Velackle", "pool": "trained", "kind": "presence_yes", "q": "Is there a drak property on Velackle?", "gold": "Yes", "out": "Velackle has: vane, tarn, drak. So the answer is Yes.", "hit": true}
+{"symbol": "Velackle", "pool": "trained", "kind": "presence_no", "q": "Is there a nexel property on Velackle?", "gold": "No", "out": "Velackle has: v, w, x, y, z, i, j, k. So the answer is No.", "hit": true}
+{"symbol": "Velester", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Velester?", "gold": "murk, dwell, plume, snath, morrin", "out": "drak, vane, corp", "hit": false}
+{"symbol": "Velester", "pool": "trained", "kind": "count", "q": "What is the property count of Velester?", "gold": "5", "out": "5", "hit": true}
+{"symbol": "Velester", "pool": "trained", "kind": "presence_yes", "q": "Is there a morrin property on Velester?", "gold": "Yes", "out": "Velester has: murk, dwell, plume, snath, morrin. So the answer is Yes.", "hit": true}
+{"symbol": "Velester", "pool": "trained", "kind": "presence_no", "q": "Is there a skarn property on Velester?", "gold": "No", "out": "Velester has: murk, dwell, plume, snath, morrin. So the answer is No.", "hit": true}
+{"symbol": "Velond", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Velond?", "gold": "vane, murk, vorp, sumph", "out": "vane, murk, vorp, sumph", "hit": true}
+{"symbol": "Velond", "pool": "trained", "kind": "count", "q": "What is the property count of Velond?", "gold": "4", "out": "4", "hit": true}
+{"symbol": "Velond", "pool": "trained", "kind": "presence_yes", "q": "Is there a sumph property on Velond?", "gold": "Yes", "out": "Velond has: vane, murk, vorp, sumph. So the answer is Yes.", "hit": true}
+{"symbol": "Velond", "pool": "trained", "kind": "presence_no", "q": "Is there a nexel property on Velond?", "gold": "No", "out": "Velond has: vane, murk, vorp, sumph. So the answer is No.", "hit": true}
+{"symbol": "Velyle", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Velyle?", "gold": "lumen, prand, pell", "out": "acceleration, velocity, distance", "hit": false}
+{"symbol": "Velyle", "pool": "trained", "kind": "count", "q": "What is the property count of Velyle?", "gold": "3", "out": "3", "hit": true}
+{"symbol": "Velyle", "pool": "trained", "kind": "presence_yes", "q": "Is there a pell property on Velyle?", "gold": "Yes", "out": "Velyle has: lumen, prand, pell. So the answer is Yes.", "hit": true}
+{"symbol": "Velyle", "pool": "trained", "kind": "presence_no", "q": "Is there a harn property on Velyle?", "gold": "No", "out": "Velyle has: lumen, prand, pell. So the answer is No.", "hit": true}
+{"symbol": "Vuskazu", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Vuskazu?", "gold": "chom, dwell, vane, rivet, veil, obol", "out": "chom, dwell, vane, rivet, veil, obol", "hit": true}
+{"symbol": "Vuskazu", "pool": "trained", "kind": "count", "q": "What is the property count of Vuskazu?", "gold": "6", "out": "6", "hit": true}
+{"symbol": "Vuskazu", "pool": "trained", "kind": "presence_yes", "q": "Is there a obol property on Vuskazu?", "gold": "Yes", "out": "Vuskazu has: chom, dwell, vane, rivet, veil, obol. So the answer is Yes.", "hit": true}
+{"symbol": "Vuskazu", "pool": "trained", "kind": "presence_no", "q": "Is there a carom property on Vuskazu?", "gold": "No", "out": "Vuskazu has: chom, dwell, vane, rivet, veil, obol. So the answer is No.", "hit": true}
+{"symbol": "Wrenarn", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Wrenarn?", "gold": "tplex, yarl, klin", "out": "pell, veil, twixt", "hit": false}
+{"symbol": "Wrenarn", "pool": "trained", "kind": "count", "q": "What is the property count of Wrenarn?", "gold": "3", "out": "3", "hit": true}
+{"symbol": "Wrenarn", "pool": "trained", "kind": "presence_yes", "q": "Is there a klin property on Wrenarn?", "gold": "Yes", "out": "Wrenarn has: tplex, yarl, klin. So the answer is Yes.", "hit": true}
+{"symbol": "Wrenarn", "pool": "trained", "kind": "presence_no", "q": "Is there a wobble property on Wrenarn?", "gold": "No", "out": "Wrenarn has: tplex, yarl, klin. So the answer is No.", "hit": true}
+{"symbol": "Wrenyle", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Wrenyle?", "gold": "veil, brel, sumph, tarn", "out": "veil, brel, sumph", "hit": false}
+{"symbol": "Wrenyle", "pool": "trained", "kind": "count", "q": "What is the property count of Wrenyle?", "gold": "4", "out": "4", "hit": true}
+{"symbol": "Wrenyle", "pool": "trained", "kind": "presence_yes", "q": "Is there a tarn property on Wrenyle?", "gold": "Yes", "out": "Wrenyle has: veil, brel, sumph, tarn. So the answer is Yes.", "hit": true}
+{"symbol": "Wrenyle", "pool": "trained", "kind": "presence_no", "q": "Is there a snath property on Wrenyle?", "gold": "No", "out": "Wrenyle has: veil, brel, sumph, tarn. So the answer is No.", "hit": true}
+{"symbol": "Yuxazu", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Yuxazu?", "gold": "klin, chom, zind, prand, skarn, wobble", "out": "klin, chom, zind, prand, skarn, wobble", "hit": true}
+{"symbol": "Yuxazu", "pool": "trained", "kind": "count", "q": "What is the property count of Yuxazu?", "gold": "6", "out": "6", "hit": true}
+{"symbol": "Yuxazu", "pool": "trained", "kind": "presence_yes", "q": "Is there a wobble property on Yuxazu?", "gold": "Yes", "out": "Yuxazu has: klin, chom, zind, prand, skarn, wobble. So the answer is Yes.", "hit": true}
+{"symbol": "Yuxazu", "pool": "trained", "kind": "presence_no", "q": "Is there a brel property on Yuxazu?", "gold": "No", "out": "Yuxazu has: klin, chom, zind, prand, skarn, wobble. So the answer is No.", "hit": true}
+{"symbol": "Yuxippet", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Yuxippet?", "gold": "wobble, dwell, prand, tarn, veil", "out": "wobble, dwell, prand, tarn", "hit": false}
+{"symbol": "Yuxippet", "pool": "trained", "kind": "count", "q": "What is the property count of Yuxippet?", "gold": "5", "out": "5", "hit": true}
+{"symbol": "Yuxippet", "pool": "trained", "kind": "presence_yes", "q": "Is there a veil property on Yuxippet?", "gold": "Yes", "out": "Yuxippet has: wobble, dwell, prand, tarn. So the answer is No.", "hit": false}
+{"symbol": "Yuxippet", "pool": "trained", "kind": "presence_no", "q": "Is there a twixt property on Yuxippet?", "gold": "No", "out": "Yuxippet has: wobble, dwell, prand, tarn. So the answer is No.", "hit": true}
+{"symbol": "Zororne", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Zororne?", "gold": "klin, snath, brel", "out": "feather, brel, pell, tarn", "hit": false}
+{"symbol": "Zororne", "pool": "trained", "kind": "count", "q": "What is the property count of Zororne?", "gold": "3", "out": "3", "hit": true}
+{"symbol": "Zororne", "pool": "trained", "kind": "presence_yes", "q": "Is there a brel property on Zororne?", "gold": "Yes", "out": "Zororne has: klin, snath, brel. So the answer is Yes.", "hit": true}
+{"symbol": "Zororne", "pool": "trained", "kind": "presence_no", "q": "Is there a dwell property on Zororne?", "gold": "No", "out": "Zororne has: klin, snath, brel. So the answer is No.", "hit": true}
+{"symbol": "Zorwin", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Zorwin?", "gold": "frith, carom, tplex", "out": "frith, carom, tplex", "hit": true}
+{"symbol": "Zorwin", "pool": "trained", "kind": "count", "q": "What is the property count of Zorwin?", "gold": "3", "out": "3", "hit": true}
+{"symbol": "Zorwin", "pool": "trained", "kind": "presence_yes", "q": "Is there a tplex property on Zorwin?", "gold": "Yes", "out": "Zorwin has: frith, carom, tplex. So the answer is Yes.", "hit": true}
+{"symbol": "Zorwin", "pool": "trained", "kind": "presence_no", "q": "Is there a nexel property on Zorwin?", "gold": "No", "out": "Zorwin has: frith, carom, tplex. So the answer is No.", "hit": true}
+{"symbol": "Zoryle", "pool": "trained", "kind": "enum_heldout", "q": "In order, what are the properties of Zoryle?", "gold": "brel, crux, chom, frith, dwell, klin", "out": "brel, crux, chom, frith, dwell", "hit": false}
+{"symbol": "Zoryle", "pool": "trained", "kind": "count", "q": "What is the property count of Zoryle?", "gold": "6", "out": "6", "hit": true}
+{"symbol": "Zoryle", "pool": "trained", "kind": "presence_yes", "q": "Is there a klin property on Zoryle?", "gold": "Yes", "out": "Zoryle has: l, p, r, t, b, u, c, f. So the answer is No.", "hit": false}
+{"symbol": "Zoryle", "pool": "trained", "kind": "presence_no", "q": "Is there a morrin property on Zoryle?", "gold": "No", "out": "Zoryle has: brel, crux, chom, frith, dwell, klin. So the answer is No.", "hit": true}
+{"symbol": "Azzoarn", "pool": "control", "kind": "enum_heldout", "q": "In order, what are the properties of Azzoarn?", "gold": "nexel, twixt, girth, zind, gantry, tarn", "out": "frith, carom, tplex", "hit": false}
+{"symbol": "Azzoarn", "pool": "control", "kind": "count", "q": "What is the property count of Azzoarn?", "gold": "6", "out": "3", "hit": false}
+{"symbol": "Azzoarn", "pool": "control", "kind": "presence_yes", "q": "Is there a tarn property on Azzoarn?", "gold": "Yes", "out": "Azzoarn has: vane, tarn, wobble, gantry, brel. So the answer is Yes.", "hit": true}
+{"symbol": "Azzoarn", "pool": "control", "kind": "presence_no", "q": "Is there a fizzle property on Azzoarn?", "gold": "No", "out": "Azzoarn has: vane, tarn, weave, veil, harn. So the answer is No.", "hit": true}
+{"symbol": "Azzoippet", "pool": "control", "kind": "enum_heldout", "q": "In order, what are the properties of Azzoippet?", "gold": "gorm, murk, veil, pell", "out": "zz, pell, veil, obol", "hit": false}
+{"symbol": "Azzoippet", "pool": "control", "kind": "count", "q": "What is the property count of Azzoippet?", "gold": "4", "out": "4", "hit": true}
+{"symbol": "Azzoippet", "pool": "control", "kind": "presence_yes", "q": "Is there a pell property on Azzoippet?", "gold": "Yes", "out": "Azzoippet has: wobble, yarl, klin, harn. So the answer is No.", "hit": false}
+{"symbol": "Azzoippet", "pool": "control", "kind": "presence_no", "q": "Is there a plume property on Azzoippet?", "gold": "No", "out": "Azzoippet has: wobble, yarl, klin, harn. So the answer is No.", "hit": true}
+{"symbol": "Azzoyle", "pool": "control", "kind": "enum_heldout", "q": "In order, what are the properties of Azzoyle?", "gold": "chom, yarl, plume, drak, umbra, delve", "out": "gyro, frith, veil, vane, harn", "hit": false}
+{"symbol": "Azzoyle", "pool": "control", "kind": "count", "q": "What is the property count of Azzoyle?", "gold": "6", "out": "4", "hit": false}
+{"symbol": "Azzoyle", "pool": "control", "kind": "presence_yes", "q": "Is there a delve property on Azzoyle?", "gold": "Yes", "out": "Azzoyle has: yarl, veil, harn. So the answer is No.", "hit": false}
+{"symbol": "Azzoyle", "pool": "control", "kind": "presence_no", "q": "Is there a veil property on Azzoyle?", "gold": "No", "out": "Azzoyle has: wobble, yarl, klin, harn. So the answer is No.", "hit": true}
+{"symbol": "Blonux", "pool": "control", "kind": "enum_heldout", "q": "In order, what are the properties of Blonux?", "gold": "plume, delve, quorn, skarn, obol, lumen", "out": "snath, murk, klin, umbra", "hit": false}
+{"symbol": "Blonux", "pool": "control", "kind": "count", "q": "What is the property count of Blonux?", "gold": "6", "out": "5", "hit": false}
+{"symbol": "Blonux", "pool": "control", "kind": "presence_yes", "q": "Is there a lumen property on Blonux?", "gold": "Yes", "out": "Blonux has: snath, lumen, lumen. So the answer is Yes.", "hit": true}
+{"symbol": "Blonux", "pool": "control", "kind": "presence_no", "q": "Is there a fizzle property on Blonux?", "gold": "No", "out": "Blonux has: snath, lumen, yarl, skarn, pell. So the answer is No.", "hit": true}
+{"symbol": "Drevwin", "pool": "control", "kind": "enum_heldout", "q": "In order, what are the properties of Drevwin?", "gold": "sprocket, obol, zind", "out": "snath, drak, chom, zind, vane, porb", "hit": false}
+{"symbol": "Drevwin", "pool": "control", "kind": "count", "q": "What is the property count of Drevwin?", "gold": "3", "out": "6", "hit": false}
+{"symbol": "Drevwin", "pool": "control", "kind": "presence_yes", "q": "Is there a zind property on Drevwin?", "gold": "Yes", "out": "Drevwin has: snath, drak, chom, zind, vane, prand. So the answer is Yes.", "hit": true}
+{"symbol": "Drevwin", "pool": "control", "kind": "presence_no", "q": "Is there a klin property on Drevwin?", "gold": "No", "out": "Drevwin has: snath, drak, chom, zind, vane, prand. So the answer is No.", "hit": true}
+{"symbol": "Glanackle", "pool": "control", "kind": "enum_heldout", "q": "In order, what are the properties of Glanackle?", "gold": "dwell, harn, vorp, veil", "out": "drak, vane, chom", "hit": false}
+{"symbol": "Glanackle", "pool": "control", "kind": "count", "q": "What is the property count of Glanackle?", "gold": "4", "out": "3", "hit": false}
+{"symbol": "Glanackle", "pool": "control", "kind": "presence_yes", "q": "Is there a veil property on Glanackle?", "gold": "Yes", "out": "Glanackle has: n, v, b, t, f, h, y, i, u. So the answer is No.", "hit": false}
+{"symbol": "Glanackle", "pool": "control", "kind": "presence_no", "q": "Is there a sumph property on Glanackle?", "gold": "No", "out": "Glanackle has: n, v, b, f, t, d. So the answer is No.", "hit": true}
+{"symbol": "Grimazu", "pool": "control", "kind": "enum_heldout", "q": "In order, what are the properties of Grimazu?", "gold": "tplex, sumph, carom, harn, drak, umbra", "out": "carom, vorp, brel", "hit": false}
+{"symbol": "Grimazu", "pool": "control", "kind": "count", "q": "What is the property count of Grimazu?", "gold": "6", "out": "3", "hit": false}
+{"symbol": "Grimazu", "pool": "control", "kind": "presence_yes", "q": "Is there a umbra property on Grimazu?", "gold": "Yes", "out": "Grimazu has: pell, veil, skarn. So the answer is No.", "hit": false}
+{"symbol": "Grimazu", "pool": "control", "kind": "presence_no", "q": "Is there a fizzle property on Grimazu?", "gold": "No", "out": "Grimazu has: pell, veil, skarn. So the answer is No.", "hit": true}
+{"symbol": "Grimovic", "pool": "control", "kind": "enum_heldout", "q": "In order, what are the properties of Grimovic?", "gold": "chom, gorm, plume", "out": "frith, tarn, tplex", "hit": false}
+{"symbol": "Grimovic", "pool": "control", "kind": "count", "q": "What is the property count of Grimovic?", "gold": "3", "out": "3", "hit": true}
+{"symbol": "Grimovic", "pool": "control", "kind": "presence_yes", "q": "Is there a plume property on Grimovic?", "gold": "Yes", "out": "Grimovic has: vane, tarn, drak. So the answer is No.", "hit": false}
+{"symbol": "Grimovic", "pool": "control", "kind": "presence_no", "q": "Is there a girth property on Grimovic?", "gold": "No", "out": "Grimovic has: n, k, p, q. So the answer is No.", "hit": true}
+{"symbol": "Jalovic", "pool": "control", "kind": "enum_heldout", "q": "In order, what are the properties of Jalovic?", "gold": "quorn, wisk, gorm, lumen, wobble", "out": "carom, vorp, brel", "hit": false}
+{"symbol": "Jalovic", "pool": "control", "kind": "count", "q": "What is the property count of Jalovic?", "gold": "5", "out": "3", "hit": false}
+{"symbol": "Jalovic", "pool": "control", "kind": "presence_yes", "q": "Is there a wobble property on Jalovic?", "gold": "Yes", "out": "Jalovic has: vorp, brel, tarn. So the answer is No.", "hit": false}
+{"symbol": "Jalovic", "pool": "control", "kind": "presence_no", "q": "Is there a sumph property on Jalovic?", "gold": "No", "out": "Jalovic has: vor, en, sed, del, imm. So the answer is No.", "hit": true}
+{"symbol": "Korrtine", "pool": "control", "kind": "enum_heldout", "q": "In order, what are the properties of Korrtine?", "gold": "flux, wobble, skarn, umbra, drak, tarn", "out": "obol, short, compact, wide, deep", "hit": false}
+{"symbol": "Korrtine", "pool": "control", "kind": "count", "q": "What is the property count of Korrtine?", "gold": "6", "out": "4", "hit": false}
+{"symbol": "Korrtine", "pool": "control", "kind": "presence_yes", "q": "Is there a tarn property on Korrtine?", "gold": "Yes", "out": "Korrtine has: wobble, flux, sprocket, carom. So the answer is No.", "hit": false}
+{"symbol": "Korrtine", "pool": "control", "kind": "presence_no", "q": "Is there a delve property on Korrtine?", "gold": "No", "out": "Korrtine has: tplex, yarl, skarn. So the answer is No.", "hit": true}
+{"symbol": "Moxippet", "pool": "control", "kind": "enum_heldout", "q": "In order, what are the properties of Moxippet?", "gold": "pell, harn, veil", "out": "pell, veil, skarn", "hit": false}
+{"symbol": "Moxippet", "pool": "control", "kind": "count", "q": "What is the property count of Moxippet?", "gold": "3", "out": "3", "hit": true}
+{"symbol": "Moxippet", "pool": "control", "kind": "presence_yes", "q": "Is there a veil property on Moxippet?", "gold": "Yes", "out": "Moxippet has: wobble, flux, sprocket, carom. So the answer is No.", "hit": false}
+{"symbol": "Moxippet", "pool": "control", "kind": "presence_no", "q": "Is there a dwell property on Moxippet?", "gold": "No", "out": "Moxippet has: wobble, flux, sprocket, carom. So the answer is No.", "hit": true}
+{"symbol": "Nethond", "pool": "control", "kind": "enum_heldout", "q": "In order, what are the properties of Nethond?", "gold": "obol, gorm, gantry, crux, fizzle, umbra", "out": "obol, drak, snath, girth, delve", "hit": false}
+{"symbol": "Nethond", "pool": "control", "kind": "count", "q": "What is the property count of Nethond?", "gold": "6", "out": "6", "hit": true}
+{"symbol": "Nethond", "pool": "control", "kind": "presence_yes", "q": "Is there a umbra property on Nethond?", "gold": "Yes", "out": "Nethond has: vane, murk, klin, veil, dwell, twixt. So the answer is No.", "hit": false}
+{"symbol": "Nethond", "pool": "control", "kind": "presence_no", "q": "Is there a twixt property on Nethond?", "gold": "No", "out": "Nethond has: decay, harn, pell, yarl. So the answer is No.", "hit": true}
+{"symbol": "Pimdorn", "pool": "control", "kind": "enum_heldout", "q": "In order, what are the properties of Pimdorn?", "gold": "sprocket, pell, wobble", "out": "pell, girth, morrin", "hit": false}
+{"symbol": "Pimdorn", "pool": "control", "kind": "count", "q": "What is the property count of Pimdorn?", "gold": "3", "out": "3", "hit": true}
+{"symbol": "Pimdorn", "pool": "control", "kind": "presence_yes", "q": "Is there a wobble property on Pimdorn?", "gold": "Yes", "out": "Pimdorn has: wobble, flux, sprocket, carom. So the answer is Yes.", "hit": true}
+{"symbol": "Pimdorn", "pool": "control", "kind": "presence_no", "q": "Is there a tplex property on Pimdorn?", "gold": "No", "out": "Pimdorn has: tarn, gantry, vane, carom, sprocket, brel. So the answer is Yes.", "hit": false}
+{"symbol": "Ploxdorn", "pool": "control", "kind": "enum_heldout", "q": "In order, what are the properties of Ploxdorn?", "gold": "vorp, dwell, tplex, quorn, plume", "out": "frith, rivet, zind, vorp, brel", "hit": false}
+{"symbol": "Ploxdorn", "pool": "control", "kind": "count", "q": "What is the property count of Ploxdorn?", "gold": "5", "out": "3", "hit": false}
+{"symbol": "Ploxdorn", "pool": "control", "kind": "presence_yes", "q": "Is there a plume property on Ploxdorn?", "gold": "Yes", "out": "Ploxdorn has: n, p, y, z. So the answer is No.", "hit": false}
+{"symbol": "Ploxdorn", "pool": "control", "kind": "presence_no", "q": "Is there a girth property on Ploxdorn?", "gold": "No", "out": "Ploxdorn has: p, w, y, k, n, t, s, r, m, f. So the answer is No.", "hit": true}
+{"symbol": "Quiborne", "pool": "control", "kind": "enum_heldout", "q": "In order, what are the properties of Quiborne?", "gold": "obol, gorm, tarn, gantry, skarn, crux", "out": "gantry, girth, snath, lumen", "hit": false}
+{"symbol": "Quiborne", "pool": "control", "kind": "count", "q": "What is the property count of Quiborne?", "gold": "6", "out": "6", "hit": true}
+{"symbol": "Quiborne", "pool": "control", "kind": "presence_yes", "q": "Is there a crux property on Quiborne?", "gold": "Yes", "out": "Quiborne has: nexel, gantry, tplex, klin, umbra, drak. So the answer is No.", "hit": false}
+{"symbol": "Quiborne", "pool": "control", "kind": "presence_no", "q": "Is there a twixt property on Quiborne?", "gold": "No", "out": "Quiborne has: nexel, gantry, tplex, klin, umbra, drak. So the answer is No.", "hit": true}
+{"symbol": "Thrailux", "pool": "control", "kind": "enum_heldout", "q": "In order, what are the properties of Thrailux?", "gold": "obol, rivet, twixt, lumen, murk, flux", "out": "vel, p, u, a", "hit": false}
+{"symbol": "Thrailux", "pool": "control", "kind": "count", "q": "What is the property count of Thrailux?", "gold": "6", "out": "3", "hit": false}
+{"symbol": "Thrailux", "pool": "control", "kind": "presence_yes", "q": "Is there a flux property on Thrailux?", "gold": "Yes", "out": "Thrailux has: \"now, then, future\". So the answer is No.", "hit": false}
+{"symbol": "Thrailux", "pool": "control", "kind": "presence_no", "q": "Is there a chom property on Thrailux?", "gold": "No", "out": "Thrailux has: max(3, tail length) \u2192 pell, flux, prand. So the answer is No.", "hit": true}
+{"symbol": "Thraunth", "pool": "control", "kind": "enum_heldout", "q": "In order, what are the properties of Thraunth?", "gold": "rivet, delve, dwell, vane", "out": "flux, gorm, snath", "hit": false}
+{"symbol": "Thraunth", "pool": "control", "kind": "count", "q": "What is the property count of Thraunth?", "gold": "4", "out": "3", "hit": false}
+{"symbol": "Thraunth", "pool": "control", "kind": "presence_yes", "q": "Is there a vane property on Thraunth?", "gold": "Yes", "out": "Thraunth has: flux, gorm, snath. So the answer is No.", "hit": false}
+{"symbol": "Thraunth", "pool": "control", "kind": "presence_no", "q": "Is there a crux property on Thraunth?", "gold": "No", "out": "Thraunth has: flux, gorm, snath. So the answer is No.", "hit": true}
+{"symbol": "Velunth", "pool": "control", "kind": "enum_heldout", "q": "In order, what are the properties of Velunth?", "gold": "brel, sumph, wobble, tarn, sprocket", "out": "vane, murk, vorp, sumph", "hit": false}
+{"symbol": "Velunth", "pool": "control", "kind": "count", "q": "What is the property count of Velunth?", "gold": "5", "out": "3", "hit": false}
+{"symbol": "Velunth", "pool": "control", "kind": "presence_yes", "q": "Is there a sprocket property on Velunth?", "gold": "Yes", "out": "Velunth has: vane, murk, vorp, sumph. So the answer is No.", "hit": false}
+{"symbol": "Velunth", "pool": "control", "kind": "presence_no", "q": "Is there a pell property on Velunth?", "gold": "No", "out": "Velunth has: vane, murk, vorp, sumph. So the answer is No.", "hit": true}
+{"symbol": "Wrenunth", "pool": "control", "kind": "enum_heldout", "q": "In order, what are the properties of Wrenunth?", "gold": "vorp, snath, lumen, klin, frith, morrin", "out": "unwirth, unkind", "hit": false}
+{"symbol": "Wrenunth", "pool": "control", "kind": "count", "q": "What is the property count of Wrenunth?", "gold": "6", "out": "4", "hit": false}
+{"symbol": "Wrenunth", "pool": "control", "kind": "presence_yes", "q": "Is there a morrin property on Wrenunth?", "gold": "Yes", "out": "Wrenunth has: ath, umbra, dwell, snath, chom. So the answer is No.", "hit": false}
+{"symbol": "Wrenunth", "pool": "control", "kind": "presence_no", "q": "Is there a carom property on Wrenunth?", "gold": "No", "out": "Wrenunth has: nh, un, th, s, z, p, b, m, f. So the answer is No.", "hit": true}
+{"symbol": "Zorippet", "pool": "control", "kind": "enum_heldout", "q": "In order, what are the properties of Zorippet?", "gold": "sumph, wisk, zind", "out": "pell,3", "hit": false}
+{"symbol": "Zorippet", "pool": "control", "kind": "count", "q": "What is the property count of Zorippet?", "gold": "3", "out": "3", "hit": true}
+{"symbol": "Zorippet", "pool": "control", "kind": "presence_yes", "q": "Is there a zind property on Zorippet?", "gold": "Yes", "out": "Zorippet has: wobble, fizz, tplex. So the answer is No.", "hit": false}
+{"symbol": "Zorippet", "pool": "control", "kind": "presence_no", "q": "Is there a umbra property on Zorippet?", "gold": "No", "out": "Zorippet has: brel, dwell, tarn. So the answer is No.", "hit": true}

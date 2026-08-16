@@ -1,0 +1,44 @@
+{
+  "router": "tfidf(1,2)+logreg",
+  "train_queries": 5438,
+  "test_queries": 1295,
+  "overall_accuracy": 0.9366795366795366,
+  "per_pack": {
+    "ast": "355/355 (100.0%)",
+    "fiction1": "254/320 (79.4%)",
+    "fiction2": "304/320 (95.0%)",
+    "stdlib": "300/300 (100.0%)"
+  },
+  "labels": [
+    "ast",
+    "fiction1",
+    "fiction2",
+    "stdlib"
+  ],
+  "confusion": [
+    [
+      355,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      254,
+      66,
+      0
+    ],
+    [
+      0,
+      16,
+      304,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      300
+    ]
+  ]
+}

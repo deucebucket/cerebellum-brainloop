@@ -1,0 +1,29 @@
+{
+  "schema": "brainloop-usable-bake-milestone-v1",
+  "run_id": "e1051_battery_v4",
+  "claim": "Weight-baking installs USABLE memory (recall+count+membership) into a portable stock-llama.cpp Q8 GGUF, generalizing across held-out phrasings and held-out fields, far above the plain base.",
+  "model_gguf": "merged_models/e1051_battery_v4_merged-q8_0.gguf",
+  "model_gguf_sha256": "c62ef49be97eade4e93ee9461c523074108bb7e1270ed5f3c33b164371b4dc39",
+  "testbed": "71 Python ast node types (introspected ground truth), 53 trained / 18 control",
+  "eval": "355 held-out probes via mainline llama-server, GPU, temp 0",
+  "results_trained_vs_control": {
+    "enum_heldout_phrasing": "42/53 vs 5/18",
+    "count": "53/53 vs 7/18",
+    "presence_yes_heldout_field": "50/53 vs 12/18",
+    "presence_no_heldout_neg": "53/53 vs 16/18",
+    "reasoning_count_plus_presence": "156/159 (98%) vs 35/54 (65%)"
+  },
+  "key_findings": [
+    "runtime --lora does NOT preserve baked memory (0/15); merge->GGUF does.",
+    "signature-recall-only bake = string echo (E1045); use-shaped + scale + diversity = generalizing recall (E1047).",
+    "derived ops (count) require training that behavior (E1048); membership requires EXACT 1:1 balance (E1050) AND list-first answer ordering (E1051) so the verdict conditions on recited facts.",
+    "verdict-FIRST decouples the answer from the model's own correct recitation; list-FIRST fixes it."
+  ],
+  "ok": true,
+  "gate_6d_passed": true,
+  "production_ready": false,
+  "next": [
+    "apply recipe to non-AST facts (stdlib symbol->doc, squad) to prove generality",
+    "formal compiled benchmark vs plain base"
+  ]
+}

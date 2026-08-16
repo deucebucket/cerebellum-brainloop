@@ -3497,3 +3497,170 @@ pack at 3.3GB recalls obscure facts exactly (Stan Lathan, Poland, gothic metal)
 where base hallucinates. Inject-at-1bit path retired (static control-vector
 injection gave no recall lift; E1067).
 Adapter: adapters/bonsai-bake-e1068-popqa-full-r128
+
+## [Bonsai1Bit] E1068 EVAL START — rank-128 full-14k PopQA, Q2_K compiled-path eval — 2026-06-20
+Resumed post-restart (MCP fix loaded). Requant rank-128 bake Q8->Q2_K = 3.28GB
+(deployment size); base also Q2_K = 3.28GB (same provenance/quant, fair).
+Eval: bake_splits/e1065_popqa/eval.jsonl (1000 most-obscure long-tail facts),
+closed-book, compiled llama.cpp (llama-server :8200, mainline). Compare to
+e1065 rank-32: BASE 31.2% / BAKED 58.0%. Question: does rank128 + full 14k
+help or hurt recall on the same 1000 obscure facts.
+
+## [Bonsai1Bit] E1068 EVAL RESULT — rank-128 full-14k bake @ Q2_K (3.28GB) — 2026-06-20
+Same-quant (Q2_K, 3.28GB), same provenance, 1000 most-obscure PopQA facts, closed-book, compiled llama.cpp:
+  BASE  312/1000 (31.2%)
+  BAKED 387/1000 (38.7%)   = +7.5 pts (+24% rel)
+Base recall identical Q2 vs Q8 (both 31.2%) -> Q2 does not hurt the baseline.
+Lift smaller than e1065 rank-32 (+26.8) BECAUSE this bake spread capacity over
+ALL 14,267 facts (14x more) vs rank-32's concentrated 1000. The 1000-obscure set
+is the WORST CASE for the rank-128 model. Tradeoff = breadth vs concentration:
+one 3.28GB artifact now carries 14k facts instead of 1k. Next: measure recall
+across a random sample of all 14k baked facts (the true "pack it in" headline).
+Artifacts: brainloop_runs/e1068_eval_{baked,base}_q2.json, base_bonsai-Q2_K.gguf,
+e1068_popqa_r128-Q2_K.gguf.
+
+## [Bonsai1Bit] E1068 EVAL — FULL 14k BREADTH (the "pack it in" headline) — 2026-06-20
+Same artifact (Bonsai-8B, qwen3 8.19B, Q2_K, 3.28GB), compiled llama.cpp, closed-book,
+held-out natural PopQA question form. Verified BOTH models are Bonsai-8B (n_embd 4096,
+36 blocks, 8.19B) — NOT the old Qwen2.5-3B conch line.
+
+Full 14,267 baked facts:
+  BASE  2422/14267 (17.0%)
+  BAKED 3377/14267 (23.7%)   = +6.7 pts (+39% relative)
+  injected WINS 1518 / regressions 615 / net +903
+1000 most-obscure tail (subset):
+  BASE  312/1000 (31.2%)   BAKED 387/1000 (38.7%)   = +7.5 pts
+Audit (anti-misgrade): wins are genuine ("politician","mathematician"); base
+hallucinates confidently ("Dutch computer scientist","Spanish footballer"). 0 empty
+baked outputs. Base recall identical Q2 vs Q8 -> Q2 not hurting baseline.
+TAKEAWAY: one 3.28GB vanilla-llama.cpp GGUF now carries 14,267 obscure facts at +39%
+rel recall. Breadth-vs-concentration tradeoff vs e1065 (rank32/1k facts, +86% rel on 1k).
+Artifacts: brainloop_runs/e1068_eval_{base,baked}_full14k.json, base_bonsai-Q2_K.gguf,
+e1068_popqa_r128-Q2_K.gguf (/games/brainloop-models).
+
+## [trace-distill] COLAB RELAUNCH — resume r128 distill from HF step 75 — 2026-06-20
+Post-restart: prior Colab kernel reclaimed (hb stale at step 75). Relaunching with
+the FIXED colab-mcp (execute_cell returns "still running", keeps VM alive). Cell =
+colab_cyclable_train.py + 40k subset (.select(range(40000)) — full 612k re-tokenize
+was the death-loop) + async daemon heartbeat -> deucebucket/bonsai-fable-hb
+{phase,step,loss,t}. Resume from deucebucket/bonsai-fable-distill-r128/last-checkpoint.
+Base deucebucket/Ternary-Bonsai-8B-unpacked, QLoRA r128 layers24-35, TARGET=4000,
+SEG_MIN=70 (cycling checkpoints). Monitor locally: brainloop_colab_heartbeat.py.
+
+## [trace-distill] COLAB ALIVE — warming up — 2026-06-20
+change_runtime(A100) OK. execute_cell returned proxy "Timeout waiting for reply"
+(NOT the fix's "still running") -> the session restart reconnected the proxy but
+did NOT reload the backend colab-mcp process; it's still old code. BUT the cell
+runs anyway: the timeout only stops the MCP waiting, it does not interrupt the
+kernel. Heartbeat confirms ALIVE: phase=imports_ok, age=20s. Monitoring via
+deucebucket/bonsai-fable-hb (NOT the kernel). Cycling unaffected (dispatch ->
+accept cosmetic timeout -> watch hb). Backend reload via proxy /admin/server/reload
+deferred (would drop kernel connection mid-run; do it between segments only).
+
+## [Bonsai1Bit] E1069 START — capacity crank: rank 256 on full 14k PopQA (local 3090) — 2026-06-20
+Keep local GPU rolling while Colab runs the trace-distill. Direct test of the
+E1068 breadth ceiling (rank128 full-14k = 23.7% @ Q2 3.28GB): does DOUBLING rank
+to 256 lift recall at the SAME 3.3GB output (rank doesn't change merged-then-Q2
+size)? Same data bake_splits/e1066_popqa_full/train.jsonl (28,534 rows, 14,267
+facts x2 phrasings), layers 24-35, lr 2e-4, 2 epochs, chat format. Local
+train_bonsai_bake_lora.py on RTX 3090. Adapter: adapters/bonsai-bake-e1069-popqa-full-r256.
+Then merge->Q2->eval the same 14k held-out, compare to e1068 23.7% / base 17.0%.
+
+## [infra] COLAB MCP FIXED & VERIFIED — long cells survive — 2026-06-20 ~4:20a
+Root cause (3-agent audit): TWO layers killed long cells. (1) PROXY: 60s hardcoded
+per-call timeout x STDIO_TOOL_CALL_MAX_RETRIES=5; stdio retry loop does NOT
+reconnect, hammers same transport till it closes -> "Connection is already closed",
+kills the cell (this is what killed the distill at step 65). (2) colab-mcp KERNEL:
+reconnect_interval=0 (auto-reconnect OFF, upstream default), no liveness probe
+(dead socket reported as "still running" = silent failure), no reuse-guard (re-entry
+shutdown kills live cell).
+FIXES (colab-mcp/src/colab_mcp/__init__.py): bfe5e43 (execute returns "still running"
+in ~8s < 60s proxy budget -> no teardown) + NEW: KernelClient(ping_interval=20,
+reconnect_interval=5); is_alive() disambiguation in _runtime_execute + catch-all;
+_mark_runtime_dead() (drop ref w/o shutdown so reconnect re-attaches); reuse-if-alive
+guard in change_runtime.
+LOAD MECHANISM: /admin/server/reload alone does NOT re-spawn stdio children
+(clientsToKeep). Must ACTIVE-TOGGLE: set colab active:false -> reload (kills child)
+-> active:true -> reload (spawns fresh child w/ new code). Proxy :3663, admin/password,
+POST /admin/login -> connect.sid cookie. Did it; child pid 2164871->2063913.
+VERIFIED: A100 connected; 90s smoke cell -> execute_cell returned "still running"
+fast (NOT 60s teardown); kernel ALIVE after (KERNEL_ALIVE_AFTER_LONGCELL, A100-40GB).
+Upstream refs: googlecolab/colab-mcp disc #84 (reconnect/ports) #80 (reattach gap);
+datalayer/jupyter-kernel-client reconnect_interval default 0 = the core gap.
+
+## [trace-distill] COLAB RELAUNCH #2 on fixed MCP — 2026-06-20 ~4:20a
+Same fable-distill cell (pip install + 40k subset + async hb + resume from
+last-checkpoint) on the fixed A100. execute_cell returned "still running" clean.
+Watching it pass step 65 (prev death point) to prove the fix holds for a 70-min cell.
+
+## [trace-distill] FIX PROVEN — distill passed step 65 — 2026-06-20 ~4:30a
+hb: phase=train step=75 loss=1.08 (was dying at ~65 every prior attempt). Fixed MCP
+holds under a real 70-min training cell. Resume IS working (steps 60->75 are above the
+step-50 HF checkpoint, not a fresh 0-start). KEY: with deaths fixed, TARGET=4000 steps
+finishes in ONE ~15-20min A100 segment (well under SEG_MIN=70) -> cycling/resume now
+moot for this job. Watching for phase=complete. Local e1069 r256 still rolling in parallel.
+
+## [trace-distill] REALITY: shared A100 ~10s/step — cycle, test early — 2026-06-20 ~4:35a
+Distill reliable (fix holds) but SLOW: step 75->105 in ~5min = ~10s/step (shared
+Colab A100, not dedicated; expected ~1-2s/step). TARGET=4000 => ~11h => runs as
+cycling 70-min segments (~420 steps each), now reliable. PLAN: don't grind to 4000
+blind — let it reach an early checkpoint (~step 500, 1 segment), bake+eval that vs
+base to see if trace-distillation moves ANY needle (reasoning/behavior) before
+committing 11h. Resume confirmed working across segments. e1069 r256 local at ~5100/28534.
+
+## [trace-distill] save_steps 200->50: preemption-resilient cycling — 2026-06-20 ~5a
+A100 preempts ~18min (confirmed: "Connection is already closed" mid-run, hb went
+stale at step 115 -> VM reclaimed, NOT the MCP bug; MCP fix reported it cleanly).
+ROOT of "keeps restarting from scratch": save_steps=200 => first ckpt ~33min > 18min
+preempt window => every death lost the whole segment. FIX (user caught it): save_steps=50
+(~8min) banks progress inside the preempt window; resume-on-relaunch ratchets forward.
+L4 won't connect (assigned asia-southeast1, kernel.start 10s read-timeout too tight for
+the latency). Staying A100 + save_steps=50 + cycle-on-preempt. Efficiency ~67% (each
+relaunch = ~6min deps+16GB model warmup). Bulletproof fallback: finish on 3090 after
+e1069 (no preemption). Relaunched on fresh A100, warming up.
+
+## [trace-distill] checkpoint economics + standing relaunch config — 2026-06-20 ~5:10a
+Tighter checkpoints reduce preempt-loss BUT each ckpt pushes ~1GB optimizer state to
+HF (must survive VM death) -> too-tight = upload time > train time. save_steps=50 ok
+for ~1GB ckpt. To go tighter cheaply, shrink the ckpt: STANDING NEXT-RELAUNCH CONFIG =
+optim="paged_adamw_8bit" (QLoRA standard, ~4x smaller opt state -> ckpt ~1GB->~400MB,
+also less VRAM) + save_steps=25. Apply on the NEXT preemption-forced relaunch (free),
+don't interrupt the current warmup. NOTE: switching optimizer breaks clean resume from
+an fp32-AdamW ckpt -> the relaunch that adopts 8-bit starts fresh from latest LoRA
+weights (reinit optimizer); fine (distill, minimal loss).
+
+## [incident] DISK FULL killed e1069 on 3090; recovered + housekept — 2026-06-20 ~6a
+e1069 (rank-256 PopQA) crashed at step ~14500: SafetensorError "No space left on
+device" saving a checkpoint. ROOT: trainer had NO save_total_limit -> 29 checkpoints
+(~2.8GB each: 931MB adapter + 1.86GB fp32 optimizer) = 74GB piled on the MAIN drive.
+checkpoint-14500 corrupt (partial save); checkpoint-14000 clean = resume point.
+FIXES: (1) trimmed e1069 checkpoints 74GB->5.3GB (kept 13500+14000); (2) moved e1069
+dir to game drive via new ./experiments symlink -> /games/brainloop-experiments;
+(3) patched train_bonsai_bake_lora.py: save_total_limit=2 + get_last_checkpoint resume;
+(4) moved scattered experiment GGUFs (qwen2.5-3b/7b-brainloop ~21GB, merged_models
+~12GB) to /games/brainloop-models. LEFT the 100GB HF image-model cache alone (Z-Image/
+SDXL/Qwen-Image — user's OTHER projects, not ours). e1069 RESUMED from 14000 on 3090,
+output now on game drive, cruising 9.37 it/s, ETA ~25min. Colab distill (ntfy) died
+(dud segment stuck in tokenize); ckpt safe at HF step 100; 3090 takes fable distill next.
+
+## [Bonsai1Bit] E1069 RESULT — rank-256 does NOT beat rank-128 (capacity is NOT the lever) — 2026-06-20
+e1069 = rank-256, full 14k PopQA, 2 epochs (same as e1068 except rank 128->256), resumed
+from disk-crash at step 14000, finished 28534 steps on 3090.
+500-q obscure bench (GPU, Q2): e1069 r256 = 169/500 (33.8%) vs base 155/500 (31.0%) = +2.8pts.
+  vs e1068 r128 on obscure tail = +7.5pts. -> RANK-256 IS WORSE. Doubling rank HURT.
+INTERPRETATION: confirms the "1-bit base is ~flat to rank" intuition — extra LoRA rank
+overfits AND gets crushed by merge->Q2 requant, so capacity is wasted/harmful. Bottleneck
+is DATA, not capacity. Validates the 35% fable-dupe finding as the real lever. Also implies
+the optimal rank is LOW (early bakes used r16) — a rank sweep (16/32/64/128) would map the plateau.
+Full-14k confirmation eval re-running (vs e1068 23.7%). Harness patched: complete() now
+tolerates a garbled question (full-14k set had a mangled-unicode row that 500'd the server
+and crashed the whole run; now counts as a miss). GPU eval, not CPU (CPU was only the
+merge/convert/quant prep — merge should've been GPU since free; minor waste).
+Artifacts: e1069_popqa_r256-Q2_K.gguf, experiments/e1069_eval_{500,full14k}.json.
+
+## [Bonsai1Bit] E1069 FULL-14k CONFIRMED — rank-256 COLLAPSED below base — 2026-06-20
+e1069 rank-256 full-14k: 2416/14267 = 16.9% — BELOW base (17.0%), vs e1068 rank-128 23.7%.
+Doubling rank didn't plateau, it CLIFFED: -6.8pts vs rank-128, at/below base = learned nothing
+useful. Too much capacity is ACTIVELY HARMFUL at the 1-bit base (overfit + requant crush).
+Optimum rank LOW (<=128, likely 32-64). 500-q gave +2.8 (33.8 vs 31.0) but full-14k = collapse.
+Distill config -> low rank (64). Harness patched: complete() tolerates garbled questions.

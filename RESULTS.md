@@ -12,7 +12,8 @@ All headline numbers below are **compiled-path** results: the model forward runs
 in C/CUDA on stock `llama.cpp`, not in a PyTorch hook. Evaluations use held-out
 phrasings (the question wording at test time differs from the wording used to
 bake the facts), and wrong/right judgments are audited against the detailed output
-before a score is recorded.
+before a score is recorded. Per-item dumps (question, gold, raw `out`, `hit`)
+are in `brainloop_runs/`; `evidence/README.md` maps each table to its file.
 
 Two benchmark types appear:
 

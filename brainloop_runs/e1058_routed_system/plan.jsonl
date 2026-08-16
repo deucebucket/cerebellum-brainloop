@@ -1,0 +1,180 @@
+{"true_pack": "ast", "kind": "enum_heldout", "q": "In order, what are the fields of ast.Assert?", "gold": "test, msg", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "count", "q": "What is the field count of ast.Assert?", "gold": "2", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "code_heldout", "q": "Construct an ast.Assert AST node in one line of Python.", "gold": "Assert(test=..., msg=...)", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "presence_yes", "q": "Is there a msg field on ast.Assert?", "gold": "Yes", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "presence_no", "q": "Is there a lineno field on ast.Assert?", "gold": "No", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "enum_heldout", "q": "In order, what are the fields of ast.Assign?", "gold": "targets, value, type_comment", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "count", "q": "What is the field count of ast.Assign?", "gold": "3", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "code_heldout", "q": "Construct an ast.Assign AST node in one line of Python.", "gold": "Assign(targets=..., value=..., type_comment=...)", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "presence_yes", "q": "Is there a type_comment field on ast.Assign?", "gold": "Yes", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "presence_no", "q": "Is there a rest field on ast.Assign?", "gold": "No", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "enum_heldout", "q": "In order, what are the fields of ast.AsyncFor?", "gold": "target, iter, body, orelse, type_comment", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "count", "q": "What is the field count of ast.AsyncFor?", "gold": "5", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "code_heldout", "q": "Construct an ast.AsyncFor AST node in one line of Python.", "gold": "AsyncFor(target=..., iter=..., body=..., orelse=..., type_comment=...)", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "presence_yes", "q": "Is there a type_comment field on ast.AsyncFor?", "gold": "Yes", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "presence_no", "q": "Is there a values field on ast.AsyncFor?", "gold": "No", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "enum_heldout", "q": "In order, what are the fields of ast.AsyncWith?", "gold": "items, body, type_comment", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "count", "q": "What is the field count of ast.AsyncWith?", "gold": "3", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "code_heldout", "q": "Construct an ast.AsyncWith AST node in one line of Python.", "gold": "AsyncWith(items=..., body=..., type_comment=...)", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "presence_yes", "q": "Is there a type_comment field on ast.AsyncWith?", "gold": "Yes", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "presence_no", "q": "Is there a cases field on ast.AsyncWith?", "gold": "No", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "enum_heldout", "q": "In order, what are the fields of ast.Attribute?", "gold": "value, attr, ctx", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "count", "q": "What is the field count of ast.Attribute?", "gold": "3", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "code_heldout", "q": "Construct an ast.Attribute AST node in one line of Python.", "gold": "Attribute(value=..., attr=..., ctx=...)", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "presence_yes", "q": "Is there a ctx field on ast.Attribute?", "gold": "Yes", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "presence_no", "q": "Is there a format_spec field on ast.Attribute?", "gold": "No", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "enum_heldout", "q": "In order, what are the fields of ast.AugAssign?", "gold": "target, op, value", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "count", "q": "What is the field count of ast.AugAssign?", "gold": "3", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "code_heldout", "q": "Construct an ast.AugAssign AST node in one line of Python.", "gold": "AugAssign(target=..., op=..., value=...)", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "presence_yes", "q": "Is there a value field on ast.AugAssign?", "gold": "Yes", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "presence_no", "q": "Is there a keywords field on ast.AugAssign?", "gold": "No", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "enum_heldout", "q": "In order, what are the fields of ast.BinOp?", "gold": "left, op, right", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "count", "q": "What is the field count of ast.BinOp?", "gold": "3", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "code_heldout", "q": "Construct an ast.BinOp AST node in one line of Python.", "gold": "BinOp(left=..., op=..., right=...)", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "presence_yes", "q": "Is there a right field on ast.BinOp?", "gold": "Yes", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "presence_no", "q": "Is there a operand field on ast.BinOp?", "gold": "No", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "enum_heldout", "q": "In order, what are the fields of ast.BoolOp?", "gold": "op, values", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "count", "q": "What is the field count of ast.BoolOp?", "gold": "2", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "code_heldout", "q": "Construct an ast.BoolOp AST node in one line of Python.", "gold": "BoolOp(op=..., values=...)", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "presence_yes", "q": "Is there a values field on ast.BoolOp?", "gold": "Yes", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "presence_no", "q": "Is there a simple field on ast.BoolOp?", "gold": "No", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "enum_heldout", "q": "In order, what are the fields of ast.Call?", "gold": "func, args, keywords", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "count", "q": "What is the field count of ast.Call?", "gold": "3", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "code_heldout", "q": "Construct an ast.Call AST node in one line of Python.", "gold": "Call(func=..., args=..., keywords=...)", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "presence_yes", "q": "Is there a keywords field on ast.Call?", "gold": "Yes", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "presence_no", "q": "Is there a values field on ast.Call?", "gold": "No", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "enum_heldout", "q": "In order, what are the fields of ast.Compare?", "gold": "left, ops, comparators", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "count", "q": "What is the field count of ast.Compare?", "gold": "3", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "code_heldout", "q": "Construct an ast.Compare AST node in one line of Python.", "gold": "Compare(left=..., ops=..., comparators=...)", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "presence_yes", "q": "Is there a comparators field on ast.Compare?", "gold": "Yes", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "presence_no", "q": "Is there a conversion field on ast.Compare?", "gold": "No", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "enum_heldout", "q": "In order, what are the fields of ast.Constant?", "gold": "value, kind", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "count", "q": "What is the field count of ast.Constant?", "gold": "2", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "code_heldout", "q": "Construct an ast.Constant AST node in one line of Python.", "gold": "Constant(value=..., kind=...)", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "presence_yes", "q": "Is there a kind field on ast.Constant?", "gold": "Yes", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "presence_no", "q": "Is there a finalbody field on ast.Constant?", "gold": "No", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "enum_heldout", "q": "In order, what are the fields of ast.Delete?", "gold": "targets", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "count", "q": "What is the field count of ast.Delete?", "gold": "1", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "code_heldout", "q": "Construct an ast.Delete AST node in one line of Python.", "gold": "Delete(targets=...)", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "presence_yes", "q": "Is there a targets field on ast.Delete?", "gold": "Yes", "pred_pack": "ast"}
+{"true_pack": "ast", "kind": "presence_no", "q": "Is there a key field on ast.Delete?", "gold": "No", "pred_pack": "ast"}
+{"true_pack": "fiction1", "kind": "enum_heldout", "q": "In order, what are the properties of Azzoazu?", "gold": "wobble, yarl, klin, harn", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "count", "q": "What is the property count of Azzoazu?", "gold": "4", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_yes", "q": "Is there a harn property on Azzoazu?", "gold": "Yes", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_no", "q": "Is there a fizzle property on Azzoazu?", "gold": "No", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "enum_heldout", "q": "In order, what are the properties of Azzoeppa?", "gold": "gantry, girth, snath, vane, carom, rivet", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "count", "q": "What is the property count of Azzoeppa?", "gold": "6", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_yes", "q": "Is there a rivet property on Azzoeppa?", "gold": "Yes", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_no", "q": "Is there a plume property on Azzoeppa?", "gold": "No", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "enum_heldout", "q": "In order, what are the properties of Azzoester?", "gold": "vane, vorp, tarn, wobble, gantry, brel", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "count", "q": "What is the property count of Azzoester?", "gold": "6", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_yes", "q": "Is there a brel property on Azzoester?", "gold": "Yes", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_no", "q": "Is there a umbra property on Azzoester?", "gold": "No", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "enum_heldout", "q": "In order, what are the properties of Azzotine?", "gold": "nexel, tplex, sprocket, umbra, crux, harn", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "count", "q": "What is the property count of Azzotine?", "gold": "6", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_yes", "q": "Is there a harn property on Azzotine?", "gold": "Yes", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_no", "q": "Is there a fizzle property on Azzotine?", "gold": "No", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "enum_heldout", "q": "In order, what are the properties of Azzoulth?", "gold": "sprocket, wisk, klin, umbra", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "count", "q": "What is the property count of Azzoulth?", "gold": "4", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_yes", "q": "Is there a umbra property on Azzoulth?", "gold": "Yes", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_no", "q": "Is there a morrin property on Azzoulth?", "gold": "No", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "enum_heldout", "q": "In order, what are the properties of Azzounth?", "gold": "frith, klin, vane, veil, harn", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "count", "q": "What is the property count of Azzounth?", "gold": "5", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_yes", "q": "Is there a harn property on Azzounth?", "gold": "Yes", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_no", "q": "Is there a tplex property on Azzounth?", "gold": "No", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "enum_heldout", "q": "In order, what are the properties of Blonarn?", "gold": "gantry, flux, carom, sprocket, brel, fizzle", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "count", "q": "What is the property count of Blonarn?", "gold": "6", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_yes", "q": "Is there a fizzle property on Blonarn?", "gold": "Yes", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_no", "q": "Is there a frith property on Blonarn?", "gold": "No", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "enum_heldout", "q": "In order, what are the properties of Blonilux?", "gold": "yarl, fizzle, tplex, harn", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "count", "q": "What is the property count of Blonilux?", "gold": "4", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_yes", "q": "Is there a harn property on Blonilux?", "gold": "Yes", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_no", "q": "Is there a klin property on Blonilux?", "gold": "No", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "enum_heldout", "q": "In order, what are the properties of Blontine?", "gold": "flux, murk, sprocket, drak, delve", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "count", "q": "What is the property count of Blontine?", "gold": "5", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_yes", "q": "Is there a delve property on Blontine?", "gold": "Yes", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_no", "q": "Is there a tplex property on Blontine?", "gold": "No", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "enum_heldout", "q": "In order, what are the properties of Blonwin?", "gold": "snath, lumen, yarl, skarn, pell", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "count", "q": "What is the property count of Blonwin?", "gold": "5", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_yes", "q": "Is there a pell property on Blonwin?", "gold": "Yes", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_no", "q": "Is there a carom property on Blonwin?", "gold": "No", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "enum_heldout", "q": "In order, what are the properties of Drevdorn?", "gold": "snath, drak, chom, zind, vane, prand", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "count", "q": "What is the property count of Drevdorn?", "gold": "6", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_yes", "q": "Is there a prand property on Drevdorn?", "gold": "Yes", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_no", "q": "Is there a murk property on Drevdorn?", "gold": "No", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "enum_heldout", "q": "In order, what are the properties of Drevorne?", "gold": "sprocket, chom, tplex, skarn, crux", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "count", "q": "What is the property count of Drevorne?", "gold": "5", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_yes", "q": "Is there a crux property on Drevorne?", "gold": "Yes", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_no", "q": "Is there a snath property on Drevorne?", "gold": "No", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "enum_heldout", "q": "In order, what are the properties of Fentblax?", "gold": "zind, brel, gorm, quorn, tarn, nexel", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "count", "q": "What is the property count of Fentblax?", "gold": "6", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_yes", "q": "Is there a nexel property on Fentblax?", "gold": "Yes", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_no", "q": "Is there a delve property on Fentblax?", "gold": "No", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "enum_heldout", "q": "In order, what are the properties of Fentiqua?", "gold": "obol, vorp, girth, flux, wisk, klin", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "count", "q": "What is the property count of Fentiqua?", "gold": "6", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_yes", "q": "Is there a klin property on Fentiqua?", "gold": "Yes", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_no", "q": "Is there a murk property on Fentiqua?", "gold": "No", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "enum_heldout", "q": "In order, what are the properties of Fentux?", "gold": "obol, crux, rivet, gorm, twixt", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "count", "q": "What is the property count of Fentux?", "gold": "5", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_yes", "q": "Is there a twixt property on Fentux?", "gold": "Yes", "pred_pack": "fiction1"}
+{"true_pack": "fiction1", "kind": "presence_no", "q": "Is there a skarn property on Fentux?", "gold": "No", "pred_pack": "fiction1"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does argparse.Action take?", "gold": "option_strings, dest, nargs, const, default, type, choices, required, help, metavar, deprecated", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does argparse.ArgumentDefaultsHelpFormatter take?", "gold": "prog, indent_increment, max_help_position, width, color", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does argparse.ArgumentError take?", "gold": "argument, message", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does argparse.ArgumentParser take?", "gold": "prog, usage, description, epilog, parents, formatter_class, prefix_chars, fromfile_prefix_chars, argument_default, conflict_handler, add_help, allow_abbrev, exit_on_error, suggest_on_error, color", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does argparse.BooleanOptionalAction take?", "gold": "option_strings, dest, default, required, help, deprecated", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does argparse.FileType take?", "gold": "mode, bufsize, encoding, errors", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does argparse.HelpFormatter take?", "gold": "prog, indent_increment, max_help_position, width, color", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does argparse.MetavarTypeHelpFormatter take?", "gold": "prog, indent_increment, max_help_position, width, color", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does argparse.Namespace take?", "gold": "kwargs", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does argparse.RawDescriptionHelpFormatter take?", "gold": "prog, indent_increment, max_help_position, width, color", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does argparse.RawTextHelpFormatter take?", "gold": "prog, indent_increment, max_help_position, width, color", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does argparse.ngettext take?", "gold": "msgid1, msgid2, n", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does base64.a85decode take?", "gold": "b, foldspaces, adobe, ignorechars", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does base64.a85encode take?", "gold": "b, foldspaces, wrapcol, pad, adobe", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does base64.b16decode take?", "gold": "s, casefold", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does base64.b16encode take?", "gold": "s", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does base64.b32decode take?", "gold": "s, casefold, map01", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does base64.b32encode take?", "gold": "s", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does base64.b32hexdecode take?", "gold": "s, casefold", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does base64.b32hexencode take?", "gold": "s", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does base64.b64decode take?", "gold": "s, altchars, validate", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does base64.b64encode take?", "gold": "s, altchars", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does base64.b85decode take?", "gold": "b", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does base64.b85encode take?", "gold": "b, pad", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does base64.decode take?", "gold": "input, output", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does base64.decodebytes take?", "gold": "s", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does base64.encode take?", "gold": "input, output", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does base64.encodebytes take?", "gold": "s", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does base64.standard_b64decode take?", "gold": "s", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does base64.standard_b64encode take?", "gold": "s", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does base64.urlsafe_b64decode take?", "gold": "s", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does base64.urlsafe_b64encode take?", "gold": "s", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does base64.z85decode take?", "gold": "s", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does base64.z85encode take?", "gold": "s", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does bisect.bisect take?", "gold": "a, x, lo, hi, key", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does bisect.bisect_left take?", "gold": "a, x, lo, hi, key", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does bisect.bisect_right take?", "gold": "a, x, lo, hi, key", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does bisect.insort take?", "gold": "a, x, lo, hi, key", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does bisect.insort_left take?", "gold": "a, x, lo, hi, key", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does bisect.insort_right take?", "gold": "a, x, lo, hi, key", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does calendar.Calendar take?", "gold": "firstweekday", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does calendar.Day take?", "gold": "values", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does calendar.HTMLCalendar take?", "gold": "firstweekday", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does calendar.IllegalMonthError take?", "gold": "month", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does calendar.IllegalWeekdayError take?", "gold": "weekday", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does calendar.IntEnum take?", "gold": "new_class_name, names, module, qualname, type, start, boundary", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does calendar.LocaleHTMLCalendar take?", "gold": "firstweekday, locale", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does calendar.LocaleTextCalendar take?", "gold": "firstweekday, locale", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does calendar.Month take?", "gold": "values", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does calendar.TextCalendar take?", "gold": "firstweekday", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does calendar.different_locale take?", "gold": "locale", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does calendar.format take?", "gold": "cols, colwidth, spacing", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does calendar.formatstring take?", "gold": "cols, colwidth, spacing", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does calendar.global_enum take?", "gold": "update_str", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does calendar.isleap take?", "gold": "year", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does calendar.leapdays take?", "gold": "y1, y2", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does calendar.main take?", "gold": "args", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does calendar.monthrange take?", "gold": "year, month", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does calendar.setfirstweekday take?", "gold": "firstweekday", "pred_pack": "stdlib"}
+{"true_pack": "stdlib", "kind": "recall", "q": "In order, what parameters does calendar.timegm take?", "gold": "tuple", "pred_pack": "stdlib"}

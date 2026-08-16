@@ -1,0 +1,20 @@
+{
+  "packs": [
+    "ast",
+    "fiction1",
+    "fiction2",
+    "stdlib",
+    "stdlib2"
+  ],
+  "n_packs": 5,
+  "slots": 2,
+  "pattern": "blocks",
+  "queries": 40,
+  "accuracy": 0.875,
+  "router_accuracy": 1.0,
+  "page_ins": 10,
+  "cache_hit_rate": 0.75,
+  "wall_sec": 80.0,
+  "hot_gb": 17.4,
+  "cold_gb": 43.5
+}

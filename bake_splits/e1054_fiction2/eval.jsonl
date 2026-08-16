@@ -1,0 +1,320 @@
+{"messages": [{"role": "user", "content": "In order, what are the properties of Azzoblax?"}, {"role": "assistant", "content": "chom, girth, brel"}], "symbol": "Azzoblax", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Azzoblax?"}, {"role": "assistant", "content": "3"}], "symbol": "Azzoblax", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a brel property on Azzoblax?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Azzoblax", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a frith property on Azzoblax?"}, {"role": "assistant", "content": "No"}], "symbol": "Azzoblax", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Azzoilux?"}, {"role": "assistant", "content": "yarl, umbra, delve"}], "symbol": "Azzoilux", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Azzoilux?"}, {"role": "assistant", "content": "3"}], "symbol": "Azzoilux", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a delve property on Azzoilux?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Azzoilux", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a obol property on Azzoilux?"}, {"role": "assistant", "content": "No"}], "symbol": "Azzoilux", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Azzowin?"}, {"role": "assistant", "content": "lumen, morrin, girth, gantry, veil, gorm"}], "symbol": "Azzowin", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Azzowin?"}, {"role": "assistant", "content": "6"}], "symbol": "Azzowin", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a gorm property on Azzowin?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Azzowin", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a vorp property on Azzowin?"}, {"role": "assistant", "content": "No"}], "symbol": "Azzowin", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Blonorne?"}, {"role": "assistant", "content": "tplex, plume, veil"}], "symbol": "Blonorne", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Blonorne?"}, {"role": "assistant", "content": "3"}], "symbol": "Blonorne", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a veil property on Blonorne?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Blonorne", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a crux property on Blonorne?"}, {"role": "assistant", "content": "No"}], "symbol": "Blonorne", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Blonyle?"}, {"role": "assistant", "content": "delve, vane, lumen, yarl, chom, sumph"}], "symbol": "Blonyle", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Blonyle?"}, {"role": "assistant", "content": "6"}], "symbol": "Blonyle", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a sumph property on Blonyle?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Blonyle", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a pell property on Blonyle?"}, {"role": "assistant", "content": "No"}], "symbol": "Blonyle", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Drevazu?"}, {"role": "assistant", "content": "twixt, frith, girth, carom, chom, nexel"}], "symbol": "Drevazu", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Drevazu?"}, {"role": "assistant", "content": "6"}], "symbol": "Drevazu", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a nexel property on Drevazu?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Drevazu", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a veil property on Drevazu?"}, {"role": "assistant", "content": "No"}], "symbol": "Drevazu", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Drevulth?"}, {"role": "assistant", "content": "umbra, tarn, flux, tplex, fizzle, skarn"}], "symbol": "Drevulth", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Drevulth?"}, {"role": "assistant", "content": "6"}], "symbol": "Drevulth", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a skarn property on Drevulth?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Drevulth", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a drak property on Drevulth?"}, {"role": "assistant", "content": "No"}], "symbol": "Drevulth", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Drevyle?"}, {"role": "assistant", "content": "tarn, yarl, gorm, wisk"}], "symbol": "Drevyle", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Drevyle?"}, {"role": "assistant", "content": "4"}], "symbol": "Drevyle", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a wisk property on Drevyle?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Drevyle", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a harn property on Drevyle?"}, {"role": "assistant", "content": "No"}], "symbol": "Drevyle", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Fentilux?"}, {"role": "assistant", "content": "frith, plume, prand, rivet, wobble"}], "symbol": "Fentilux", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Fentilux?"}, {"role": "assistant", "content": "5"}], "symbol": "Fentilux", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a wobble property on Fentilux?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Fentilux", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a tarn property on Fentilux?"}, {"role": "assistant", "content": "No"}], "symbol": "Fentilux", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Fentorne?"}, {"role": "assistant", "content": "wobble, tplex, crux, sumph"}], "symbol": "Fentorne", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Fentorne?"}, {"role": "assistant", "content": "4"}], "symbol": "Fentorne", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a sumph property on Fentorne?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Fentorne", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a yarl property on Fentorne?"}, {"role": "assistant", "content": "No"}], "symbol": "Fentorne", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Fenttine?"}, {"role": "assistant", "content": "murk, umbra, chom, wisk"}], "symbol": "Fenttine", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Fenttine?"}, {"role": "assistant", "content": "4"}], "symbol": "Fenttine", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a wisk property on Fenttine?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Fenttine", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a gantry property on Fenttine?"}, {"role": "assistant", "content": "No"}], "symbol": "Fenttine", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Fentulth?"}, {"role": "assistant", "content": "vorp, sumph, lumen, umbra"}], "symbol": "Fentulth", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Fentulth?"}, {"role": "assistant", "content": "4"}], "symbol": "Fentulth", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a umbra property on Fentulth?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Fentulth", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a plume property on Fentulth?"}, {"role": "assistant", "content": "No"}], "symbol": "Fentulth", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Glanaddox?"}, {"role": "assistant", "content": "rivet, frith, skarn, umbra, crux"}], "symbol": "Glanaddox", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Glanaddox?"}, {"role": "assistant", "content": "5"}], "symbol": "Glanaddox", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a crux property on Glanaddox?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Glanaddox", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a zind property on Glanaddox?"}, {"role": "assistant", "content": "No"}], "symbol": "Glanaddox", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Glanond?"}, {"role": "assistant", "content": "flux, fizzle, veil, pell, rivet, yarl"}], "symbol": "Glanond", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Glanond?"}, {"role": "assistant", "content": "6"}], "symbol": "Glanond", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a yarl property on Glanond?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Glanond", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a morrin property on Glanond?"}, {"role": "assistant", "content": "No"}], "symbol": "Glanond", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Glanovic?"}, {"role": "assistant", "content": "klin, vane, murk, drak, morrin, quorn"}], "symbol": "Glanovic", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Glanovic?"}, {"role": "assistant", "content": "6"}], "symbol": "Glanovic", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a quorn property on Glanovic?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Glanovic", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a tplex property on Glanovic?"}, {"role": "assistant", "content": "No"}], "symbol": "Glanovic", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Glanux?"}, {"role": "assistant", "content": "harn, quorn, morrin, veil"}], "symbol": "Glanux", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Glanux?"}, {"role": "assistant", "content": "4"}], "symbol": "Glanux", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a veil property on Glanux?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Glanux", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a twixt property on Glanux?"}, {"role": "assistant", "content": "No"}], "symbol": "Glanux", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Glanwin?"}, {"role": "assistant", "content": "dwell, flux, frith, yarl, brel"}], "symbol": "Glanwin", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Glanwin?"}, {"role": "assistant", "content": "5"}], "symbol": "Glanwin", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a brel property on Glanwin?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Glanwin", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a gorm property on Glanwin?"}, {"role": "assistant", "content": "No"}], "symbol": "Glanwin", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Glanyle?"}, {"role": "assistant", "content": "sprocket, skarn, gantry"}], "symbol": "Glanyle", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Glanyle?"}, {"role": "assistant", "content": "3"}], "symbol": "Glanyle", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a gantry property on Glanyle?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Glanyle", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a frith property on Glanyle?"}, {"role": "assistant", "content": "No"}], "symbol": "Glanyle", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Grimeppa?"}, {"role": "assistant", "content": "prand, harn, yarl, dwell, fizzle"}], "symbol": "Grimeppa", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Grimeppa?"}, {"role": "assistant", "content": "5"}], "symbol": "Grimeppa", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a fizzle property on Grimeppa?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Grimeppa", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a veil property on Grimeppa?"}, {"role": "assistant", "content": "No"}], "symbol": "Grimeppa", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Jalackle?"}, {"role": "assistant", "content": "prand, sprocket, crux, umbra"}], "symbol": "Jalackle", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Jalackle?"}, {"role": "assistant", "content": "4"}], "symbol": "Jalackle", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a umbra property on Jalackle?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Jalackle", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a brel property on Jalackle?"}, {"role": "assistant", "content": "No"}], "symbol": "Jalackle", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Jaladdox?"}, {"role": "assistant", "content": "nexel, snath, umbra, brel, sprocket"}], "symbol": "Jaladdox", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Jaladdox?"}, {"role": "assistant", "content": "5"}], "symbol": "Jaladdox", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a sprocket property on Jaladdox?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Jaladdox", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a obol property on Jaladdox?"}, {"role": "assistant", "content": "No"}], "symbol": "Jaladdox", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Jalulth?"}, {"role": "assistant", "content": "veil, plume, klin, lumen"}], "symbol": "Jalulth", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Jalulth?"}, {"role": "assistant", "content": "4"}], "symbol": "Jalulth", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a lumen property on Jalulth?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Jalulth", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a skarn property on Jalulth?"}, {"role": "assistant", "content": "No"}], "symbol": "Jalulth", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Korrackle?"}, {"role": "assistant", "content": "vane, yarl, dwell, plume, chom"}], "symbol": "Korrackle", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Korrackle?"}, {"role": "assistant", "content": "5"}], "symbol": "Korrackle", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a chom property on Korrackle?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Korrackle", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a drak property on Korrackle?"}, {"role": "assistant", "content": "No"}], "symbol": "Korrackle", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Korreppa?"}, {"role": "assistant", "content": "rivet, wobble, twixt, zind, lumen, sumph"}], "symbol": "Korreppa", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Korreppa?"}, {"role": "assistant", "content": "6"}], "symbol": "Korreppa", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a sumph property on Korreppa?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Korreppa", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a quorn property on Korreppa?"}, {"role": "assistant", "content": "No"}], "symbol": "Korreppa", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Moxester?"}, {"role": "assistant", "content": "skarn, quorn, murk"}], "symbol": "Moxester", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Moxester?"}, {"role": "assistant", "content": "3"}], "symbol": "Moxester", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a murk property on Moxester?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Moxester", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a gorm property on Moxester?"}, {"role": "assistant", "content": "No"}], "symbol": "Moxester", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Moxtine?"}, {"role": "assistant", "content": "crux, drak, zind, delve, chom"}], "symbol": "Moxtine", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Moxtine?"}, {"role": "assistant", "content": "5"}], "symbol": "Moxtine", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a chom property on Moxtine?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Moxtine", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a dwell property on Moxtine?"}, {"role": "assistant", "content": "No"}], "symbol": "Moxtine", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Nethackle?"}, {"role": "assistant", "content": "quorn, murk, obol, umbra, prand, twixt"}], "symbol": "Nethackle", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Nethackle?"}, {"role": "assistant", "content": "6"}], "symbol": "Nethackle", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a twixt property on Nethackle?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Nethackle", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a skarn property on Nethackle?"}, {"role": "assistant", "content": "No"}], "symbol": "Nethackle", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Nethilux?"}, {"role": "assistant", "content": "snath, morrin, fizzle, yarl, prand, wisk"}], "symbol": "Nethilux", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Nethilux?"}, {"role": "assistant", "content": "6"}], "symbol": "Nethilux", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a wisk property on Nethilux?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Nethilux", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a wobble property on Nethilux?"}, {"role": "assistant", "content": "No"}], "symbol": "Nethilux", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Nethyle?"}, {"role": "assistant", "content": "carom, crux, rivet, prand"}], "symbol": "Nethyle", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Nethyle?"}, {"role": "assistant", "content": "4"}], "symbol": "Nethyle", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a prand property on Nethyle?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Nethyle", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a twixt property on Nethyle?"}, {"role": "assistant", "content": "No"}], "symbol": "Nethyle", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Pimblax?"}, {"role": "assistant", "content": "yarl, tarn, frith, prand, pell"}], "symbol": "Pimblax", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Pimblax?"}, {"role": "assistant", "content": "5"}], "symbol": "Pimblax", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a pell property on Pimblax?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Pimblax", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a gorm property on Pimblax?"}, {"role": "assistant", "content": "No"}], "symbol": "Pimblax", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Pimorne?"}, {"role": "assistant", "content": "vorp, zind, skarn, prand, snath"}], "symbol": "Pimorne", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Pimorne?"}, {"role": "assistant", "content": "5"}], "symbol": "Pimorne", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a snath property on Pimorne?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Pimorne", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a quorn property on Pimorne?"}, {"role": "assistant", "content": "No"}], "symbol": "Pimorne", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Pimux?"}, {"role": "assistant", "content": "dwell, veil, wobble, morrin, pell"}], "symbol": "Pimux", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Pimux?"}, {"role": "assistant", "content": "5"}], "symbol": "Pimux", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a pell property on Pimux?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Pimux", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a yarl property on Pimux?"}, {"role": "assistant", "content": "No"}], "symbol": "Pimux", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Pimwin?"}, {"role": "assistant", "content": "pell, twixt, tarn, flux, murk"}], "symbol": "Pimwin", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Pimwin?"}, {"role": "assistant", "content": "5"}], "symbol": "Pimwin", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a murk property on Pimwin?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Pimwin", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a gantry property on Pimwin?"}, {"role": "assistant", "content": "No"}], "symbol": "Pimwin", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Ploxond?"}, {"role": "assistant", "content": "tarn, vorp, murk"}], "symbol": "Ploxond", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Ploxond?"}, {"role": "assistant", "content": "3"}], "symbol": "Ploxond", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a murk property on Ploxond?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Ploxond", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a brel property on Ploxond?"}, {"role": "assistant", "content": "No"}], "symbol": "Ploxond", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Ploxtine?"}, {"role": "assistant", "content": "veil, flux, yarl, pell, chom, dwell"}], "symbol": "Ploxtine", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Ploxtine?"}, {"role": "assistant", "content": "6"}], "symbol": "Ploxtine", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a dwell property on Ploxtine?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Ploxtine", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a gantry property on Ploxtine?"}, {"role": "assistant", "content": "No"}], "symbol": "Ploxtine", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Ploxunth?"}, {"role": "assistant", "content": "crux, tplex, sprocket, flux, pell"}], "symbol": "Ploxunth", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Ploxunth?"}, {"role": "assistant", "content": "5"}], "symbol": "Ploxunth", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a pell property on Ploxunth?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Ploxunth", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a frith property on Ploxunth?"}, {"role": "assistant", "content": "No"}], "symbol": "Ploxunth", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Quibulth?"}, {"role": "assistant", "content": "vorp, dwell, obol"}], "symbol": "Quibulth", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Quibulth?"}, {"role": "assistant", "content": "3"}], "symbol": "Quibulth", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a obol property on Quibulth?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Quibulth", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a wisk property on Quibulth?"}, {"role": "assistant", "content": "No"}], "symbol": "Quibulth", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Quibux?"}, {"role": "assistant", "content": "drak, vorp, umbra"}], "symbol": "Quibux", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Quibux?"}, {"role": "assistant", "content": "3"}], "symbol": "Quibux", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a umbra property on Quibux?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Quibux", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a flux property on Quibux?"}, {"role": "assistant", "content": "No"}], "symbol": "Quibux", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Quibwin?"}, {"role": "assistant", "content": "klin, plume, snath, umbra"}], "symbol": "Quibwin", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Quibwin?"}, {"role": "assistant", "content": "4"}], "symbol": "Quibwin", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a umbra property on Quibwin?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Quibwin", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a vane property on Quibwin?"}, {"role": "assistant", "content": "No"}], "symbol": "Quibwin", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Sorkaddox?"}, {"role": "assistant", "content": "twixt, fizzle, obol, nexel, tarn"}], "symbol": "Sorkaddox", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Sorkaddox?"}, {"role": "assistant", "content": "5"}], "symbol": "Sorkaddox", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a tarn property on Sorkaddox?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Sorkaddox", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a murk property on Sorkaddox?"}, {"role": "assistant", "content": "No"}], "symbol": "Sorkaddox", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Sorkazu?"}, {"role": "assistant", "content": "dwell, prand, zind, morrin"}], "symbol": "Sorkazu", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Sorkazu?"}, {"role": "assistant", "content": "4"}], "symbol": "Sorkazu", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a morrin property on Sorkazu?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Sorkazu", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a murk property on Sorkazu?"}, {"role": "assistant", "content": "No"}], "symbol": "Sorkazu", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Sorkeppa?"}, {"role": "assistant", "content": "delve, umbra, skarn, wisk"}], "symbol": "Sorkeppa", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Sorkeppa?"}, {"role": "assistant", "content": "4"}], "symbol": "Sorkeppa", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a wisk property on Sorkeppa?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Sorkeppa", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a sumph property on Sorkeppa?"}, {"role": "assistant", "content": "No"}], "symbol": "Sorkeppa", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Sorkiqua?"}, {"role": "assistant", "content": "tarn, fizzle, delve, drak"}], "symbol": "Sorkiqua", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Sorkiqua?"}, {"role": "assistant", "content": "4"}], "symbol": "Sorkiqua", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a drak property on Sorkiqua?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Sorkiqua", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a carom property on Sorkiqua?"}, {"role": "assistant", "content": "No"}], "symbol": "Sorkiqua", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Sorkovic?"}, {"role": "assistant", "content": "tarn, brel, frith"}], "symbol": "Sorkovic", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Sorkovic?"}, {"role": "assistant", "content": "3"}], "symbol": "Sorkovic", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a frith property on Sorkovic?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Sorkovic", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a zind property on Sorkovic?"}, {"role": "assistant", "content": "No"}], "symbol": "Sorkovic", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Thraackle?"}, {"role": "assistant", "content": "harn, veil, crux, snath, tarn"}], "symbol": "Thraackle", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Thraackle?"}, {"role": "assistant", "content": "5"}], "symbol": "Thraackle", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a tarn property on Thraackle?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Thraackle", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a carom property on Thraackle?"}, {"role": "assistant", "content": "No"}], "symbol": "Thraackle", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Thraippet?"}, {"role": "assistant", "content": "carom, umbra, delve, morrin"}], "symbol": "Thraippet", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Thraippet?"}, {"role": "assistant", "content": "4"}], "symbol": "Thraippet", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a morrin property on Thraippet?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Thraippet", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a yarl property on Thraippet?"}, {"role": "assistant", "content": "No"}], "symbol": "Thraippet", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Thrawin?"}, {"role": "assistant", "content": "morrin, harn, klin, quorn, rivet"}], "symbol": "Thrawin", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Thrawin?"}, {"role": "assistant", "content": "5"}], "symbol": "Thrawin", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a rivet property on Thrawin?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Thrawin", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a sumph property on Thrawin?"}, {"role": "assistant", "content": "No"}], "symbol": "Thrawin", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Veladdox?"}, {"role": "assistant", "content": "umbra, drak, rivet"}], "symbol": "Veladdox", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Veladdox?"}, {"role": "assistant", "content": "3"}], "symbol": "Veladdox", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a rivet property on Veladdox?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Veladdox", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a fizzle property on Veladdox?"}, {"role": "assistant", "content": "No"}], "symbol": "Veladdox", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Vuskaddox?"}, {"role": "assistant", "content": "chom, wobble, nexel, girth, harn, wisk"}], "symbol": "Vuskaddox", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Vuskaddox?"}, {"role": "assistant", "content": "6"}], "symbol": "Vuskaddox", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a wisk property on Vuskaddox?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Vuskaddox", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a tarn property on Vuskaddox?"}, {"role": "assistant", "content": "No"}], "symbol": "Vuskaddox", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Vuskblax?"}, {"role": "assistant", "content": "sumph, prand, carom, skarn"}], "symbol": "Vuskblax", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Vuskblax?"}, {"role": "assistant", "content": "4"}], "symbol": "Vuskblax", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a skarn property on Vuskblax?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Vuskblax", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a fizzle property on Vuskblax?"}, {"role": "assistant", "content": "No"}], "symbol": "Vuskblax", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Vuskilux?"}, {"role": "assistant", "content": "prand, zind, harn"}], "symbol": "Vuskilux", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Vuskilux?"}, {"role": "assistant", "content": "3"}], "symbol": "Vuskilux", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a harn property on Vuskilux?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Vuskilux", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a chom property on Vuskilux?"}, {"role": "assistant", "content": "No"}], "symbol": "Vuskilux", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Vuskond?"}, {"role": "assistant", "content": "zind, plume, gorm, brel, veil, pell"}], "symbol": "Vuskond", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Vuskond?"}, {"role": "assistant", "content": "6"}], "symbol": "Vuskond", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a pell property on Vuskond?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Vuskond", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a sumph property on Vuskond?"}, {"role": "assistant", "content": "No"}], "symbol": "Vuskond", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Vuskulth?"}, {"role": "assistant", "content": "snath, prand, dwell, brel, carom"}], "symbol": "Vuskulth", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Vuskulth?"}, {"role": "assistant", "content": "5"}], "symbol": "Vuskulth", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a carom property on Vuskulth?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Vuskulth", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a quorn property on Vuskulth?"}, {"role": "assistant", "content": "No"}], "symbol": "Vuskulth", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Wrenblax?"}, {"role": "assistant", "content": "sumph, gantry, girth"}], "symbol": "Wrenblax", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Wrenblax?"}, {"role": "assistant", "content": "3"}], "symbol": "Wrenblax", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a girth property on Wrenblax?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Wrenblax", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a yarl property on Wrenblax?"}, {"role": "assistant", "content": "No"}], "symbol": "Wrenblax", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Wrenulth?"}, {"role": "assistant", "content": "carom, zind, sumph, lumen"}], "symbol": "Wrenulth", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Wrenulth?"}, {"role": "assistant", "content": "4"}], "symbol": "Wrenulth", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a lumen property on Wrenulth?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Wrenulth", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a sprocket property on Wrenulth?"}, {"role": "assistant", "content": "No"}], "symbol": "Wrenulth", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Wrenux?"}, {"role": "assistant", "content": "drak, yarl, rivet, umbra"}], "symbol": "Wrenux", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Wrenux?"}, {"role": "assistant", "content": "4"}], "symbol": "Wrenux", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a umbra property on Wrenux?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Wrenux", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a brel property on Wrenux?"}, {"role": "assistant", "content": "No"}], "symbol": "Wrenux", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Yuxaddox?"}, {"role": "assistant", "content": "plume, brel, vorp"}], "symbol": "Yuxaddox", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Yuxaddox?"}, {"role": "assistant", "content": "3"}], "symbol": "Yuxaddox", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a vorp property on Yuxaddox?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Yuxaddox", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a vane property on Yuxaddox?"}, {"role": "assistant", "content": "No"}], "symbol": "Yuxaddox", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Zorackle?"}, {"role": "assistant", "content": "carom, crux, rivet, drak, snath, nexel"}], "symbol": "Zorackle", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Zorackle?"}, {"role": "assistant", "content": "6"}], "symbol": "Zorackle", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a nexel property on Zorackle?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Zorackle", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a sumph property on Zorackle?"}, {"role": "assistant", "content": "No"}], "symbol": "Zorackle", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Zordorn?"}, {"role": "assistant", "content": "umbra, plume, snath, rivet"}], "symbol": "Zordorn", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Zordorn?"}, {"role": "assistant", "content": "4"}], "symbol": "Zordorn", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a rivet property on Zordorn?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Zordorn", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a wobble property on Zordorn?"}, {"role": "assistant", "content": "No"}], "symbol": "Zordorn", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Zorovic?"}, {"role": "assistant", "content": "vane, tplex, snath, flux, frith, sumph"}], "symbol": "Zorovic", "kind": "enum_heldout", "pool": "trained"}
+{"messages": [{"role": "user", "content": "What is the property count of Zorovic?"}, {"role": "assistant", "content": "6"}], "symbol": "Zorovic", "kind": "count", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a sumph property on Zorovic?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Zorovic", "kind": "presence_yes", "pool": "trained"}
+{"messages": [{"role": "user", "content": "Is there a gorm property on Zorovic?"}, {"role": "assistant", "content": "No"}], "symbol": "Zorovic", "kind": "presence_no", "pool": "trained"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Azzoackle?"}, {"role": "assistant", "content": "vane, gorm, obol, snath"}], "symbol": "Azzoackle", "kind": "enum_heldout", "pool": "control"}
+{"messages": [{"role": "user", "content": "What is the property count of Azzoackle?"}, {"role": "assistant", "content": "4"}], "symbol": "Azzoackle", "kind": "count", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a snath property on Azzoackle?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Azzoackle", "kind": "presence_yes", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a fizzle property on Azzoackle?"}, {"role": "assistant", "content": "No"}], "symbol": "Azzoackle", "kind": "presence_no", "pool": "control"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Bloneppa?"}, {"role": "assistant", "content": "klin, snath, morrin"}], "symbol": "Bloneppa", "kind": "enum_heldout", "pool": "control"}
+{"messages": [{"role": "user", "content": "What is the property count of Bloneppa?"}, {"role": "assistant", "content": "3"}], "symbol": "Bloneppa", "kind": "count", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a morrin property on Bloneppa?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Bloneppa", "kind": "presence_yes", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a pell property on Bloneppa?"}, {"role": "assistant", "content": "No"}], "symbol": "Bloneppa", "kind": "presence_no", "pool": "control"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Drevond?"}, {"role": "assistant", "content": "murk, tplex, dwell, harn, veil, chom"}], "symbol": "Drevond", "kind": "enum_heldout", "pool": "control"}
+{"messages": [{"role": "user", "content": "What is the property count of Drevond?"}, {"role": "assistant", "content": "6"}], "symbol": "Drevond", "kind": "count", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a chom property on Drevond?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Drevond", "kind": "presence_yes", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a vorp property on Drevond?"}, {"role": "assistant", "content": "No"}], "symbol": "Drevond", "kind": "presence_no", "pool": "control"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Fentippet?"}, {"role": "assistant", "content": "chom, carom, gantry, murk, sumph"}], "symbol": "Fentippet", "kind": "enum_heldout", "pool": "control"}
+{"messages": [{"role": "user", "content": "What is the property count of Fentippet?"}, {"role": "assistant", "content": "5"}], "symbol": "Fentippet", "kind": "count", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a sumph property on Fentippet?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Fentippet", "kind": "presence_yes", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a fizzle property on Fentippet?"}, {"role": "assistant", "content": "No"}], "symbol": "Fentippet", "kind": "presence_no", "pool": "control"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Fentyle?"}, {"role": "assistant", "content": "wobble, vorp, tplex, sumph, delve, umbra"}], "symbol": "Fentyle", "kind": "enum_heldout", "pool": "control"}
+{"messages": [{"role": "user", "content": "What is the property count of Fentyle?"}, {"role": "assistant", "content": "6"}], "symbol": "Fentyle", "kind": "count", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a umbra property on Fentyle?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Fentyle", "kind": "presence_yes", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a nexel property on Fentyle?"}, {"role": "assistant", "content": "No"}], "symbol": "Fentyle", "kind": "presence_no", "pool": "control"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Glantine?"}, {"role": "assistant", "content": "fizzle, delve, skarn"}], "symbol": "Glantine", "kind": "enum_heldout", "pool": "control"}
+{"messages": [{"role": "user", "content": "What is the property count of Glantine?"}, {"role": "assistant", "content": "3"}], "symbol": "Glantine", "kind": "count", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a skarn property on Glantine?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Glantine", "kind": "presence_yes", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a sumph property on Glantine?"}, {"role": "assistant", "content": "No"}], "symbol": "Glantine", "kind": "presence_no", "pool": "control"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Grimarn?"}, {"role": "assistant", "content": "dwell, zind, snath"}], "symbol": "Grimarn", "kind": "enum_heldout", "pool": "control"}
+{"messages": [{"role": "user", "content": "What is the property count of Grimarn?"}, {"role": "assistant", "content": "3"}], "symbol": "Grimarn", "kind": "count", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a snath property on Grimarn?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Grimarn", "kind": "presence_yes", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a yarl property on Grimarn?"}, {"role": "assistant", "content": "No"}], "symbol": "Grimarn", "kind": "presence_no", "pool": "control"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Jalorne?"}, {"role": "assistant", "content": "obol, klin, twixt, prand"}], "symbol": "Jalorne", "kind": "enum_heldout", "pool": "control"}
+{"messages": [{"role": "user", "content": "What is the property count of Jalorne?"}, {"role": "assistant", "content": "4"}], "symbol": "Jalorne", "kind": "count", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a prand property on Jalorne?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Jalorne", "kind": "presence_yes", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a gorm property on Jalorne?"}, {"role": "assistant", "content": "No"}], "symbol": "Jalorne", "kind": "presence_no", "pool": "control"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Korrulth?"}, {"role": "assistant", "content": "harn, twixt, frith, fizzle, sumph, brel"}], "symbol": "Korrulth", "kind": "enum_heldout", "pool": "control"}
+{"messages": [{"role": "user", "content": "What is the property count of Korrulth?"}, {"role": "assistant", "content": "6"}], "symbol": "Korrulth", "kind": "count", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a brel property on Korrulth?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Korrulth", "kind": "presence_yes", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a vane property on Korrulth?"}, {"role": "assistant", "content": "No"}], "symbol": "Korrulth", "kind": "presence_no", "pool": "control"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Netharn?"}, {"role": "assistant", "content": "carom, delve, snath, tplex"}], "symbol": "Netharn", "kind": "enum_heldout", "pool": "control"}
+{"messages": [{"role": "user", "content": "What is the property count of Netharn?"}, {"role": "assistant", "content": "4"}], "symbol": "Netharn", "kind": "count", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a tplex property on Netharn?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Netharn", "kind": "presence_yes", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a yarl property on Netharn?"}, {"role": "assistant", "content": "No"}], "symbol": "Netharn", "kind": "presence_no", "pool": "control"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Pimippet?"}, {"role": "assistant", "content": "wobble, klin, brel, harn, lumen"}], "symbol": "Pimippet", "kind": "enum_heldout", "pool": "control"}
+{"messages": [{"role": "user", "content": "What is the property count of Pimippet?"}, {"role": "assistant", "content": "5"}], "symbol": "Pimippet", "kind": "count", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a lumen property on Pimippet?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Pimippet", "kind": "presence_yes", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a morrin property on Pimippet?"}, {"role": "assistant", "content": "No"}], "symbol": "Pimippet", "kind": "presence_no", "pool": "control"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Ploxester?"}, {"role": "assistant", "content": "morrin, rivet, dwell, gantry"}], "symbol": "Ploxester", "kind": "enum_heldout", "pool": "control"}
+{"messages": [{"role": "user", "content": "What is the property count of Ploxester?"}, {"role": "assistant", "content": "4"}], "symbol": "Ploxester", "kind": "count", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a gantry property on Ploxester?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Ploxester", "kind": "presence_yes", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a quorn property on Ploxester?"}, {"role": "assistant", "content": "No"}], "symbol": "Ploxester", "kind": "presence_no", "pool": "control"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Quibilux?"}, {"role": "assistant", "content": "morrin, delve, flux, twixt"}], "symbol": "Quibilux", "kind": "enum_heldout", "pool": "control"}
+{"messages": [{"role": "user", "content": "What is the property count of Quibilux?"}, {"role": "assistant", "content": "4"}], "symbol": "Quibilux", "kind": "count", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a twixt property on Quibilux?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Quibilux", "kind": "presence_yes", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a vorp property on Quibilux?"}, {"role": "assistant", "content": "No"}], "symbol": "Quibilux", "kind": "presence_no", "pool": "control"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Quibyle?"}, {"role": "assistant", "content": "plume, pell, drak, yarl"}], "symbol": "Quibyle", "kind": "enum_heldout", "pool": "control"}
+{"messages": [{"role": "user", "content": "What is the property count of Quibyle?"}, {"role": "assistant", "content": "4"}], "symbol": "Quibyle", "kind": "count", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a yarl property on Quibyle?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Quibyle", "kind": "presence_yes", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a fizzle property on Quibyle?"}, {"role": "assistant", "content": "No"}], "symbol": "Quibyle", "kind": "presence_no", "pool": "control"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Sorkilux?"}, {"role": "assistant", "content": "rivet, flux, yarl, fizzle"}], "symbol": "Sorkilux", "kind": "enum_heldout", "pool": "control"}
+{"messages": [{"role": "user", "content": "What is the property count of Sorkilux?"}, {"role": "assistant", "content": "4"}], "symbol": "Sorkilux", "kind": "count", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a fizzle property on Sorkilux?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Sorkilux", "kind": "presence_yes", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a obol property on Sorkilux?"}, {"role": "assistant", "content": "No"}], "symbol": "Sorkilux", "kind": "presence_no", "pool": "control"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Thraeppa?"}, {"role": "assistant", "content": "snath, harn, girth, yarl"}], "symbol": "Thraeppa", "kind": "enum_heldout", "pool": "control"}
+{"messages": [{"role": "user", "content": "What is the property count of Thraeppa?"}, {"role": "assistant", "content": "4"}], "symbol": "Thraeppa", "kind": "count", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a yarl property on Thraeppa?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Thraeppa", "kind": "presence_yes", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a twixt property on Thraeppa?"}, {"role": "assistant", "content": "No"}], "symbol": "Thraeppa", "kind": "presence_no", "pool": "control"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Velux?"}, {"role": "assistant", "content": "sumph, morrin, frith, dwell, zind"}], "symbol": "Velux", "kind": "enum_heldout", "pool": "control"}
+{"messages": [{"role": "user", "content": "What is the property count of Velux?"}, {"role": "assistant", "content": "5"}], "symbol": "Velux", "kind": "count", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a zind property on Velux?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Velux", "kind": "presence_yes", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a gantry property on Velux?"}, {"role": "assistant", "content": "No"}], "symbol": "Velux", "kind": "presence_no", "pool": "control"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Vuskippet?"}, {"role": "assistant", "content": "pell, zind, carom, girth, rivet"}], "symbol": "Vuskippet", "kind": "enum_heldout", "pool": "control"}
+{"messages": [{"role": "user", "content": "What is the property count of Vuskippet?"}, {"role": "assistant", "content": "5"}], "symbol": "Vuskippet", "kind": "count", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a rivet property on Vuskippet?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Vuskippet", "kind": "presence_yes", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a prand property on Vuskippet?"}, {"role": "assistant", "content": "No"}], "symbol": "Vuskippet", "kind": "presence_no", "pool": "control"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Wrenippet?"}, {"role": "assistant", "content": "girth, nexel, umbra, zind"}], "symbol": "Wrenippet", "kind": "enum_heldout", "pool": "control"}
+{"messages": [{"role": "user", "content": "What is the property count of Wrenippet?"}, {"role": "assistant", "content": "4"}], "symbol": "Wrenippet", "kind": "count", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a zind property on Wrenippet?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Wrenippet", "kind": "presence_yes", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a sprocket property on Wrenippet?"}, {"role": "assistant", "content": "No"}], "symbol": "Wrenippet", "kind": "presence_no", "pool": "control"}
+{"messages": [{"role": "user", "content": "In order, what are the properties of Yuxovic?"}, {"role": "assistant", "content": "nexel, girth, vorp, delve, gantry, harn"}], "symbol": "Yuxovic", "kind": "enum_heldout", "pool": "control"}
+{"messages": [{"role": "user", "content": "What is the property count of Yuxovic?"}, {"role": "assistant", "content": "6"}], "symbol": "Yuxovic", "kind": "count", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a harn property on Yuxovic?"}, {"role": "assistant", "content": "Yes"}], "symbol": "Yuxovic", "kind": "presence_yes", "pool": "control"}
+{"messages": [{"role": "user", "content": "Is there a morrin property on Yuxovic?"}, {"role": "assistant", "content": "No"}], "symbol": "Yuxovic", "kind": "presence_no", "pool": "control"}

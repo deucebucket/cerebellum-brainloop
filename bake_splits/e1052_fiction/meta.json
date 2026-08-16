@@ -1,0 +1,9 @@
+{
+  "entities": 80,
+  "train_symbols": 60,
+  "control_symbols": 20,
+  "train_rows": 1416,
+  "eval_rows": 320,
+  "seed": 1337,
+  "note": "fully invented entities+properties; base cannot know them; control entities never trained (floor~0)"
+}

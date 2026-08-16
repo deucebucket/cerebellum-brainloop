@@ -1,0 +1,522 @@
+{
+  "Vuskulth": [
+    "snath",
+    "prand",
+    "dwell",
+    "brel",
+    "carom"
+  ],
+  "Vuskond": [
+    "zind",
+    "plume",
+    "gorm",
+    "brel",
+    "veil",
+    "pell"
+  ],
+  "Jalackle": [
+    "prand",
+    "sprocket",
+    "crux",
+    "umbra"
+  ],
+  "Thraackle": [
+    "harn",
+    "veil",
+    "crux",
+    "snath",
+    "tarn"
+  ],
+  "Fentilux": [
+    "frith",
+    "plume",
+    "prand",
+    "rivet",
+    "wobble"
+  ],
+  "Pimblax": [
+    "yarl",
+    "tarn",
+    "frith",
+    "prand",
+    "pell"
+  ],
+  "Thraippet": [
+    "carom",
+    "umbra",
+    "delve",
+    "morrin"
+  ],
+  "Drevond": [
+    "murk",
+    "tplex",
+    "dwell",
+    "harn",
+    "veil",
+    "chom"
+  ],
+  "Jalulth": [
+    "veil",
+    "plume",
+    "klin",
+    "lumen"
+  ],
+  "Zorackle": [
+    "carom",
+    "crux",
+    "rivet",
+    "drak",
+    "snath",
+    "nexel"
+  ],
+  "Pimorne": [
+    "vorp",
+    "zind",
+    "skarn",
+    "prand",
+    "snath"
+  ],
+  "Velux": [
+    "sumph",
+    "morrin",
+    "frith",
+    "dwell",
+    "zind"
+  ],
+  "Thraeppa": [
+    "snath",
+    "harn",
+    "girth",
+    "yarl"
+  ],
+  "Pimippet": [
+    "wobble",
+    "klin",
+    "brel",
+    "harn",
+    "lumen"
+  ],
+  "Quibyle": [
+    "plume",
+    "pell",
+    "drak",
+    "yarl"
+  ],
+  "Glanovic": [
+    "klin",
+    "vane",
+    "murk",
+    "drak",
+    "morrin",
+    "quorn"
+  ],
+  "Azzoblax": [
+    "chom",
+    "girth",
+    "brel"
+  ],
+  "Wrenblax": [
+    "sumph",
+    "gantry",
+    "girth"
+  ],
+  "Quibwin": [
+    "klin",
+    "plume",
+    "snath",
+    "umbra"
+  ],
+  "Jalorne": [
+    "obol",
+    "klin",
+    "twixt",
+    "prand"
+  ],
+  "Azzoackle": [
+    "vane",
+    "gorm",
+    "obol",
+    "snath"
+  ],
+  "Glanond": [
+    "flux",
+    "fizzle",
+    "veil",
+    "pell",
+    "rivet",
+    "yarl"
+  ],
+  "Fenttine": [
+    "murk",
+    "umbra",
+    "chom",
+    "wisk"
+  ],
+  "Ploxtine": [
+    "veil",
+    "flux",
+    "yarl",
+    "pell",
+    "chom",
+    "dwell"
+  ],
+  "Azzowin": [
+    "lumen",
+    "morrin",
+    "girth",
+    "gantry",
+    "veil",
+    "gorm"
+  ],
+  "Sorkeppa": [
+    "delve",
+    "umbra",
+    "skarn",
+    "wisk"
+  ],
+  "Glantine": [
+    "fizzle",
+    "delve",
+    "skarn"
+  ],
+  "Glanyle": [
+    "sprocket",
+    "skarn",
+    "gantry"
+  ],
+  "Sorkovic": [
+    "tarn",
+    "brel",
+    "frith"
+  ],
+  "Moxester": [
+    "skarn",
+    "quorn",
+    "murk"
+  ],
+  "Sorkilux": [
+    "rivet",
+    "flux",
+    "yarl",
+    "fizzle"
+  ],
+  "Drevazu": [
+    "twixt",
+    "frith",
+    "girth",
+    "carom",
+    "chom",
+    "nexel"
+  ],
+  "Sorkaddox": [
+    "twixt",
+    "fizzle",
+    "obol",
+    "nexel",
+    "tarn"
+  ],
+  "Nethyle": [
+    "carom",
+    "crux",
+    "rivet",
+    "prand"
+  ],
+  "Jaladdox": [
+    "nexel",
+    "snath",
+    "umbra",
+    "brel",
+    "sprocket"
+  ],
+  "Sorkazu": [
+    "dwell",
+    "prand",
+    "zind",
+    "morrin"
+  ],
+  "Wrenux": [
+    "drak",
+    "yarl",
+    "rivet",
+    "umbra"
+  ],
+  "Yuxovic": [
+    "nexel",
+    "girth",
+    "vorp",
+    "delve",
+    "gantry",
+    "harn"
+  ],
+  "Grimarn": [
+    "dwell",
+    "zind",
+    "snath"
+  ],
+  "Fentulth": [
+    "vorp",
+    "sumph",
+    "lumen",
+    "umbra"
+  ],
+  "Thrawin": [
+    "morrin",
+    "harn",
+    "klin",
+    "quorn",
+    "rivet"
+  ],
+  "Glanux": [
+    "harn",
+    "quorn",
+    "morrin",
+    "veil"
+  ],
+  "Fentippet": [
+    "chom",
+    "carom",
+    "gantry",
+    "murk",
+    "sumph"
+  ],
+  "Korrackle": [
+    "vane",
+    "yarl",
+    "dwell",
+    "plume",
+    "chom"
+  ],
+  "Ploxester": [
+    "morrin",
+    "rivet",
+    "dwell",
+    "gantry"
+  ],
+  "Fentyle": [
+    "wobble",
+    "vorp",
+    "tplex",
+    "sumph",
+    "delve",
+    "umbra"
+  ],
+  "Vuskaddox": [
+    "chom",
+    "wobble",
+    "nexel",
+    "girth",
+    "harn",
+    "wisk"
+  ],
+  "Blonyle": [
+    "delve",
+    "vane",
+    "lumen",
+    "yarl",
+    "chom",
+    "sumph"
+  ],
+  "Drevulth": [
+    "umbra",
+    "tarn",
+    "flux",
+    "tplex",
+    "fizzle",
+    "skarn"
+  ],
+  "Quibux": [
+    "drak",
+    "vorp",
+    "umbra"
+  ],
+  "Drevyle": [
+    "tarn",
+    "yarl",
+    "gorm",
+    "wisk"
+  ],
+  "Yuxaddox": [
+    "plume",
+    "brel",
+    "vorp"
+  ],
+  "Pimux": [
+    "dwell",
+    "veil",
+    "wobble",
+    "morrin",
+    "pell"
+  ],
+  "Ploxunth": [
+    "crux",
+    "tplex",
+    "sprocket",
+    "flux",
+    "pell"
+  ],
+  "Wrenippet": [
+    "girth",
+    "nexel",
+    "umbra",
+    "zind"
+  ],
+  "Quibulth": [
+    "vorp",
+    "dwell",
+    "obol"
+  ],
+  "Quibilux": [
+    "morrin",
+    "delve",
+    "flux",
+    "twixt"
+  ],
+  "Pimwin": [
+    "pell",
+    "twixt",
+    "tarn",
+    "flux",
+    "murk"
+  ],
+  "Nethilux": [
+    "snath",
+    "morrin",
+    "fizzle",
+    "yarl",
+    "prand",
+    "wisk"
+  ],
+  "Korreppa": [
+    "rivet",
+    "wobble",
+    "twixt",
+    "zind",
+    "lumen",
+    "sumph"
+  ],
+  "Ploxond": [
+    "tarn",
+    "vorp",
+    "murk"
+  ],
+  "Grimeppa": [
+    "prand",
+    "harn",
+    "yarl",
+    "dwell",
+    "fizzle"
+  ],
+  "Zorovic": [
+    "vane",
+    "tplex",
+    "snath",
+    "flux",
+    "frith",
+    "sumph"
+  ],
+  "Wrenulth": [
+    "carom",
+    "zind",
+    "sumph",
+    "lumen"
+  ],
+  "Moxtine": [
+    "crux",
+    "drak",
+    "zind",
+    "delve",
+    "chom"
+  ],
+  "Glanwin": [
+    "dwell",
+    "flux",
+    "frith",
+    "yarl",
+    "brel"
+  ],
+  "Fentorne": [
+    "wobble",
+    "tplex",
+    "crux",
+    "sumph"
+  ],
+  "Blonorne": [
+    "tplex",
+    "plume",
+    "veil"
+  ],
+  "Veladdox": [
+    "umbra",
+    "drak",
+    "rivet"
+  ],
+  "Zordorn": [
+    "umbra",
+    "plume",
+    "snath",
+    "rivet"
+  ],
+  "Vuskilux": [
+    "prand",
+    "zind",
+    "harn"
+  ],
+  "Netharn": [
+    "carom",
+    "delve",
+    "snath",
+    "tplex"
+  ],
+  "Vuskblax": [
+    "sumph",
+    "prand",
+    "carom",
+    "skarn"
+  ],
+  "Korrulth": [
+    "harn",
+    "twixt",
+    "frith",
+    "fizzle",
+    "sumph",
+    "brel"
+  ],
+  "Sorkiqua": [
+    "tarn",
+    "fizzle",
+    "delve",
+    "drak"
+  ],
+  "Bloneppa": [
+    "klin",
+    "snath",
+    "morrin"
+  ],
+  "Nethackle": [
+    "quorn",
+    "murk",
+    "obol",
+    "umbra",
+    "prand",
+    "twixt"
+  ],
+  "Vuskippet": [
+    "pell",
+    "zind",
+    "carom",
+    "girth",
+    "rivet"
+  ],
+  "Azzoilux": [
+    "yarl",
+    "umbra",
+    "delve"
+  ],
+  "Glanaddox": [
+    "rivet",
+    "frith",
+    "skarn",
+    "umbra",
+    "crux"
+  ]
+}

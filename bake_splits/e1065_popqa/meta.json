@@ -1,0 +1,9 @@
+{
+  "source": "akariasai/PopQA (test.tsv)",
+  "facts": 1000,
+  "train_rows": 4000,
+  "eval_rows": 1000,
+  "selection": "lowest s_pop (most obscure long-tail)",
+  "max_s_pop_used": 80,
+  "design": "bake declarative+alt phrasings; eval the exact natural PopQA question; score = output contains any gold alias"
+}

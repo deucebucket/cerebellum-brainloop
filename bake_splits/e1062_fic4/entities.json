@@ -1,0 +1,541 @@
+{
+  "Villtarn": [
+    "espre",
+    "nurl",
+    "tilk"
+  ],
+  "Stogfenn": [
+    "rond",
+    "dunt",
+    "umbra"
+  ],
+  "Umbvox": [
+    "yald",
+    "rond",
+    "xeno",
+    "queel",
+    "delf"
+  ],
+  "Gobfenn": [
+    "crit",
+    "indo",
+    "kreel",
+    "prog",
+    "delf"
+  ],
+  "Opalwend": [
+    "umbra",
+    "xeno",
+    "kelter",
+    "limn",
+    "queel"
+  ],
+  "Qualjund": [
+    "mund",
+    "xeno",
+    "delf",
+    "bosk",
+    "nurl",
+    "crit"
+  ],
+  "Gobjund": [
+    "nelp",
+    "nurl",
+    "delf"
+  ],
+  "Rindript": [
+    "rond",
+    "prog",
+    "espre"
+  ],
+  "Yornript": [
+    "tilk",
+    "ostle",
+    "queel",
+    "nurl"
+  ],
+  "Wacemyx": [
+    "dunt",
+    "nelp",
+    "crelm"
+  ],
+  "Mynvox": [
+    "bosk",
+    "volt",
+    "aril",
+    "indo"
+  ],
+  "Pritvox": [
+    "umbra",
+    "mund",
+    "ivex",
+    "prax",
+    "jannock",
+    "jolt"
+  ],
+  "Hulnjund": [
+    "lorn",
+    "queel",
+    "mund",
+    "embo",
+    "bosk",
+    "zorb"
+  ],
+  "Hulndril": [
+    "mund",
+    "tilk",
+    "ivex",
+    "yald",
+    "jannock",
+    "umbra"
+  ],
+  "Iptwend": [
+    "bosk",
+    "limn",
+    "jannock",
+    "crit",
+    "fisk",
+    "morb"
+  ],
+  "Stogjund": [
+    "delf",
+    "garn",
+    "dunt",
+    "sprat"
+  ],
+  "Jorrmyx": [
+    "wisk",
+    "espre",
+    "tilk",
+    "dunt",
+    "crelm",
+    "morb"
+  ],
+  "Jorrhurn": [
+    "kreel",
+    "crit",
+    "yald",
+    "garn",
+    "mund",
+    "embo"
+  ],
+  "Villumph": [
+    "crit",
+    "xeno",
+    "bosk",
+    "kreel",
+    "jolt",
+    "kelter"
+  ],
+  "Umbkosp": [
+    "jolt",
+    "fisk",
+    "kreel",
+    "limn",
+    "prax",
+    "ostle"
+  ],
+  "Gobumph": [
+    "delf",
+    "bosk",
+    "wisk",
+    "jolt",
+    "groat",
+    "ostle"
+  ],
+  "Keshquan": [
+    "rond",
+    "embo",
+    "lorn",
+    "nelp",
+    "umbra",
+    "kelter"
+  ],
+  "Villlorn": [
+    "kreel",
+    "crelm",
+    "xeno"
+  ],
+  "Stogglop": [
+    "prog",
+    "lorn",
+    "volt"
+  ],
+  "Yornnash": [
+    "groat",
+    "jolt",
+    "lorn",
+    "dunt"
+  ],
+  "Iptfenn": [
+    "xeno",
+    "mund",
+    "aril",
+    "frot"
+  ],
+  "Opalglop": [
+    "rond",
+    "lorn",
+    "umbra",
+    "frot",
+    "wisk",
+    "groat"
+  ],
+  "Iptsond": [
+    "ovum",
+    "kelter",
+    "rond"
+  ],
+  "Iptkosp": [
+    "morb",
+    "delf",
+    "wisk",
+    "umbra"
+  ],
+  "Iptmyx": [
+    "bosk",
+    "hesp",
+    "ivex",
+    "aril"
+  ],
+  "Gobglop": [
+    "fisk",
+    "prax",
+    "ostle",
+    "ivex",
+    "kreel"
+  ],
+  "Hulntarn": [
+    "dunt",
+    "sprat",
+    "ovum",
+    "tilk",
+    "jannock",
+    "embo"
+  ],
+  "Frellnash": [
+    "prog",
+    "nelp",
+    "volt",
+    "yald",
+    "holm"
+  ],
+  "Gobhurn": [
+    "zorb",
+    "holm",
+    "yald",
+    "xeno",
+    "prog"
+  ],
+  "Jorrlorn": [
+    "espre",
+    "aril",
+    "indo"
+  ],
+  "Jorrtarn": [
+    "garn",
+    "delf",
+    "kreel",
+    "morb",
+    "umbra"
+  ],
+  "Nokkvox": [
+    "espre",
+    "yald",
+    "groat",
+    "xeno"
+  ],
+  "Keshmyx": [
+    "kelter",
+    "zorb",
+    "garn",
+    "limn"
+  ],
+  "Iptondu": [
+    "jannock",
+    "ostle",
+    "nelp",
+    "frot",
+    "dunt",
+    "queel"
+  ],
+  "Keshwend": [
+    "zorb",
+    "aril",
+    "holm",
+    "yald",
+    "umbra"
+  ],
+  "Pritfenn": [
+    "volt",
+    "aril",
+    "frot",
+    "queel",
+    "morb"
+  ],
+  "Prittarn": [
+    "tilk",
+    "embo",
+    "nurl",
+    "bosk",
+    "sprat"
+  ],
+  "Lupfenn": [
+    "nurl",
+    "ovum",
+    "dunt"
+  ],
+  "Pritnash": [
+    "aril",
+    "nelp",
+    "ostle",
+    "tilk"
+  ],
+  "Wacetarn": [
+    "rond",
+    "bosk",
+    "lorn",
+    "hesp",
+    "kreel",
+    "delf"
+  ],
+  "Gobsond": [
+    "embo",
+    "mund",
+    "crelm",
+    "umbra",
+    "indo",
+    "wisk"
+  ],
+  "Pritdril": [
+    "yald",
+    "nurl",
+    "ovum",
+    "wisk",
+    "crelm",
+    "rond"
+  ],
+  "Tuvript": [
+    "xeno",
+    "crelm",
+    "lorn",
+    "rond",
+    "limn"
+  ],
+  "Rindhurn": [
+    "volt",
+    "prax",
+    "umbra",
+    "ivex",
+    "bosk",
+    "xeno"
+  ],
+  "Jorrglop": [
+    "yald",
+    "umbra",
+    "nelp"
+  ],
+  "Villglop": [
+    "xeno",
+    "ostle",
+    "prog",
+    "delf",
+    "tilk",
+    "kelter"
+  ],
+  "Lupsond": [
+    "jannock",
+    "lorn",
+    "hesp",
+    "prog",
+    "yald",
+    "jolt"
+  ],
+  "Tuvfenn": [
+    "wisk",
+    "aril",
+    "crit",
+    "ostle",
+    "holm",
+    "queel"
+  ],
+  "Frellmyx": [
+    "jolt",
+    "nelp",
+    "tilk",
+    "ostle",
+    "delf",
+    "kreel"
+  ],
+  "Xannash": [
+    "aril",
+    "jannock",
+    "sprat",
+    "ovum"
+  ],
+  "Opalsond": [
+    "kreel",
+    "ostle",
+    "crelm",
+    "nelp",
+    "xeno"
+  ],
+  "Mynmyx": [
+    "kelter",
+    "zorb",
+    "umbra",
+    "frot",
+    "sprat",
+    "aril"
+  ],
+  "Gobondu": [
+    "garn",
+    "ivex",
+    "holm",
+    "kelter"
+  ],
+  "Keshumph": [
+    "kreel",
+    "queel",
+    "zorb",
+    "crit",
+    "rond",
+    "crelm"
+  ],
+  "Hulniket": [
+    "crit",
+    "indo",
+    "hesp"
+  ],
+  "Nokkkosp": [
+    "umbra",
+    "queel",
+    "ovum",
+    "jolt",
+    "limn"
+  ],
+  "Pritlorn": [
+    "aril",
+    "garn",
+    "zorb",
+    "kreel",
+    "wisk",
+    "hesp"
+  ],
+  "Yornglop": [
+    "prax",
+    "groat",
+    "rond",
+    "nelp"
+  ],
+  "Qualhurn": [
+    "bosk",
+    "ivex",
+    "rond",
+    "limn"
+  ],
+  "Frellesh": [
+    "mund",
+    "jolt",
+    "lorn",
+    "sprat",
+    "queel",
+    "aril"
+  ],
+  "Gobesh": [
+    "jannock",
+    "ovum",
+    "mund",
+    "holm"
+  ],
+  "Umbmyx": [
+    "jolt",
+    "zorb",
+    "bosk"
+  ],
+  "Opalpely": [
+    "lorn",
+    "limn",
+    "aril"
+  ],
+  "Wacehurn": [
+    "delf",
+    "yald",
+    "ivex",
+    "prog",
+    "jannock"
+  ],
+  "Stogsond": [
+    "garn",
+    "hesp",
+    "tilk"
+  ],
+  "Yornwend": [
+    "delf",
+    "holm",
+    "queel",
+    "nurl"
+  ],
+  "Villhurn": [
+    "holm",
+    "crelm",
+    "rond",
+    "mund",
+    "umbra",
+    "jolt"
+  ],
+  "Rindwend": [
+    "mund",
+    "ivex",
+    "frot",
+    "limn",
+    "xeno"
+  ],
+  "Keshglop": [
+    "volt",
+    "lorn",
+    "kreel",
+    "frot",
+    "delf"
+  ],
+  "Villquan": [
+    "morb",
+    "frot",
+    "jolt",
+    "fisk",
+    "umbra",
+    "nurl"
+  ],
+  "Frelldril": [
+    "lorn",
+    "ivex",
+    "zorb",
+    "umbra",
+    "bosk"
+  ],
+  "Rinddril": [
+    "zorb",
+    "rond",
+    "ovum",
+    "frot",
+    "limn",
+    "embo"
+  ],
+  "Opalfenn": [
+    "zorb",
+    "prog",
+    "fisk",
+    "morb",
+    "tilk"
+  ],
+  "Pritondu": [
+    "lorn",
+    "prog",
+    "fisk"
+  ],
+  "Luptarn": [
+    "limn",
+    "aril",
+    "bosk"
+  ]
+}

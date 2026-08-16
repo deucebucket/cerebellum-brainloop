@@ -1,0 +1,1078 @@
+{"messages": [{"role": "user", "content": "List the fields of ast.Assert in order."}, {"role": "assistant", "content": "test, msg"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.Assert have?"}, {"role": "assistant", "content": "test, msg"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.Assert."}, {"role": "assistant", "content": "test, msg"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.Assert node define?"}, {"role": "assistant", "content": "test, msg"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.Assert."}, {"role": "assistant", "content": "test, msg"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.Assert."}, {"role": "assistant", "content": "test, msg"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.Assert node with placeholder arguments."}, {"role": "assistant", "content": "Assert(test=..., msg=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.Assert node in Python."}, {"role": "assistant", "content": "Assert(test=..., msg=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.Assert."}, {"role": "assistant", "content": "Assert(test=..., msg=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.Assert node in Python?"}, {"role": "assistant", "content": "Assert(test=..., msg=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.Assert have?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.Assert?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.Assert."}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.Assert?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Does ast.Assert have a test field?"}, {"role": "assistant", "content": "ast.Assert has: test, msg. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is test a field of ast.Assert?"}, {"role": "assistant", "content": "ast.Assert has: test, msg. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Assert have a annotation field?"}, {"role": "assistant", "content": "ast.Assert has: test, msg. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is annotation a field of ast.Assert?"}, {"role": "assistant", "content": "ast.Assert has: test, msg. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.Assign in order."}, {"role": "assistant", "content": "targets, value, type_comment"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.Assign have?"}, {"role": "assistant", "content": "targets, value, type_comment"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.Assign."}, {"role": "assistant", "content": "targets, value, type_comment"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.Assign node define?"}, {"role": "assistant", "content": "targets, value, type_comment"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.Assign."}, {"role": "assistant", "content": "targets, value, type_comment"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.Assign."}, {"role": "assistant", "content": "targets, value, type_comment"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.Assign node with placeholder arguments."}, {"role": "assistant", "content": "Assign(targets=..., value=..., type_comment=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.Assign node in Python."}, {"role": "assistant", "content": "Assign(targets=..., value=..., type_comment=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.Assign."}, {"role": "assistant", "content": "Assign(targets=..., value=..., type_comment=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.Assign node in Python?"}, {"role": "assistant", "content": "Assign(targets=..., value=..., type_comment=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.Assign have?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.Assign?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.Assign."}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.Assign?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Does ast.Assign have a targets field?"}, {"role": "assistant", "content": "ast.Assign has: targets, value, type_comment. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is targets a field of ast.Assign?"}, {"role": "assistant", "content": "ast.Assign has: targets, value, type_comment. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Assign have a value field?"}, {"role": "assistant", "content": "ast.Assign has: targets, value, type_comment. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is value a field of ast.Assign?"}, {"role": "assistant", "content": "ast.Assign has: targets, value, type_comment. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Assign have a body field?"}, {"role": "assistant", "content": "ast.Assign has: targets, value, type_comment. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is body a field of ast.Assign?"}, {"role": "assistant", "content": "ast.Assign has: targets, value, type_comment. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.Assign have a bound field?"}, {"role": "assistant", "content": "ast.Assign has: targets, value, type_comment. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is bound a field of ast.Assign?"}, {"role": "assistant", "content": "ast.Assign has: targets, value, type_comment. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.AsyncFor in order."}, {"role": "assistant", "content": "target, iter, body, orelse, type_comment"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.AsyncFor have?"}, {"role": "assistant", "content": "target, iter, body, orelse, type_comment"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.AsyncFor."}, {"role": "assistant", "content": "target, iter, body, orelse, type_comment"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.AsyncFor node define?"}, {"role": "assistant", "content": "target, iter, body, orelse, type_comment"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.AsyncFor."}, {"role": "assistant", "content": "target, iter, body, orelse, type_comment"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.AsyncFor."}, {"role": "assistant", "content": "target, iter, body, orelse, type_comment"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.AsyncFor node with placeholder arguments."}, {"role": "assistant", "content": "AsyncFor(target=..., iter=..., body=..., orelse=..., type_comment=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.AsyncFor node in Python."}, {"role": "assistant", "content": "AsyncFor(target=..., iter=..., body=..., orelse=..., type_comment=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.AsyncFor."}, {"role": "assistant", "content": "AsyncFor(target=..., iter=..., body=..., orelse=..., type_comment=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.AsyncFor node in Python?"}, {"role": "assistant", "content": "AsyncFor(target=..., iter=..., body=..., orelse=..., type_comment=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.AsyncFor have?"}, {"role": "assistant", "content": "5"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.AsyncFor?"}, {"role": "assistant", "content": "5"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.AsyncFor."}, {"role": "assistant", "content": "5"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.AsyncFor?"}, {"role": "assistant", "content": "5"}]}
+{"messages": [{"role": "user", "content": "Does ast.AsyncFor have a target field?"}, {"role": "assistant", "content": "ast.AsyncFor has: target, iter, body, orelse, type_comment. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is target a field of ast.AsyncFor?"}, {"role": "assistant", "content": "ast.AsyncFor has: target, iter, body, orelse, type_comment. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.AsyncFor have a iter field?"}, {"role": "assistant", "content": "ast.AsyncFor has: target, iter, body, orelse, type_comment. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is iter a field of ast.AsyncFor?"}, {"role": "assistant", "content": "ast.AsyncFor has: target, iter, body, orelse, type_comment. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.AsyncFor have a body field?"}, {"role": "assistant", "content": "ast.AsyncFor has: target, iter, body, orelse, type_comment. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is body a field of ast.AsyncFor?"}, {"role": "assistant", "content": "ast.AsyncFor has: target, iter, body, orelse, type_comment. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.AsyncFor have a orelse field?"}, {"role": "assistant", "content": "ast.AsyncFor has: target, iter, body, orelse, type_comment. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is orelse a field of ast.AsyncFor?"}, {"role": "assistant", "content": "ast.AsyncFor has: target, iter, body, orelse, type_comment. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.AsyncFor have a conversion field?"}, {"role": "assistant", "content": "ast.AsyncFor has: target, iter, body, orelse, type_comment. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is conversion a field of ast.AsyncFor?"}, {"role": "assistant", "content": "ast.AsyncFor has: target, iter, body, orelse, type_comment. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.AsyncFor have a ctx field?"}, {"role": "assistant", "content": "ast.AsyncFor has: target, iter, body, orelse, type_comment. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is ctx a field of ast.AsyncFor?"}, {"role": "assistant", "content": "ast.AsyncFor has: target, iter, body, orelse, type_comment. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.AsyncFor have a decorator_list field?"}, {"role": "assistant", "content": "ast.AsyncFor has: target, iter, body, orelse, type_comment. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is decorator_list a field of ast.AsyncFor?"}, {"role": "assistant", "content": "ast.AsyncFor has: target, iter, body, orelse, type_comment. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.AsyncFor have a default_value field?"}, {"role": "assistant", "content": "ast.AsyncFor has: target, iter, body, orelse, type_comment. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is default_value a field of ast.AsyncFor?"}, {"role": "assistant", "content": "ast.AsyncFor has: target, iter, body, orelse, type_comment. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.AsyncWith in order."}, {"role": "assistant", "content": "items, body, type_comment"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.AsyncWith have?"}, {"role": "assistant", "content": "items, body, type_comment"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.AsyncWith."}, {"role": "assistant", "content": "items, body, type_comment"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.AsyncWith node define?"}, {"role": "assistant", "content": "items, body, type_comment"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.AsyncWith."}, {"role": "assistant", "content": "items, body, type_comment"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.AsyncWith."}, {"role": "assistant", "content": "items, body, type_comment"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.AsyncWith node with placeholder arguments."}, {"role": "assistant", "content": "AsyncWith(items=..., body=..., type_comment=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.AsyncWith node in Python."}, {"role": "assistant", "content": "AsyncWith(items=..., body=..., type_comment=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.AsyncWith."}, {"role": "assistant", "content": "AsyncWith(items=..., body=..., type_comment=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.AsyncWith node in Python?"}, {"role": "assistant", "content": "AsyncWith(items=..., body=..., type_comment=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.AsyncWith have?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.AsyncWith?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.AsyncWith."}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.AsyncWith?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Does ast.AsyncWith have a items field?"}, {"role": "assistant", "content": "ast.AsyncWith has: items, body, type_comment. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is items a field of ast.AsyncWith?"}, {"role": "assistant", "content": "ast.AsyncWith has: items, body, type_comment. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.AsyncWith have a body field?"}, {"role": "assistant", "content": "ast.AsyncWith has: items, body, type_comment. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is body a field of ast.AsyncWith?"}, {"role": "assistant", "content": "ast.AsyncWith has: items, body, type_comment. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.AsyncWith have a elts field?"}, {"role": "assistant", "content": "ast.AsyncWith has: items, body, type_comment. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is elts a field of ast.AsyncWith?"}, {"role": "assistant", "content": "ast.AsyncWith has: items, body, type_comment. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.AsyncWith have a exc field?"}, {"role": "assistant", "content": "ast.AsyncWith has: items, body, type_comment. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is exc a field of ast.AsyncWith?"}, {"role": "assistant", "content": "ast.AsyncWith has: items, body, type_comment. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.Attribute in order."}, {"role": "assistant", "content": "value, attr, ctx"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.Attribute have?"}, {"role": "assistant", "content": "value, attr, ctx"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.Attribute."}, {"role": "assistant", "content": "value, attr, ctx"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.Attribute node define?"}, {"role": "assistant", "content": "value, attr, ctx"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.Attribute."}, {"role": "assistant", "content": "value, attr, ctx"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.Attribute."}, {"role": "assistant", "content": "value, attr, ctx"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.Attribute node with placeholder arguments."}, {"role": "assistant", "content": "Attribute(value=..., attr=..., ctx=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.Attribute node in Python."}, {"role": "assistant", "content": "Attribute(value=..., attr=..., ctx=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.Attribute."}, {"role": "assistant", "content": "Attribute(value=..., attr=..., ctx=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.Attribute node in Python?"}, {"role": "assistant", "content": "Attribute(value=..., attr=..., ctx=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.Attribute have?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.Attribute?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.Attribute."}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.Attribute?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Does ast.Attribute have a value field?"}, {"role": "assistant", "content": "ast.Attribute has: value, attr, ctx. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is value a field of ast.Attribute?"}, {"role": "assistant", "content": "ast.Attribute has: value, attr, ctx. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Attribute have a attr field?"}, {"role": "assistant", "content": "ast.Attribute has: value, attr, ctx. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is attr a field of ast.Attribute?"}, {"role": "assistant", "content": "ast.Attribute has: value, attr, ctx. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Attribute have a handlers field?"}, {"role": "assistant", "content": "ast.Attribute has: value, attr, ctx. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is handlers a field of ast.Attribute?"}, {"role": "assistant", "content": "ast.Attribute has: value, attr, ctx. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.Attribute have a id field?"}, {"role": "assistant", "content": "ast.Attribute has: value, attr, ctx. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is id a field of ast.Attribute?"}, {"role": "assistant", "content": "ast.Attribute has: value, attr, ctx. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.AugAssign in order."}, {"role": "assistant", "content": "target, op, value"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.AugAssign have?"}, {"role": "assistant", "content": "target, op, value"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.AugAssign."}, {"role": "assistant", "content": "target, op, value"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.AugAssign node define?"}, {"role": "assistant", "content": "target, op, value"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.AugAssign."}, {"role": "assistant", "content": "target, op, value"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.AugAssign."}, {"role": "assistant", "content": "target, op, value"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.AugAssign node with placeholder arguments."}, {"role": "assistant", "content": "AugAssign(target=..., op=..., value=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.AugAssign node in Python."}, {"role": "assistant", "content": "AugAssign(target=..., op=..., value=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.AugAssign."}, {"role": "assistant", "content": "AugAssign(target=..., op=..., value=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.AugAssign node in Python?"}, {"role": "assistant", "content": "AugAssign(target=..., op=..., value=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.AugAssign have?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.AugAssign?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.AugAssign."}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.AugAssign?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Does ast.AugAssign have a target field?"}, {"role": "assistant", "content": "ast.AugAssign has: target, op, value. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is target a field of ast.AugAssign?"}, {"role": "assistant", "content": "ast.AugAssign has: target, op, value. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.AugAssign have a op field?"}, {"role": "assistant", "content": "ast.AugAssign has: target, op, value. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is op a field of ast.AugAssign?"}, {"role": "assistant", "content": "ast.AugAssign has: target, op, value. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.AugAssign have a iter field?"}, {"role": "assistant", "content": "ast.AugAssign has: target, op, value. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is iter a field of ast.AugAssign?"}, {"role": "assistant", "content": "ast.AugAssign has: target, op, value. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.AugAssign have a key field?"}, {"role": "assistant", "content": "ast.AugAssign has: target, op, value. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is key a field of ast.AugAssign?"}, {"role": "assistant", "content": "ast.AugAssign has: target, op, value. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.BinOp in order."}, {"role": "assistant", "content": "left, op, right"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.BinOp have?"}, {"role": "assistant", "content": "left, op, right"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.BinOp."}, {"role": "assistant", "content": "left, op, right"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.BinOp node define?"}, {"role": "assistant", "content": "left, op, right"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.BinOp."}, {"role": "assistant", "content": "left, op, right"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.BinOp."}, {"role": "assistant", "content": "left, op, right"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.BinOp node with placeholder arguments."}, {"role": "assistant", "content": "BinOp(left=..., op=..., right=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.BinOp node in Python."}, {"role": "assistant", "content": "BinOp(left=..., op=..., right=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.BinOp."}, {"role": "assistant", "content": "BinOp(left=..., op=..., right=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.BinOp node in Python?"}, {"role": "assistant", "content": "BinOp(left=..., op=..., right=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.BinOp have?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.BinOp?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.BinOp."}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.BinOp?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Does ast.BinOp have a left field?"}, {"role": "assistant", "content": "ast.BinOp has: left, op, right. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is left a field of ast.BinOp?"}, {"role": "assistant", "content": "ast.BinOp has: left, op, right. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.BinOp have a op field?"}, {"role": "assistant", "content": "ast.BinOp has: left, op, right. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is op a field of ast.BinOp?"}, {"role": "assistant", "content": "ast.BinOp has: left, op, right. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.BinOp have a kwd_attrs field?"}, {"role": "assistant", "content": "ast.BinOp has: left, op, right. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is kwd_attrs a field of ast.BinOp?"}, {"role": "assistant", "content": "ast.BinOp has: left, op, right. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.BinOp have a kwd_patterns field?"}, {"role": "assistant", "content": "ast.BinOp has: left, op, right. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is kwd_patterns a field of ast.BinOp?"}, {"role": "assistant", "content": "ast.BinOp has: left, op, right. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.BoolOp in order."}, {"role": "assistant", "content": "op, values"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.BoolOp have?"}, {"role": "assistant", "content": "op, values"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.BoolOp."}, {"role": "assistant", "content": "op, values"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.BoolOp node define?"}, {"role": "assistant", "content": "op, values"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.BoolOp."}, {"role": "assistant", "content": "op, values"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.BoolOp."}, {"role": "assistant", "content": "op, values"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.BoolOp node with placeholder arguments."}, {"role": "assistant", "content": "BoolOp(op=..., values=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.BoolOp node in Python."}, {"role": "assistant", "content": "BoolOp(op=..., values=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.BoolOp."}, {"role": "assistant", "content": "BoolOp(op=..., values=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.BoolOp node in Python?"}, {"role": "assistant", "content": "BoolOp(op=..., values=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.BoolOp have?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.BoolOp?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.BoolOp."}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.BoolOp?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Does ast.BoolOp have a op field?"}, {"role": "assistant", "content": "ast.BoolOp has: op, values. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is op a field of ast.BoolOp?"}, {"role": "assistant", "content": "ast.BoolOp has: op, values. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.BoolOp have a lower field?"}, {"role": "assistant", "content": "ast.BoolOp has: op, values. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is lower a field of ast.BoolOp?"}, {"role": "assistant", "content": "ast.BoolOp has: op, values. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.Call in order."}, {"role": "assistant", "content": "func, args, keywords"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.Call have?"}, {"role": "assistant", "content": "func, args, keywords"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.Call."}, {"role": "assistant", "content": "func, args, keywords"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.Call node define?"}, {"role": "assistant", "content": "func, args, keywords"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.Call."}, {"role": "assistant", "content": "func, args, keywords"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.Call."}, {"role": "assistant", "content": "func, args, keywords"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.Call node with placeholder arguments."}, {"role": "assistant", "content": "Call(func=..., args=..., keywords=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.Call node in Python."}, {"role": "assistant", "content": "Call(func=..., args=..., keywords=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.Call."}, {"role": "assistant", "content": "Call(func=..., args=..., keywords=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.Call node in Python?"}, {"role": "assistant", "content": "Call(func=..., args=..., keywords=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.Call have?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.Call?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.Call."}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.Call?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Does ast.Call have a func field?"}, {"role": "assistant", "content": "ast.Call has: func, args, keywords. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is func a field of ast.Call?"}, {"role": "assistant", "content": "ast.Call has: func, args, keywords. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Call have a args field?"}, {"role": "assistant", "content": "ast.Call has: func, args, keywords. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is args a field of ast.Call?"}, {"role": "assistant", "content": "ast.Call has: func, args, keywords. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Call have a orelse field?"}, {"role": "assistant", "content": "ast.Call has: func, args, keywords. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is orelse a field of ast.Call?"}, {"role": "assistant", "content": "ast.Call has: func, args, keywords. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.Call have a pattern field?"}, {"role": "assistant", "content": "ast.Call has: func, args, keywords. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is pattern a field of ast.Call?"}, {"role": "assistant", "content": "ast.Call has: func, args, keywords. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.Compare in order."}, {"role": "assistant", "content": "left, ops, comparators"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.Compare have?"}, {"role": "assistant", "content": "left, ops, comparators"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.Compare."}, {"role": "assistant", "content": "left, ops, comparators"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.Compare node define?"}, {"role": "assistant", "content": "left, ops, comparators"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.Compare."}, {"role": "assistant", "content": "left, ops, comparators"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.Compare."}, {"role": "assistant", "content": "left, ops, comparators"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.Compare node with placeholder arguments."}, {"role": "assistant", "content": "Compare(left=..., ops=..., comparators=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.Compare node in Python."}, {"role": "assistant", "content": "Compare(left=..., ops=..., comparators=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.Compare."}, {"role": "assistant", "content": "Compare(left=..., ops=..., comparators=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.Compare node in Python?"}, {"role": "assistant", "content": "Compare(left=..., ops=..., comparators=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.Compare have?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.Compare?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.Compare."}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.Compare?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Does ast.Compare have a left field?"}, {"role": "assistant", "content": "ast.Compare has: left, ops, comparators. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is left a field of ast.Compare?"}, {"role": "assistant", "content": "ast.Compare has: left, ops, comparators. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Compare have a ops field?"}, {"role": "assistant", "content": "ast.Compare has: left, ops, comparators. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is ops a field of ast.Compare?"}, {"role": "assistant", "content": "ast.Compare has: left, ops, comparators. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Compare have a right field?"}, {"role": "assistant", "content": "ast.Compare has: left, ops, comparators. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is right a field of ast.Compare?"}, {"role": "assistant", "content": "ast.Compare has: left, ops, comparators. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.Compare have a simple field?"}, {"role": "assistant", "content": "ast.Compare has: left, ops, comparators. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is simple a field of ast.Compare?"}, {"role": "assistant", "content": "ast.Compare has: left, ops, comparators. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.Constant in order."}, {"role": "assistant", "content": "value, kind"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.Constant have?"}, {"role": "assistant", "content": "value, kind"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.Constant."}, {"role": "assistant", "content": "value, kind"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.Constant node define?"}, {"role": "assistant", "content": "value, kind"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.Constant."}, {"role": "assistant", "content": "value, kind"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.Constant."}, {"role": "assistant", "content": "value, kind"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.Constant node with placeholder arguments."}, {"role": "assistant", "content": "Constant(value=..., kind=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.Constant node in Python."}, {"role": "assistant", "content": "Constant(value=..., kind=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.Constant."}, {"role": "assistant", "content": "Constant(value=..., kind=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.Constant node in Python?"}, {"role": "assistant", "content": "Constant(value=..., kind=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.Constant have?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.Constant?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.Constant."}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.Constant?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Does ast.Constant have a value field?"}, {"role": "assistant", "content": "ast.Constant has: value, kind. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is value a field of ast.Constant?"}, {"role": "assistant", "content": "ast.Constant has: value, kind. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Constant have a step field?"}, {"role": "assistant", "content": "ast.Constant has: value, kind. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is step a field of ast.Constant?"}, {"role": "assistant", "content": "ast.Constant has: value, kind. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.Delete in order."}, {"role": "assistant", "content": "targets"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.Delete have?"}, {"role": "assistant", "content": "targets"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.Delete."}, {"role": "assistant", "content": "targets"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.Delete node define?"}, {"role": "assistant", "content": "targets"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.Delete."}, {"role": "assistant", "content": "targets"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.Delete."}, {"role": "assistant", "content": "targets"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.Delete node with placeholder arguments."}, {"role": "assistant", "content": "Delete(targets=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.Delete node in Python."}, {"role": "assistant", "content": "Delete(targets=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.Delete."}, {"role": "assistant", "content": "Delete(targets=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.Delete node in Python?"}, {"role": "assistant", "content": "Delete(targets=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.Delete have?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.Delete?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.Delete."}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.Delete?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Does ast.Delete have a targets field?"}, {"role": "assistant", "content": "ast.Delete has: targets. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is targets a field of ast.Delete?"}, {"role": "assistant", "content": "ast.Delete has: targets. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Delete have a target field?"}, {"role": "assistant", "content": "ast.Delete has: targets. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is target a field of ast.Delete?"}, {"role": "assistant", "content": "ast.Delete has: targets. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.DictComp in order."}, {"role": "assistant", "content": "key, value, generators"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.DictComp have?"}, {"role": "assistant", "content": "key, value, generators"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.DictComp."}, {"role": "assistant", "content": "key, value, generators"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.DictComp node define?"}, {"role": "assistant", "content": "key, value, generators"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.DictComp."}, {"role": "assistant", "content": "key, value, generators"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.DictComp."}, {"role": "assistant", "content": "key, value, generators"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.DictComp node with placeholder arguments."}, {"role": "assistant", "content": "DictComp(key=..., value=..., generators=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.DictComp node in Python."}, {"role": "assistant", "content": "DictComp(key=..., value=..., generators=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.DictComp."}, {"role": "assistant", "content": "DictComp(key=..., value=..., generators=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.DictComp node in Python?"}, {"role": "assistant", "content": "DictComp(key=..., value=..., generators=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.DictComp have?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.DictComp?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.DictComp."}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.DictComp?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Does ast.DictComp have a key field?"}, {"role": "assistant", "content": "ast.DictComp has: key, value, generators. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is key a field of ast.DictComp?"}, {"role": "assistant", "content": "ast.DictComp has: key, value, generators. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.DictComp have a value field?"}, {"role": "assistant", "content": "ast.DictComp has: key, value, generators. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is value a field of ast.DictComp?"}, {"role": "assistant", "content": "ast.DictComp has: key, value, generators. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.DictComp have a upper field?"}, {"role": "assistant", "content": "ast.DictComp has: key, value, generators. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is upper a field of ast.DictComp?"}, {"role": "assistant", "content": "ast.DictComp has: key, value, generators. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.DictComp have a values field?"}, {"role": "assistant", "content": "ast.DictComp has: key, value, generators. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is values a field of ast.DictComp?"}, {"role": "assistant", "content": "ast.DictComp has: key, value, generators. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.ExceptHandler in order."}, {"role": "assistant", "content": "type, name, body"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.ExceptHandler have?"}, {"role": "assistant", "content": "type, name, body"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.ExceptHandler."}, {"role": "assistant", "content": "type, name, body"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.ExceptHandler node define?"}, {"role": "assistant", "content": "type, name, body"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.ExceptHandler."}, {"role": "assistant", "content": "type, name, body"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.ExceptHandler."}, {"role": "assistant", "content": "type, name, body"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.ExceptHandler node with placeholder arguments."}, {"role": "assistant", "content": "ExceptHandler(type=..., name=..., body=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.ExceptHandler node in Python."}, {"role": "assistant", "content": "ExceptHandler(type=..., name=..., body=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.ExceptHandler."}, {"role": "assistant", "content": "ExceptHandler(type=..., name=..., body=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.ExceptHandler node in Python?"}, {"role": "assistant", "content": "ExceptHandler(type=..., name=..., body=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.ExceptHandler have?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.ExceptHandler?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.ExceptHandler."}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.ExceptHandler?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Does ast.ExceptHandler have a type field?"}, {"role": "assistant", "content": "ast.ExceptHandler has: type, name, body. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is type a field of ast.ExceptHandler?"}, {"role": "assistant", "content": "ast.ExceptHandler has: type, name, body. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.ExceptHandler have a name field?"}, {"role": "assistant", "content": "ast.ExceptHandler has: type, name, body. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is name a field of ast.ExceptHandler?"}, {"role": "assistant", "content": "ast.ExceptHandler has: type, name, body. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.ExceptHandler have a attr field?"}, {"role": "assistant", "content": "ast.ExceptHandler has: type, name, body. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is attr a field of ast.ExceptHandler?"}, {"role": "assistant", "content": "ast.ExceptHandler has: type, name, body. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.ExceptHandler have a bases field?"}, {"role": "assistant", "content": "ast.ExceptHandler has: type, name, body. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is bases a field of ast.ExceptHandler?"}, {"role": "assistant", "content": "ast.ExceptHandler has: type, name, body. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.Expr in order."}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.Expr have?"}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.Expr."}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.Expr node define?"}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.Expr."}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.Expr."}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.Expr node with placeholder arguments."}, {"role": "assistant", "content": "Expr(value=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.Expr node in Python."}, {"role": "assistant", "content": "Expr(value=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.Expr."}, {"role": "assistant", "content": "Expr(value=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.Expr node in Python?"}, {"role": "assistant", "content": "Expr(value=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.Expr have?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.Expr?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.Expr."}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.Expr?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Does ast.Expr have a value field?"}, {"role": "assistant", "content": "ast.Expr has: value. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is value a field of ast.Expr?"}, {"role": "assistant", "content": "ast.Expr has: value. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Expr have a bound field?"}, {"role": "assistant", "content": "ast.Expr has: value. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is bound a field of ast.Expr?"}, {"role": "assistant", "content": "ast.Expr has: value. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.For in order."}, {"role": "assistant", "content": "target, iter, body, orelse, type_comment"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.For have?"}, {"role": "assistant", "content": "target, iter, body, orelse, type_comment"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.For."}, {"role": "assistant", "content": "target, iter, body, orelse, type_comment"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.For node define?"}, {"role": "assistant", "content": "target, iter, body, orelse, type_comment"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.For."}, {"role": "assistant", "content": "target, iter, body, orelse, type_comment"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.For."}, {"role": "assistant", "content": "target, iter, body, orelse, type_comment"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.For node with placeholder arguments."}, {"role": "assistant", "content": "For(target=..., iter=..., body=..., orelse=..., type_comment=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.For node in Python."}, {"role": "assistant", "content": "For(target=..., iter=..., body=..., orelse=..., type_comment=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.For."}, {"role": "assistant", "content": "For(target=..., iter=..., body=..., orelse=..., type_comment=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.For node in Python?"}, {"role": "assistant", "content": "For(target=..., iter=..., body=..., orelse=..., type_comment=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.For have?"}, {"role": "assistant", "content": "5"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.For?"}, {"role": "assistant", "content": "5"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.For."}, {"role": "assistant", "content": "5"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.For?"}, {"role": "assistant", "content": "5"}]}
+{"messages": [{"role": "user", "content": "Does ast.For have a target field?"}, {"role": "assistant", "content": "ast.For has: target, iter, body, orelse, type_comment. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is target a field of ast.For?"}, {"role": "assistant", "content": "ast.For has: target, iter, body, orelse, type_comment. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.For have a iter field?"}, {"role": "assistant", "content": "ast.For has: target, iter, body, orelse, type_comment. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is iter a field of ast.For?"}, {"role": "assistant", "content": "ast.For has: target, iter, body, orelse, type_comment. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.For have a body field?"}, {"role": "assistant", "content": "ast.For has: target, iter, body, orelse, type_comment. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is body a field of ast.For?"}, {"role": "assistant", "content": "ast.For has: target, iter, body, orelse, type_comment. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.For have a orelse field?"}, {"role": "assistant", "content": "ast.For has: target, iter, body, orelse, type_comment. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is orelse a field of ast.For?"}, {"role": "assistant", "content": "ast.For has: target, iter, body, orelse, type_comment. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.For have a elts field?"}, {"role": "assistant", "content": "ast.For has: target, iter, body, orelse, type_comment. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is elts a field of ast.For?"}, {"role": "assistant", "content": "ast.For has: target, iter, body, orelse, type_comment. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.For have a exc field?"}, {"role": "assistant", "content": "ast.For has: target, iter, body, orelse, type_comment. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is exc a field of ast.For?"}, {"role": "assistant", "content": "ast.For has: target, iter, body, orelse, type_comment. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.For have a finalbody field?"}, {"role": "assistant", "content": "ast.For has: target, iter, body, orelse, type_comment. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is finalbody a field of ast.For?"}, {"role": "assistant", "content": "ast.For has: target, iter, body, orelse, type_comment. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.For have a format_spec field?"}, {"role": "assistant", "content": "ast.For has: target, iter, body, orelse, type_comment. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is format_spec a field of ast.For?"}, {"role": "assistant", "content": "ast.For has: target, iter, body, orelse, type_comment. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.FormattedValue in order."}, {"role": "assistant", "content": "value, conversion, format_spec"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.FormattedValue have?"}, {"role": "assistant", "content": "value, conversion, format_spec"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.FormattedValue."}, {"role": "assistant", "content": "value, conversion, format_spec"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.FormattedValue node define?"}, {"role": "assistant", "content": "value, conversion, format_spec"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.FormattedValue."}, {"role": "assistant", "content": "value, conversion, format_spec"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.FormattedValue."}, {"role": "assistant", "content": "value, conversion, format_spec"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.FormattedValue node with placeholder arguments."}, {"role": "assistant", "content": "FormattedValue(value=..., conversion=..., format_spec=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.FormattedValue node in Python."}, {"role": "assistant", "content": "FormattedValue(value=..., conversion=..., format_spec=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.FormattedValue."}, {"role": "assistant", "content": "FormattedValue(value=..., conversion=..., format_spec=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.FormattedValue node in Python?"}, {"role": "assistant", "content": "FormattedValue(value=..., conversion=..., format_spec=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.FormattedValue have?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.FormattedValue?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.FormattedValue."}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.FormattedValue?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Does ast.FormattedValue have a value field?"}, {"role": "assistant", "content": "ast.FormattedValue has: value, conversion, format_spec. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is value a field of ast.FormattedValue?"}, {"role": "assistant", "content": "ast.FormattedValue has: value, conversion, format_spec. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.FormattedValue have a conversion field?"}, {"role": "assistant", "content": "ast.FormattedValue has: value, conversion, format_spec. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is conversion a field of ast.FormattedValue?"}, {"role": "assistant", "content": "ast.FormattedValue has: value, conversion, format_spec. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.FormattedValue have a func field?"}, {"role": "assistant", "content": "ast.FormattedValue has: value, conversion, format_spec. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is func a field of ast.FormattedValue?"}, {"role": "assistant", "content": "ast.FormattedValue has: value, conversion, format_spec. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.FormattedValue have a generators field?"}, {"role": "assistant", "content": "ast.FormattedValue has: value, conversion, format_spec. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is generators a field of ast.FormattedValue?"}, {"role": "assistant", "content": "ast.FormattedValue has: value, conversion, format_spec. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.FunctionDef in order."}, {"role": "assistant", "content": "name, args, body, decorator_list, returns, type_comment, type_params"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.FunctionDef have?"}, {"role": "assistant", "content": "name, args, body, decorator_list, returns, type_comment, type_params"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.FunctionDef."}, {"role": "assistant", "content": "name, args, body, decorator_list, returns, type_comment, type_params"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.FunctionDef node define?"}, {"role": "assistant", "content": "name, args, body, decorator_list, returns, type_comment, type_params"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.FunctionDef."}, {"role": "assistant", "content": "name, args, body, decorator_list, returns, type_comment, type_params"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.FunctionDef."}, {"role": "assistant", "content": "name, args, body, decorator_list, returns, type_comment, type_params"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.FunctionDef node with placeholder arguments."}, {"role": "assistant", "content": "FunctionDef(name=..., args=..., body=..., decorator_list=..., returns=..., type_comment=..., type_params=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.FunctionDef node in Python."}, {"role": "assistant", "content": "FunctionDef(name=..., args=..., body=..., decorator_list=..., returns=..., type_comment=..., type_params=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.FunctionDef."}, {"role": "assistant", "content": "FunctionDef(name=..., args=..., body=..., decorator_list=..., returns=..., type_comment=..., type_params=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.FunctionDef node in Python?"}, {"role": "assistant", "content": "FunctionDef(name=..., args=..., body=..., decorator_list=..., returns=..., type_comment=..., type_params=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.FunctionDef have?"}, {"role": "assistant", "content": "7"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.FunctionDef?"}, {"role": "assistant", "content": "7"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.FunctionDef."}, {"role": "assistant", "content": "7"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.FunctionDef?"}, {"role": "assistant", "content": "7"}]}
+{"messages": [{"role": "user", "content": "Does ast.FunctionDef have a name field?"}, {"role": "assistant", "content": "ast.FunctionDef has: name, args, body, decorator_list, returns, type_comment, type_params. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is name a field of ast.FunctionDef?"}, {"role": "assistant", "content": "ast.FunctionDef has: name, args, body, decorator_list, returns, type_comment, type_params. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.FunctionDef have a args field?"}, {"role": "assistant", "content": "ast.FunctionDef has: name, args, body, decorator_list, returns, type_comment, type_params. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is args a field of ast.FunctionDef?"}, {"role": "assistant", "content": "ast.FunctionDef has: name, args, body, decorator_list, returns, type_comment, type_params. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.FunctionDef have a body field?"}, {"role": "assistant", "content": "ast.FunctionDef has: name, args, body, decorator_list, returns, type_comment, type_params. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is body a field of ast.FunctionDef?"}, {"role": "assistant", "content": "ast.FunctionDef has: name, args, body, decorator_list, returns, type_comment, type_params. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.FunctionDef have a decorator_list field?"}, {"role": "assistant", "content": "ast.FunctionDef has: name, args, body, decorator_list, returns, type_comment, type_params. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is decorator_list a field of ast.FunctionDef?"}, {"role": "assistant", "content": "ast.FunctionDef has: name, args, body, decorator_list, returns, type_comment, type_params. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.FunctionDef have a returns field?"}, {"role": "assistant", "content": "ast.FunctionDef has: name, args, body, decorator_list, returns, type_comment, type_params. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is returns a field of ast.FunctionDef?"}, {"role": "assistant", "content": "ast.FunctionDef has: name, args, body, decorator_list, returns, type_comment, type_params. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.FunctionDef have a type_comment field?"}, {"role": "assistant", "content": "ast.FunctionDef has: name, args, body, decorator_list, returns, type_comment, type_params. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is type_comment a field of ast.FunctionDef?"}, {"role": "assistant", "content": "ast.FunctionDef has: name, args, body, decorator_list, returns, type_comment, type_params. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.FunctionDef have a kwd_attrs field?"}, {"role": "assistant", "content": "ast.FunctionDef has: name, args, body, decorator_list, returns, type_comment, type_params. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is kwd_attrs a field of ast.FunctionDef?"}, {"role": "assistant", "content": "ast.FunctionDef has: name, args, body, decorator_list, returns, type_comment, type_params. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.FunctionDef have a kwd_patterns field?"}, {"role": "assistant", "content": "ast.FunctionDef has: name, args, body, decorator_list, returns, type_comment, type_params. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is kwd_patterns a field of ast.FunctionDef?"}, {"role": "assistant", "content": "ast.FunctionDef has: name, args, body, decorator_list, returns, type_comment, type_params. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.FunctionDef have a left field?"}, {"role": "assistant", "content": "ast.FunctionDef has: name, args, body, decorator_list, returns, type_comment, type_params. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is left a field of ast.FunctionDef?"}, {"role": "assistant", "content": "ast.FunctionDef has: name, args, body, decorator_list, returns, type_comment, type_params. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.FunctionDef have a level field?"}, {"role": "assistant", "content": "ast.FunctionDef has: name, args, body, decorator_list, returns, type_comment, type_params. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is level a field of ast.FunctionDef?"}, {"role": "assistant", "content": "ast.FunctionDef has: name, args, body, decorator_list, returns, type_comment, type_params. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.FunctionDef have a lineno field?"}, {"role": "assistant", "content": "ast.FunctionDef has: name, args, body, decorator_list, returns, type_comment, type_params. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is lineno a field of ast.FunctionDef?"}, {"role": "assistant", "content": "ast.FunctionDef has: name, args, body, decorator_list, returns, type_comment, type_params. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.FunctionDef have a lower field?"}, {"role": "assistant", "content": "ast.FunctionDef has: name, args, body, decorator_list, returns, type_comment, type_params. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is lower a field of ast.FunctionDef?"}, {"role": "assistant", "content": "ast.FunctionDef has: name, args, body, decorator_list, returns, type_comment, type_params. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.GeneratorExp in order."}, {"role": "assistant", "content": "elt, generators"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.GeneratorExp have?"}, {"role": "assistant", "content": "elt, generators"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.GeneratorExp."}, {"role": "assistant", "content": "elt, generators"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.GeneratorExp node define?"}, {"role": "assistant", "content": "elt, generators"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.GeneratorExp."}, {"role": "assistant", "content": "elt, generators"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.GeneratorExp."}, {"role": "assistant", "content": "elt, generators"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.GeneratorExp node with placeholder arguments."}, {"role": "assistant", "content": "GeneratorExp(elt=..., generators=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.GeneratorExp node in Python."}, {"role": "assistant", "content": "GeneratorExp(elt=..., generators=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.GeneratorExp."}, {"role": "assistant", "content": "GeneratorExp(elt=..., generators=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.GeneratorExp node in Python?"}, {"role": "assistant", "content": "GeneratorExp(elt=..., generators=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.GeneratorExp have?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.GeneratorExp?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.GeneratorExp."}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.GeneratorExp?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Does ast.GeneratorExp have a elt field?"}, {"role": "assistant", "content": "ast.GeneratorExp has: elt, generators. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is elt a field of ast.GeneratorExp?"}, {"role": "assistant", "content": "ast.GeneratorExp has: elt, generators. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.GeneratorExp have a kind field?"}, {"role": "assistant", "content": "ast.GeneratorExp has: elt, generators. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is kind a field of ast.GeneratorExp?"}, {"role": "assistant", "content": "ast.GeneratorExp has: elt, generators. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.Global in order."}, {"role": "assistant", "content": "names"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.Global have?"}, {"role": "assistant", "content": "names"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.Global."}, {"role": "assistant", "content": "names"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.Global node define?"}, {"role": "assistant", "content": "names"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.Global."}, {"role": "assistant", "content": "names"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.Global."}, {"role": "assistant", "content": "names"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.Global node with placeholder arguments."}, {"role": "assistant", "content": "Global(names=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.Global node in Python."}, {"role": "assistant", "content": "Global(names=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.Global."}, {"role": "assistant", "content": "Global(names=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.Global node in Python?"}, {"role": "assistant", "content": "Global(names=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.Global have?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.Global?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.Global."}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.Global?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Does ast.Global have a names field?"}, {"role": "assistant", "content": "ast.Global has: names. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is names a field of ast.Global?"}, {"role": "assistant", "content": "ast.Global has: names. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Global have a kwd_patterns field?"}, {"role": "assistant", "content": "ast.Global has: names. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is kwd_patterns a field of ast.Global?"}, {"role": "assistant", "content": "ast.Global has: names. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.If in order."}, {"role": "assistant", "content": "test, body, orelse"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.If have?"}, {"role": "assistant", "content": "test, body, orelse"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.If."}, {"role": "assistant", "content": "test, body, orelse"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.If node define?"}, {"role": "assistant", "content": "test, body, orelse"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.If."}, {"role": "assistant", "content": "test, body, orelse"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.If."}, {"role": "assistant", "content": "test, body, orelse"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.If node with placeholder arguments."}, {"role": "assistant", "content": "If(test=..., body=..., orelse=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.If node in Python."}, {"role": "assistant", "content": "If(test=..., body=..., orelse=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.If."}, {"role": "assistant", "content": "If(test=..., body=..., orelse=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.If node in Python?"}, {"role": "assistant", "content": "If(test=..., body=..., orelse=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.If have?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.If?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.If."}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.If?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Does ast.If have a test field?"}, {"role": "assistant", "content": "ast.If has: test, body, orelse. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is test a field of ast.If?"}, {"role": "assistant", "content": "ast.If has: test, body, orelse. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.If have a body field?"}, {"role": "assistant", "content": "ast.If has: test, body, orelse. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is body a field of ast.If?"}, {"role": "assistant", "content": "ast.If has: test, body, orelse. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.If have a names field?"}, {"role": "assistant", "content": "ast.If has: test, body, orelse. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is names a field of ast.If?"}, {"role": "assistant", "content": "ast.If has: test, body, orelse. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.If have a op field?"}, {"role": "assistant", "content": "ast.If has: test, body, orelse. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is op a field of ast.If?"}, {"role": "assistant", "content": "ast.If has: test, body, orelse. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.Import in order."}, {"role": "assistant", "content": "names"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.Import have?"}, {"role": "assistant", "content": "names"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.Import."}, {"role": "assistant", "content": "names"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.Import node define?"}, {"role": "assistant", "content": "names"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.Import."}, {"role": "assistant", "content": "names"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.Import."}, {"role": "assistant", "content": "names"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.Import node with placeholder arguments."}, {"role": "assistant", "content": "Import(names=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.Import node in Python."}, {"role": "assistant", "content": "Import(names=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.Import."}, {"role": "assistant", "content": "Import(names=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.Import node in Python?"}, {"role": "assistant", "content": "Import(names=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.Import have?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.Import?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.Import."}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.Import?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Does ast.Import have a names field?"}, {"role": "assistant", "content": "ast.Import has: names. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is names a field of ast.Import?"}, {"role": "assistant", "content": "ast.Import has: names. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Import have a ops field?"}, {"role": "assistant", "content": "ast.Import has: names. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is ops a field of ast.Import?"}, {"role": "assistant", "content": "ast.Import has: names. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.ImportFrom in order."}, {"role": "assistant", "content": "module, names, level"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.ImportFrom have?"}, {"role": "assistant", "content": "module, names, level"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.ImportFrom."}, {"role": "assistant", "content": "module, names, level"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.ImportFrom node define?"}, {"role": "assistant", "content": "module, names, level"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.ImportFrom."}, {"role": "assistant", "content": "module, names, level"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.ImportFrom."}, {"role": "assistant", "content": "module, names, level"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.ImportFrom node with placeholder arguments."}, {"role": "assistant", "content": "ImportFrom(module=..., names=..., level=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.ImportFrom node in Python."}, {"role": "assistant", "content": "ImportFrom(module=..., names=..., level=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.ImportFrom."}, {"role": "assistant", "content": "ImportFrom(module=..., names=..., level=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.ImportFrom node in Python?"}, {"role": "assistant", "content": "ImportFrom(module=..., names=..., level=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.ImportFrom have?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.ImportFrom?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.ImportFrom."}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.ImportFrom?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Does ast.ImportFrom have a module field?"}, {"role": "assistant", "content": "ast.ImportFrom has: module, names, level. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is module a field of ast.ImportFrom?"}, {"role": "assistant", "content": "ast.ImportFrom has: module, names, level. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.ImportFrom have a names field?"}, {"role": "assistant", "content": "ast.ImportFrom has: module, names, level. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is names a field of ast.ImportFrom?"}, {"role": "assistant", "content": "ast.ImportFrom has: module, names, level. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.ImportFrom have a step field?"}, {"role": "assistant", "content": "ast.ImportFrom has: module, names, level. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is step a field of ast.ImportFrom?"}, {"role": "assistant", "content": "ast.ImportFrom has: module, names, level. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.ImportFrom have a str field?"}, {"role": "assistant", "content": "ast.ImportFrom has: module, names, level. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is str a field of ast.ImportFrom?"}, {"role": "assistant", "content": "ast.ImportFrom has: module, names, level. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.Interactive in order."}, {"role": "assistant", "content": "body"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.Interactive have?"}, {"role": "assistant", "content": "body"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.Interactive."}, {"role": "assistant", "content": "body"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.Interactive node define?"}, {"role": "assistant", "content": "body"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.Interactive."}, {"role": "assistant", "content": "body"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.Interactive."}, {"role": "assistant", "content": "body"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.Interactive node with placeholder arguments."}, {"role": "assistant", "content": "Interactive(body=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.Interactive node in Python."}, {"role": "assistant", "content": "Interactive(body=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.Interactive."}, {"role": "assistant", "content": "Interactive(body=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.Interactive node in Python?"}, {"role": "assistant", "content": "Interactive(body=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.Interactive have?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.Interactive?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.Interactive."}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.Interactive?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Does ast.Interactive have a body field?"}, {"role": "assistant", "content": "ast.Interactive has: body. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is body a field of ast.Interactive?"}, {"role": "assistant", "content": "ast.Interactive has: body. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Interactive have a str field?"}, {"role": "assistant", "content": "ast.Interactive has: body. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is str a field of ast.Interactive?"}, {"role": "assistant", "content": "ast.Interactive has: body. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.JoinedStr in order."}, {"role": "assistant", "content": "values"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.JoinedStr have?"}, {"role": "assistant", "content": "values"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.JoinedStr."}, {"role": "assistant", "content": "values"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.JoinedStr node define?"}, {"role": "assistant", "content": "values"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.JoinedStr."}, {"role": "assistant", "content": "values"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.JoinedStr."}, {"role": "assistant", "content": "values"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.JoinedStr node with placeholder arguments."}, {"role": "assistant", "content": "JoinedStr(values=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.JoinedStr node in Python."}, {"role": "assistant", "content": "JoinedStr(values=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.JoinedStr."}, {"role": "assistant", "content": "JoinedStr(values=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.JoinedStr node in Python?"}, {"role": "assistant", "content": "JoinedStr(values=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.JoinedStr have?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.JoinedStr?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.JoinedStr."}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.JoinedStr?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Does ast.JoinedStr have a values field?"}, {"role": "assistant", "content": "ast.JoinedStr has: values. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is values a field of ast.JoinedStr?"}, {"role": "assistant", "content": "ast.JoinedStr has: values. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.JoinedStr have a targets field?"}, {"role": "assistant", "content": "ast.JoinedStr has: values. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is targets a field of ast.JoinedStr?"}, {"role": "assistant", "content": "ast.JoinedStr has: values. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.Lambda in order."}, {"role": "assistant", "content": "args, body"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.Lambda have?"}, {"role": "assistant", "content": "args, body"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.Lambda."}, {"role": "assistant", "content": "args, body"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.Lambda node define?"}, {"role": "assistant", "content": "args, body"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.Lambda."}, {"role": "assistant", "content": "args, body"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.Lambda."}, {"role": "assistant", "content": "args, body"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.Lambda node with placeholder arguments."}, {"role": "assistant", "content": "Lambda(args=..., body=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.Lambda node in Python."}, {"role": "assistant", "content": "Lambda(args=..., body=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.Lambda."}, {"role": "assistant", "content": "Lambda(args=..., body=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.Lambda node in Python?"}, {"role": "assistant", "content": "Lambda(args=..., body=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.Lambda have?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.Lambda?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.Lambda."}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.Lambda?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Does ast.Lambda have a args field?"}, {"role": "assistant", "content": "ast.Lambda has: args, body. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is args a field of ast.Lambda?"}, {"role": "assistant", "content": "ast.Lambda has: args, body. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Lambda have a values field?"}, {"role": "assistant", "content": "ast.Lambda has: args, body. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is values a field of ast.Lambda?"}, {"role": "assistant", "content": "ast.Lambda has: args, body. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.List in order."}, {"role": "assistant", "content": "elts, ctx"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.List have?"}, {"role": "assistant", "content": "elts, ctx"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.List."}, {"role": "assistant", "content": "elts, ctx"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.List node define?"}, {"role": "assistant", "content": "elts, ctx"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.List."}, {"role": "assistant", "content": "elts, ctx"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.List."}, {"role": "assistant", "content": "elts, ctx"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.List node with placeholder arguments."}, {"role": "assistant", "content": "List(elts=..., ctx=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.List node in Python."}, {"role": "assistant", "content": "List(elts=..., ctx=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.List."}, {"role": "assistant", "content": "List(elts=..., ctx=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.List node in Python?"}, {"role": "assistant", "content": "List(elts=..., ctx=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.List have?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.List?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.List."}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.List?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Does ast.List have a elts field?"}, {"role": "assistant", "content": "ast.List has: elts, ctx. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is elts a field of ast.List?"}, {"role": "assistant", "content": "ast.List has: elts, ctx. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.List have a bases field?"}, {"role": "assistant", "content": "ast.List has: elts, ctx. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is bases a field of ast.List?"}, {"role": "assistant", "content": "ast.List has: elts, ctx. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.Match in order."}, {"role": "assistant", "content": "subject, cases"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.Match have?"}, {"role": "assistant", "content": "subject, cases"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.Match."}, {"role": "assistant", "content": "subject, cases"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.Match node define?"}, {"role": "assistant", "content": "subject, cases"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.Match."}, {"role": "assistant", "content": "subject, cases"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.Match."}, {"role": "assistant", "content": "subject, cases"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.Match node with placeholder arguments."}, {"role": "assistant", "content": "Match(subject=..., cases=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.Match node in Python."}, {"role": "assistant", "content": "Match(subject=..., cases=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.Match."}, {"role": "assistant", "content": "Match(subject=..., cases=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.Match node in Python?"}, {"role": "assistant", "content": "Match(subject=..., cases=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.Match have?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.Match?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.Match."}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.Match?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Does ast.Match have a subject field?"}, {"role": "assistant", "content": "ast.Match has: subject, cases. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is subject a field of ast.Match?"}, {"role": "assistant", "content": "ast.Match has: subject, cases. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Match have a comparators field?"}, {"role": "assistant", "content": "ast.Match has: subject, cases. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is comparators a field of ast.Match?"}, {"role": "assistant", "content": "ast.Match has: subject, cases. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.MatchAs in order."}, {"role": "assistant", "content": "pattern, name"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.MatchAs have?"}, {"role": "assistant", "content": "pattern, name"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.MatchAs."}, {"role": "assistant", "content": "pattern, name"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.MatchAs node define?"}, {"role": "assistant", "content": "pattern, name"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.MatchAs."}, {"role": "assistant", "content": "pattern, name"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.MatchAs."}, {"role": "assistant", "content": "pattern, name"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.MatchAs node with placeholder arguments."}, {"role": "assistant", "content": "MatchAs(pattern=..., name=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.MatchAs node in Python."}, {"role": "assistant", "content": "MatchAs(pattern=..., name=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.MatchAs."}, {"role": "assistant", "content": "MatchAs(pattern=..., name=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.MatchAs node in Python?"}, {"role": "assistant", "content": "MatchAs(pattern=..., name=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.MatchAs have?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.MatchAs?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.MatchAs."}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.MatchAs?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Does ast.MatchAs have a pattern field?"}, {"role": "assistant", "content": "ast.MatchAs has: pattern, name. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is pattern a field of ast.MatchAs?"}, {"role": "assistant", "content": "ast.MatchAs has: pattern, name. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.MatchAs have a default_value field?"}, {"role": "assistant", "content": "ast.MatchAs has: pattern, name. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is default_value a field of ast.MatchAs?"}, {"role": "assistant", "content": "ast.MatchAs has: pattern, name. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.MatchClass in order."}, {"role": "assistant", "content": "cls, patterns, kwd_attrs, kwd_patterns"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.MatchClass have?"}, {"role": "assistant", "content": "cls, patterns, kwd_attrs, kwd_patterns"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.MatchClass."}, {"role": "assistant", "content": "cls, patterns, kwd_attrs, kwd_patterns"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.MatchClass node define?"}, {"role": "assistant", "content": "cls, patterns, kwd_attrs, kwd_patterns"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.MatchClass."}, {"role": "assistant", "content": "cls, patterns, kwd_attrs, kwd_patterns"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.MatchClass."}, {"role": "assistant", "content": "cls, patterns, kwd_attrs, kwd_patterns"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.MatchClass node with placeholder arguments."}, {"role": "assistant", "content": "MatchClass(cls=..., patterns=..., kwd_attrs=..., kwd_patterns=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.MatchClass node in Python."}, {"role": "assistant", "content": "MatchClass(cls=..., patterns=..., kwd_attrs=..., kwd_patterns=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.MatchClass."}, {"role": "assistant", "content": "MatchClass(cls=..., patterns=..., kwd_attrs=..., kwd_patterns=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.MatchClass node in Python?"}, {"role": "assistant", "content": "MatchClass(cls=..., patterns=..., kwd_attrs=..., kwd_patterns=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.MatchClass have?"}, {"role": "assistant", "content": "4"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.MatchClass?"}, {"role": "assistant", "content": "4"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.MatchClass."}, {"role": "assistant", "content": "4"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.MatchClass?"}, {"role": "assistant", "content": "4"}]}
+{"messages": [{"role": "user", "content": "Does ast.MatchClass have a cls field?"}, {"role": "assistant", "content": "ast.MatchClass has: cls, patterns, kwd_attrs, kwd_patterns. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is cls a field of ast.MatchClass?"}, {"role": "assistant", "content": "ast.MatchClass has: cls, patterns, kwd_attrs, kwd_patterns. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.MatchClass have a patterns field?"}, {"role": "assistant", "content": "ast.MatchClass has: cls, patterns, kwd_attrs, kwd_patterns. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is patterns a field of ast.MatchClass?"}, {"role": "assistant", "content": "ast.MatchClass has: cls, patterns, kwd_attrs, kwd_patterns. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.MatchClass have a kwd_attrs field?"}, {"role": "assistant", "content": "ast.MatchClass has: cls, patterns, kwd_attrs, kwd_patterns. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is kwd_attrs a field of ast.MatchClass?"}, {"role": "assistant", "content": "ast.MatchClass has: cls, patterns, kwd_attrs, kwd_patterns. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.MatchClass have a items field?"}, {"role": "assistant", "content": "ast.MatchClass has: cls, patterns, kwd_attrs, kwd_patterns. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is items a field of ast.MatchClass?"}, {"role": "assistant", "content": "ast.MatchClass has: cls, patterns, kwd_attrs, kwd_patterns. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.MatchClass have a iter field?"}, {"role": "assistant", "content": "ast.MatchClass has: cls, patterns, kwd_attrs, kwd_patterns. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is iter a field of ast.MatchClass?"}, {"role": "assistant", "content": "ast.MatchClass has: cls, patterns, kwd_attrs, kwd_patterns. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.MatchClass have a key field?"}, {"role": "assistant", "content": "ast.MatchClass has: cls, patterns, kwd_attrs, kwd_patterns. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is key a field of ast.MatchClass?"}, {"role": "assistant", "content": "ast.MatchClass has: cls, patterns, kwd_attrs, kwd_patterns. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.MatchOr in order."}, {"role": "assistant", "content": "patterns"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.MatchOr have?"}, {"role": "assistant", "content": "patterns"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.MatchOr."}, {"role": "assistant", "content": "patterns"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.MatchOr node define?"}, {"role": "assistant", "content": "patterns"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.MatchOr."}, {"role": "assistant", "content": "patterns"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.MatchOr."}, {"role": "assistant", "content": "patterns"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.MatchOr node with placeholder arguments."}, {"role": "assistant", "content": "MatchOr(patterns=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.MatchOr node in Python."}, {"role": "assistant", "content": "MatchOr(patterns=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.MatchOr."}, {"role": "assistant", "content": "MatchOr(patterns=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.MatchOr node in Python?"}, {"role": "assistant", "content": "MatchOr(patterns=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.MatchOr have?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.MatchOr?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.MatchOr."}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.MatchOr?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Does ast.MatchOr have a patterns field?"}, {"role": "assistant", "content": "ast.MatchOr has: patterns. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is patterns a field of ast.MatchOr?"}, {"role": "assistant", "content": "ast.MatchOr has: patterns. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.MatchOr have a handlers field?"}, {"role": "assistant", "content": "ast.MatchOr has: patterns. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is handlers a field of ast.MatchOr?"}, {"role": "assistant", "content": "ast.MatchOr has: patterns. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.MatchSequence in order."}, {"role": "assistant", "content": "patterns"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.MatchSequence have?"}, {"role": "assistant", "content": "patterns"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.MatchSequence."}, {"role": "assistant", "content": "patterns"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.MatchSequence node define?"}, {"role": "assistant", "content": "patterns"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.MatchSequence."}, {"role": "assistant", "content": "patterns"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.MatchSequence."}, {"role": "assistant", "content": "patterns"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.MatchSequence node with placeholder arguments."}, {"role": "assistant", "content": "MatchSequence(patterns=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.MatchSequence node in Python."}, {"role": "assistant", "content": "MatchSequence(patterns=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.MatchSequence."}, {"role": "assistant", "content": "MatchSequence(patterns=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.MatchSequence node in Python?"}, {"role": "assistant", "content": "MatchSequence(patterns=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.MatchSequence have?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.MatchSequence?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.MatchSequence."}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.MatchSequence?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Does ast.MatchSequence have a patterns field?"}, {"role": "assistant", "content": "ast.MatchSequence has: patterns. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is patterns a field of ast.MatchSequence?"}, {"role": "assistant", "content": "ast.MatchSequence has: patterns. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.MatchSequence have a keys field?"}, {"role": "assistant", "content": "ast.MatchSequence has: patterns. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is keys a field of ast.MatchSequence?"}, {"role": "assistant", "content": "ast.MatchSequence has: patterns. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.MatchSingleton in order."}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.MatchSingleton have?"}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.MatchSingleton."}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.MatchSingleton node define?"}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.MatchSingleton."}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.MatchSingleton."}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.MatchSingleton node with placeholder arguments."}, {"role": "assistant", "content": "MatchSingleton(value=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.MatchSingleton node in Python."}, {"role": "assistant", "content": "MatchSingleton(value=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.MatchSingleton."}, {"role": "assistant", "content": "MatchSingleton(value=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.MatchSingleton node in Python?"}, {"role": "assistant", "content": "MatchSingleton(value=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.MatchSingleton have?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.MatchSingleton?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.MatchSingleton."}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.MatchSingleton?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Does ast.MatchSingleton have a value field?"}, {"role": "assistant", "content": "ast.MatchSingleton has: value. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is value a field of ast.MatchSingleton?"}, {"role": "assistant", "content": "ast.MatchSingleton has: value. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.MatchSingleton have a left field?"}, {"role": "assistant", "content": "ast.MatchSingleton has: value. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is left a field of ast.MatchSingleton?"}, {"role": "assistant", "content": "ast.MatchSingleton has: value. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.MatchValue in order."}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.MatchValue have?"}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.MatchValue."}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.MatchValue node define?"}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.MatchValue."}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.MatchValue."}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.MatchValue node with placeholder arguments."}, {"role": "assistant", "content": "MatchValue(value=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.MatchValue node in Python."}, {"role": "assistant", "content": "MatchValue(value=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.MatchValue."}, {"role": "assistant", "content": "MatchValue(value=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.MatchValue node in Python?"}, {"role": "assistant", "content": "MatchValue(value=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.MatchValue have?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.MatchValue?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.MatchValue."}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.MatchValue?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Does ast.MatchValue have a value field?"}, {"role": "assistant", "content": "ast.MatchValue has: value. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is value a field of ast.MatchValue?"}, {"role": "assistant", "content": "ast.MatchValue has: value. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.MatchValue have a msg field?"}, {"role": "assistant", "content": "ast.MatchValue has: value. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is msg a field of ast.MatchValue?"}, {"role": "assistant", "content": "ast.MatchValue has: value. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.Module in order."}, {"role": "assistant", "content": "body, type_ignores"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.Module have?"}, {"role": "assistant", "content": "body, type_ignores"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.Module."}, {"role": "assistant", "content": "body, type_ignores"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.Module node define?"}, {"role": "assistant", "content": "body, type_ignores"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.Module."}, {"role": "assistant", "content": "body, type_ignores"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.Module."}, {"role": "assistant", "content": "body, type_ignores"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.Module node with placeholder arguments."}, {"role": "assistant", "content": "Module(body=..., type_ignores=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.Module node in Python."}, {"role": "assistant", "content": "Module(body=..., type_ignores=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.Module."}, {"role": "assistant", "content": "Module(body=..., type_ignores=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.Module node in Python?"}, {"role": "assistant", "content": "Module(body=..., type_ignores=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.Module have?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.Module?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.Module."}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.Module?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Does ast.Module have a body field?"}, {"role": "assistant", "content": "ast.Module has: body, type_ignores. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is body a field of ast.Module?"}, {"role": "assistant", "content": "ast.Module has: body, type_ignores. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Module have a patterns field?"}, {"role": "assistant", "content": "ast.Module has: body, type_ignores. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is patterns a field of ast.Module?"}, {"role": "assistant", "content": "ast.Module has: body, type_ignores. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.Name in order."}, {"role": "assistant", "content": "id, ctx"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.Name have?"}, {"role": "assistant", "content": "id, ctx"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.Name."}, {"role": "assistant", "content": "id, ctx"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.Name node define?"}, {"role": "assistant", "content": "id, ctx"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.Name."}, {"role": "assistant", "content": "id, ctx"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.Name."}, {"role": "assistant", "content": "id, ctx"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.Name node with placeholder arguments."}, {"role": "assistant", "content": "Name(id=..., ctx=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.Name node in Python."}, {"role": "assistant", "content": "Name(id=..., ctx=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.Name."}, {"role": "assistant", "content": "Name(id=..., ctx=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.Name node in Python?"}, {"role": "assistant", "content": "Name(id=..., ctx=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.Name have?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.Name?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.Name."}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.Name?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Does ast.Name have a id field?"}, {"role": "assistant", "content": "ast.Name has: id, ctx. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is id a field of ast.Name?"}, {"role": "assistant", "content": "ast.Name has: id, ctx. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Name have a step field?"}, {"role": "assistant", "content": "ast.Name has: id, ctx. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is step a field of ast.Name?"}, {"role": "assistant", "content": "ast.Name has: id, ctx. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.Nonlocal in order."}, {"role": "assistant", "content": "names"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.Nonlocal have?"}, {"role": "assistant", "content": "names"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.Nonlocal."}, {"role": "assistant", "content": "names"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.Nonlocal node define?"}, {"role": "assistant", "content": "names"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.Nonlocal."}, {"role": "assistant", "content": "names"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.Nonlocal."}, {"role": "assistant", "content": "names"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.Nonlocal node with placeholder arguments."}, {"role": "assistant", "content": "Nonlocal(names=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.Nonlocal node in Python."}, {"role": "assistant", "content": "Nonlocal(names=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.Nonlocal."}, {"role": "assistant", "content": "Nonlocal(names=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.Nonlocal node in Python?"}, {"role": "assistant", "content": "Nonlocal(names=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.Nonlocal have?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.Nonlocal?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.Nonlocal."}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.Nonlocal?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Does ast.Nonlocal have a names field?"}, {"role": "assistant", "content": "ast.Nonlocal has: names. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is names a field of ast.Nonlocal?"}, {"role": "assistant", "content": "ast.Nonlocal has: names. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Nonlocal have a subject field?"}, {"role": "assistant", "content": "ast.Nonlocal has: names. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is subject a field of ast.Nonlocal?"}, {"role": "assistant", "content": "ast.Nonlocal has: names. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.ParamSpec in order."}, {"role": "assistant", "content": "name, default_value"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.ParamSpec have?"}, {"role": "assistant", "content": "name, default_value"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.ParamSpec."}, {"role": "assistant", "content": "name, default_value"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.ParamSpec node define?"}, {"role": "assistant", "content": "name, default_value"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.ParamSpec."}, {"role": "assistant", "content": "name, default_value"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.ParamSpec."}, {"role": "assistant", "content": "name, default_value"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.ParamSpec node with placeholder arguments."}, {"role": "assistant", "content": "ParamSpec(name=..., default_value=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.ParamSpec node in Python."}, {"role": "assistant", "content": "ParamSpec(name=..., default_value=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.ParamSpec."}, {"role": "assistant", "content": "ParamSpec(name=..., default_value=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.ParamSpec node in Python?"}, {"role": "assistant", "content": "ParamSpec(name=..., default_value=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.ParamSpec have?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.ParamSpec?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.ParamSpec."}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.ParamSpec?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Does ast.ParamSpec have a name field?"}, {"role": "assistant", "content": "ast.ParamSpec has: name, default_value. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is name a field of ast.ParamSpec?"}, {"role": "assistant", "content": "ast.ParamSpec has: name, default_value. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.ParamSpec have a type_params field?"}, {"role": "assistant", "content": "ast.ParamSpec has: name, default_value. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is type_params a field of ast.ParamSpec?"}, {"role": "assistant", "content": "ast.ParamSpec has: name, default_value. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.Raise in order."}, {"role": "assistant", "content": "exc, cause"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.Raise have?"}, {"role": "assistant", "content": "exc, cause"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.Raise."}, {"role": "assistant", "content": "exc, cause"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.Raise node define?"}, {"role": "assistant", "content": "exc, cause"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.Raise."}, {"role": "assistant", "content": "exc, cause"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.Raise."}, {"role": "assistant", "content": "exc, cause"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.Raise node with placeholder arguments."}, {"role": "assistant", "content": "Raise(exc=..., cause=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.Raise node in Python."}, {"role": "assistant", "content": "Raise(exc=..., cause=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.Raise."}, {"role": "assistant", "content": "Raise(exc=..., cause=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.Raise node in Python?"}, {"role": "assistant", "content": "Raise(exc=..., cause=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.Raise have?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.Raise?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.Raise."}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.Raise?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Does ast.Raise have a exc field?"}, {"role": "assistant", "content": "ast.Raise has: exc, cause. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is exc a field of ast.Raise?"}, {"role": "assistant", "content": "ast.Raise has: exc, cause. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Raise have a args field?"}, {"role": "assistant", "content": "ast.Raise has: exc, cause. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is args a field of ast.Raise?"}, {"role": "assistant", "content": "ast.Raise has: exc, cause. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.Set in order."}, {"role": "assistant", "content": "elts"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.Set have?"}, {"role": "assistant", "content": "elts"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.Set."}, {"role": "assistant", "content": "elts"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.Set node define?"}, {"role": "assistant", "content": "elts"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.Set."}, {"role": "assistant", "content": "elts"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.Set."}, {"role": "assistant", "content": "elts"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.Set node with placeholder arguments."}, {"role": "assistant", "content": "Set(elts=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.Set node in Python."}, {"role": "assistant", "content": "Set(elts=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.Set."}, {"role": "assistant", "content": "Set(elts=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.Set node in Python?"}, {"role": "assistant", "content": "Set(elts=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.Set have?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.Set?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.Set."}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.Set?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Does ast.Set have a elts field?"}, {"role": "assistant", "content": "ast.Set has: elts. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is elts a field of ast.Set?"}, {"role": "assistant", "content": "ast.Set has: elts. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Set have a attr field?"}, {"role": "assistant", "content": "ast.Set has: elts. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is attr a field of ast.Set?"}, {"role": "assistant", "content": "ast.Set has: elts. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.SetComp in order."}, {"role": "assistant", "content": "elt, generators"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.SetComp have?"}, {"role": "assistant", "content": "elt, generators"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.SetComp."}, {"role": "assistant", "content": "elt, generators"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.SetComp node define?"}, {"role": "assistant", "content": "elt, generators"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.SetComp."}, {"role": "assistant", "content": "elt, generators"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.SetComp."}, {"role": "assistant", "content": "elt, generators"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.SetComp node with placeholder arguments."}, {"role": "assistant", "content": "SetComp(elt=..., generators=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.SetComp node in Python."}, {"role": "assistant", "content": "SetComp(elt=..., generators=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.SetComp."}, {"role": "assistant", "content": "SetComp(elt=..., generators=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.SetComp node in Python?"}, {"role": "assistant", "content": "SetComp(elt=..., generators=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.SetComp have?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.SetComp?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.SetComp."}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.SetComp?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Does ast.SetComp have a elt field?"}, {"role": "assistant", "content": "ast.SetComp has: elt, generators. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is elt a field of ast.SetComp?"}, {"role": "assistant", "content": "ast.SetComp has: elt, generators. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.SetComp have a conversion field?"}, {"role": "assistant", "content": "ast.SetComp has: elt, generators. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is conversion a field of ast.SetComp?"}, {"role": "assistant", "content": "ast.SetComp has: elt, generators. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.Slice in order."}, {"role": "assistant", "content": "lower, upper, step"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.Slice have?"}, {"role": "assistant", "content": "lower, upper, step"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.Slice."}, {"role": "assistant", "content": "lower, upper, step"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.Slice node define?"}, {"role": "assistant", "content": "lower, upper, step"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.Slice."}, {"role": "assistant", "content": "lower, upper, step"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.Slice."}, {"role": "assistant", "content": "lower, upper, step"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.Slice node with placeholder arguments."}, {"role": "assistant", "content": "Slice(lower=..., upper=..., step=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.Slice node in Python."}, {"role": "assistant", "content": "Slice(lower=..., upper=..., step=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.Slice."}, {"role": "assistant", "content": "Slice(lower=..., upper=..., step=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.Slice node in Python?"}, {"role": "assistant", "content": "Slice(lower=..., upper=..., step=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.Slice have?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.Slice?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.Slice."}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.Slice?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Does ast.Slice have a lower field?"}, {"role": "assistant", "content": "ast.Slice has: lower, upper, step. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is lower a field of ast.Slice?"}, {"role": "assistant", "content": "ast.Slice has: lower, upper, step. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Slice have a upper field?"}, {"role": "assistant", "content": "ast.Slice has: lower, upper, step. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is upper a field of ast.Slice?"}, {"role": "assistant", "content": "ast.Slice has: lower, upper, step. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Slice have a format_spec field?"}, {"role": "assistant", "content": "ast.Slice has: lower, upper, step. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is format_spec a field of ast.Slice?"}, {"role": "assistant", "content": "ast.Slice has: lower, upper, step. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.Slice have a func field?"}, {"role": "assistant", "content": "ast.Slice has: lower, upper, step. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is func a field of ast.Slice?"}, {"role": "assistant", "content": "ast.Slice has: lower, upper, step. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.Subscript in order."}, {"role": "assistant", "content": "value, slice, ctx"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.Subscript have?"}, {"role": "assistant", "content": "value, slice, ctx"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.Subscript."}, {"role": "assistant", "content": "value, slice, ctx"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.Subscript node define?"}, {"role": "assistant", "content": "value, slice, ctx"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.Subscript."}, {"role": "assistant", "content": "value, slice, ctx"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.Subscript."}, {"role": "assistant", "content": "value, slice, ctx"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.Subscript node with placeholder arguments."}, {"role": "assistant", "content": "Subscript(value=..., slice=..., ctx=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.Subscript node in Python."}, {"role": "assistant", "content": "Subscript(value=..., slice=..., ctx=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.Subscript."}, {"role": "assistant", "content": "Subscript(value=..., slice=..., ctx=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.Subscript node in Python?"}, {"role": "assistant", "content": "Subscript(value=..., slice=..., ctx=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.Subscript have?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.Subscript?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.Subscript."}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.Subscript?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Does ast.Subscript have a value field?"}, {"role": "assistant", "content": "ast.Subscript has: value, slice, ctx. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is value a field of ast.Subscript?"}, {"role": "assistant", "content": "ast.Subscript has: value, slice, ctx. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Subscript have a slice field?"}, {"role": "assistant", "content": "ast.Subscript has: value, slice, ctx. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is slice a field of ast.Subscript?"}, {"role": "assistant", "content": "ast.Subscript has: value, slice, ctx. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Subscript have a iter field?"}, {"role": "assistant", "content": "ast.Subscript has: value, slice, ctx. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is iter a field of ast.Subscript?"}, {"role": "assistant", "content": "ast.Subscript has: value, slice, ctx. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.Subscript have a key field?"}, {"role": "assistant", "content": "ast.Subscript has: value, slice, ctx. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is key a field of ast.Subscript?"}, {"role": "assistant", "content": "ast.Subscript has: value, slice, ctx. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.TemplateStr in order."}, {"role": "assistant", "content": "values"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.TemplateStr have?"}, {"role": "assistant", "content": "values"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.TemplateStr."}, {"role": "assistant", "content": "values"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.TemplateStr node define?"}, {"role": "assistant", "content": "values"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.TemplateStr."}, {"role": "assistant", "content": "values"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.TemplateStr."}, {"role": "assistant", "content": "values"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.TemplateStr node with placeholder arguments."}, {"role": "assistant", "content": "TemplateStr(values=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.TemplateStr node in Python."}, {"role": "assistant", "content": "TemplateStr(values=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.TemplateStr."}, {"role": "assistant", "content": "TemplateStr(values=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.TemplateStr node in Python?"}, {"role": "assistant", "content": "TemplateStr(values=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.TemplateStr have?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.TemplateStr?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.TemplateStr."}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.TemplateStr?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Does ast.TemplateStr have a values field?"}, {"role": "assistant", "content": "ast.TemplateStr has: values. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is values a field of ast.TemplateStr?"}, {"role": "assistant", "content": "ast.TemplateStr has: values. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.TemplateStr have a id field?"}, {"role": "assistant", "content": "ast.TemplateStr has: values. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is id a field of ast.TemplateStr?"}, {"role": "assistant", "content": "ast.TemplateStr has: values. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.Try in order."}, {"role": "assistant", "content": "body, handlers, orelse, finalbody"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.Try have?"}, {"role": "assistant", "content": "body, handlers, orelse, finalbody"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.Try."}, {"role": "assistant", "content": "body, handlers, orelse, finalbody"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.Try node define?"}, {"role": "assistant", "content": "body, handlers, orelse, finalbody"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.Try."}, {"role": "assistant", "content": "body, handlers, orelse, finalbody"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.Try."}, {"role": "assistant", "content": "body, handlers, orelse, finalbody"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.Try node with placeholder arguments."}, {"role": "assistant", "content": "Try(body=..., handlers=..., orelse=..., finalbody=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.Try node in Python."}, {"role": "assistant", "content": "Try(body=..., handlers=..., orelse=..., finalbody=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.Try."}, {"role": "assistant", "content": "Try(body=..., handlers=..., orelse=..., finalbody=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.Try node in Python?"}, {"role": "assistant", "content": "Try(body=..., handlers=..., orelse=..., finalbody=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.Try have?"}, {"role": "assistant", "content": "4"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.Try?"}, {"role": "assistant", "content": "4"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.Try."}, {"role": "assistant", "content": "4"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.Try?"}, {"role": "assistant", "content": "4"}]}
+{"messages": [{"role": "user", "content": "Does ast.Try have a body field?"}, {"role": "assistant", "content": "ast.Try has: body, handlers, orelse, finalbody. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is body a field of ast.Try?"}, {"role": "assistant", "content": "ast.Try has: body, handlers, orelse, finalbody. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Try have a handlers field?"}, {"role": "assistant", "content": "ast.Try has: body, handlers, orelse, finalbody. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is handlers a field of ast.Try?"}, {"role": "assistant", "content": "ast.Try has: body, handlers, orelse, finalbody. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Try have a orelse field?"}, {"role": "assistant", "content": "ast.Try has: body, handlers, orelse, finalbody. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is orelse a field of ast.Try?"}, {"role": "assistant", "content": "ast.Try has: body, handlers, orelse, finalbody. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Try have a op field?"}, {"role": "assistant", "content": "ast.Try has: body, handlers, orelse, finalbody. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is op a field of ast.Try?"}, {"role": "assistant", "content": "ast.Try has: body, handlers, orelse, finalbody. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.Try have a operand field?"}, {"role": "assistant", "content": "ast.Try has: body, handlers, orelse, finalbody. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is operand a field of ast.Try?"}, {"role": "assistant", "content": "ast.Try has: body, handlers, orelse, finalbody. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.Try have a ops field?"}, {"role": "assistant", "content": "ast.Try has: body, handlers, orelse, finalbody. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is ops a field of ast.Try?"}, {"role": "assistant", "content": "ast.Try has: body, handlers, orelse, finalbody. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.Tuple in order."}, {"role": "assistant", "content": "elts, ctx"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.Tuple have?"}, {"role": "assistant", "content": "elts, ctx"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.Tuple."}, {"role": "assistant", "content": "elts, ctx"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.Tuple node define?"}, {"role": "assistant", "content": "elts, ctx"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.Tuple."}, {"role": "assistant", "content": "elts, ctx"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.Tuple."}, {"role": "assistant", "content": "elts, ctx"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.Tuple node with placeholder arguments."}, {"role": "assistant", "content": "Tuple(elts=..., ctx=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.Tuple node in Python."}, {"role": "assistant", "content": "Tuple(elts=..., ctx=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.Tuple."}, {"role": "assistant", "content": "Tuple(elts=..., ctx=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.Tuple node in Python?"}, {"role": "assistant", "content": "Tuple(elts=..., ctx=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.Tuple have?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.Tuple?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.Tuple."}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.Tuple?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Does ast.Tuple have a elts field?"}, {"role": "assistant", "content": "ast.Tuple has: elts, ctx. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is elts a field of ast.Tuple?"}, {"role": "assistant", "content": "ast.Tuple has: elts, ctx. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Tuple have a name field?"}, {"role": "assistant", "content": "ast.Tuple has: elts, ctx. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is name a field of ast.Tuple?"}, {"role": "assistant", "content": "ast.Tuple has: elts, ctx. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.TypeAlias in order."}, {"role": "assistant", "content": "name, type_params, value"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.TypeAlias have?"}, {"role": "assistant", "content": "name, type_params, value"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.TypeAlias."}, {"role": "assistant", "content": "name, type_params, value"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.TypeAlias node define?"}, {"role": "assistant", "content": "name, type_params, value"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.TypeAlias."}, {"role": "assistant", "content": "name, type_params, value"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.TypeAlias."}, {"role": "assistant", "content": "name, type_params, value"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.TypeAlias node with placeholder arguments."}, {"role": "assistant", "content": "TypeAlias(name=..., type_params=..., value=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.TypeAlias node in Python."}, {"role": "assistant", "content": "TypeAlias(name=..., type_params=..., value=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.TypeAlias."}, {"role": "assistant", "content": "TypeAlias(name=..., type_params=..., value=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.TypeAlias node in Python?"}, {"role": "assistant", "content": "TypeAlias(name=..., type_params=..., value=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.TypeAlias have?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.TypeAlias?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.TypeAlias."}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.TypeAlias?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Does ast.TypeAlias have a name field?"}, {"role": "assistant", "content": "ast.TypeAlias has: name, type_params, value. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is name a field of ast.TypeAlias?"}, {"role": "assistant", "content": "ast.TypeAlias has: name, type_params, value. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.TypeAlias have a type_params field?"}, {"role": "assistant", "content": "ast.TypeAlias has: name, type_params, value. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is type_params a field of ast.TypeAlias?"}, {"role": "assistant", "content": "ast.TypeAlias has: name, type_params, value. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.TypeAlias have a patterns field?"}, {"role": "assistant", "content": "ast.TypeAlias has: name, type_params, value. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is patterns a field of ast.TypeAlias?"}, {"role": "assistant", "content": "ast.TypeAlias has: name, type_params, value. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.TypeAlias have a rest field?"}, {"role": "assistant", "content": "ast.TypeAlias has: name, type_params, value. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is rest a field of ast.TypeAlias?"}, {"role": "assistant", "content": "ast.TypeAlias has: name, type_params, value. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.TypeIgnore in order."}, {"role": "assistant", "content": "lineno, tag"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.TypeIgnore have?"}, {"role": "assistant", "content": "lineno, tag"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.TypeIgnore."}, {"role": "assistant", "content": "lineno, tag"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.TypeIgnore node define?"}, {"role": "assistant", "content": "lineno, tag"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.TypeIgnore."}, {"role": "assistant", "content": "lineno, tag"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.TypeIgnore."}, {"role": "assistant", "content": "lineno, tag"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.TypeIgnore node with placeholder arguments."}, {"role": "assistant", "content": "TypeIgnore(lineno=..., tag=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.TypeIgnore node in Python."}, {"role": "assistant", "content": "TypeIgnore(lineno=..., tag=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.TypeIgnore."}, {"role": "assistant", "content": "TypeIgnore(lineno=..., tag=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.TypeIgnore node in Python?"}, {"role": "assistant", "content": "TypeIgnore(lineno=..., tag=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.TypeIgnore have?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.TypeIgnore?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.TypeIgnore."}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.TypeIgnore?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Does ast.TypeIgnore have a lineno field?"}, {"role": "assistant", "content": "ast.TypeIgnore has: lineno, tag. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is lineno a field of ast.TypeIgnore?"}, {"role": "assistant", "content": "ast.TypeIgnore has: lineno, tag. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.TypeIgnore have a returns field?"}, {"role": "assistant", "content": "ast.TypeIgnore has: lineno, tag. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is returns a field of ast.TypeIgnore?"}, {"role": "assistant", "content": "ast.TypeIgnore has: lineno, tag. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.TypeVarTuple in order."}, {"role": "assistant", "content": "name, default_value"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.TypeVarTuple have?"}, {"role": "assistant", "content": "name, default_value"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.TypeVarTuple."}, {"role": "assistant", "content": "name, default_value"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.TypeVarTuple node define?"}, {"role": "assistant", "content": "name, default_value"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.TypeVarTuple."}, {"role": "assistant", "content": "name, default_value"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.TypeVarTuple."}, {"role": "assistant", "content": "name, default_value"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.TypeVarTuple node with placeholder arguments."}, {"role": "assistant", "content": "TypeVarTuple(name=..., default_value=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.TypeVarTuple node in Python."}, {"role": "assistant", "content": "TypeVarTuple(name=..., default_value=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.TypeVarTuple."}, {"role": "assistant", "content": "TypeVarTuple(name=..., default_value=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.TypeVarTuple node in Python?"}, {"role": "assistant", "content": "TypeVarTuple(name=..., default_value=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.TypeVarTuple have?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.TypeVarTuple?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.TypeVarTuple."}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.TypeVarTuple?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Does ast.TypeVarTuple have a name field?"}, {"role": "assistant", "content": "ast.TypeVarTuple has: name, default_value. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is name a field of ast.TypeVarTuple?"}, {"role": "assistant", "content": "ast.TypeVarTuple has: name, default_value. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.TypeVarTuple have a subject field?"}, {"role": "assistant", "content": "ast.TypeVarTuple has: name, default_value. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is subject a field of ast.TypeVarTuple?"}, {"role": "assistant", "content": "ast.TypeVarTuple has: name, default_value. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.UnaryOp in order."}, {"role": "assistant", "content": "op, operand"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.UnaryOp have?"}, {"role": "assistant", "content": "op, operand"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.UnaryOp."}, {"role": "assistant", "content": "op, operand"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.UnaryOp node define?"}, {"role": "assistant", "content": "op, operand"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.UnaryOp."}, {"role": "assistant", "content": "op, operand"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.UnaryOp."}, {"role": "assistant", "content": "op, operand"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.UnaryOp node with placeholder arguments."}, {"role": "assistant", "content": "UnaryOp(op=..., operand=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.UnaryOp node in Python."}, {"role": "assistant", "content": "UnaryOp(op=..., operand=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.UnaryOp."}, {"role": "assistant", "content": "UnaryOp(op=..., operand=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.UnaryOp node in Python?"}, {"role": "assistant", "content": "UnaryOp(op=..., operand=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.UnaryOp have?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.UnaryOp?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.UnaryOp."}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.UnaryOp?"}, {"role": "assistant", "content": "2"}]}
+{"messages": [{"role": "user", "content": "Does ast.UnaryOp have a op field?"}, {"role": "assistant", "content": "ast.UnaryOp has: op, operand. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is op a field of ast.UnaryOp?"}, {"role": "assistant", "content": "ast.UnaryOp has: op, operand. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.UnaryOp have a type field?"}, {"role": "assistant", "content": "ast.UnaryOp has: op, operand. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is type a field of ast.UnaryOp?"}, {"role": "assistant", "content": "ast.UnaryOp has: op, operand. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.While in order."}, {"role": "assistant", "content": "test, body, orelse"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.While have?"}, {"role": "assistant", "content": "test, body, orelse"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.While."}, {"role": "assistant", "content": "test, body, orelse"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.While node define?"}, {"role": "assistant", "content": "test, body, orelse"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.While."}, {"role": "assistant", "content": "test, body, orelse"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.While."}, {"role": "assistant", "content": "test, body, orelse"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.While node with placeholder arguments."}, {"role": "assistant", "content": "While(test=..., body=..., orelse=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.While node in Python."}, {"role": "assistant", "content": "While(test=..., body=..., orelse=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.While."}, {"role": "assistant", "content": "While(test=..., body=..., orelse=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.While node in Python?"}, {"role": "assistant", "content": "While(test=..., body=..., orelse=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.While have?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.While?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.While."}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.While?"}, {"role": "assistant", "content": "3"}]}
+{"messages": [{"role": "user", "content": "Does ast.While have a test field?"}, {"role": "assistant", "content": "ast.While has: test, body, orelse. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is test a field of ast.While?"}, {"role": "assistant", "content": "ast.While has: test, body, orelse. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.While have a body field?"}, {"role": "assistant", "content": "ast.While has: test, body, orelse. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is body a field of ast.While?"}, {"role": "assistant", "content": "ast.While has: test, body, orelse. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.While have a argtypes field?"}, {"role": "assistant", "content": "ast.While has: test, body, orelse. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is argtypes a field of ast.While?"}, {"role": "assistant", "content": "ast.While has: test, body, orelse. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Does ast.While have a attr field?"}, {"role": "assistant", "content": "ast.While has: test, body, orelse. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is attr a field of ast.While?"}, {"role": "assistant", "content": "ast.While has: test, body, orelse. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.Yield in order."}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.Yield have?"}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.Yield."}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.Yield node define?"}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.Yield."}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.Yield."}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.Yield node with placeholder arguments."}, {"role": "assistant", "content": "Yield(value=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.Yield node in Python."}, {"role": "assistant", "content": "Yield(value=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.Yield."}, {"role": "assistant", "content": "Yield(value=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.Yield node in Python?"}, {"role": "assistant", "content": "Yield(value=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.Yield have?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.Yield?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.Yield."}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.Yield?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Does ast.Yield have a value field?"}, {"role": "assistant", "content": "ast.Yield has: value. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is value a field of ast.Yield?"}, {"role": "assistant", "content": "ast.Yield has: value. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.Yield have a values field?"}, {"role": "assistant", "content": "ast.Yield has: value. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is values a field of ast.Yield?"}, {"role": "assistant", "content": "ast.Yield has: value. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "List the fields of ast.YieldFrom in order."}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "What fields does ast.YieldFrom have?"}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "Name the fields of ast.YieldFrom."}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "Which fields does an ast.YieldFrom node define?"}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "Give the field names of ast.YieldFrom."}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "Enumerate the fields of ast.YieldFrom."}, {"role": "assistant", "content": "value"}]}
+{"messages": [{"role": "user", "content": "Write Python constructing an ast.YieldFrom node with placeholder arguments."}, {"role": "assistant", "content": "YieldFrom(value=...)"}]}
+{"messages": [{"role": "user", "content": "Show how to build an ast.YieldFrom node in Python."}, {"role": "assistant", "content": "YieldFrom(value=...)"}]}
+{"messages": [{"role": "user", "content": "Give code to instantiate ast.YieldFrom."}, {"role": "assistant", "content": "YieldFrom(value=...)"}]}
+{"messages": [{"role": "user", "content": "How do you create an ast.YieldFrom node in Python?"}, {"role": "assistant", "content": "YieldFrom(value=...)"}]}
+{"messages": [{"role": "user", "content": "How many fields does ast.YieldFrom have?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Number of fields in ast.YieldFrom?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Count the fields of ast.YieldFrom."}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "How many fields are defined on ast.YieldFrom?"}, {"role": "assistant", "content": "1"}]}
+{"messages": [{"role": "user", "content": "Does ast.YieldFrom have a value field?"}, {"role": "assistant", "content": "ast.YieldFrom has: value. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Is value a field of ast.YieldFrom?"}, {"role": "assistant", "content": "ast.YieldFrom has: value. So the answer is Yes."}]}
+{"messages": [{"role": "user", "content": "Does ast.YieldFrom have a bases field?"}, {"role": "assistant", "content": "ast.YieldFrom has: value. So the answer is No."}]}
+{"messages": [{"role": "user", "content": "Is bases a field of ast.YieldFrom?"}, {"role": "assistant", "content": "ast.YieldFrom has: value. So the answer is No."}]}
